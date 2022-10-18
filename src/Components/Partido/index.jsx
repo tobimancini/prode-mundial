@@ -13,6 +13,7 @@ const Partido = (props) => {
     const local = partido.local;
     const visitante = partido.visitante;
     const numPartido = partido.partido;
+    const fecha = partido.fecha;
 
     let idPartido = props.idPartido;
 
@@ -59,6 +60,7 @@ const Partido = (props) => {
                     null
             }
             <div className='matchNum'>{`Partido número: ${numPartido}`}</div>
+            <div className='matchNum'>{`Fecha: ${fecha.dia}/${fecha.mes}/22 - ${fecha.hora} hs.`}</div>
             <div className='match'>
                 <div className='matchTeam'>{local}</div>
                 {

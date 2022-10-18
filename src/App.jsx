@@ -17,7 +17,7 @@ function App() {
 
   const { resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, puntajeTotal, setAllPuntajes } = useContext(Prode);
 
-  const [userID, setUserID] = useState(""); 
+  const [userID, setUserID] = useState("");
   const [userData, setUserData] = useState("");
 
   const [grupoA, setGrupoA] = useState([]);
@@ -154,17 +154,27 @@ function App() {
   const fases = ["A", "B", "C", "D", "E", "F", "G", "H", "Octavos de final", "Cuartos de final", "Semifinales",
     "Tercer y cuarto puesto", "Final"];
 
-  const filtrarFase = () =>{
+  const filtrarFase = () => {
     const fase = document.getElementById('faseElegida').value;
     setFaseElegida(fase);
   }
 
-  const partidosPorFase = [grupoA, grupoB, grupoC, grupoD, grupoE, grupoF, grupoG, grupoH, octFinal, cuarFinal, semiFinal, terycuarFinal, finalisima]; 
+  const partidosPorFase = [grupoA, grupoB, grupoC, grupoD, grupoE, grupoF, grupoG, grupoH, octFinal, cuarFinal, semiFinal, terycuarFinal, finalisima];
 
   useEffect(() => {
     getAllPuntajes(setAllPuntajes);
   }, [])
+
+  useEffect(() => {
+    let now = new Date();
+    let dia = now.getDate();
+    let mes = now.getMonth();
+    let hora = now.getHours();
+    let minutos = now.getMinutes();
+    console.log(dia,"/",mes," ",hora,":",minutos);
+  })
   
+
 
   return (
     // <ProdeData>
@@ -179,7 +189,7 @@ function App() {
           })
         }
       </select>
-      <div onClick={()=>filtrarFase()}>filtrar</div>
+      <div onClick={() => filtrarFase()}>filtrar</div>
       {
         userData.partido1 != undefined ?
           <>
@@ -202,7 +212,7 @@ function App() {
       }
       <div onClick={() => predict()}>GUARDAR CAMBIOS</div>
       {/* <div onClick={() => getPuntos(userID)}>get puntos</div> */}
-      <TablaPosiciones/>
+      <TablaPosiciones />
     </div>
     // </ProdeData>
   );

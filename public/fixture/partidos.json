@@ -6,7 +6,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "1",
-        "grupo": "A"
+        "grupo": "A",
+        "fecha":{
+            "mes": 11,
+            "dia": 20,
+            "hora": 13,
+            "minutos":  0
+        }
     },
     "partido2": {
         "local": "Inglaterra",
@@ -15,7 +21,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "2",
-        "grupo": "B"
+        "grupo": "B",
+        "fecha":{
+            "mes": 11,
+            "dia": 21,
+            "hora": 10,
+            "minutos":  0 
+        }
     },
     "partido3": {
         "local": "Senegal",
@@ -24,7 +36,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "3",
-        "grupo": "A"
+        "grupo": "A",
+        "fecha":{
+            "mes": 11,
+            "dia": 21,
+            "hora": 7,
+            "minutos":  0
+        }
     },
     "partido4": {
         "local": "Estados Unidos",
@@ -33,7 +51,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "4",
-        "grupo": "B"
+        "grupo": "B",
+        "fecha":{
+            "mes": 11,
+            "dia": 21,
+            "hora": 16,
+            "minutos": 0
+        }
     },
     "partido5": {
         "local": "Argentina",
@@ -42,7 +66,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "5",
-        "grupo": "C"
+        "grupo": "C",
+        "fecha":{
+            "mes": 11,
+            "dia": 22,
+            "hora": 7,
+            "minutos": 0
+        }
     },
     "partido6": {
         "local": "Dinamarca",
@@ -51,7 +81,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "6",
-        "grupo": "D"
+        "grupo": "D",
+        "fecha":{
+            "mes": 11,
+            "dia": 22,
+            "hora": 10,
+            "minutos":  0
+        }
     },
     "partido7": {
         "local": "México",
@@ -60,7 +96,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "7",
-        "grupo": "C"
+        "grupo": "C",
+        "fecha":{
+            "mes": 11,
+            "dia": 22,
+            "hora": 13,
+            "minutos":  0
+        }
     },
     "partido8": {
         "local": "Francia",
@@ -69,7 +111,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "8",
-        "grupo": "D"
+        "grupo": "D",
+        "fecha":{
+            "mes": 11,
+            "dia": 22,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido9": {
         "local": "Marruecos",
@@ -78,7 +126,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "9",
-        "grupo": "F"
+        "grupo": "F",
+        "fecha":{
+            "mes": 11,
+            "dia": 23,
+            "hora": 7,
+            "minutos":  0
+        }
     },
     "partido10": {
         "local": "Alemania",
@@ -87,7 +141,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "10",
-        "grupo": "E"
+        "grupo": "E",
+        "fecha":{
+            "mes": 11,
+            "dia": 23,
+            "hora": 10,
+            "minutos":  0
+        }
     },
     "partido11": {
         "local": "España",
@@ -96,7 +156,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "11",
-        "grupo": "E"
+        "grupo": "E",
+        "fecha":{
+            "mes": 11,
+            "dia": 23,
+            "hora": 13,
+            "minutos":  0
+        }
     },
     "partido12": {
         "local": "Bélgica",
@@ -105,7 +171,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "12",
-        "grupo": "F"
+        "grupo": "F",
+        "fecha":{
+            "mes": 11,
+            "dia": 23,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido13": {
         "local": "Suiza",
@@ -114,7 +186,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "13",
-        "grupo": "G"
+        "grupo": "G",
+        "fecha":{
+            "mes": 11,
+            "dia": 24,
+            "hora": 7,
+            "minutos":  0
+        }
     },
     "partido14": {
         "local": "Uruguay",
@@ -123,7 +201,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "14",
-        "grupo": "H"
+        "grupo": "H",
+        "fecha":{
+            "mes": 11,
+            "dia": 24,
+            "hora": 10,
+            "minutos":  0
+        }
     },
     "partido15": {
         "local": "Portugal",
@@ -132,7 +216,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "15",
-        "grupo": "H"
+        "grupo": "H",
+        "fecha":{
+            "mes": 11,
+            "dia": 24,
+            "hora": 13,
+            "minutos":  0
+        }
     },
     "partido16": {
         "local": "Brasil",
@@ -141,7 +231,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "16",
-        "grupo": "G"
+        "grupo": "G",
+        "fecha":{
+            "mes": 11,
+            "dia": 24,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido17": {
         "local": "Gales",
@@ -150,7 +246,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "17",
-        "grupo": "B"
+        "grupo": "B",
+        "fecha":{
+            "mes": 11,
+            "dia": 25,
+            "hora": 7,
+            "minutos":  0
+        }
     },
     "partido18": {
         "local": "Qatar",
@@ -159,7 +261,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "18",
-        "grupo": "A"
+        "grupo": "A",
+        "fecha":{
+            "mes": 11,
+            "dia": 25,
+            "hora": 10,
+            "minutos":  0
+        }
     },
     "partido19": {
         "local": "Países Bajos",
@@ -168,7 +276,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "19",
-        "grupo": "A"
+        "grupo": "A",
+        "fecha":{
+            "mes": 11,
+            "dia": 25,
+            "hora": 13,
+            "minutos":  0
+        }
     },
     "partido20": {
         "local": "Inglaterra",
@@ -177,7 +291,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "20",
-        "grupo": "B"
+        "grupo": "B",
+        "fecha":{
+            "mes": 11,
+            "dia": 25,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido21": {
         "local": "Túnez",
@@ -186,7 +306,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "21",
-        "grupo": "D"
+        "grupo": "D",
+        "fecha":{
+            "mes": 11,
+            "dia": 26,
+            "hora": 7,
+            "minutos":  0
+        }
     },
     "partido22": {
         "local": "Polonia",
@@ -195,7 +321,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "22",
-        "grupo": "C"
+        "grupo": "C",
+        "fecha":{
+            "mes": 11,
+            "dia": 26,
+            "hora": 10,
+            "minutos":  0
+        }
     },
     "partido23": {
         "local": "Francia",
@@ -204,7 +336,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "23",
-        "grupo": "D"
+        "grupo": "D",
+        "fecha":{
+            "mes": 11,
+            "dia": 26,
+            "hora": 13,
+            "minutos":  0
+        }
     },
     "partido24": {
         "local": "Argentina",
@@ -213,7 +351,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "24",
-        "grupo": "C"
+        "grupo": "C",
+        "fecha":{
+            "mes": 11,
+            "dia": 26,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido25": {
         "local": "Japón",
@@ -222,7 +366,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "25",
-        "grupo": "E"
+        "grupo": "E",
+        "fecha":{
+            "mes": 11,
+            "dia": 27,
+            "hora": 7,
+            "minutos":  0
+        }
     },
     "partido26": {
         "local": "Bélgica",
@@ -231,7 +381,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "26",
-        "grupo": "F"
+        "grupo": "F",
+        "fecha":{
+            "mes": 11,
+            "dia": 27,
+            "hora": 10,
+            "minutos":  0
+        }
     },
     "partido27": {
         "local": "Croacia",
@@ -240,7 +396,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "27",
-        "grupo": "F"
+        "grupo": "F",
+        "fecha":{
+            "mes": 11,
+            "dia": 27,
+            "hora": 13,
+            "minutos":  0
+        }
     },
     "partido28": {
         "local": "España",
@@ -249,7 +411,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "28",
-        "grupo": "E"
+        "grupo": "E",
+        "fecha":{
+            "mes": 11,
+            "dia": 27,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido29": {
         "local": "Camerún",
@@ -258,7 +426,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "29",
-        "grupo": "G"
+        "grupo": "G",
+        "fecha":{
+            "mes": 11,
+            "dia": 28,
+            "hora": 7,
+            "minutos":  0
+        }
     },
     "partido30": {
         "local": "Corea del Sur",
@@ -267,7 +441,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "30",
-        "grupo": "H"
+        "grupo": "H",
+        "fecha":{
+            "mes": 11,
+            "dia": 28,
+            "hora": 10,
+            "minutos":  0
+        }
     },
     "partido31": {
         "local": "Brasil",
@@ -276,7 +456,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "31",
-        "grupo": "G"
+        "grupo": "G",
+        "fecha":{
+            "mes": 11,
+            "dia": 28,
+            "hora": 13,
+            "minutos":  0
+        }
     },
     "partido32": {
         "local": "Portugal",
@@ -285,7 +471,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "32",
-        "grupo": "H"
+        "grupo": "H",
+        "fecha":{
+            "mes": 11,
+            "dia": 28,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido33": {
         "local": "Países Bajos",
@@ -294,7 +486,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "33",
-        "grupo": "A"
+        "grupo": "A",
+        "fecha":{
+            "mes": 11,
+            "dia": 29,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido34": {
         "local": "Ecuador",
@@ -303,7 +501,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "34",
-        "grupo": "A"
+        "grupo": "A",
+        "fecha":{
+            "mes": 11,
+            "dia": 29,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido35": {
         "local": "Gales",
@@ -312,7 +516,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "35",
-        "grupo": "B"
+        "grupo": "B",
+        "fecha":{
+            "mes": 11,
+            "dia": 29,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido36": {
         "local": "Irán",
@@ -321,7 +531,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "36",
-        "grupo": "B"
+        "grupo": "B",
+        "fecha":{
+            "mes": 11,
+            "dia": 29,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido37": {
         "local": "Túnez",
@@ -330,7 +546,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "37",
-        "grupo": "D"
+        "grupo": "D",
+        "fecha":{
+            "mes": 11,
+            "dia": 30,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido38": {
         "local": "Australia",
@@ -339,7 +561,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "38",
-        "grupo": "D"
+        "grupo": "D",
+        "fecha":{
+            "mes": 11,
+            "dia": 30,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido39": {
         "local": "Polonia",
@@ -348,7 +576,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "39",
-        "grupo": "C"
+        "grupo": "C",
+        "fecha":{
+            "mes": 11,
+            "dia": 30,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido40": {
         "local": "Arabia Saudita",
@@ -357,7 +591,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "40",
-        "grupo": "C"
+        "grupo": "C",
+        "fecha":{
+            "mes": 11,
+            "dia": 30,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido41": {
         "local": "Croacia",
@@ -366,7 +606,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "41",
-        "grupo": "F"
+        "grupo": "F",
+        "fecha":{
+            "mes": 12,
+            "dia": 1,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido42": {
         "local": "Canadá",
@@ -375,7 +621,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "42",
-        "grupo": "F"
+        "grupo": "F",
+        "fecha":{
+            "mes": 12,
+            "dia": 1,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido43": {
         "local": "Japón",
@@ -384,7 +636,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "43",
-        "grupo": "E"
+        "grupo": "E",
+        "fecha":{
+            "mes": 12,
+            "dia": 1,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido44": {
         "local": "Costa Rica",
@@ -393,7 +651,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "44",
-        "grupo": "E"
+        "grupo": "E",
+        "fecha":{
+            "mes": 12,
+            "dia": 1,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido45": {
         "local": "Corea del Sur",
@@ -402,7 +666,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "45",
-        "grupo": "H"
+        "grupo": "H",
+        "fecha":{
+            "mes": 12,
+            "dia": 2,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido46": {
         "local": "Ghana",
@@ -411,7 +681,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "46",
-        "grupo": "H"
+        "grupo": "H",
+        "fecha":{
+            "mes": 12,
+            "dia": 2,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido47": {
         "local": "Camerún",
@@ -420,7 +696,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "47",
-        "grupo": "G"
+        "grupo": "G",
+        "fecha":{
+            "mes": 12,
+            "dia": 2,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido48": {
         "local": "Serbia",
@@ -429,7 +711,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "48",
-        "grupo": "G"
+        "grupo": "G",
+        "fecha":{
+            "mes": 12,
+            "dia": 2,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido49": {
         "local": "1A",
@@ -438,7 +726,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "49",
-        "grupo": "Octavos de Final"
+        "grupo": "Octavos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 3,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido50": {
         "local": "1C",
@@ -447,7 +741,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "50",
-        "grupo": "Octavos de Final"
+        "grupo": "Octavos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 3,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido51": {
         "local": "1B",
@@ -456,7 +756,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "51",
-        "grupo": "Octavos de Final"
+        "grupo": "Octavos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 4,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido52": {
         "local": "1D",
@@ -465,7 +771,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "52",
-        "grupo": "Octavos de Final"
+        "grupo": "Octavos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 4,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido53": {
         "local": "1E",
@@ -474,7 +786,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "53",
-        "grupo": "Octavos de Final"
+        "grupo": "Octavos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 5,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido54": {
         "local": "1G",
@@ -483,7 +801,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "54",
-        "grupo": "Octavos de Final"
+        "grupo": "Octavos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 5,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido55": {
         "local": "1F",
@@ -492,7 +816,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "55",
-        "grupo": "Octavos de Final"
+        "grupo": "Octavos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 6,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido56": {
         "local": "1H",
@@ -501,7 +831,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "56",
-        "grupo": "Octavos de Final"
+        "grupo": "Octavos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 6,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido57": {
         "local": "GP49",
@@ -510,7 +846,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "57",
-        "grupo": "Cuartos de Final"
+        "grupo": "Cuartos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 9,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido58": {
         "local": "GP53",
@@ -519,7 +861,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "58",
-        "grupo": "Cuartos de Final"
+        "grupo": "Cuartos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia":9,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido59": {
         "local": "GP51",
@@ -528,7 +876,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "59",
-        "grupo": "Cuartos de Final"
+        "grupo": "Cuartos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 10,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido60": {
         "local": "GP55",
@@ -537,7 +891,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "60",
-        "grupo": "Cuartos de Final"
+        "grupo": "Cuartos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 10,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido61": {
         "local": "GP57",
@@ -546,7 +906,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "61",
-        "grupo": "Semifinales"
+        "grupo": "Semifinales",
+        "fecha":{
+            "mes": 12,
+            "dia": 13,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido62": {
         "local": "GP59",
@@ -555,7 +921,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "62",
-        "grupo": "Semifinales"
+        "grupo": "Semifinales",
+        "fecha":{
+            "mes": 12,
+            "dia": 14,
+            "hora": 16,
+            "minutos":  0
+        }
     },
     "partido63": {
         "local": "PP61",
@@ -564,7 +936,13 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "63",
-        "grupo": "Tercer y Cuarto Puesto"
+        "grupo": "Tercer y Cuarto Puesto",
+        "fecha":{
+            "mes": 12,
+            "dia": 17,
+            "hora": 12,
+            "minutos":  0
+        }
     },
     "partido64": {
         "local": "GP61",
@@ -573,6 +951,12 @@
         "golesVisitante": "",
         "resultado": "",
         "partido": "64",
-        "grupo": "Final"
+        "grupo": "Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 18,
+            "hora": 12,
+            "minutos":  0
+        }
     }
 }
