@@ -5,20 +5,19 @@ import Group from './Components/Group';
 import Login from "./Components/Login";
 import getPrediction from './Components/Utils/setPrediction';
 import newUser from "./Components/Utils/newUser";
-import getPuntos from "./Components/Utils/puntos";
 import { db } from "./Firebase/config";
 import setPrediction from "./Components/Utils/setPrediction";
 import ProdeData from "./Context/prodeData";
 import { Prode } from './Context/prodeData';
 import getPredictionDB from "./Components/Utils/getPredictionDB";
+import getAllPuntajes from "./Components/Utils/getAllPuntajes";
+import TablaPosiciones from "./Components/TablaPosiciones";
 
 function App() {
 
-  const { resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual } = useContext(Prode);
+  const { resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, puntajeTotal, setAllPuntajes } = useContext(Prode);
 
-  const [userID, setUserID] = useState("");
-
-
+  const [userID, setUserID] = useState(""); 
   const [userData, setUserData] = useState("");
 
   const [grupoA, setGrupoA] = useState([]);
@@ -162,11 +161,17 @@ function App() {
 
   const partidosPorFase = [grupoA, grupoB, grupoC, grupoD, grupoE, grupoF, grupoG, grupoH, octFinal, cuarFinal, semiFinal, terycuarFinal, finalisima]; 
 
+  useEffect(() => {
+    getAllPuntajes(setAllPuntajes);
+  }, [])
+  
+
   return (
     // <ProdeData>
     <div className="App" >
       <h1>PRODE MUNDIAL</h1>
       <Login userID={setUserID} />
+      <h3>Total pts: {puntajeTotal}</h3>
       <select name="fase" id="faseElegida">
         {
           fases.map(fase => {
@@ -196,7 +201,8 @@ function App() {
           null
       }
       <div onClick={() => predict()}>GUARDAR CAMBIOS</div>
-      <div onClick={() => getPuntos(userID)}>get puntos</div>
+      {/* <div onClick={() => getPuntos(userID)}>get puntos</div> */}
+      <TablaPosiciones/>
     </div>
     // </ProdeData>
   );

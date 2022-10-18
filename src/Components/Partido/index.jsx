@@ -4,9 +4,10 @@ import './styles.css';
 
 const Partido = (props) => {
 
-    const { prediccionActual, resultadosAct } = useContext(Prode);
+    const { prediccionActual, resultadosAct, puntajesAct } = useContext(Prode);
 
-    const possibleGoals = ["", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    const possibleGoals = ["", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
 
     const partido = props.partido;
     const local = partido.local;
@@ -29,6 +30,25 @@ const Partido = (props) => {
 
         }
     }
+
+    const [puntajePartido, setPuntajePartido] = useState(0);
+    let puntaje;
+    const actualizarPuntaje =() =>{
+        for (let i = 0; i < puntajesAct.length; i++) {
+            const puntajes = puntajesAct[i];
+            // console.log(puntajes);
+            if (puntajes[idPartido]) {
+                puntaje = puntajes[idPartido];
+                // console.log("HOLAAA");
+            }
+        }
+        setPuntajePartido(puntaje);
+    }
+
+    useEffect(() => {
+      actualizarPuntaje();
+    }, [puntajesAct])
+    
 
 
     return (
@@ -94,7 +114,7 @@ const Partido = (props) => {
                                 <p>-</p>
                                 :
 
-                                <p>5</p>
+                                <p>{puntajePartido}</p>
 
                     }
                 </div>

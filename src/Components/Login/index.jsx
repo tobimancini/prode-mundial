@@ -8,12 +8,13 @@ import newUser from '../Utils/newUser';
 import { async } from '@firebase/util';
 import { Prode } from '../../Context/prodeData';
 import getPredictionDB from '../Utils/getPredictionDB';
+import setPuntos from '../Utils/setPuntos';
 
 const Login = (props) => {
 
     const setUserID = props.userID;
 
-    const { userLogged, setUserLogged, setPrediccionActual, prediccionActual } = useContext(Prode);
+    const { userLogged, setUserLogged, setPrediccionActual, prediccionActual, setPuntajesAct, puntajesAct, setPuntajeTotal } = useContext(Prode);
 
 
     useEffect(() => {
@@ -22,6 +23,7 @@ const Login = (props) => {
                 setUserLogged(user.uid);
                 setUserID(user.uid);
                 getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false);
+                setPuntos(user.uid, setPuntajesAct, setPuntajeTotal);
 
             } else {
                 console.log("no user");
@@ -119,7 +121,7 @@ const Login = (props) => {
                     </>
                     :
                     <>
-                        <h2>{userLogged}</h2>
+                        {/* <h2>{userLogged}</h2> */}
                         <div onClick={() => cerrarSesion()}>Log out</div>
                     </>
             }
