@@ -1,0 +1,578 @@
+{
+    "partido1": {
+        "local": "Qatar",
+        "visitante": "Ecuador",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "1",
+        "grupo": "A"
+    },
+    "partido2": {
+        "local": "Inglaterra",
+        "visitante": "Irán",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "2",
+        "grupo": "B"
+    },
+    "partido3": {
+        "local": "Senegal",
+        "visitante": "Países Bajos",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "3",
+        "grupo": "A"
+    },
+    "partido4": {
+        "local": "Estados Unidos",
+        "visitante": "Gales",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "4",
+        "grupo": "B"
+    },
+    "partido5": {
+        "local": "Argentina",
+        "visitante": "Arabia Saudita",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "5",
+        "grupo": "C"
+    },
+    "partido6": {
+        "local": "Dinamarca",
+        "visitante": "Túnez",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "6",
+        "grupo": "D"
+    },
+    "partido7": {
+        "local": "México",
+        "visitante": "Polonia",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "7",
+        "grupo": "C"
+    },
+    "partido8": {
+        "local": "Francia",
+        "visitante": "Australia",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "8",
+        "grupo": "D"
+    },
+    "partido9": {
+        "local": "Marruecos",
+        "visitante": "Croacia",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "9",
+        "grupo": "F"
+    },
+    "partido10": {
+        "local": "Alemania",
+        "visitante": "Japón",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "10",
+        "grupo": "E"
+    },
+    "partido11": {
+        "local": "España",
+        "visitante": "Costa Rica",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "11",
+        "grupo": "E"
+    },
+    "partido12": {
+        "local": "Bélgica",
+        "visitante": "Canadá",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "12",
+        "grupo": "F"
+    },
+    "partido13": {
+        "local": "Suiza",
+        "visitante": "Camerún",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "13",
+        "grupo": "G"
+    },
+    "partido14": {
+        "local": "Uruguay",
+        "visitante": "Corea del Sur",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "14",
+        "grupo": "H"
+    },
+    "partido15": {
+        "local": "Portugal",
+        "visitante": "Ghana",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "15",
+        "grupo": "H"
+    },
+    "partido16": {
+        "local": "Brasil",
+        "visitante": "Serbia",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "16",
+        "grupo": "G"
+    },
+    "partido17": {
+        "local": "Gales",
+        "visitante": "Irán",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "17",
+        "grupo": "B"
+    },
+    "partido18": {
+        "local": "Qatar",
+        "visitante": "Senegal",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "18",
+        "grupo": "A"
+    },
+    "partido19": {
+        "local": "Países Bajos",
+        "visitante": "Ecuador",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "19",
+        "grupo": "A"
+    },
+    "partido20": {
+        "local": "Inglaterra",
+        "visitante": "Estados Unidos",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "20",
+        "grupo": "B"
+    },
+    "partido21": {
+        "local": "Túnez",
+        "visitante": "Australia",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "21",
+        "grupo": "D"
+    },
+    "partido22": {
+        "local": "Polonia",
+        "visitante": "Arabia Saudita",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "22",
+        "grupo": "C"
+    },
+    "partido23": {
+        "local": "Francia",
+        "visitante": "Dinamarca",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "23",
+        "grupo": "D"
+    },
+    "partido24": {
+        "local": "Argentina",
+        "visitante": "México",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "24",
+        "grupo": "C"
+    },
+    "partido25": {
+        "local": "Japón",
+        "visitante": "Costa Rica",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "25",
+        "grupo": "E"
+    },
+    "partido26": {
+        "local": "Bélgica",
+        "visitante": "Marruecos",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "26",
+        "grupo": "F"
+    },
+    "partido27": {
+        "local": "Croacia",
+        "visitante": "Canadá",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "27",
+        "grupo": "F"
+    },
+    "partido28": {
+        "local": "España",
+        "visitante": "Alemania",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "28",
+        "grupo": "E"
+    },
+    "partido29": {
+        "local": "Camerún",
+        "visitante": "Serbia",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "29",
+        "grupo": "G"
+    },
+    "partido30": {
+        "local": "Corea del Sur",
+        "visitante": "Ghana",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "30",
+        "grupo": "H"
+    },
+    "partido31": {
+        "local": "Brasil",
+        "visitante": "Suiza",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "31",
+        "grupo": "G"
+    },
+    "partido32": {
+        "local": "Portugal",
+        "visitante": "Uruguay",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "32",
+        "grupo": "H"
+    },
+    "partido33": {
+        "local": "Países Bajos",
+        "visitante": "Qatar",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "33",
+        "grupo": "A"
+    },
+    "partido34": {
+        "local": "Ecuador",
+        "visitante": "Senegal",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "34",
+        "grupo": "A"
+    },
+    "partido35": {
+        "local": "Gales",
+        "visitante": "Inglaterra",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "35",
+        "grupo": "B"
+    },
+    "partido36": {
+        "local": "Irán",
+        "visitante": "Estados Unidos",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "36",
+        "grupo": "B"
+    },
+    "partido37": {
+        "local": "Túnez",
+        "visitante": "Francia",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "37",
+        "grupo": "D"
+    },
+    "partido38": {
+        "local": "Australia",
+        "visitante": "Dinamarca",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "38",
+        "grupo": "D"
+    },
+    "partido39": {
+        "local": "Polonia",
+        "visitante": "Argentina",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "39",
+        "grupo": "C"
+    },
+    "partido40": {
+        "local": "Arabia Saudita",
+        "visitante": "México",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "40",
+        "grupo": "C"
+    },
+    "partido41": {
+        "local": "Croacia",
+        "visitante": "Bélgica",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "41",
+        "grupo": "F"
+    },
+    "partido42": {
+        "local": "Canadá",
+        "visitante": "México",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "42",
+        "grupo": "F"
+    },
+    "partido43": {
+        "local": "Japón",
+        "visitante": "España",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "43",
+        "grupo": "E"
+    },
+    "partido44": {
+        "local": "Costa Rica",
+        "visitante": "Alemania",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "44",
+        "grupo": "E"
+    },
+    "partido45": {
+        "local": "Corea del Sur",
+        "visitante": "Portugal",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "45",
+        "grupo": "H"
+    },
+    "partido46": {
+        "local": "Ghana",
+        "visitante": "Portugal",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "46",
+        "grupo": "H"
+    },
+    "partido47": {
+        "local": "Camerún",
+        "visitante": "Brasil",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "47",
+        "grupo": "G"
+    },
+    "partido48": {
+        "local": "Serbia",
+        "visitante": "Suiza",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "48",
+        "grupo": "G"
+    },
+    "partido49": {
+        "local": "1A",
+        "visitante": "2B",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "49",
+        "grupo": "Octavos de Final"
+    },
+    "partido50": {
+        "local": "1C",
+        "visitante": "2D",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "50",
+        "grupo": "Octavos de Final"
+    },
+    "partido51": {
+        "local": "1B",
+        "visitante": "2A",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "51",
+        "grupo": "Octavos de Final"
+    },
+    "partido52": {
+        "local": "1D",
+        "visitante": "2C",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "52",
+        "grupo": "Octavos de Final"
+    },
+    "partido53": {
+        "local": "1E",
+        "visitante": "2F",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "53",
+        "grupo": "Octavos de Final"
+    },
+    "partido54": {
+        "local": "1G",
+        "visitante": "2H",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "54",
+        "grupo": "Octavos de Final"
+    },
+    "partido55": {
+        "local": "1F",
+        "visitante": "2E",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "55",
+        "grupo": "Octavos de Final"
+    },
+    "partido56": {
+        "local": "1H",
+        "visitante": "2G",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "56",
+        "grupo": "Octavos de Final"
+    },
+    "partido57": {
+        "local": "GP49",
+        "visitante": "GP50",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "57",
+        "grupo": "Cuartos de Final"
+    },
+    "partido58": {
+        "local": "GP53",
+        "visitante": "GP54",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "58",
+        "grupo": "Cuartos de Final"
+    },
+    "partido59": {
+        "local": "GP51",
+        "visitante": "GP52",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "59",
+        "grupo": "Cuartos de Final"
+    },
+    "partido60": {
+        "local": "GP55",
+        "visitante": "GP56",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "60",
+        "grupo": "Cuartos de Final"
+    },
+    "partido61": {
+        "local": "GP57",
+        "visitante": "GP58",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "61",
+        "grupo": "Semifinales"
+    },
+    "partido62": {
+        "local": "GP59",
+        "visitante": "GP60",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "62",
+        "grupo": "Semifinales"
+    },
+    "partido63": {
+        "local": "PP61",
+        "visitante": "PP62",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "63",
+        "grupo": "Tercer y Cuarto Puesto"
+    },
+    "partido64": {
+        "local": "GP61",
+        "visitante": "GP62",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "64",
+        "grupo": "Final"
+    }
+}
