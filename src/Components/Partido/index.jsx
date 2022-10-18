@@ -25,16 +25,10 @@ const Partido = (props) => {
 
             if (resultado[0] === idPartido) {
                 resultadoFinal = resultado[1];
-                // setResFinal(resultado[1]);
-                // console.log(resultadoFinal);
             }
 
         }
     }
-
-    // useEffect(() => {
-    //   resultadoPartido()
-    // }, [])
 
 
     return (
@@ -93,7 +87,7 @@ const Partido = (props) => {
                 <div>
                     <h4>Puntaje</h4>
                     {
-                        resultadoFinal === "" || prediccionPartido == false ?
+                        resultadoFinal === "" || !prediccionPartido ?
                             <p>-</p>
                             :
                             prediccionPartido.local === "" ?

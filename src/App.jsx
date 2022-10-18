@@ -40,7 +40,7 @@ function App() {
   const [faseElegida, setFaseElegida] = useState("A")
 
   const getData = async () => {
-    const response = await fetch("/fixture/partidos.json");
+    const response = await fetch(process.env.PUBLIC_URL + "/fixture/partidos.json");
     const jsonData = await response.json();
 
     setUserData(jsonData);
@@ -130,19 +130,7 @@ function App() {
 
   useEffect(() => {
     getData();
-  }, [])
-
-  // const [userId, setUserId] = useState("")
-
-  // const getDataa = async () => {
-  //   const q = query(collection(db, "Usuarios"), where("uid", "==", userLogged));
-
-  //   const querySnapshot = await getDocs(q);
-  //   querySnapshot.forEach((doc) => {
-  //     setUserId(doc.id)
-  //   });
-
-  // }  
+  }, []);
 
   const obtenerResultados = async () => {
     let resultados;
