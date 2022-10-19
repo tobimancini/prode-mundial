@@ -8,10 +8,10 @@
         "partido": "1",
         "grupo": "A",
         "fecha":{
-            "mes": 11,
-            "dia": 20,
-            "hora": 13,
-            "minutos":  0
+            "mes": 10,
+            "dia": 18,
+            "hora": 22,
+            "minutos":  28
         }
     },
     "partido2": {
