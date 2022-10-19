@@ -18,10 +18,12 @@ const ProdeData = ({ children }) => {
     const [puntajeTotal, setPuntajeTotal] = useState([]);
 
     const [allPuntajes, setAllPuntajes] = useState([]);
+    
+    const [now, setNow] = useState(new Date())
 
     return (
         <Prode.Provider value={{matchPlayed, setMatchPlayed, userLogged, setUserLogged, prediccionActual, setPrediccionActual, resultadosAct, setResultadosAct, 
-        defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes}}>
+        defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes, now, setNow}}>
             {children}
         </Prode.Provider>
     )

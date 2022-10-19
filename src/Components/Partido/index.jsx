@@ -4,7 +4,7 @@ import './styles.css';
 
 const Partido = (props) => {
 
-    const { prediccionActual, resultadosAct, puntajesAct } = useContext(Prode);
+    const { prediccionActual, resultadosAct, puntajesAct, now, setNow } = useContext(Prode);
 
     const possibleGoals = ["", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
@@ -46,9 +46,24 @@ const Partido = (props) => {
         setPuntajePartido(puntaje);
     }
 
+    const [jugado, setJugado] = useState(false);
+
+
+    const partidoJugado = () =>{
+        if (now.getMonth()+1 > fecha.mes || (now.getMonth()+1 == fecha.mes && now.getDate() > fecha.dia) ||
+         (now.getMonth()+1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() > fecha.hora) ||
+         (now.getMonth()+1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() == fecha.hora && now.getMinutes() >= fecha.minutos)) {
+            setJugado(true)
+        }
+    }
+
     useEffect(() => {
       actualizarPuntaje();
     }, [puntajesAct])
+    
+    useEffect(() => {
+      partidoJugado();
+    }, [now])
     
 
 
@@ -64,7 +79,7 @@ const Partido = (props) => {
             <div className='match'>
                 <div className='matchTeam'>{local}</div>
                 {
-                    resultadoFinal === "" ?
+                    jugado === false ?
                         <select name={numPartido} className={"selectLocal"}>
                             {
                                 possibleGoals.map(goals => {
@@ -73,23 +88,23 @@ const Partido = (props) => {
                             }
                         </select>
                         :
-                        <p>{resultadoFinal.local}</p>
+                        <p>{!resultadoFinal.local?"-":resultadoFinal.local}</p>
 
 
                 }
                 <div className='matchTeam'>vs</div>
                 <div className='matchTeam'>{visitante}</div>
                 {
-                    resultadoFinal === "" ?
-                        <select name={numPartido} className={"selectVisit"}>
-                            {
-                                possibleGoals.map(goals => {
-                                    return <option value={goals} key={`QTY ${goals}`}>{goals}</option>
-                                })
-                            }
-                        </select>
-                        :
-                        <p>{resultadoFinal.visitante}</p>
+                    jugado === false ?
+                    <select name={numPartido} className={"selectVisitante"}>
+                        {
+                            possibleGoals.map(goals => {
+                                return <option value={goals} key={`QTY ${goals}`}>{goals}</option>
+                            })
+                        }
+                    </select>
+                    :
+                    <p>{!resultadoFinal.visitante?"-":resultadoFinal.visitante}</p>
                 }
                 <div>
                     <h4>Prediccion</h4>

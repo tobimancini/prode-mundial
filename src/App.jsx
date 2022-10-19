@@ -15,7 +15,7 @@ import TablaPosiciones from "./Components/TablaPosiciones";
 
 function App() {
 
-  const { resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, puntajeTotal, setAllPuntajes } = useContext(Prode);
+  const { resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, puntajeTotal, setAllPuntajes, setNow, now} = useContext(Prode);
 
   const [userID, setUserID] = useState("");
   const [userData, setUserData] = useState("");
@@ -166,13 +166,11 @@ function App() {
   }, [])
 
   useEffect(() => {
-    let now = new Date();
-    let dia = now.getDate();
-    let mes = now.getMonth();
-    let hora = now.getHours();
-    let minutos = now.getMinutes();
-    console.log(dia,"/",mes," ",hora,":",minutos);
-  })
+    setNow(new Date());
+    setInterval(() => {
+      setNow(new Date());
+    }, 30000);
+  }, [])
   
 
 

@@ -91,6 +91,9 @@ const Login = (props) => {
             signOut(auth).then(() => {
                 setUserLogged("");
                 setUserID("");
+                setPrediccionActual({})
+                setPuntajesAct([]) 
+                setPuntajeTotal([])
             })
         } catch (err) {
             console.error(err);
