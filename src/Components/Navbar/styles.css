@@ -1,0 +1,51 @@
+.navbarContainer{
+    height: 50px;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbarList {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: rgb(181, 181, 181);
+    margin: 0 30px;
+}
+
+.navItem p{
+    margin-right: 10px;
+}
+
+.navItem svg{
+    font-size: 20px;
+}
+
+.navItem path{
+    stroke: rgb(181, 181, 181) !important;
+}
+
+.navItem.active{
+    color: #fff;
+}
+
+.navItem.active path{
+    stroke: #fff !important; 
+}

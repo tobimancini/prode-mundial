@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import './styles.css'
 import { Prode } from '../../Context/prodeData'
 
 const TablaPosiciones = () => {
@@ -7,15 +8,14 @@ const TablaPosiciones = () => {
 
     return (
         <div className='tablaPosicionesCont'>
-            <h2>TABLA DE POSICIONES</h2>
             {
                 !allPuntajes.length ?
                     null :
                     allPuntajes.map(user => {
-                        return <div key={user.uid}>
-                            <p>nombre: {user.nombre} </p>
-                            <p>dni: {user.dni} </p>
-                            <p>puntos: {!user.puntajeActual ? 0 : user.puntajeActual} </p>
+                        return <div key={user.uid} className="userItemTabla">
+                            <p>{user.nombre.toUpperCase()} </p>
+                            <p>{user.dni} </p>
+                            <p>{!user.puntajeActual ? 0 : user.puntajeActual} </p>
                         </div>
                     })
             }

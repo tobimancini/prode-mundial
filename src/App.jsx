@@ -12,10 +12,11 @@ import { Prode } from './Context/prodeData';
 import getPredictionDB from "./Components/Utils/getPredictionDB";
 import getAllPuntajes from "./Components/Utils/getAllPuntajes";
 import TablaPosiciones from "./Components/TablaPosiciones";
+import Navbar from "./Components/Navbar";
 
 function App() {
 
-  const { resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, puntajeTotal, setAllPuntajes, setNow, now} = useContext(Prode);
+  const { resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, puntajeTotal, setAllPuntajes, setNow, pageState } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
   const [userData, setUserData] = useState("");
@@ -170,49 +171,49 @@ function App() {
     setInterval(() => {
       setNow(new Date());
     }, 30000);
-  }, [])
-  
-
+  }, []);
 
   return (
-    // <ProdeData>
     <div className="App" >
-      <h1>PRODE MUNDIAL</h1>
-      <Login userID={setUserID} />
-      <h3>Total pts: {puntajeTotal}</h3>
-      <select name="fase" id="faseElegida">
-        {
-          fases.map(fase => {
-            return <option key={fase} value={fase}>{fase}</option>
-          })
-        }
-      </select>
-      <div onClick={() => filtrarFase()}>filtrar</div>
+      <Navbar />
       {
-        userData.partido1 != undefined ?
-          <>
-            <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
-            {/* <Group grupo={grupoB} />
-            <Group grupo={grupoC} />
-            <Group grupo={grupoD} />
-            <Group grupo={grupoE} />
-            <Group grupo={grupoF} />
-            <Group grupo={grupoG} />
-            <Group grupo={grupoH} />
-            <Group grupo={octFinal} />
-            <Group grupo={cuarFinal} />
-            <Group grupo={semiFinal} />
-            <Group grupo={terycuarFinal} />
-            <Group grupo={finalisima} /> */}
-          </>
+        pageState === "perfil" ?
+          <Login userID={setUserID} />
           :
-          null
+          pageState === "partidos" ?
+            <>
+              <div className="totalPts">
+                <p>{puntajeTotal}pts</p>
+                </div>
+
+              <select name="fase" id="faseElegida">
+                {
+                  fases.map(fase => {
+                    return <option key={fase} value={fase}>{fase}</option>
+                  })
+                }
+              </select>
+              <div onClick={() => filtrarFase()}>filtrar</div>
+              {
+                userData.partido1 != undefined ?
+                  <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
+                  :
+                  null
+              }
+              <div className="guardarCambios" onClick={() => predict()}>GUARDAR</div>
+            </>
+            :
+            pageState === "clasificacion" ?
+              <>
+                <h2>TABLA DE CLASIFICACIÓN</h2>
+                <TablaPosiciones />
+              </>
+              :
+              <h2>falta crear esta sección</h2>
+
       }
-      <div onClick={() => predict()}>GUARDAR CAMBIOS</div>
-      {/* <div onClick={() => getPuntos(userID)}>get puntos</div> */}
-      <TablaPosiciones />
+
     </div>
-    // </ProdeData>
   );
 }
 

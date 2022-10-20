@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Prode } from '../../Context/prodeData';
 import Partido from '../Partido'
+import './styles.css'
 
 const Group = (props) => {
 
@@ -43,23 +44,6 @@ const Group = (props) => {
     return (
         <div className='zonaContainer'>
             {groupName()}
-            {/* {
-                
-                checkFase()
-                
-            }
-            {
-                defaultFase.length === 0 ?
-                    null
-                    :
-                    <>
-                    <h3>{group}</h3>
-                    {defaultFase.map(match => {
-                        return <Partido key={match[0]} partido={match[1]} idPartido={match[0]} />
-                    })}
-                    </>
-
-            } */}
             {
                 defaultFase.map(match => {
                     return <Partido key={match[0]} partido={match[1]} idPartido={match[0]} />

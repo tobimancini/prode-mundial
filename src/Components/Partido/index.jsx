@@ -34,13 +34,11 @@ const Partido = (props) => {
 
     const [puntajePartido, setPuntajePartido] = useState(0);
     let puntaje;
-    const actualizarPuntaje =() =>{
+    const actualizarPuntaje = () => {
         for (let i = 0; i < puntajesAct.length; i++) {
             const puntajes = puntajesAct[i];
-            // console.log(puntajes);
             if (puntajes[idPartido]) {
                 puntaje = puntajes[idPartido];
-                // console.log("HOLAAA");
             }
         }
         setPuntajePartido(puntaje);
@@ -49,22 +47,44 @@ const Partido = (props) => {
     const [jugado, setJugado] = useState(false);
 
 
-    const partidoJugado = () =>{
-        if (now.getMonth()+1 > fecha.mes || (now.getMonth()+1 == fecha.mes && now.getDate() > fecha.dia) ||
-         (now.getMonth()+1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() > fecha.hora) ||
-         (now.getMonth()+1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() == fecha.hora && now.getMinutes() >= fecha.minutos)) {
+    const partidoJugado = () => {
+        if (now.getMonth() + 1 > fecha.mes || (now.getMonth() + 1 == fecha.mes && now.getDate() > fecha.dia) ||
+            (now.getMonth() + 1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() > fecha.hora) ||
+            (now.getMonth() + 1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() == fecha.hora && now.getMinutes() >= fecha.minutos)) {
             setJugado(true)
         }
     }
 
+
+
+    const addHandler = (lv) => {
+        let gol = document.getElementById(`${idPartido}${lv}`);
+        let golValue = gol.value;
+        if (golValue === "-") {
+            gol.value = 0;
+        } else if (parseInt(golValue) < 20) {
+            gol.value = parseInt(golValue) + 1
+        }
+    }
+
+    const lessHandler = (lv) => {
+        let gol = document.getElementById(`${idPartido}${lv}`);
+        let golValue = gol.value;
+        if (golValue === "-") {
+            gol.value = 0;
+        } else if (parseInt(golValue) > 0) {
+            gol.value = parseInt(golValue) - 1
+        }
+    }
+
     useEffect(() => {
-      actualizarPuntaje();
+        actualizarPuntaje();
     }, [puntajesAct])
-    
+
     useEffect(() => {
-      partidoJugado();
+        partidoJugado();
     }, [now])
-    
+
 
 
     return (
@@ -74,67 +94,85 @@ const Partido = (props) => {
                     resultadoPartido() :
                     null
             }
-            <div className='matchNum'>{`Partido número: ${numPartido}`}</div>
-            <div className='matchNum'>{`Fecha: ${fecha.dia}/${fecha.mes}/22 - ${fecha.hora} hs.`}</div>
             <div className='match'>
-                <div className='matchTeam'>{local}</div>
+                <div className='teamContain'>
+                    <img src={process.env.PUBLIC_URL + "/images/spain.png"} alt={local} className="flag" />
+                    <div className='matchTeam'>{local}</div>
+                </div>
                 {
                     jugado === false ?
-                        <select name={numPartido} className={"selectLocal"}>
-                            {
-                                possibleGoals.map(goals => {
-                                    return <option value={goals} key={`QTY ${goals}`}>{goals}</option>
-                                })
-                            }
-                        </select>
+                        // <select name={numPartido} className={"selectLocal"}>
+                        //     {
+                        //         possibleGoals.map(goals => {
+                        //             return <option value={goals} key={`QTY ${goals}`}>{goals}</option>
+                        //         })
+                        //     }
+                        // </select>
+                        <div name={numPartido} className="localCounter">
+                            <div onClick={() => addHandler("L")} className='addLess'>+</div>
+                            <output name={numPartido} className="selectLocal" id={`${idPartido}L`}>-</output>
+                            <div onClick={() => lessHandler("L")} className='addLess'>-</div>
+                        </div>
                         :
-                        <p>{!resultadoFinal.local?"-":resultadoFinal.local}</p>
+                        <p>{!resultadoFinal.local ? "-" : resultadoFinal.local}</p>
 
 
                 }
                 <div className='matchTeam'>vs</div>
-                <div className='matchTeam'>{visitante}</div>
                 {
                     jugado === false ?
-                    <select name={numPartido} className={"selectVisitante"}>
-                        {
-                            possibleGoals.map(goals => {
-                                return <option value={goals} key={`QTY ${goals}`}>{goals}</option>
-                            })
-                        }
-                    </select>
-                    :
-                    <p>{!resultadoFinal.visitante?"-":resultadoFinal.visitante}</p>
+                        // <select name={numPartido} className={"selectVisitante"}>
+                        //     {
+                        //         possibleGoals.map(goals => {
+                        //             return <option value={goals} key={`QTY ${goals}`}>{goals}</option>
+                        //         })
+                        //     }
+                        // </select>
+                        <div name={numPartido} className="localCounter">
+                            <div onClick={() => addHandler("V")} className='addLess'>+</div>
+                            <output name={numPartido} className="selectVisit" id={`${idPartido}V`}>-</output>
+                            <div onClick={() => lessHandler("V")} className='addLess'>-</div>
+                        </div>
+                        :
+                        <p>{!resultadoFinal.visitante ? "-" : resultadoFinal.visitante}</p>
                 }
-                <div>
-                    <h4>Prediccion</h4>
-                    {
-                        !prediccionPartido ?
-                            <p>-</p>
-                            :
-                            prediccionPartido.local != "" ?
-                                <div>
-                                    <p>{local}:{prediccionPartido.local}</p>
-                                    <p>{visitante}:{prediccionPartido.visitante}</p>
-                                </div>
-                                :
-                                <p>-</p>
-                    }
+                <div className='teamContain'>
+                    <img src={process.env.PUBLIC_URL + "/images/spain.png"} alt={visitante} className="flag" />
+                    <div className='matchTeam'>{visitante}</div>
                 </div>
-                <div>
-                    <h4>Puntaje</h4>
-                    {
-                        resultadoFinal === "" || !prediccionPartido ?
-                            <p>-</p>
+            </div>
+            <div className='matchNum'>
+                <p>{`${fecha.dia}/${fecha.mes}/22`}</p>
+                <p>{`${fecha.hora}:00`}</p>
+            </div>
+            <div className='puntosCont'>
+                <p>Puntos</p>
+                {
+                    resultadoFinal === "" || !prediccionPartido ?
+                        <p className='puntaje'>-</p>
+                        :
+                        prediccionPartido.local === "" ?
+                            <p className='puntaje'>-</p>
                             :
-                            prediccionPartido.local === "" ?
-                                <p>-</p>
-                                :
 
-                                <p>{puntajePartido}</p>
+                            <p className='puntaje'>{puntajePartido}</p>
 
-                    }
-                </div>
+                }
+            </div>
+            <div>
+                <h4>Prediccion</h4>
+                {
+                    !prediccionPartido ?
+                        <p>-</p>
+                        :
+                        prediccionPartido.local != "" ?
+                            <div>
+                                <p>{local}:{prediccionPartido.local}</p>
+                                <p>{visitante}:{prediccionPartido.visitante}</p>
+                            </div>
+                            :
+                            <p>-</p>
+                }
             </div>
         </div>
     )
