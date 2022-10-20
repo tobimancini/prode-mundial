@@ -37,7 +37,7 @@ function App() {
 
   const [allMatches, setAllMatches] = useState([]);
 
-  const [faseElegida, setFaseElegida] = useState("A")
+  const [faseElegida, setFaseElegida] = useState("Grupo A")
 
   const getData = async () => {
     const response = await fetch(process.env.PUBLIC_URL + "/fixture/partidos.json");
@@ -152,7 +152,7 @@ function App() {
     getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches);
   }
 
-  const fases = ["A", "B", "C", "D", "E", "F", "G", "H", "Octavos de final", "Cuartos de final", "Semifinales",
+  const fases = ["Grupo A", "Grupo B", "Grupo C", "Grupo D", "Grupo E", "Grupo F", "Grupo G", "Grupo H", "Octavos de final", "Cuartos de final", "Semifinales",
     "Tercer y cuarto puesto", "Final"];
 
   const filtrarFase = () => {
@@ -184,7 +184,7 @@ function App() {
             <>
               <div className="totalPts">
                 <p>{puntajeTotal}pts</p>
-                </div>
+              </div>
 
               <select name="fase" id="faseElegida">
                 {
@@ -193,7 +193,7 @@ function App() {
                   })
                 }
               </select>
-              <div onClick={() => filtrarFase()}>filtrar</div>
+              <div className="btnFiltro" onClick={() => filtrarFase()}>FILTRAR</div>
               {
                 userData.partido1 != undefined ?
                   <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />

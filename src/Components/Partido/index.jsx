@@ -5,10 +5,6 @@ import './styles.css';
 const Partido = (props) => {
 
     const { prediccionActual, resultadosAct, puntajesAct, now, setNow } = useContext(Prode);
-
-    const possibleGoals = ["", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-
-
     const partido = props.partido;
     const local = partido.local;
     const visitante = partido.visitante;
@@ -94,6 +90,10 @@ const Partido = (props) => {
                     resultadoPartido() :
                     null
             }
+            <div className='matchNum'>
+                <p>{`${fecha.dia}/${fecha.mes}/22`}</p>
+                <p>{`${fecha.hora}:00`}</p>
+            </div>
             <div className='match'>
                 <div className='teamContain'>
                     <img src={process.env.PUBLIC_URL + "/images/spain.png"} alt={local} className="flag" />
@@ -101,77 +101,52 @@ const Partido = (props) => {
                 </div>
                 {
                     jugado === false ?
-                        // <select name={numPartido} className={"selectLocal"}>
-                        //     {
-                        //         possibleGoals.map(goals => {
-                        //             return <option value={goals} key={`QTY ${goals}`}>{goals}</option>
-                        //         })
-                        //     }
-                        // </select>
                         <div name={numPartido} className="localCounter">
                             <div onClick={() => addHandler("L")} className='addLess'>+</div>
                             <output name={numPartido} className="selectLocal" id={`${idPartido}L`}>-</output>
                             <div onClick={() => lessHandler("L")} className='addLess'>-</div>
                         </div>
                         :
-                        <p>{!resultadoFinal.local ? "-" : resultadoFinal.local}</p>
+                        <p className='resultadoGoles'>{!resultadoFinal.local ? "-" : resultadoFinal.local}</p>
 
 
                 }
                 <div className='matchTeam'>vs</div>
                 {
                     jugado === false ?
-                        // <select name={numPartido} className={"selectVisitante"}>
-                        //     {
-                        //         possibleGoals.map(goals => {
-                        //             return <option value={goals} key={`QTY ${goals}`}>{goals}</option>
-                        //         })
-                        //     }
-                        // </select>
+
                         <div name={numPartido} className="localCounter">
                             <div onClick={() => addHandler("V")} className='addLess'>+</div>
                             <output name={numPartido} className="selectVisit" id={`${idPartido}V`}>-</output>
                             <div onClick={() => lessHandler("V")} className='addLess'>-</div>
                         </div>
                         :
-                        <p>{!resultadoFinal.visitante ? "-" : resultadoFinal.visitante}</p>
+                        <p className='resultadoGoles'>{!resultadoFinal.visitante ? "-" : resultadoFinal.visitante}</p>
                 }
                 <div className='teamContain'>
                     <img src={process.env.PUBLIC_URL + "/images/spain.png"} alt={visitante} className="flag" />
                     <div className='matchTeam'>{visitante}</div>
                 </div>
             </div>
-            <div className='matchNum'>
-                <p>{`${fecha.dia}/${fecha.mes}/22`}</p>
-                <p>{`${fecha.hora}:00`}</p>
-            </div>
+
+            {
+                !prediccionPartido ?
+                    <p>No hiciste una predicción todavía.</p>
+                    :
+                    prediccionPartido.local != "" ?
+                        <div className='prediccionPartido'>
+                            <p>Predicción: {local} {prediccionPartido.local} vs {prediccionPartido.visitante} {visitante} </p>
+                        </div>
+                        :
+                        <p className='prediccionPartido'>No hiciste una predicción todavía.</p>
+            }
+
             <div className='puntosCont'>
-                <p>Puntos</p>
                 {
-                    resultadoFinal === "" || !prediccionPartido ?
-                        <p className='puntaje'>-</p>
-                        :
-                        prediccionPartido.local === "" ?
-                            <p className='puntaje'>-</p>
-                            :
-
-                            <p className='puntaje'>{puntajePartido}</p>
-
-                }
-            </div>
-            <div>
-                <h4>Prediccion</h4>
-                {
-                    !prediccionPartido ?
-                        <p>-</p>
-                        :
-                        prediccionPartido.local != "" ?
-                            <div>
-                                <p>{local}:{prediccionPartido.local}</p>
-                                <p>{visitante}:{prediccionPartido.visitante}</p>
-                            </div>
-                            :
-                            <p>-</p>
+                    resultadoFinal !== "" && prediccionPartido ?
+                    <p className='puntaje'>{puntajePartido}</p>
+                    :
+                    <p className='puntaje'>-</p>
                 }
             </div>
         </div>

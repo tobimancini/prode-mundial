@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './styles.css';
 import { MdOutlineSportsSoccer } from 'react-icons/md';
 import { GrTask } from 'react-icons/gr';
@@ -10,6 +10,14 @@ import { Prode } from '../../Context/prodeData';
 const Navbar = () => {
 
   const {pageState, setPageState} = useContext(Prode);
+
+  const [prevPage, setPrevPage] = useState('perfil');
+
+  const changeOfState = () =>{
+    if (pageState === "perfil" && prevPage === "clasificacion") {
+      
+    }
+  }
 
   useEffect(() => {
     const perfil = document.getElementById('perfil');
@@ -40,27 +48,32 @@ const Navbar = () => {
     }
   }, [pageState])
   
+  useEffect(() => {
+    changeOfState();
+  }, [])
+  
 
   return (
     <header className='navbarContainer'>
       <ul className='navbarList'>
         <li id='partidos' className='navItem' onClick={()=>setPageState("partidos")}>
-          {/* <p>Partidos</p> */}
+          
           <MdOutlineSportsSoccer />
         </li>
         <li id='prediccion' className='navItem' onClick={()=>setPageState("prediccion")}>
-          {/* <p>Predicción</p> */}
+          
           <GrTask />
         </li>
         <li id='clasificacion' className='navItem' onClick={()=>setPageState("clasificacion")}>
-          {/* <p>Clasificación</p> */}
+          
           <BiTrophy/>
         </li>
         <li id='perfil' className='navItem' onClick={()=>setPageState("perfil")}>
-          {/* <p>Perfil</p> */}
+         
           <HiOutlineUser/>
         </li>
       </ul>
+      <span className='sectionLine'></span>
     </header>
   )
 }

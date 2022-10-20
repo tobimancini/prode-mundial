@@ -24,13 +24,13 @@ const Group = (props) => {
     }
 
 
-    const groupName = () => {
-        if (group === "A" || group === "B" || group === "C" || group === "D" || group === "E" || group === "F" || group === "G" || group === "H") {
-            return <h2>{`Grupo ${group}`}</h2>
-        } else {
-            return <h2>{group}</h2>
-        }
-    }
+    // const groupName = () => {
+    //     if (group === "A" || group === "B" || group === "C" || group === "D" || group === "E" || group === "F" || group === "G" || group === "H") {
+    //         return `Grupo ${group}`
+    //     } else {
+    //         return group;
+    //     }
+    // }
 
 
     
@@ -43,7 +43,8 @@ const Group = (props) => {
 
     return (
         <div className='zonaContainer'>
-            {groupName()}
+            <h2 className='groupName'>{group}</h2>
+            
             {
                 defaultFase.map(match => {
                     return <Partido key={match[0]} partido={match[1]} idPartido={match[0]} />
