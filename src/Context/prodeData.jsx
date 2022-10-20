@@ -4,6 +4,8 @@ export const Prode = createContext();
 
 const ProdeData = ({ children }) => {
 
+    const [database, setDatabase] = useState("");
+
     const [matchPlayed, setMatchPlayed] = useState(false);    
 
     const [userLogged, setUserLogged] = useState("");
@@ -24,7 +26,7 @@ const ProdeData = ({ children }) => {
     const [pageState, setPageState] = useState("perfil");
 
     return (
-        <Prode.Provider value={{matchPlayed, setMatchPlayed, userLogged, setUserLogged, prediccionActual, setPrediccionActual, resultadosAct, setResultadosAct, 
+        <Prode.Provider value={{database, setDatabase, matchPlayed, setMatchPlayed, userLogged, setUserLogged, prediccionActual, setPrediccionActual, resultadosAct, setResultadosAct, 
         defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes, now, setNow, pageState, setPageState}}>
             {children}
         </Prode.Provider>

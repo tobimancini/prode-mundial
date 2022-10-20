@@ -1,0 +1,49 @@
+.prediccionCont{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #fff !important;
+    width: 100%;
+}
+
+.prediccionCont h2{
+    margin: 40px 0px;
+}
+
+.prediccionTitulos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    border: solid;
+}
+
+.prediccionTitulos div{
+    width: 25%;
+    font-weight: 600;
+}
+
+.prediccionLine{
+    width: 50% !important;
+}
+
+.predPartido{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border-bottom: solid;
+    font-size: 14px;
+}
+
+.predPartido p{
+    width: 25%;
+}
+
+.predicData{
+    width: 50% !important;
+}

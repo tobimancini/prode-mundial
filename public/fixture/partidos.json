@@ -8,11 +8,13 @@
         "partido": "1",
         "grupo": "A",
         "fecha":{
-            "mes": 7,
+            "mes": 11,
             "dia": 20,
             "hora": 13,
             "minutos": 0
-        }
+        },
+        "loc":"QAT",
+        "vis":"ECU"
     },
     "partido2": {
         "local": "Inglaterra",
@@ -27,7 +29,9 @@
             "dia": 21,
             "hora": 10,
             "minutos":  0 
-        }
+        },
+        "loc":"USA",
+        "vis":"IRA"
     },
     "partido3": {
         "local": "Senegal",
@@ -42,7 +46,9 @@
             "dia": 21,
             "hora": 7,
             "minutos": 0
-        }
+        },
+        "loc":"SEN",
+        "vis":"HOL"
     },
     "partido4": {
         "local": "Estados Unidos",
@@ -57,7 +63,9 @@
             "dia": 21,
             "hora": 16,
             "minutos": 0
-        }
+        },
+        "loc":"USA",
+        "vis":"GAL"
     },
     "partido5": {
         "local": "Argentina",
@@ -72,7 +80,9 @@
             "dia": 22,
             "hora": 7,
             "minutos": 0
-        }
+        },
+        "loc":"ARG",
+        "vis":"ASA"
     },
     "partido6": {
         "local": "Dinamarca",
@@ -87,7 +97,9 @@
             "dia": 22,
             "hora": 10,
             "minutos":  0
-        }
+        },
+        "loc":"DIN",
+        "vis":"TUN"
     },
     "partido7": {
         "local": "México",
@@ -102,7 +114,9 @@
             "dia": 22,
             "hora": 13,
             "minutos":  0
-        }
+        },
+        "loc":"MEX",
+        "vis":"POL"
     },
     "partido8": {
         "local": "Francia",
@@ -117,7 +131,9 @@
             "dia": 22,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"FRA",
+        "vis":"AUS"
     },
     "partido9": {
         "local": "Marruecos",
@@ -132,7 +148,9 @@
             "dia": 23,
             "hora": 7,
             "minutos":  0
-        }
+        },
+        "loc":"MAR",
+        "vis":"CRO"
     },
     "partido10": {
         "local": "Alemania",
@@ -147,7 +165,9 @@
             "dia": 23,
             "hora": 10,
             "minutos":  0
-        }
+        },
+        "loc":"ALE",
+        "vis":"JAP"
     },
     "partido11": {
         "local": "España",
@@ -162,7 +182,9 @@
             "dia": 23,
             "hora": 13,
             "minutos":  0
-        }
+        },
+        "loc":"ESP",
+        "vis":"CRI"
     },
     "partido12": {
         "local": "Bélgica",
@@ -177,7 +199,9 @@
             "dia": 23,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"BEL",
+        "vis":"CAN"
     },
     "partido13": {
         "local": "Suiza",
@@ -192,7 +216,9 @@
             "dia": 24,
             "hora": 7,
             "minutos":  0
-        }
+        },
+        "loc":"SUI",
+        "vis":"CAM"
     },
     "partido14": {
         "local": "Uruguay",
@@ -207,7 +233,9 @@
             "dia": 24,
             "hora": 10,
             "minutos":  0
-        }
+        },
+        "loc":"URU",
+        "vis":"CSU"
     },
     "partido15": {
         "local": "Portugal",
@@ -222,7 +250,9 @@
             "dia": 24,
             "hora": 13,
             "minutos":  0
-        }
+        },
+        "loc":"POR",
+        "vis":"GHA"
     },
     "partido16": {
         "local": "Brasil",
@@ -237,7 +267,9 @@
             "dia": 24,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"BRA",
+        "vis":"SER"
     },
     "partido17": {
         "local": "Gales",
@@ -252,7 +284,9 @@
             "dia": 25,
             "hora": 7,
             "minutos":  0
-        }
+        },
+        "loc":"GAL",
+        "vis":"IRA"
     },
     "partido18": {
         "local": "Qatar",
@@ -267,7 +301,9 @@
             "dia": 25,
             "hora": 10,
             "minutos":  0
-        }
+        },
+        "loc":"QAT",
+        "vis":"SEN"
     },
     "partido19": {
         "local": "Países Bajos",
@@ -282,7 +318,9 @@
             "dia": 25,
             "hora": 13,
             "minutos":  0
-        }
+        },
+        "loc":"HOL",
+        "vis":"ECU"
     },
     "partido20": {
         "local": "Inglaterra",
@@ -297,7 +335,9 @@
             "dia": 25,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"ING",
+        "vis":"USA"
     },
     "partido21": {
         "local": "Túnez",
@@ -312,7 +352,9 @@
             "dia": 26,
             "hora": 7,
             "minutos":  0
-        }
+        },
+        "loc":"TUN",
+        "vis":"AUS"
     },
     "partido22": {
         "local": "Polonia",
@@ -327,7 +369,9 @@
             "dia": 26,
             "hora": 10,
             "minutos":  0
-        }
+        },
+        "loc":"POL",
+        "vis":"ASA"
     },
     "partido23": {
         "local": "Francia",
@@ -342,7 +386,9 @@
             "dia": 26,
             "hora": 13,
             "minutos":  0
-        }
+        },
+        "loc":"FRA",
+        "vis":"DIN"
     },
     "partido24": {
         "local": "Argentina",
@@ -357,7 +403,9 @@
             "dia": 26,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"ARG",
+        "vis":"MEX"
     },
     "partido25": {
         "local": "Japón",
@@ -372,7 +420,9 @@
             "dia": 27,
             "hora": 7,
             "minutos":  0
-        }
+        },
+        "loc":"JAP",
+        "vis":"CRI"
     },
     "partido26": {
         "local": "Bélgica",
@@ -387,7 +437,9 @@
             "dia": 27,
             "hora": 10,
             "minutos":  0
-        }
+        },
+        "loc":"BEL",
+        "vis":"MAR"
     },
     "partido27": {
         "local": "Croacia",
@@ -402,7 +454,9 @@
             "dia": 27,
             "hora": 13,
             "minutos":  0
-        }
+        },
+        "loc":"CRO",
+        "vis":"CAN"
     },
     "partido28": {
         "local": "España",
@@ -417,7 +471,9 @@
             "dia": 27,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"ESP",
+        "vis":"ALE"
     },
     "partido29": {
         "local": "Camerún",
@@ -432,7 +488,9 @@
             "dia": 28,
             "hora": 7,
             "minutos":  0
-        }
+        },
+        "loc":"CAM",
+        "vis":"SER"
     },
     "partido30": {
         "local": "Corea del Sur",
@@ -447,7 +505,9 @@
             "dia": 28,
             "hora": 10,
             "minutos":  0
-        }
+        },
+        "loc":"CSU",
+        "vis":"GHA"
     },
     "partido31": {
         "local": "Brasil",
@@ -462,7 +522,9 @@
             "dia": 28,
             "hora": 13,
             "minutos":  0
-        }
+        },
+        "loc":"BRA",
+        "vis":"SUI"
     },
     "partido32": {
         "local": "Portugal",
@@ -477,7 +539,9 @@
             "dia": 28,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"POR",
+        "vis":"URU"
     },
     "partido33": {
         "local": "Países Bajos",
@@ -492,7 +556,9 @@
             "dia": 29,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"HOL",
+        "vis":"QAT"
     },
     "partido34": {
         "local": "Ecuador",
@@ -507,7 +573,9 @@
             "dia": 29,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"ECU",
+        "vis":"SEN"
     },
     "partido35": {
         "local": "Gales",
@@ -522,7 +590,9 @@
             "dia": 29,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"GAL",
+        "vis":"ING"
     },
     "partido36": {
         "local": "Irán",
@@ -537,7 +607,9 @@
             "dia": 29,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"IRA",
+        "vis":"USA"
     },
     "partido37": {
         "local": "Túnez",
@@ -552,7 +624,9 @@
             "dia": 30,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"TUN",
+        "vis":"FRA"
     },
     "partido38": {
         "local": "Australia",
@@ -567,7 +641,9 @@
             "dia": 30,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"AUS",
+        "vis":"DIN"
     },
     "partido39": {
         "local": "Polonia",
@@ -582,7 +658,9 @@
             "dia": 30,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"POL",
+        "vis":"ARG"
     },
     "partido40": {
         "local": "Arabia Saudita",
@@ -597,7 +675,9 @@
             "dia": 30,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"ASA",
+        "vis":"MEX"
     },
     "partido41": {
         "local": "Croacia",
@@ -612,7 +692,9 @@
             "dia": 1,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"CRO",
+        "vis":"BEL"
     },
     "partido42": {
         "local": "Canadá",
@@ -627,7 +709,9 @@
             "dia": 1,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"CAN",
+        "vis":"MEX"
     },
     "partido43": {
         "local": "Japón",
@@ -642,7 +726,9 @@
             "dia": 1,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"JAP",
+        "vis":"ESP"
     },
     "partido44": {
         "local": "Costa Rica",
@@ -657,7 +743,9 @@
             "dia": 1,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"CRI",
+        "vis":"ALE"
     },
     "partido45": {
         "local": "Corea del Sur",
@@ -672,7 +760,9 @@
             "dia": 2,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"CSU",
+        "vis":"POR"
     },
     "partido46": {
         "local": "Ghana",
@@ -687,7 +777,9 @@
             "dia": 2,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"GHA",
+        "vis":"POR"
     },
     "partido47": {
         "local": "Camerún",
@@ -702,7 +794,9 @@
             "dia": 2,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"CAM",
+        "vis":"BRA"
     },
     "partido48": {
         "local": "Serbia",
@@ -717,7 +811,9 @@
             "dia": 2,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"SER",
+        "vis":"SUI"
     },
     "partido49": {
         "local": "1A",
@@ -732,7 +828,9 @@
             "dia": 3,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"1A",
+        "vis":"2B"
     },
     "partido50": {
         "local": "1C",
@@ -747,7 +845,9 @@
             "dia": 3,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"1C",
+        "vis":"2D"
     },
     "partido51": {
         "local": "1B",
@@ -762,7 +862,9 @@
             "dia": 4,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"1B",
+        "vis":"2A"
     },
     "partido52": {
         "local": "1D",
@@ -777,7 +879,9 @@
             "dia": 4,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"1D",
+        "vis":"2C"
     },
     "partido53": {
         "local": "1E",
@@ -792,7 +896,9 @@
             "dia": 5,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"1E",
+        "vis":"2F"
     },
     "partido54": {
         "local": "1G",
@@ -807,7 +913,9 @@
             "dia": 5,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"1G",
+        "vis":"2H"
     },
     "partido55": {
         "local": "1F",
@@ -822,7 +930,9 @@
             "dia": 6,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"1F",
+        "vis":"2E"
     },
     "partido56": {
         "local": "1H",
@@ -837,11 +947,13 @@
             "dia": 6,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"1H",
+        "vis":"2G"
     },
     "partido57": {
-        "local": "GP49",
-        "visitante": "GP50",
+        "local": "G49",
+        "visitante": "G50",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -852,11 +964,13 @@
             "dia": 9,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"G49",
+        "vis":"G50"
     },
     "partido58": {
-        "local": "GP53",
-        "visitante": "GP54",
+        "local": "G53",
+        "visitante": "G54",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -867,11 +981,13 @@
             "dia":9,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"G53",
+        "vis":"G54"
     },
     "partido59": {
-        "local": "GP51",
-        "visitante": "GP52",
+        "local": "G51",
+        "visitante": "G52",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -882,11 +998,13 @@
             "dia": 10,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"G51",
+        "vis":"G52"
     },
     "partido60": {
-        "local": "GP55",
-        "visitante": "GP56",
+        "local": "G55",
+        "visitante": "G56",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -897,11 +1015,13 @@
             "dia": 10,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"G55",
+        "vis":"G56"
     },
     "partido61": {
-        "local": "GP57",
-        "visitante": "GP58",
+        "local": "G57",
+        "visitante": "G58",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -912,11 +1032,13 @@
             "dia": 13,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"G57",
+        "vis":"G58"
     },
     "partido62": {
-        "local": "GP59",
-        "visitante": "GP60",
+        "local": "G59",
+        "visitante": "G60",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -927,11 +1049,13 @@
             "dia": 14,
             "hora": 16,
             "minutos":  0
-        }
+        },
+        "loc":"G59",
+        "vis":"G60"
     },
     "partido63": {
-        "local": "PP61",
-        "visitante": "PP62",
+        "local": "P61",
+        "visitante": "P62",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -942,11 +1066,13 @@
             "dia": 17,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"P61",
+        "vis":"P62"
     },
     "partido64": {
-        "local": "GP61",
-        "visitante": "GP62",
+        "local": "G61",
+        "visitante": "G62",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -957,6 +1083,8 @@
             "dia": 18,
             "hora": 12,
             "minutos":  0
-        }
+        },
+        "loc":"G61",
+        "vis":"G62"
     }
 }

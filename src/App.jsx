@@ -13,13 +13,13 @@ import getPredictionDB from "./Components/Utils/getPredictionDB";
 import getAllPuntajes from "./Components/Utils/getAllPuntajes";
 import TablaPosiciones from "./Components/TablaPosiciones";
 import Navbar from "./Components/Navbar";
+import Prediccion from "./Components/Prediccion";
 
 function App() {
 
-  const { resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, puntajeTotal, setAllPuntajes, setNow, pageState } = useContext(Prode);
+  const {database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, puntajeTotal, setAllPuntajes, setNow, pageState } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
-  const [userData, setUserData] = useState("");
 
   const [grupoA, setGrupoA] = useState([]);
   const [grupoB, setGrupoB] = useState([]);
@@ -43,7 +43,7 @@ function App() {
     const response = await fetch(process.env.PUBLIC_URL + "/fixture/partidos.json");
     const jsonData = await response.json();
 
-    setUserData(jsonData);
+    setDatabase(jsonData);
 
     let partidos = Object.entries(jsonData);
 
@@ -172,6 +172,7 @@ function App() {
       setNow(new Date());
     }, 30000);
   }, []);
+  
 
   return (
     <div className="App" >
@@ -182,9 +183,10 @@ function App() {
           :
           pageState === "partidos" ?
             <>
-              <div className="totalPts">
+              <h2 className="partidosTitulo">PARTIDOS</h2>
+              {/* <div className="totalPts">
                 <p>{puntajeTotal}pts</p>
-              </div>
+              </div> */}
 
               <select name="fase" id="faseElegida">
                 {
@@ -195,7 +197,7 @@ function App() {
               </select>
               <div className="btnFiltro" onClick={() => filtrarFase()}>FILTRAR</div>
               {
-                userData.partido1 != undefined ?
+                database.partido1 != undefined ?
                   <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
                   :
                   null
@@ -205,11 +207,11 @@ function App() {
             :
             pageState === "clasificacion" ?
               <>
-                <h2>TABLA DE CLASIFICACIÓN</h2>
                 <TablaPosiciones />
               </>
               :
-              <h2>falta crear esta sección</h2>
+              <Prediccion/>
+              // <p>hola</p>
 
       }
 

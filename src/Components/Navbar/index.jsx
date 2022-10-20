@@ -9,15 +9,7 @@ import { Prode } from '../../Context/prodeData';
 
 const Navbar = () => {
 
-  const {pageState, setPageState} = useContext(Prode);
-
-  const [prevPage, setPrevPage] = useState('perfil');
-
-  const changeOfState = () =>{
-    if (pageState === "perfil" && prevPage === "clasificacion") {
-      
-    }
-  }
+  const {pageState, setPageState} = useContext(Prode);  
 
   useEffect(() => {
     const perfil = document.getElementById('perfil');
@@ -46,12 +38,7 @@ const Navbar = () => {
       clasificacion.classList.remove('active');
       prediccion.classList.add('active');
     }
-  }, [pageState])
-  
-  useEffect(() => {
-    changeOfState();
-  }, [])
-  
+  }, [pageState]);
 
   return (
     <header className='navbarContainer'>
@@ -73,7 +60,7 @@ const Navbar = () => {
           <HiOutlineUser/>
         </li>
       </ul>
-      <span className='sectionLine'></span>
+      
     </header>
   )
 }
