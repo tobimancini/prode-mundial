@@ -144,7 +144,7 @@ const Partido = (props) => {
             <div className='puntosCont'>
                 {
                     resultadoFinal !== "" && prediccionPartido ?
-                    <p className='puntaje'>{puntajePartido === (3||1||4||8) ? puntajePartido : "-"}</p>
+                    <p className='puntaje'>{puntajePartido === 1||puntajePartido === 3||puntajePartido === 4||puntajePartido === 8 ? puntajePartido : "-"}</p>
                     :
                     <p className='puntaje'>-</p>
                 }

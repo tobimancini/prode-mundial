@@ -9,97 +9,16 @@ import { async } from '@firebase/util';
 import { Prode } from '../../Context/prodeData';
 import getPredictionDB from '../Utils/getPredictionDB';
 import setPuntos from '../Utils/setPuntos';
+import crearUsuario from '../Utils/crearUsuario';
+import iniciarSesion from '../Utils/iniciarSesion';
+import cerrarSesion from '../Utils/cerrarSesion';
 
 const Login = (props) => {
 
     const setUserID = props.userID;
 
-    const { userLogged, setUserLogged, setPrediccionActual, prediccionActual, setPuntajesAct, puntajesAct, setPuntajeTotal } = useContext(Prode);
+    const { userLogged, setUserLogged, setPrediccionActual, setPuntajesAct, setPuntajeTotal } = useContext(Prode);
 
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUserLogged(user.uid);
-                setUserID(user.uid);
-                getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false);
-                setPuntos(user.uid, setPuntajesAct, setPuntajeTotal);
-
-            } else {
-                console.log("no user");
-            }
-        })
-    }, [])
-
-
-    const crearUsuario = async () => {
-        const userCreate = document.querySelector('#loginContainer');
-        userCreate.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = userCreate['userEmail'].value;
-            const contraseña = userCreate['userPass'].value;
-            const nombre = userCreate['userName'].value;
-            const dni = userCreate['userDNI'].value;
-
-            console.log(email, contraseña, nombre);
-
-
-            const registerWithEmailAndPassword = async (nombre, email, contraseña) => {
-                try {
-                    const res = await createUserWithEmailAndPassword(auth, email, contraseña);
-                    const user = res.user;
-                    newUser(dni, nombre, email, user);
-                    userCreate.reset();
-                    console.log(`se ha creado el usuario de ${nombre}`);
-                } catch (err) {
-                    console.error(err);
-                    alert(err.message);
-                }
-            };
-
-            checkUser(email, nombre, contraseña, registerWithEmailAndPassword);
-
-        })
-    }
-
-    const iniciarSesion = async () => {
-        const userCreate = document.querySelector('#loginContainer');
-        userCreate.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = userCreate['loginEmail'].value;
-            const contraseña = userCreate['loginPass'].value;
-            const loginWithEmailAndPass = async (email, contraseña) => {
-                try {
-                    const res = await signInWithEmailAndPassword(auth, email, contraseña);
-                    const user = res.user;
-                    userCreate.reset();
-                    console.log(`se ha logueado el usuario de ${email}`);
-                    // setUserLogged(user.uid);
-                } catch (err) {
-                    console.error(err);
-                    alert(err.message);
-                }
-            };
-
-            loginWithEmailAndPass(email, contraseña);
-        })
-
-    }
-
-    const cerrarSesion = async () => {
-        try {
-            signOut(auth).then(() => {
-                setUserLogged("");
-                setUserID("");
-                setPrediccionActual({})
-                setPuntajesAct([]) 
-                setPuntajeTotal([])
-            })
-        } catch (err) {
-            console.error(err);
-            alert(err.message);
-        }
-    }
 
     return (
         <form id='loginContainer'>
@@ -124,8 +43,7 @@ const Login = (props) => {
                     </>
                     :
                     <>
-                        {/* <h2>{userLogged}</h2> */}
-                        <div onClick={() => cerrarSesion()}>Log out</div>
+                        <div onClick={() => cerrarSesion(setUserLogged, setUserID, setPrediccionActual, setPuntajesAct, setPuntajeTotal)}>Log Out</div>
                     </>
             }
 

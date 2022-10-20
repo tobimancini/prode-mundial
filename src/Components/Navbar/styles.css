@@ -1,5 +1,5 @@
 .navbarContainer{
-    height: 50px;
+    height: 70px;
     background-color: #000;
     position: fixed;
     top: 0;
@@ -23,16 +23,33 @@
 
 .navItem{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     color: rgb(181, 181, 181);
-    margin: 0 30px;
+    margin: 0;
+    width: 100%;
 }
 
 .navItem p{
-    margin-right: 10px;
+    font-size: 0px;
+    margin: 3px;
+    opacity: 0;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+.navItem p.active{
+    /* font-size: 12px; */
+    opacity: 1;
+    animation-name: enterTitle;
+}
+
+.navItem p.inactive{
+    opacity: 0;
+    animation-name: exitTitle;
 }
 
 .navItem svg{
@@ -49,4 +66,26 @@
 
 .navItem.active path{
     stroke: #fff !important; 
+}
+
+@keyframes enterTitle {
+    from{
+        opacity: 0;
+        font-size: 0px;
+    }
+    to{
+        opacity: 1;
+        font-size: 12px;
+    }
+}
+
+@keyframes exitTitle {
+    from{
+        opacity: 1;
+        font-size: 12px;
+    }
+    to{
+        opacity: 0;
+        font-size: 0px;
+    }
 }

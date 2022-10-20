@@ -10,8 +10,7 @@ const getAllPuntajes = async(setAllPuntajes) => {
     });
 
 
-    usuarios.sort((a,b) => (a.puntajeActual > b.puntajeActual) ? -1 : ((b.puntajeActual > a.puntajeActual) ? 1 : 0))
-    console.log(usuarios);
+    usuarios.sort((a,b) => (a.puntajeActual > b.puntajeActual) ? -1 : ((b.puntajeActual > a.puntajeActual) ? 1 : 0));
     setAllPuntajes(usuarios);
 }
 

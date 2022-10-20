@@ -1,23 +1,23 @@
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { useContext, useEffect, useState } from 'react';
 import './App.css';
 import Group from './Components/Group';
 import Login from "./Components/Login";
-import getPrediction from './Components/Utils/setPrediction';
-import newUser from "./Components/Utils/newUser";
-import { db } from "./Firebase/config";
+import { auth, db } from "./Firebase/config";
 import setPrediction from "./Components/Utils/setPrediction";
-import ProdeData from "./Context/prodeData";
 import { Prode } from './Context/prodeData';
 import getPredictionDB from "./Components/Utils/getPredictionDB";
 import getAllPuntajes from "./Components/Utils/getAllPuntajes";
 import TablaPosiciones from "./Components/TablaPosiciones";
 import Navbar from "./Components/Navbar";
 import Prediccion from "./Components/Prediccion";
+import { onAuthStateChanged } from "firebase/auth";
+import setPuntos from "./Components/Utils/setPuntos";
 
 function App() {
 
-  const {database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, puntajeTotal, setAllPuntajes, setNow, pageState } = useContext(Prode);
+  const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual,
+    setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -146,7 +146,7 @@ function App() {
 
   useEffect(() => {
     obtenerResultados();
-  }, [])
+  }, [prediccionActual])
 
   const predict = () => {
     getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches);
@@ -172,7 +172,22 @@ function App() {
       setNow(new Date());
     }, 30000);
   }, []);
-  
+
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserLogged(user.uid);
+        setUserID(user.uid);
+        getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo);
+        setPuntos(user.uid, setPuntajesAct, setPuntajeTotal);
+
+      } else {
+        console.log("no user");
+      }
+    })
+  }, []);
+
 
   return (
     <div className="App" >
@@ -210,9 +225,7 @@ function App() {
                 <TablaPosiciones />
               </>
               :
-              <Prediccion/>
-              // <p>hola</p>
-
+              <Prediccion />
       }
 
     </div>

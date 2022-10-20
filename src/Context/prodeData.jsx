@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const Prode = createContext();
 
@@ -23,11 +23,13 @@ const ProdeData = ({ children }) => {
     
     const [now, setNow] = useState(new Date());
 
-    const [pageState, setPageState] = useState("perfil");
+    const [pageState, setPageState] = useState("partidos");
+
+    const [userInfo, setUserInfo] = useState({})
 
     return (
         <Prode.Provider value={{database, setDatabase, matchPlayed, setMatchPlayed, userLogged, setUserLogged, prediccionActual, setPrediccionActual, resultadosAct, setResultadosAct, 
-        defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes, now, setNow, pageState, setPageState}}>
+        defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes, now, setNow, pageState, setPageState, userInfo, setUserInfo}}>
             {children}
         </Prode.Provider>
     )
