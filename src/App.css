@@ -19,24 +19,73 @@
   margin: 40px 0px;
 }
 
+.selYBtn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 0px 0px 20px 0px;
+}
+
 #faseElegida{
   padding: 5px;
   font-size: 16px;
   border-radius: 3px;
+  width: 70%;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
 }
 
+
+/*AGREGAR ANIMACION*/
 .guardarCambios{
   position: fixed;
   bottom: 0px;
   right: 0px;
   left: 0px;
-  background-color: aquamarine;
+  background-color: #000;
   border-radius: 3px;
-  font-weight: 600;
+  font-weight: 800;
   font-size: 25px;
-  border: solid 2px #000;
+  border-top: solid 2px #C19E54;
   padding: 10px;
   cursor: pointer;
+  color: #C19E54;
+  /* -webkit-text-stroke: 1px #fff; */
+  overflow: hidden;
+}
+
+.guardarCambios p{
+  margin: 0;
+}
+
+.guardarCambios div{
+  height: 100%;
+  width: 100%;
+}
+
+.guardarCambios div span{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  background-color: #fff;
+  z-index: -5;
+  animation-fill-mode: forwards;
+}
+
+#saveBtnSpan.active{
+  animation-name: saveAnimation;
+  animation-duration: 1.5s;
+}
+
+#saveBtnSpan.inactive{
+  animation-name: saveEndAnimation;
+  animation-duration: 0.5s;
 }
 
 .totalPts{
@@ -55,9 +104,34 @@
 
 .btnFiltro{
   cursor: pointer;
-  background-color: #fff;
+  background-color: #000;
   border-radius: 3px;
-  color: #000;
-  margin: 10px;
-  padding: 5px;
+  color: #C19E54;
+  border: solid 2px;
+  /* margin: 10px; */
+  padding: 7px;
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 15%;
+}
+
+@keyframes saveAnimation {
+  from{
+    right: 100%;
+  }
+  to{
+    right: 0%;
+  }
+}
+
+@keyframes saveEndAnimation {
+  from{
+    left: 0%;
+    right: 0%;
+  }
+  to{
+    top: 100%;
+    left: 0%;
+    right: 0%;
+  }
 }

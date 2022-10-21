@@ -17,8 +17,7 @@ const Login = (props) => {
 
     const setUserID = props.userID;
 
-    const { userLogged, setUserLogged, setPrediccionActual, setPuntajesAct, setPuntajeTotal } = useContext(Prode);
-
+    const { userLogged, setUserLogged, setPrediccionActual, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo } = useContext(Prode);
 
     return (
         <form id='loginContainer'>
@@ -34,16 +33,18 @@ const Login = (props) => {
                         <input id='userDNI' type="number" placeholder='DNI' />
                         <label>Contraseña</label>
                         <input id='userPass' type="password" placeholder='Contraseña' />
-                        <button onClick={() => crearUsuario()}>Crear</button>
+                        <button className="btnFiltro" onClick={() => crearUsuario()}>Crear</button>
 
                         <h2>Log in</h2>
                         <input id='loginEmail' type="email" placeholder='Email' />
                         <input id='loginPass' type="password" placeholder='Contraseña' />
-                        <button onClick={() => iniciarSesion()}>Ingresar</button>
+                        <button className="btnFiltro" onClick={() => iniciarSesion()}>Ingresar</button>
                     </>
                     :
                     <>
-                        <div onClick={() => cerrarSesion(setUserLogged, setUserID, setPrediccionActual, setPuntajesAct, setPuntajeTotal)}>Log Out</div>
+                        <h3>Bienvenido, {userInfo.nombre.toUpperCase()}! </h3>
+                        <div className="btnFiltro" onClick={() => cerrarSesion(setUserLogged, setUserID,
+                             setPrediccionActual, setPuntajesAct, setPuntajeTotal, setUserInfo)}>Log Out</div>
                     </>
             }
 

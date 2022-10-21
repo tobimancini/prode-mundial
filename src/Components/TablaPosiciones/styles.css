@@ -45,6 +45,7 @@
     justify-content: space-around;
     border: solid 1px #fff;
     align-items: center;
+    font-size: 14px;
 }
 
 .tablaPuntos{
@@ -57,7 +58,6 @@
 
 .puntosTabla{
     font-weight: 600;
-    font-size: 1.2rem;
 }
 
 .primero{

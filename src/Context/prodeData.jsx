@@ -25,11 +25,14 @@ const ProdeData = ({ children }) => {
 
     const [pageState, setPageState] = useState("partidos");
 
-    const [userInfo, setUserInfo] = useState({})
+    const [userInfo, setUserInfo] = useState({});
+
+    const [banderas, setBanderas] = useState({});
 
     return (
         <Prode.Provider value={{database, setDatabase, matchPlayed, setMatchPlayed, userLogged, setUserLogged, prediccionActual, setPrediccionActual, resultadosAct, setResultadosAct, 
-        defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes, now, setNow, pageState, setPageState, userInfo, setUserInfo}}>
+        defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes, now, setNow, pageState, setPageState, 
+        userInfo, setUserInfo, banderas, setBanderas}}>
             {children}
         </Prode.Provider>
     )

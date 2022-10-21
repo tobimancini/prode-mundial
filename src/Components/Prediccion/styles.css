@@ -1,24 +1,29 @@
+.prediccionTitulo{
+    margin: 40px 0px;
+    color: #fff;
+}
+
 .prediccionCont{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     color: #fff !important;
-    width: 100%;
+    width: 95%;
+    border-radius: 3px;
+    border: solid;
 }
 
-.prediccionCont h2{
-    margin: 40px 0px;
-}
+
 
 .prediccionTitulos{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    padding: 5px;
     width: 100%;
     text-align: center;
-    border: solid;
 }
 
 .prediccionTitulos div{
@@ -36,8 +41,19 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    border-bottom: solid;
     font-size: 14px;
+}
+
+.prediccionMiddle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.prediccionMiddle img{
+    height: 25px;
 }
 
 .predPartido p{

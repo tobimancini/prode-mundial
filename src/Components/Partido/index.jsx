@@ -4,7 +4,7 @@ import './styles.css';
 
 const Partido = (props) => {
 
-    const { prediccionActual, resultadosAct, puntajesAct, now, setNow } = useContext(Prode);
+    const { prediccionActual, resultadosAct, puntajesAct, now, setNow, banderas } = useContext(Prode);
     const partido = props.partido;
     const local = partido.local;
     const visitante = partido.visitante;
@@ -96,7 +96,7 @@ const Partido = (props) => {
             </div>
             <div className='match'>
                 <div className='teamContain'>
-                    <img src={process.env.PUBLIC_URL + "/images/spain.png"} alt={local} className="flag" />
+                    <img src={process.env.PUBLIC_URL + banderas[local]} alt={local} className="flag" />
                     <div className='matchTeam'>{local}</div>
                 </div>
                 {
@@ -124,7 +124,7 @@ const Partido = (props) => {
                         <p className='resultadoGoles'>{!resultadoFinal.visitante ? "-" : resultadoFinal.visitante}</p>
                 }
                 <div className='teamContain'>
-                    <img src={process.env.PUBLIC_URL + "/images/spain.png"} alt={visitante} className="flag" />
+                    <img src={process.env.PUBLIC_URL + banderas[visitante]} alt={visitante} className="flag" />
                     <div className='matchTeam'>{visitante}</div>
                 </div>
             </div>

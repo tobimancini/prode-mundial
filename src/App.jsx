@@ -17,7 +17,7 @@ import setPuntos from "./Components/Utils/setPuntos";
 function App() {
 
   const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual,
-    setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo } = useContext(Prode);
+    setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -43,7 +43,11 @@ function App() {
     const response = await fetch(process.env.PUBLIC_URL + "/fixture/partidos.json");
     const jsonData = await response.json();
 
+    const response2 = await fetch(process.env.PUBLIC_URL + "/fixture/banderas.json");
+    const jsonData2 = await response2.json();
+
     setDatabase(jsonData);
+    setBanderas(jsonData2);
 
     let partidos = Object.entries(jsonData);
 
@@ -149,10 +153,21 @@ function App() {
   }, [prediccionActual])
 
   const predict = () => {
-    getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches,"" );
+    getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "");
     setTimeout(() => {
       setPuntos(userLogged, setPuntajesAct, setPuntajeTotal);
     }, 500);
+
+    let guardarBtn = document.getElementById('saveBtnSpan');
+
+    guardarBtn.classList.remove('inactive');
+    guardarBtn.classList.add('active');
+
+    setTimeout(() => {
+      guardarBtn.classList.add('inactive');
+      guardarBtn.classList.remove('active');
+    }, 1800);
+
   }
 
   const fases = ["Grupo A", "Grupo B", "Grupo C", "Grupo D", "Grupo E", "Grupo F", "Grupo G", "Grupo H", "Octavos de final", "Cuartos de final", "Semifinales",
@@ -183,7 +198,7 @@ function App() {
         setUserLogged(user.uid);
         setUserID(user.uid);
         getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo)
-        
+
         setTimeout(() => {
           setPuntos(user.uid, setPuntajesAct, setPuntajeTotal);
         }, 500);
@@ -208,22 +223,30 @@ function App() {
               {/* <div className="totalPts">
                 <p>{puntajeTotal}pts</p>
               </div> */}
+              <div className="selYBtn">
+                <select name="fase" id="faseElegida">
+                  {
+                    fases.map(fase => {
+                      return <option key={fase} value={fase}>{fase}</option>
+                    })
+                  }
+                </select>
+                <div className="btnFiltro" onClick={() => filtrarFase()}>OK</div>
 
-              <select name="fase" id="faseElegida">
-                {
-                  fases.map(fase => {
-                    return <option key={fase} value={fase}>{fase}</option>
-                  })
-                }
-              </select>
-              <div className="btnFiltro" onClick={() => filtrarFase()}>FILTRAR</div>
+              </div>
               {
                 database.partido1 != undefined ?
                   <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
                   :
                   null
               }
-              <div className="guardarCambios" onClick={() => predict()}>GUARDAR PREDICCIÓN</div>
+
+              <div className="guardarCambios" onClick={() => predict()}>
+                <p>GUARDAR PREDICCIÓN</p>
+                <div>
+                  <span id="saveBtnSpan"></span>
+                </div>
+              </div>
             </>
             :
             pageState === "clasificacion" ?

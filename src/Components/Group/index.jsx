@@ -43,7 +43,7 @@ const Group = (props) => {
 
     return (
         <div className='zonaContainer'>
-            <h2 className='groupName'>{group}</h2>
+            {/* <h2 className='groupName'>{group}</h2> */}
             
             {
                 defaultFase.map(match => {

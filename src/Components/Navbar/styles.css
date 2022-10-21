@@ -39,6 +39,8 @@
     animation-duration: 0.2s;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
+    font-weight: 600;
+    
 }
 
 .navItem p.active{
@@ -61,11 +63,11 @@
 }
 
 .navItem.active{
-    color: #fff;
+    color: #C19E54;
 }
 
 .navItem.active path{
-    stroke: #fff !important; 
+    stroke: #C19E54 !important; 
 }
 
 @keyframes enterTitle {

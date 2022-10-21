@@ -16,14 +16,12 @@ const TablaPosiciones = () => {
                         <>
                             <div className='tablaTitulos'>
                                 <div>Nombre</div>
-                                <div>DNI</div>
-                                <div className='tablaPuntos'>Puntos</div>
+                                <div className='tablaPuntos'>PUNTOS</div>
                             </div>
                             {
                                 allPuntajes.map(user => {
                                     return <div key={user.uid} className={`tablaUser ${allPuntajes[0].uid === user.uid ? "primero" : "otros"}`}>
                                         <p >{user.nombre.toUpperCase()} </p>
-                                        <p>{user.dni} </p>
                                         <p className='puntosTabla'>{!user.puntajeActual ? 0 : user.puntajeActual} </p>
                                     </div>
                                 })
