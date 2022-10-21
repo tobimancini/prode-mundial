@@ -149,7 +149,10 @@ function App() {
   }, [prediccionActual])
 
   const predict = () => {
-    getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches);
+    getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches,"" );
+    setTimeout(() => {
+      setPuntos(userLogged, setPuntajesAct, setPuntajeTotal);
+    }, 500);
   }
 
   const fases = ["Grupo A", "Grupo B", "Grupo C", "Grupo D", "Grupo E", "Grupo F", "Grupo G", "Grupo H", "Octavos de final", "Cuartos de final", "Semifinales",
@@ -179,8 +182,11 @@ function App() {
       if (user) {
         setUserLogged(user.uid);
         setUserID(user.uid);
-        getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo);
-        setPuntos(user.uid, setPuntajesAct, setPuntajeTotal);
+        getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo)
+        
+        setTimeout(() => {
+          setPuntos(user.uid, setPuntajesAct, setPuntajeTotal);
+        }, 500);
 
       } else {
         console.log("no user");
@@ -217,7 +223,7 @@ function App() {
                   :
                   null
               }
-              <div className="guardarCambios" onClick={() => predict()}>GUARDAR</div>
+              <div className="guardarCambios" onClick={() => predict()}>GUARDAR PREDICCIÓN</div>
             </>
             :
             pageState === "clasificacion" ?

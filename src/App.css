@@ -27,11 +27,13 @@
 
 .guardarCambios{
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
   background-color: aquamarine;
   border-radius: 3px;
   font-weight: 600;
+  font-size: 25px;
   border: solid 2px #000;
   padding: 10px;
   cursor: pointer;

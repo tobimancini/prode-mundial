@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
+import setPuntos from "./setPuntos";
 
 const getPredictionDB = async (userID, setPrediccionActual, prediccionActual, tOf, newPrediction, allMatches, setUserInfo) => {
 
@@ -26,6 +27,7 @@ const getPredictionDB = async (userID, setPrediccionActual, prediccionActual, tO
         setUserInfo(prediccion[0]);
         setPrediccionActual(prediccion[0].prediccion);
     }
+    
 }
 
 export default getPredictionDB;
