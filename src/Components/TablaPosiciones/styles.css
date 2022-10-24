@@ -17,14 +17,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    border: solid 2px #fff;
-    width: 90%;
+    color: #000;
+    /* border: solid 2px #fff; */
+    width: 100%;
     border-radius: 3px;
     height: 200px auto;
 }
 
-.tablaTitulos{
+/* .tablaTitulos{
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -32,28 +32,53 @@
     border-bottom: solid 1px;
     padding: 10px 0px; 
     font-weight: 600;
-}
+} */
 
-.tablaTitulos div{
+/* .tablaTitulos div{
     width: 100%;
-}
+} */
 
 .tablaUser{
     display: flex;
+    align-self: flex-end;
     flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-    border: solid 1px #fff;
+    width: 95%;
+    justify-content: center;
+    background-color: #edebeb;
     align-items: center;
     font-size: 14px;
+    margin-bottom: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    height: 50px;
+    /* padding: 0px 10px; */
+    transform: translateX(1px);
+    animation-name: enterBox;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.tablaUser p{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: flex-end; */
+    padding: 0px 0 0 10%;
+    font-weight: 600;
+}
+
+.tablaUser .nombre{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
 }
 
 .tablaPuntos{
     color: #C19E54;
-}
-
-.tablaUser p{
-    width: 100%;
 }
 
 .puntosTabla{
@@ -63,4 +88,52 @@
 .primero{
     color: #C19E54;
     font-weight: 600;
+}
+
+.primero p{
+    color: #000;
+}
+
+.tablaUser .puntajeTabla{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30%;
+}
+
+.tresPuntos{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 5px; */
+    cursor: pointer;
+}
+
+.tresPuntos span{
+    height: 3px;
+    width: 3px;
+    border-radius: 100%;
+    background-color: rgb(100, 98, 98);
+    margin: 1px;
+}
+
+.puntosTabla{
+    padding: 0px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.crown{
+    position: absolute;
+    /* bottom: 0px; */
+    /* top: ; */
+    font-size: 18px;
+    left: 7px;
+    /* transform: rotate(-20deg); */
 }

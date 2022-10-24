@@ -42,10 +42,11 @@ const Login = (props) => {
                     </>
                     :
                     <>
-                        <h3>Bienvenido, {userInfo.nombre.toUpperCase()}! </h3>
+                        <h3>Bienvenido, {userInfo.nombre ? userInfo.nombre.toUpperCase() : null}! </h3>
                         <div className="btnFiltro" onClick={() => cerrarSesion(setUserLogged, setUserID,
-                             setPrediccionActual, setPuntajesAct, setPuntajeTotal, setUserInfo)}>Log Out</div>
+                            setPrediccionActual, setPuntajesAct, setPuntajeTotal, setUserInfo)}>Log Out</div>
                     </>
+
             }
 
         </form>

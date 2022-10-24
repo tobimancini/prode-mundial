@@ -14,7 +14,8 @@
             "minutos": 0
         },
         "loc":"QAT",
-        "vis":"ECU"
+        "vis":"ECU",
+        "fase": "1"
     },
     "partido2": {
         "local": "Inglaterra",
@@ -31,7 +32,8 @@
             "minutos":  0 
         },
         "loc":"ING",
-        "vis":"IRA"
+        "vis":"IRA",
+        "fase": "1"
     },
     "partido3": {
         "local": "Senegal",
@@ -48,7 +50,8 @@
             "minutos": 0
         },
         "loc":"SEN",
-        "vis":"HOL"
+        "vis":"HOL",
+        "fase": "1"
     },
     "partido4": {
         "local": "Estados Unidos",
@@ -65,7 +68,8 @@
             "minutos": 0
         },
         "loc":"USA",
-        "vis":"GAL"
+        "vis":"GAL",
+        "fase": "1"
     },
     "partido5": {
         "local": "Argentina",
@@ -82,7 +86,8 @@
             "minutos": 0
         },
         "loc":"ARG",
-        "vis":"ASA"
+        "vis":"ASA",
+        "fase": "1"
     },
     "partido6": {
         "local": "Dinamarca",
@@ -99,7 +104,8 @@
             "minutos":  0
         },
         "loc":"DIN",
-        "vis":"TUN"
+        "vis":"TUN",
+        "fase": "1"
     },
     "partido7": {
         "local": "México",
@@ -116,7 +122,8 @@
             "minutos":  0
         },
         "loc":"MEX",
-        "vis":"POL"
+        "vis":"POL",
+        "fase": "1"
     },
     "partido8": {
         "local": "Francia",
@@ -133,7 +140,8 @@
             "minutos":  0
         },
         "loc":"FRA",
-        "vis":"AUS"
+        "vis":"AUS",
+        "fase": "1"
     },
     "partido9": {
         "local": "Marruecos",
@@ -150,7 +158,8 @@
             "minutos":  0
         },
         "loc":"MAR",
-        "vis":"CRO"
+        "vis":"CRO",
+        "fase": "1"
     },
     "partido10": {
         "local": "Alemania",
@@ -167,7 +176,8 @@
             "minutos":  0
         },
         "loc":"ALE",
-        "vis":"JAP"
+        "vis":"JAP",
+        "fase": "1"
     },
     "partido11": {
         "local": "España",
@@ -184,7 +194,8 @@
             "minutos":  0
         },
         "loc":"ESP",
-        "vis":"CRI"
+        "vis":"CRI",
+        "fase": "1"
     },
     "partido12": {
         "local": "Bélgica",
@@ -201,7 +212,8 @@
             "minutos":  0
         },
         "loc":"BEL",
-        "vis":"CAN"
+        "vis":"CAN",
+        "fase": "1"
     },
     "partido13": {
         "local": "Suiza",
@@ -218,7 +230,8 @@
             "minutos":  0
         },
         "loc":"SUI",
-        "vis":"CAM"
+        "vis":"CAM",
+        "fase": "1"
     },
     "partido14": {
         "local": "Uruguay",
@@ -235,7 +248,8 @@
             "minutos":  0
         },
         "loc":"URU",
-        "vis":"CSU"
+        "vis":"CSU",
+        "fase": "1"
     },
     "partido15": {
         "local": "Portugal",
@@ -252,7 +266,8 @@
             "minutos":  0
         },
         "loc":"POR",
-        "vis":"GHA"
+        "vis":"GHA",
+        "fase": "1"
     },
     "partido16": {
         "local": "Brasil",
@@ -269,7 +284,8 @@
             "minutos":  0
         },
         "loc":"BRA",
-        "vis":"SER"
+        "vis":"SER",
+        "fase": "1"
     },
     "partido17": {
         "local": "Gales",
@@ -286,7 +302,8 @@
             "minutos":  0
         },
         "loc":"GAL",
-        "vis":"IRA"
+        "vis":"IRA",
+        "fase": "2"
     },
     "partido18": {
         "local": "Qatar",
@@ -303,7 +320,8 @@
             "minutos":  0
         },
         "loc":"QAT",
-        "vis":"SEN"
+        "vis":"SEN",
+        "fase": "2"
     },
     "partido19": {
         "local": "Países Bajos",
@@ -320,7 +338,8 @@
             "minutos":  0
         },
         "loc":"HOL",
-        "vis":"ECU"
+        "vis":"ECU",
+        "fase": "2"
     },
     "partido20": {
         "local": "Inglaterra",
@@ -337,7 +356,8 @@
             "minutos":  0
         },
         "loc":"ING",
-        "vis":"USA"
+        "vis":"USA",
+        "fase": "2"
     },
     "partido21": {
         "local": "Túnez",
@@ -354,7 +374,8 @@
             "minutos":  0
         },
         "loc":"TUN",
-        "vis":"AUS"
+        "vis":"AUS",
+        "fase": "2"
     },
     "partido22": {
         "local": "Polonia",
@@ -371,7 +392,8 @@
             "minutos":  0
         },
         "loc":"POL",
-        "vis":"ASA"
+        "vis":"ASA",
+        "fase": "2"
     },
     "partido23": {
         "local": "Francia",
@@ -388,7 +410,8 @@
             "minutos":  0
         },
         "loc":"FRA",
-        "vis":"DIN"
+        "vis":"DIN",
+        "fase": "2"
     },
     "partido24": {
         "local": "Argentina",
@@ -405,7 +428,8 @@
             "minutos":  0
         },
         "loc":"ARG",
-        "vis":"MEX"
+        "vis":"MEX",
+        "fase": "2"
     },
     "partido25": {
         "local": "Japón",
@@ -422,7 +446,8 @@
             "minutos":  0
         },
         "loc":"JAP",
-        "vis":"CRI"
+        "vis":"CRI",
+        "fase": "2"
     },
     "partido26": {
         "local": "Bélgica",
@@ -439,7 +464,8 @@
             "minutos":  0
         },
         "loc":"BEL",
-        "vis":"MAR"
+        "vis":"MAR",
+        "fase": "2"
     },
     "partido27": {
         "local": "Croacia",
@@ -456,7 +482,8 @@
             "minutos":  0
         },
         "loc":"CRO",
-        "vis":"CAN"
+        "vis":"CAN",
+        "fase": "2"
     },
     "partido28": {
         "local": "España",
@@ -473,7 +500,8 @@
             "minutos":  0
         },
         "loc":"ESP",
-        "vis":"ALE"
+        "vis":"ALE",
+        "fase": "2"
     },
     "partido29": {
         "local": "Camerún",
@@ -490,7 +518,8 @@
             "minutos":  0
         },
         "loc":"CAM",
-        "vis":"SER"
+        "vis":"SER",
+        "fase": "2"
     },
     "partido30": {
         "local": "Corea del Sur",
@@ -507,7 +536,8 @@
             "minutos":  0
         },
         "loc":"CSU",
-        "vis":"GHA"
+        "vis":"GHA",
+        "fase": "2"
     },
     "partido31": {
         "local": "Brasil",
@@ -524,7 +554,8 @@
             "minutos":  0
         },
         "loc":"BRA",
-        "vis":"SUI"
+        "vis":"SUI",
+        "fase": "2"
     },
     "partido32": {
         "local": "Portugal",
@@ -541,7 +572,8 @@
             "minutos":  0
         },
         "loc":"POR",
-        "vis":"URU"
+        "vis":"URU",
+        "fase": "2"
     },
     "partido33": {
         "local": "Países Bajos",
@@ -558,7 +590,8 @@
             "minutos":  0
         },
         "loc":"HOL",
-        "vis":"QAT"
+        "vis":"QAT",
+        "fase": "3"
     },
     "partido34": {
         "local": "Ecuador",
@@ -575,7 +608,8 @@
             "minutos":  0
         },
         "loc":"ECU",
-        "vis":"SEN"
+        "vis":"SEN",
+        "fase": "3"
     },
     "partido35": {
         "local": "Gales",
@@ -592,7 +626,8 @@
             "minutos":  0
         },
         "loc":"GAL",
-        "vis":"ING"
+        "vis":"ING",
+        "fase": "3"
     },
     "partido36": {
         "local": "Irán",
@@ -609,7 +644,8 @@
             "minutos":  0
         },
         "loc":"IRA",
-        "vis":"USA"
+        "vis":"USA",
+        "fase": "3"
     },
     "partido37": {
         "local": "Túnez",
@@ -626,7 +662,8 @@
             "minutos":  0
         },
         "loc":"TUN",
-        "vis":"FRA"
+        "vis":"FRA",
+        "fase": "3"
     },
     "partido38": {
         "local": "Australia",
@@ -643,7 +680,8 @@
             "minutos":  0
         },
         "loc":"AUS",
-        "vis":"DIN"
+        "vis":"DIN",
+        "fase": "3"
     },
     "partido39": {
         "local": "Polonia",
@@ -660,7 +698,8 @@
             "minutos":  0
         },
         "loc":"POL",
-        "vis":"ARG"
+        "vis":"ARG",
+        "fase": "3"
     },
     "partido40": {
         "local": "Arabia Saudita",
@@ -677,7 +716,8 @@
             "minutos":  0
         },
         "loc":"ASA",
-        "vis":"MEX"
+        "vis":"MEX",
+        "fase": "3"
     },
     "partido41": {
         "local": "Croacia",
@@ -694,7 +734,8 @@
             "minutos":  0
         },
         "loc":"CRO",
-        "vis":"BEL"
+        "vis":"BEL",
+        "fase": "3"
     },
     "partido42": {
         "local": "Canadá",
@@ -711,7 +752,8 @@
             "minutos":  0
         },
         "loc":"CAN",
-        "vis":"MEX"
+        "vis":"MEX",
+        "fase": "3"
     },
     "partido43": {
         "local": "Japón",
@@ -728,7 +770,8 @@
             "minutos":  0
         },
         "loc":"JAP",
-        "vis":"ESP"
+        "vis":"ESP",
+        "fase": "3"
     },
     "partido44": {
         "local": "Costa Rica",
@@ -745,7 +788,8 @@
             "minutos":  0
         },
         "loc":"CRI",
-        "vis":"ALE"
+        "vis":"ALE",
+        "fase": "3"
     },
     "partido45": {
         "local": "Corea del Sur",
@@ -762,7 +806,8 @@
             "minutos":  0
         },
         "loc":"CSU",
-        "vis":"POR"
+        "vis":"POR",
+        "fase": "3"
     },
     "partido46": {
         "local": "Ghana",
@@ -779,7 +824,8 @@
             "minutos":  0
         },
         "loc":"GHA",
-        "vis":"POR"
+        "vis":"POR",
+        "fase": "3"
     },
     "partido47": {
         "local": "Camerún",
@@ -796,7 +842,8 @@
             "minutos":  0
         },
         "loc":"CAM",
-        "vis":"BRA"
+        "vis":"BRA",
+        "fase": "3"
     },
     "partido48": {
         "local": "Serbia",
@@ -813,7 +860,8 @@
             "minutos":  0
         },
         "loc":"SER",
-        "vis":"SUI"
+        "vis":"SUI",
+        "fase": "3"
     },
     "partido49": {
         "local": "1A",

@@ -128,27 +128,30 @@ const Partido = (props) => {
                     <div className='matchTeam'>{visitante}</div>
                 </div>
             </div>
-
-            {
-                !prediccionPartido ?
-                    <p>No hiciste una predicción todavía.</p>
-                    :
-                    prediccionPartido.local != "" ?
-                        <div className='prediccionPartido'>
-                            <p>Predicción: {local} {prediccionPartido.local} vs {prediccionPartido.visitante} {visitante} </p>
-                        </div>
-                        :
-                        <p className='prediccionPartido'>No hiciste una predicción todavía.</p>
-            }
-
-            <div className='puntosCont'>
+            <div className="partidoBottom">
                 {
-                    resultadoFinal !== "" && prediccionPartido && puntajePartido !== ""?
-                    <p className='puntaje'>{puntajePartido === 1||puntajePartido === 3||puntajePartido === 4||puntajePartido === 8 ? puntajePartido : "-"}</p>
-                    :
-                    <p className='puntaje'>-</p>
+                    !prediccionPartido ?
+                        <p className='prediccionPartido'>No hiciste una predicción todavía.</p>
+                        :
+                        prediccionPartido.local != "" ?
+                            // <div className='prediccionPartido'>
+                            <p className='prediccionPartido'>Predicción: {local} {prediccionPartido.local} vs {prediccionPartido.visitante} {visitante} </p>
+                            // </div> 
+                            :
+                            <p className='prediccionPartido'>No hiciste una predicción todavía.</p>
                 }
+                {/* <div className='puntosCont'> */}
+                    
+                    {
+                        resultadoFinal !== "" && prediccionPartido && puntajePartido !== "" ?
+                            <p className='puntaje'>{puntajePartido === 1 || puntajePartido === 3 || puntajePartido === 4 || puntajePartido === 8 ? puntajePartido : "-"}</p>
+                            :
+                            <p className='puntaje'>-</p>
+                    }
+                
+
             </div>
+
         </div>
     )
 }

@@ -24,15 +24,6 @@ const Group = (props) => {
     }
 
 
-    // const groupName = () => {
-    //     if (group === "A" || group === "B" || group === "C" || group === "D" || group === "E" || group === "F" || group === "G" || group === "H") {
-    //         return `Grupo ${group}`
-    //     } else {
-    //         return group;
-    //     }
-    // }
-
-
     
     useEffect(() => {
       createGroup();

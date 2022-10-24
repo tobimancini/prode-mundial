@@ -28,6 +28,7 @@ const getPredictionDB = async (userID, setPrediccionActual, prediccionActual, tO
         setPrediccionActual(prediccion[0].prediccion);
     }
     
+    
 }
 
 export default getPredictionDB;

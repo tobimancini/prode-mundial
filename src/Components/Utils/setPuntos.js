@@ -1,8 +1,9 @@
 import { db } from "../../Firebase/config";
 import { collection, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import getAllPuntajes from "./getAllPuntajes";
 
 
-const setPuntos = async (uid, setPuntajesAct, setPuntajeTotal) => {
+const setPuntos = async (uid, setPuntajesAct, setPuntajeTotal, setAllPuntajes) => {
 
     const goles = (a, b) => {
         if (a === b) {
@@ -75,6 +76,8 @@ const setPuntos = async (uid, setPuntajesAct, setPuntajeTotal) => {
     // console.log(puntajesActualizados);
     setPuntajesAct(puntajesActualizados);
     setPuntajeTotal(puntajeActualTotal);
+
+    await getAllPuntajes(setAllPuntajes)
 }
 
 export default setPuntos;

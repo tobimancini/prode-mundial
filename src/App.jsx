@@ -13,22 +13,19 @@ import Navbar from "./Components/Navbar";
 import Prediccion from "./Components/Prediccion";
 import { onAuthStateChanged } from "firebase/auth";
 import setPuntos from "./Components/Utils/setPuntos";
+import ModalPrediccion from "./Components/ModalPrediccion";
 
 function App() {
 
-  const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual,
-    setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas } = useContext(Prode);
+  const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes,
+    setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
-  const [grupoA, setGrupoA] = useState([]);
-  const [grupoB, setGrupoB] = useState([]);
-  const [grupoC, setGrupoC] = useState([]);
-  const [grupoD, setGrupoD] = useState([]);
-  const [grupoE, setGrupoE] = useState([]);
-  const [grupoF, setGrupoF] = useState([]);
-  const [grupoG, setGrupoG] = useState([]);
-  const [grupoH, setGrupoH] = useState([]);
+
+  const [faseUno, setFaseUno] = useState([]);
+  const [faseDos, setFaseDos] = useState([]);
+  const [faseTres, setFaseTres] = useState([]);
   const [octFinal, setOctFinal] = useState([]);
   const [cuarFinal, setCuarFinal] = useState([]);
   const [semiFinal, setSemiFinal] = useState([]);
@@ -37,7 +34,7 @@ function App() {
 
   const [allMatches, setAllMatches] = useState([]);
 
-  const [faseElegida, setFaseElegida] = useState("Grupo A")
+  const [faseElegida, setFaseElegida] = useState("Fase 1")
 
   const getData = async () => {
     const response = await fetch(process.env.PUBLIC_URL + "/fixture/partidos.json");
@@ -51,14 +48,9 @@ function App() {
 
     let partidos = Object.entries(jsonData);
 
-    let grupoAEdit = [];
-    let grupoBEdit = [];
-    let grupoCEdit = [];
-    let grupoDEdit = [];
-    let grupoEEdit = [];
-    let grupoFEdit = [];
-    let grupoGEdit = [];
-    let grupoHEdit = [];
+    let fase1 = [];
+    let fase2 = [];
+    let fase3 = [];
     let octavos = [];
     let cuartos = [];
     let semis = [];
@@ -71,194 +63,189 @@ function App() {
 
       matches.push(partido);
 
-      switch (partido[1].grupo) {
-        case "A":
-          grupoAEdit.push(partido);
+      switch (partido[1].fase) {
+        case "1":
+          fase1.push(partido);
           break;
-        case "B":
-          grupoBEdit.push(partido);
+        case "2":
+          fase2.push(partido);
           break;
-        case "C":
-          grupoCEdit.push(partido);
+        case "3":
+          fase3.push(partido);
           break;
-        case "D":
-          grupoDEdit.push(partido);
-          break;
-        case "E":
-          grupoEEdit.push(partido);
-          break;
-        case "F":
-          grupoFEdit.push(partido);
-          break;
-        case "G":
-          grupoGEdit.push(partido);
-          break;
-        case "H":
-          grupoHEdit.push(partido);
-          break;
-        case "Octavos de Final":
-          octavos.push(partido);
-          break;
-        case "Cuartos de Final":
-          cuartos.push(partido);
-          break;
-        case "Semifinales":
-          semis.push(partido);
-          break;
-        case "Tercer y Cuarto Puesto":
-          tercerycuarto.push(partido);
-          break;
-        case "Final":
-          final.push(partido);
-          break;
+
+        default:
+
+          switch (partido[1].grupo) {
+            case "Octavos de Final":
+              octavos.push(partido);
+              break;
+            case "Cuartos de Final":
+              cuartos.push(partido);
+              break;
+            case "Semifinales":
+              semis.push(partido);
+              break;
+            case "Tercer y Cuarto Puesto":
+              tercerycuarto.push(partido);
+              break;
+            case "Final":
+              final.push(partido);
+              break;
+          }
+
       }
+
+      setFaseUno(fase1);
+      setFaseDos(fase2);
+      setFaseTres(fase3);
+      setOctFinal(octavos);
+      setCuarFinal(cuartos);
+      setSemiFinal(semis);
+      setTerycuarFinal(tercerycuarto);
+      setFinalisima(final);
+      setAllMatches(matches);
+
+      
+    };
+
+  }
+
+    useEffect(() => {
+      getData();
+    }, []);
+
+    const obtenerResultados = async () => {
+      let resultados;
+
+      const querySnapshot = await getDocs(collection(db, "Resultados"));
+      querySnapshot.forEach((doc) => {
+        resultados = doc.data();
+      });
+
+      let resArray = Object.entries(resultados)
+      setResultadosAct(resArray);
+    }
+
+    useEffect(() => {
+      obtenerResultados();
+    }, [prediccionActual])
+
+    const predict = () => {
+      getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "");
+      setTimeout(() => {
+        setPuntos(userLogged, setPuntajesAct, setPuntajeTotal, setAllPuntajes);
+      }, 500);
+      // setTimeout(() => {
+      //   getAllPuntajes(setAllPuntajes);
+      // }, 800);
+
+      let guardarBtn = document.getElementById('saveBtnSpan');
+
+      guardarBtn.classList.remove('inactive');
+      guardarBtn.classList.add('active');
+
+      setTimeout(() => {
+        guardarBtn.classList.add('inactive');
+        guardarBtn.classList.remove('active');
+      }, 1800);
 
     }
 
-    setGrupoA(grupoAEdit);
-    setGrupoB(grupoBEdit);
-    setGrupoC(grupoCEdit);
-    setGrupoD(grupoDEdit);
-    setGrupoE(grupoEEdit);
-    setGrupoF(grupoFEdit);
-    setGrupoG(grupoGEdit);
-    setGrupoH(grupoHEdit);
-    setOctFinal(octavos);
-    setCuarFinal(cuartos);
-    setSemiFinal(semis);
-    setTerycuarFinal(tercerycuarto);
-    setFinalisima(final);
-    setAllMatches(matches);
+    const fases = ["Fase 1", "Fase 2", "Fase 3", "Octavos de final", "Cuartos de final", "Semifinales", "Tercer y cuarto puesto", "Final"];
 
-  };
+    const filtrarFase = () => {
+      const fase = document.getElementById('faseElegida').value;
+      setFaseElegida(fase);
+    }
 
-  useEffect(() => {
-    getData();
-  }, []);
+    const partidosPorFase = [faseUno, faseDos, faseTres, octFinal, cuarFinal, semiFinal, terycuarFinal, finalisima];
 
-  const obtenerResultados = async () => {
-    let resultados;
-
-    const querySnapshot = await getDocs(collection(db, "Resultados"));
-    querySnapshot.forEach((doc) => {
-      resultados = doc.data();
-    });
-
-    let resArray = Object.entries(resultados)
-    setResultadosAct(resArray);
-  }
-
-  useEffect(() => {
-    obtenerResultados();
-  }, [prediccionActual])
-
-  const predict = () => {
-    getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "");
-    setTimeout(() => {
-      setPuntos(userLogged, setPuntajesAct, setPuntajeTotal);
-    }, 500);
-
-    let guardarBtn = document.getElementById('saveBtnSpan');
-
-    guardarBtn.classList.remove('inactive');
-    guardarBtn.classList.add('active');
-
-    setTimeout(() => {
-      guardarBtn.classList.add('inactive');
-      guardarBtn.classList.remove('active');
-    }, 1800);
-
-  }
-
-  const fases = ["Grupo A", "Grupo B", "Grupo C", "Grupo D", "Grupo E", "Grupo F", "Grupo G", "Grupo H", "Octavos de final", "Cuartos de final", "Semifinales",
-    "Tercer y cuarto puesto", "Final"];
-
-  const filtrarFase = () => {
-    const fase = document.getElementById('faseElegida').value;
-    setFaseElegida(fase);
-  }
-
-  const partidosPorFase = [grupoA, grupoB, grupoC, grupoD, grupoE, grupoF, grupoG, grupoH, octFinal, cuarFinal, semiFinal, terycuarFinal, finalisima];
-
-  useEffect(() => {
-    getAllPuntajes(setAllPuntajes);
-  }, [])
-
-  useEffect(() => {
-    setNow(new Date());
-    setInterval(() => {
+    useEffect(() => {
       setNow(new Date());
-    }, 30000);
-  }, []);
+      setInterval(() => {
+        setNow(new Date());
+      }, 30000);
+    }, []);
 
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserLogged(user.uid);
-        setUserID(user.uid);
-        getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo)
+    useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setUserLogged(user.uid);
+          setUserID(user.uid);
+          getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo)
 
-        setTimeout(() => {
-          setPuntos(user.uid, setPuntajesAct, setPuntajeTotal);
-        }, 500);
-
-      } else {
-        console.log("no user");
-      }
-    })
-  }, []);
+          setTimeout(() => {
+            setPuntos(user.uid, setPuntajesAct, setPuntajeTotal, setAllPuntajes);
+            // setTimeout(() => {
+            //   getAllPuntajes(setAllPuntajes);
+            // }, 500);
+          }, 500);
 
 
-  return (
-    <div className="App" >
-      <Navbar />
-      {
-        pageState === "perfil" ?
-          <Login userID={setUserID} />
-          :
-          pageState === "partidos" ?
-            <>
-              <h2 className="partidosTitulo">PARTIDOS</h2>
-              {/* <div className="totalPts">
+
+        } else {
+          console.log("no user");
+        }
+      })
+    }, []);
+
+
+    return (
+      <div className="App" >
+        <Navbar />
+        {
+          pageState === "perfil" ?
+            <Login userID={setUserID} />
+            :
+            pageState === "partidos" ?
+              <>
+                <h2 className="partidosTitulo">PARTIDOS</h2>
+                {/* <div className="totalPts">
                 <p>{puntajeTotal}pts</p>
               </div> */}
-              <div className="selYBtn">
-                <select name="fase" id="faseElegida">
-                  {
-                    fases.map(fase => {
-                      return <option key={fase} value={fase}>{fase}</option>
-                    })
-                  }
-                </select>
-                <div className="btnFiltro" onClick={() => filtrarFase()}>OK</div>
+                <div className="selYBtn">
+                  <select name="fase" id="faseElegida" onChange={()=>filtrarFase()}>
+                    {
+                      fases.map(fase => {
+                        return <option key={fase} value={fase}>{fase}</option>
+                      })
+                    }
+                  </select>
+                  {/* <div className="btnFiltro" onClick={() => filtrarFase()}>OK</div> */}
 
-              </div>
-              {
-                database.partido1 != undefined ?
-                  <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
-                  :
-                  null
-              }
-
-              <div className="guardarCambios" onClick={() => predict()}>
-                <p>GUARDAR PREDICCIÓN</p>
-                <div>
-                  <span id="saveBtnSpan"></span>
                 </div>
-              </div>
-            </>
-            :
-            pageState === "clasificacion" ?
-              <>
-                <TablaPosiciones />
+                {
+                  database.partido1 != undefined ?
+                    <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
+                    :
+                    null
+                }
+
+                <div className="guardarCambios" onClick={() => predict()}>
+                  <p>GUARDAR PREDICCIÓN</p>
+                  <div>
+                    <span id="saveBtnSpan"></span>
+                  </div>
+                </div>
               </>
               :
-              <Prediccion />
-      }
+              pageState === "clasificacion" && allPuntajes.length ?
+                <>
+                  <TablaPosiciones />
+                </>
+                :
+                <Prediccion />
+        }
+        {
+          modalPredic === false ?
+            null :
+            <ModalPrediccion />
+        }
 
-    </div>
-  );
-}
+      </div>
+    );
+  }
 
-export default App;
+  export default App;
