@@ -3,6 +3,8 @@ import './styles.css'
 import { Prode } from '../../Context/prodeData'
 import getAllPuntajes from '../Utils/getAllPuntajes';
 import { FaCrown } from 'react-icons/fa';
+import FadeLoader from "react-spinners/FadeLoader";
+
 
 
 const TablaPosiciones = () => {
@@ -22,12 +24,13 @@ const TablaPosiciones = () => {
 
     return (
         <div className='clasificacionCont'>
-            <h2 onClick={()=>console.log(allPuntajes)}>CLASIFICACIÓN</h2>
-            <div className='tablaPosicionesCont'>
-                {
-                    !allPuntajes.length ?
-                        null :
-                        <>
+            {
+                !allPuntajes.length ?
+                    <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
+                    :
+                    <>
+                        <h2 onClick={() => console.log(allPuntajes)}>CLASIFICACIÓN</h2>
+                        <div className='tablaPosicionesCont'>
                             {
                                 allPuntajes.map(user => {
                                     return <div key={user.uid} className={`tablaUser ${allPuntajes[0].uid === user.uid ? "primero" : "otros"}`}>
@@ -41,15 +44,15 @@ const TablaPosiciones = () => {
                                             </div>
                                         </div>
                                         {
-                                            allPuntajes[0].uid === user.uid ? 
-                                            <FaCrown className='crown'/>: null
+                                            allPuntajes[0].uid === user.uid ?
+                                                <FaCrown className='crown' /> : null
                                         }
                                     </div>
                                 })
                             }
-                        </>
-                }
-            </div>
+                        </div>
+                    </>
+            }
         </div>
     )
 }

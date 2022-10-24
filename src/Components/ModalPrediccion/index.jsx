@@ -3,10 +3,12 @@ import { Prode } from '../../Context/prodeData';
 import getMatchScore from '../Utils/getMatchScore';
 import sortPrediccion from '../Utils/sortPrediccion';
 import './styles.css'
+import { ImCross } from 'react-icons/im';
+
 
 const ModalPrediccion = () => {
 
-    const { allPuntajes, modalPredic, usuarioElegido, userLogged, prediccionActual, banderas, database } = useContext(Prode);
+    const { allPuntajes,setModalPredic,  modalPredic, usuarioElegido, userLogged, prediccionActual, banderas, database } = useContext(Prode);
 
     const [prediccionUser, setPrediccionUser] = useState([]);
     const [ordenarPredic, setOrdenarPredic] = useState([]);
@@ -62,7 +64,7 @@ const ModalPrediccion = () => {
             <div className='modalPrediccion'>
                 {
                     userPicked != {} ?
-                        <h3>Prediccion de {userPicked.nombre ? userPicked.nombre.toUpperCase() : userPicked.nombre}: </h3>
+                        <h3>{userPicked.nombre ? userPicked.nombre.toUpperCase() : userPicked.nombre}: </h3>
                         :
                         null
 
@@ -70,7 +72,6 @@ const ModalPrediccion = () => {
                 {
                     ordenarPredic.length !== 0 && allPuntajes.length > 0 && prediccionUser ?
 
-                        // console.log(sortedPredic)
                         ordenarPredic.map(partido => {
 
                             return <div className='predPartido' key={partido[1][0]}>
@@ -89,26 +90,7 @@ const ModalPrediccion = () => {
 
                         null
                 }
-                {/* {
-                    prediccionUser.length ?
-                        <ul className='modalPrediccionList'>
-                            {
-                                prediccionUser.length > 0 ?
-                                    prediccionUser.map(partido => {
-                                        return <li key={partido[0]}>
-                                            <div>
-                                                <p>img</p>
-                                                <p>loc gol vs gol vis</p>
-                                                <p>img</p>
-                                                <p>pts</p>
-                                            </div>
-                                        </li>
-                                    }) :
-                                    null
-                            }
-                        </ul>
-                        : null
-                } */}
+                <ImCross className='cerrarModal' onClick={()=>setModalPredic(false)} />
             </div>
         </div>
     )

@@ -14,10 +14,12 @@ import Prediccion from "./Components/Prediccion";
 import { onAuthStateChanged } from "firebase/auth";
 import setPuntos from "./Components/Utils/setPuntos";
 import ModalPrediccion from "./Components/ModalPrediccion";
+import FadeLoader from "react-spinners/FadeLoader";
+
 
 function App() {
 
-  const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes,
+  const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida,
     setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
@@ -33,8 +35,6 @@ function App() {
   const [finalisima, setFinalisima] = useState([]);
 
   const [allMatches, setAllMatches] = useState([]);
-
-  const [faseElegida, setFaseElegida] = useState("Fase 1")
 
   const getData = async () => {
     const response = await fetch(process.env.PUBLIC_URL + "/fixture/partidos.json");
@@ -106,114 +106,116 @@ function App() {
       setFinalisima(final);
       setAllMatches(matches);
 
-      
+
     };
 
   }
 
-    useEffect(() => {
-      getData();
-    }, []);
+  useEffect(() => {
+    getData();
+  }, []);
 
-    const obtenerResultados = async () => {
-      let resultados;
+  const obtenerResultados = async () => {
+    let resultados;
 
-      const querySnapshot = await getDocs(collection(db, "Resultados"));
-      querySnapshot.forEach((doc) => {
-        resultados = doc.data();
-      });
+    const querySnapshot = await getDocs(collection(db, "Resultados"));
+    querySnapshot.forEach((doc) => {
+      resultados = doc.data();
+    });
 
-      let resArray = Object.entries(resultados)
-      setResultadosAct(resArray);
-    }
+    let resArray = Object.entries(resultados)
+    setResultadosAct(resArray);
+  }
 
-    useEffect(() => {
-      obtenerResultados();
-    }, [prediccionActual])
+  useEffect(() => {
+    obtenerResultados();
+  }, [prediccionActual])
 
-    const predict = () => {
-      getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "");
-      setTimeout(() => {
-        setPuntos(userLogged, setPuntajesAct, setPuntajeTotal, setAllPuntajes);
-      }, 500);
-      // setTimeout(() => {
-      //   getAllPuntajes(setAllPuntajes);
-      // }, 800);
+  const predict = () => {
+    getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "");
+    setTimeout(() => {
+      setPuntos(userLogged, setPuntajesAct, setPuntajeTotal, setAllPuntajes);
+    }, 500);
+    // setTimeout(() => {
+    //   getAllPuntajes(setAllPuntajes);
+    // }, 800);
 
-      let guardarBtn = document.getElementById('saveBtnSpan');
+    let guardarBtn = document.getElementById('saveBtnSpan');
 
-      guardarBtn.classList.remove('inactive');
-      guardarBtn.classList.add('active');
+    guardarBtn.classList.remove('inactive');
+    guardarBtn.classList.add('active');
 
-      setTimeout(() => {
-        guardarBtn.classList.add('inactive');
-        guardarBtn.classList.remove('active');
-      }, 1800);
+    setTimeout(() => {
+      guardarBtn.classList.add('inactive');
+      guardarBtn.classList.remove('active');
+    }, 1800);
 
-    }
+  }
 
-    const fases = ["Fase 1", "Fase 2", "Fase 3", "Octavos de final", "Cuartos de final", "Semifinales", "Tercer y cuarto puesto", "Final"];
+  const fases = ["Fase 1", "Fase 2", "Fase 3", "Octavos de final", "Cuartos de final", "Semifinales", "Tercer y cuarto puesto", "Final"];
 
-    const filtrarFase = () => {
-      const fase = document.getElementById('faseElegida').value;
-      setFaseElegida(fase);
-    }
+  const filtrarFase = () => {
+    const fase = document.getElementById('faseElegida').value;
+    setFaseElegida(fase);
+  }
 
-    const partidosPorFase = [faseUno, faseDos, faseTres, octFinal, cuarFinal, semiFinal, terycuarFinal, finalisima];
+  const partidosPorFase = [faseUno, faseDos, faseTres, octFinal, cuarFinal, semiFinal, terycuarFinal, finalisima];
 
-    useEffect(() => {
+  useEffect(() => {
+    setNow(new Date());
+    setInterval(() => {
       setNow(new Date());
-      setInterval(() => {
-        setNow(new Date());
-      }, 30000);
-    }, []);
+    }, 30000);
+  }, []);
 
 
-    useEffect(() => {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setUserLogged(user.uid);
-          setUserID(user.uid);
-          getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo)
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserLogged(user.uid);
+        setUserID(user.uid);
+        getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo)
 
-          setTimeout(() => {
-            setPuntos(user.uid, setPuntajesAct, setPuntajeTotal, setAllPuntajes);
-            // setTimeout(() => {
-            //   getAllPuntajes(setAllPuntajes);
-            // }, 500);
-          }, 500);
+        setTimeout(() => {
+          setPuntos(user.uid, setPuntajesAct, setPuntajeTotal, setAllPuntajes);
+          // setTimeout(() => {
+          //   getAllPuntajes(setAllPuntajes);
+          // }, 500);
+        }, 500);
 
 
 
-        } else {
-          console.log("no user");
-        }
-      })
-    }, []);
+      } else {
+        console.log("no user");
+      }
+    })
+  }, []);
 
 
-    return (
-      <div className="App" >
-        <Navbar />
-        {
+  return (
+    <div className="App" >
+      <Navbar />
+      {
+        database === "" || banderas === {} ?
+          <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
+         
+          :
+
           pageState === "perfil" ?
             <Login userID={setUserID} />
             :
             pageState === "partidos" ?
               <>
                 <h2 className="partidosTitulo">PARTIDOS</h2>
-                {/* <div className="totalPts">
-                <p>{puntajeTotal}pts</p>
-              </div> */}
                 <div className="selYBtn">
-                  <select name="fase" id="faseElegida" onChange={()=>filtrarFase()}>
+                  <select name="fase" id="faseElegida" onChange={() => filtrarFase()}>
                     {
                       fases.map(fase => {
                         return <option key={fase} value={fase}>{fase}</option>
                       })
                     }
                   </select>
-                  {/* <div className="btnFiltro" onClick={() => filtrarFase()}>OK</div> */}
+
 
                 </div>
                 {
@@ -237,15 +239,17 @@ function App() {
                 </>
                 :
                 <Prediccion />
-        }
-        {
-          modalPredic === false ?
-            null :
-            <ModalPrediccion />
-        }
 
-      </div>
-    );
-  }
 
-  export default App;
+      }
+      {
+        modalPredic === false ?
+          null :
+          <ModalPrediccion />
+      }
+
+    </div>
+  );
+}
+
+export default App;

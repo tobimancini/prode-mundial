@@ -35,10 +35,12 @@ const ProdeData = ({ children }) => {
 
     const [sortedPredic, setSortedPredic] = useState([]);
 
+    const [faseElegida, setFaseElegida] = useState("Fase 1")
+
     return (
         <Prode.Provider value={{database, setDatabase, matchPlayed, setMatchPlayed, userLogged, setUserLogged, prediccionActual, setPrediccionActual, resultadosAct, setResultadosAct, 
         defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes, now, setNow, pageState, setPageState, 
-        userInfo, setUserInfo, banderas, setBanderas, modalPredic, setModalPredic, usuarioElegido, setUsuarioElegido, sortedPredic, setSortedPredic}}>
+        userInfo, setUserInfo, banderas, setBanderas, modalPredic, setModalPredic, usuarioElegido, setUsuarioElegido, sortedPredic, setSortedPredic, faseElegida, setFaseElegida}}>
             {children}
         </Prode.Provider>
     )

@@ -9,7 +9,12 @@ import { Prode } from '../../Context/prodeData';
 
 const Navbar = () => {
 
-  const {pageState, setPageState} = useContext(Prode);  
+  const {pageState, setPageState, setFaseElegida} = useContext(Prode);  
+
+  const changeState = (section) =>{
+    setPageState(section);
+    setFaseElegida("Fase 1");
+  }
 
   useEffect(() => {
     const perfil = document.getElementById('perfil');
@@ -87,19 +92,19 @@ const Navbar = () => {
   return (
     <header className='navbarContainer'>
       <ul className='navbarList'>
-        <li id='partidos' className='navItem' onClick={()=>setPageState("partidos")}>
+        <li id='partidos' className='navItem' onClick={()=>changeState("partidos")}>
           <MdOutlineSportsSoccer />
           <p className='tituloPar'>Partidos</p>
         </li>
-        <li id='prediccion' className='navItem' onClick={()=>setPageState("prediccion")}>        
+        <li id='prediccion' className='navItem' onClick={()=>changeState("prediccion")}>        
           <GrTask />
           <p className='tituloPred'>Predicción</p>
         </li>
-        <li id='clasificacion' className='navItem' onClick={()=>setPageState("clasificacion")}>         
+        <li id='clasificacion' className='navItem' onClick={()=>changeState("clasificacion")}>         
           <BiTrophy/>
           <p className='tituloClas'>Clasificación</p>
         </li>
-        <li id='perfil' className='navItem' onClick={()=>setPageState("perfil")}>        
+        <li id='perfil' className='navItem' onClick={()=>changeState("perfil")}>        
           <HiOutlineUser/>
           <p className='tituloPer'>Perfil</p>
         </li>

@@ -1,9 +1,63 @@
-.bgModal{
+.bgModal {
     z-index: 999;
     position: fixed;
-    top: 100px;
-    bottom: 100px;
-    left: 50px;
-    right: 50px;
-    background-color: aquamarine;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.453);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalPrediccion {
+    z-index: 1000;
+    position: relative;
+    /* top: 20%;
+    bottom: 20%; */
+    background-color: #edebeb;
+    /* right: 50px;
+    left: 50px; */
+    min-height: 40%;
+    width: calc(100% - 100px);
+    border-radius: 3px;
+    border: solid 2px #c19e54;
+    padding: 10px;
+    padding-bottom: 15px;
+    padding-top: 5px;
+    overflow-x: hidden;
+    /* overflow-y: scroll; */
+}
+
+.modalPrediccion h3{
+    font-size: 22px;
+}
+
+.modalPrediccion .predPartido {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+    background-color: #000000;
+    /* border-top-left-radius: 3px; */
+    /* border-bottom-left-radius: 3px; */
+    border-radius: 3px;
+    margin-bottom: 3px;
+    font-weight: 600;
+    height: 50px;
+    animation-name: enterBox;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    color: #fff;
+}
+
+.cerrarModal{
+    position: absolute;
+    top: 2px;
+    right: 2px;
 }

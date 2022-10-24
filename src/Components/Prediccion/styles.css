@@ -84,3 +84,10 @@
 .emptySpace{
     width: 30% !important;
 }
+
+
+.loader{
+    position: absolute;
+    /* top: 30%; */
+    margin-top: 30%;
+}
