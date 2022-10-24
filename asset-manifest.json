@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/prode-mundial/static/css/main.83c72d1c.css",
-    "main.js": "/prode-mundial/static/js/main.26bb6f03.js",
+    "main.css": "/prode-mundial/static/css/main.9b4ef5ad.css",
+    "main.js": "/prode-mundial/static/js/main.b85d0f77.js",
     "static/js/787.dbe8341c.chunk.js": "/prode-mundial/static/js/787.dbe8341c.chunk.js",
     "index.html": "/prode-mundial/index.html",
-    "main.83c72d1c.css.map": "/prode-mundial/static/css/main.83c72d1c.css.map",
-    "main.26bb6f03.js.map": "/prode-mundial/static/js/main.26bb6f03.js.map",
+    "main.9b4ef5ad.css.map": "/prode-mundial/static/css/main.9b4ef5ad.css.map",
+    "main.b85d0f77.js.map": "/prode-mundial/static/js/main.b85d0f77.js.map",
     "787.dbe8341c.chunk.js.map": "/prode-mundial/static/js/787.dbe8341c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.83c72d1c.css",
-    "static/js/main.26bb6f03.js"
+    "static/css/main.9b4ef5ad.css",
+    "static/js/main.b85d0f77.js"
   ]
 }
