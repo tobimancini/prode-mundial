@@ -15,12 +15,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import setPuntos from "./Components/Utils/setPuntos";
 import ModalPrediccion from "./Components/ModalPrediccion";
 import FadeLoader from "react-spinners/FadeLoader";
+import Tooltip from "./Components/Tooltip";
 
 
 function App() {
 
-  const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida,
-    setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic } = useContext(Prode);
+  const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida, setToolText,
+    setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -134,11 +135,8 @@ function App() {
   const predict = () => {
     getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "");
     setTimeout(() => {
-      setPuntos(userLogged, setPuntajesAct, setPuntajeTotal, setAllPuntajes);
+      setPuntos(userLogged, setPuntajesAct, setPuntajeTotal, setAllPuntajes);  
     }, 500);
-    // setTimeout(() => {
-    //   getAllPuntajes(setAllPuntajes);
-    // }, 800);
 
     let guardarBtn = document.getElementById('saveBtnSpan');
 
@@ -149,7 +147,20 @@ function App() {
       guardarBtn.classList.add('inactive');
       guardarBtn.classList.remove('active');
     }, 1800);
-
+    
+    if (userLogged !== "") {
+      setToolText("Se guardó tu predicción.")
+      setTooltip(tooltip+1)
+      setTimeout(() => {
+        setTooltip(tooltip+2)
+      }, 2500);
+    }else{
+      setToolText("Iniciá sesion para poder jugar.")
+      setTooltip(tooltip+1)
+      setTimeout(() => {
+        setTooltip(tooltip+2)
+      }, 2500);
+    }
   }
 
   const fases = ["Fase 1", "Fase 2", "Fase 3", "Octavos de final", "Cuartos de final", "Semifinales", "Tercer y cuarto puesto", "Final"];
@@ -175,6 +186,11 @@ function App() {
         setUserLogged(user.uid);
         setUserID(user.uid);
         getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo)
+        setTooltip(tooltip+1);
+
+        setTimeout(() => {
+          setTooltip(tooltip+2)
+        }, 2500);
 
         setTimeout(() => {
           setPuntos(user.uid, setPuntajesAct, setPuntajeTotal, setAllPuntajes);
@@ -183,10 +199,10 @@ function App() {
           // }, 500);
         }, 500);
 
-
+        setToolText("Iniciaste sesión como "+user.email)
 
       } else {
-        console.log("no user");
+        setToolText("Necesitás iniciar sesión para poder jugar.")
       }
     })
   }, []);
@@ -197,8 +213,10 @@ function App() {
       <Navbar />
       {
         database === "" || banderas === {} ?
-          <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
-         
+          <div className="loaderContain">
+            <FadeLoader className='loader' color={'#edebeb'} loading={true} size={5} aria-label="Loading Spinner" data-testid="loader" />
+          </div>
+
           :
 
           pageState === "perfil" ?
@@ -215,7 +233,6 @@ function App() {
                       })
                     }
                   </select>
-
 
                 </div>
                 {
@@ -247,6 +264,7 @@ function App() {
           null :
           <ModalPrediccion />
       }
+      <Tooltip/>
 
     </div>
   );

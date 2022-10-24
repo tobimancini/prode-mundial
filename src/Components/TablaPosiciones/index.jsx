@@ -18,7 +18,6 @@ const TablaPosiciones = () => {
 
     useEffect(() => {
         getAllPuntajes(setAllPuntajes);
-        console.log(allPuntajes);
     }, [modalPredic])
 
 
@@ -26,28 +25,33 @@ const TablaPosiciones = () => {
         <div className='clasificacionCont'>
             {
                 !allPuntajes.length ?
-                    <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
+                    <div className='loaderContain'>
+                        <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
+                    </div>
                     :
                     <>
-                        <h2 onClick={() => console.log(allPuntajes)}>CLASIFICACIÓN</h2>
+                        <h2 onClick={() => console.log(allPuntajes)}>CLASIFICACIÓN (TOP 10)</h2>
                         <div className='tablaPosicionesCont'>
                             {
                                 allPuntajes.map(user => {
-                                    return <div key={user.uid} className={`tablaUser ${allPuntajes[0].uid === user.uid ? "primero" : "otros"}`}>
-                                        <p className='nombre' key={`nombre${user.uid}`}>{allPuntajes.indexOf(user) + 1}. {user.nombre.toUpperCase()} </p>
-                                        <div className='puntajeTabla'>
-                                            <p key={`puntos${user.uid}`} className='puntosTabla'>{!user.puntajeActual ? 0 : user.puntajeActual} pts</p>
-                                            <div className='tresPuntos' onClick={() => seleccionarUsuario(user.uid)}>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
+                                    if (allPuntajes.indexOf(user) + 1 < 11) {
+                                        return <div key={user.uid} className={`tablaUser ${allPuntajes[0].uid === user.uid ? "primero" : "otros"}`}>
+                                            <p className='nombre' key={`nombre${user.uid}`}>{allPuntajes.indexOf(user) + 1}. {user.nombre.toUpperCase()} </p>
+                                            <div className='puntajeTabla'>
+                                                <p key={`puntos${user.uid}`} className='puntosTabla'>{!user.puntajeActual ? 0 : user.puntajeActual} pts</p>
+                                                <div className='tresPuntos' onClick={() => seleccionarUsuario(user.uid)}>
+                                                    <span></span>
+                                                    <span></span>
+                                                    <span></span>
+                                                </div>
                                             </div>
+                                            {
+                                                allPuntajes[0].uid === user.uid ?
+                                                    <FaCrown className='crown' /> : null
+                                            }
                                         </div>
-                                        {
-                                            allPuntajes[0].uid === user.uid ?
-                                                <FaCrown className='crown' /> : null
-                                        }
-                                    </div>
+                                    }
+
                                 })
                             }
                         </div>

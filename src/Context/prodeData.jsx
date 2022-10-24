@@ -37,10 +37,15 @@ const ProdeData = ({ children }) => {
 
     const [faseElegida, setFaseElegida] = useState("Fase 1")
 
+    const [tooltip, setTooltip] = useState(0);
+
+    const [toolText, setToolText] = useState("");
+
     return (
         <Prode.Provider value={{database, setDatabase, matchPlayed, setMatchPlayed, userLogged, setUserLogged, prediccionActual, setPrediccionActual, resultadosAct, setResultadosAct, 
         defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes, now, setNow, pageState, setPageState, 
-        userInfo, setUserInfo, banderas, setBanderas, modalPredic, setModalPredic, usuarioElegido, setUsuarioElegido, sortedPredic, setSortedPredic, faseElegida, setFaseElegida}}>
+        userInfo, setUserInfo, banderas, setBanderas, modalPredic, setModalPredic, usuarioElegido, setUsuarioElegido, sortedPredic, setSortedPredic, faseElegida, setFaseElegida
+        , tooltip, setTooltip, toolText, setToolText}}>
             {children}
         </Prode.Provider>
     )

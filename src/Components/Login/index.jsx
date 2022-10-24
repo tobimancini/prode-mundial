@@ -12,12 +12,19 @@ import setPuntos from '../Utils/setPuntos';
 import crearUsuario from '../Utils/crearUsuario';
 import iniciarSesion from '../Utils/iniciarSesion';
 import cerrarSesion from '../Utils/cerrarSesion';
+import Tooltip from '../Tooltip';
+import recuperarPass from '../Utils/recuperarPass';
 
 const Login = (props) => {
 
     const setUserID = props.userID;
 
-    const { userLogged, setUserLogged, setPrediccionActual, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo } = useContext(Prode);
+    const { userLogged, setUserLogged, setPrediccionActual, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, setTooltip, setToolText, tooltip } = useContext(Prode);
+
+    useEffect(() => {
+        console.log(userInfo);
+    }, [])
+
 
     return (
         <form id='loginContainer'>
@@ -38,7 +45,11 @@ const Login = (props) => {
                         <h2>Log in</h2>
                         <input id='loginEmail' type="email" placeholder='Email' />
                         <input id='loginPass' type="password" placeholder='Contraseña' />
-                        <button className="btnFiltro" onClick={() => iniciarSesion()}>Ingresar</button>
+                        <button className="btnFiltro" onClick={() => iniciarSesion(setTooltip, tooltip)}>Ingresar</button>
+
+                        <h2>Recuperar Contraseña</h2>
+                        <input id='recuperarEmail' type="email" placeholder='Email' />
+                        <button className="btnFiltro" onClick={() => recuperarPass(setToolText, setTooltip, tooltip)}>Recuperar</button>
                     </>
                     :
                     <>

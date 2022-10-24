@@ -1,0 +1,58 @@
+.tooltip{
+    position: fixed;
+    bottom: 65px;
+    right: 0px;
+    min-width: 70px;
+    padding: 0px 10px;
+    background-color: #C19E54;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top: solid 1px rgb(119, 119, 119);
+    border-bottom: solid 1px rgb(119, 119, 119);
+    border-left: solid 1px rgb(119, 119, 119);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+.tooltip p{
+    color: #fff;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.tooltip.active{
+    animation-name: tooltipOn;
+}
+
+.tooltip.inactive{
+    animation-name: tooltipOff;
+}
+
+
+@keyframes tooltipOn {
+    from{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes tooltipOff {
+    from{
+        opacity: 1;
+        transform: translateX(0%)
+    }
+    to{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}

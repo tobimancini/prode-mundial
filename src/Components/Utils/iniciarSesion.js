@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase/config";
 
-const iniciarSesion = async () => {
+const iniciarSesion = async (setTooltip, tooltip) => {
     const userCreate = document.querySelector('#loginContainer');
     userCreate.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -12,6 +12,10 @@ const iniciarSesion = async () => {
                 const res = await signInWithEmailAndPassword(auth, email, contraseña);
                 const user = res.user;
                 userCreate.reset();
+                setTooltip(tooltip + 1)
+                setTimeout(() => {
+                    setTooltip(tooltip + 2)
+                }, 2500);
             } catch (err) {
                 console.error(err);
             }

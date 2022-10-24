@@ -1,4 +1,4 @@
-const sortPrediccion = (prediccionActual, setSortedPredic) => {
+const sortPrediccion = (prediccionActual, setSortedPredic, modal) => {
     let prediccionArray = [];
     if (prediccionActual !== {}) {
         let prediccion = Object.entries(prediccionActual);
@@ -9,8 +9,14 @@ const sortPrediccion = (prediccionActual, setSortedPredic) => {
             }
         }
     }
-    prediccionArray.sort((a, b) => (parseInt(a[1].partido) > parseInt(b[1].partido)) ? 1 : ((parseInt(b[1].partido) > parseInt(a[1].partido)) ? -1 : 0));
-    setSortedPredic(prediccionArray);
+
+    if (modal === true) {
+        prediccionArray.sort((a, b) => (parseInt(a[1][1].partido) > parseInt(b[1][1].partido)) ? 1 : ((parseInt(b[1][1].partido) > parseInt(a[1][1].partido)) ? -1 : 0));
+        setSortedPredic(prediccionArray);
+    } else {
+        prediccionArray.sort((a, b) => (parseInt(a[1].partido) > parseInt(b[1].partido)) ? 1 : ((parseInt(b[1].partido) > parseInt(a[1].partido)) ? -1 : 0));
+        setSortedPredic(prediccionArray);
+    }
 }
 
 export default sortPrediccion;

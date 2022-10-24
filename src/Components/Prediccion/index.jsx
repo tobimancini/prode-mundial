@@ -12,9 +12,8 @@ const Prediccion = () => {
     const [prediccionUsuario, setPrediccionUsuario] = useState([]);
 
     useEffect(() => {
-        sortPrediccion(prediccionActual, setSortedPredic)
+        sortPrediccion(prediccionActual, setSortedPredic, false)
         getMatchScore(allPuntajes, userLogged, setPrediccionUsuario);
-        console.log(allPuntajes);
     }, [prediccionActual, allPuntajes])
 
 
@@ -53,8 +52,9 @@ const Prediccion = () => {
                     </div>
 
                     :
-
-                    <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
+                    <div className='loaderContain'>
+                        <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
+                    </div>
             }
         </>
     )

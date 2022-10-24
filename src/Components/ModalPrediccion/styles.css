@@ -19,15 +19,19 @@
     background-color: #edebeb;
     /* right: 50px;
     left: 50px; */
-    min-height: 40%;
-    width: calc(100% - 100px);
+    min-height: 0%;
+    max-height: 60%;
+    width: calc(100% - 65px);
     border-radius: 3px;
     border: solid 2px #c19e54;
     padding: 10px;
-    padding-bottom: 15px;
+    padding-bottom: 35px;
     padding-top: 5px;
     overflow-x: hidden;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
+    animation-name: enterModal;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
 }
 
 .modalPrediccion h3{
@@ -60,4 +64,27 @@
     position: absolute;
     top: 2px;
     right: 2px;
+}
+
+
+@keyframes enterModal {
+    from{
+        opacity: 0;
+        transform: scale(0.6);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes exitModal {
+    from{
+        opacity: 1;
+        transform: scale(1);
+    }
+    to{
+        opacity: 0;
+        transform: scale(0.6);
+    }
 }

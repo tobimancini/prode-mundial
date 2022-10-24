@@ -4,11 +4,12 @@ import getMatchScore from '../Utils/getMatchScore';
 import sortPrediccion from '../Utils/sortPrediccion';
 import './styles.css'
 import { ImCross } from 'react-icons/im';
+import FadeLoader from "react-spinners/FadeLoader";
 
 
 const ModalPrediccion = () => {
 
-    const { allPuntajes,setModalPredic,  modalPredic, usuarioElegido, userLogged, prediccionActual, banderas, database } = useContext(Prode);
+    const { allPuntajes, setModalPredic, modalPredic, usuarioElegido, userLogged, prediccionActual, banderas, database } = useContext(Prode);
 
     const [prediccionUser, setPrediccionUser] = useState([]);
     const [ordenarPredic, setOrdenarPredic] = useState([]);
@@ -41,17 +42,7 @@ const ModalPrediccion = () => {
     }, [usuarioElegido])
 
     useEffect(() => {
-        // console.log(prediccionUser);
-        if (prediccionUser.length > 0) {
-            prediccionUser.forEach(element => {
-                console.log(element[0]);
-                console.log(element[1].ptsTotal);
-            });
-        }
-    }, [prediccionUser])
-
-    useEffect(() => {
-        sortPrediccion(prediccionUser, setOrdenarPredic);
+        sortPrediccion(prediccionUser, setOrdenarPredic, true);
     }, [prediccionActual, allPuntajes])
 
 
@@ -61,37 +52,44 @@ const ModalPrediccion = () => {
 
     return (
         <div className='bgModal'>
-            <div className='modalPrediccion'>
-                {
-                    userPicked != {} ?
-                        <h3>{userPicked.nombre ? userPicked.nombre.toUpperCase() : userPicked.nombre}: </h3>
-                        :
-                        null
+            {
+                !ordenarPredic.length ?
+                    <div className='loaderContain'>
+                        <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
+                    </div>
+                    :
 
-                }
-                {
-                    ordenarPredic.length !== 0 && allPuntajes.length > 0 && prediccionUser ?
+                    <div className='modalPrediccion'>
+                        {
+                            userPicked != {} ?
+                                <h3>{userPicked.nombre ? userPicked.nombre.toUpperCase() : userPicked.nombre}: </h3>
+                                :
+                                null
 
-                        ordenarPredic.map(partido => {
+                        }
+                        {
+                            ordenarPredic.length !== 0 && allPuntajes.length > 0 && prediccionUser ?
 
-                            return <div className='predPartido' key={partido[1][0]}>
-                                <div className='prediccionMiddle'>
-                                    <img src={process.env.PUBLIC_URL + banderas[database[partido[1][0]].local]} alt={database[partido[1][0]].local} />
-                                    <p className='predicData'> {database[partido[1][0]].loc} {partido[1][0].local} vs {partido[1][0].visitante} {database[partido[1][0]].vis}</p>
-                                    <img src={process.env.PUBLIC_URL + banderas[database[partido[1][0]].visitante]} alt={database[partido[1][0]].visitante} />
-                                </div>
-                                <p className='puntos'>{!userPicked.prediccion[partido[1][0]].ptsTotal ? (userPicked.prediccion[partido[1][0]].ptsTotal == 0 ? "0" : "-")
-                                    : userPicked.prediccion[partido[1][0]].ptsTotal} pts</p>
-                            </div>
+                                ordenarPredic.map(partido => {
+                                    return <div className='predPartido' key={partido[1][0]}>
+                                        <div className='prediccionMiddle'>
+                                            <img src={process.env.PUBLIC_URL + banderas[database[partido[1][0]].local]} alt={database[partido[1][0]].local} />
+                                            <p className='predicData'> {database[partido[1][0]].loc} {partido[1][1].local} vs {partido[1][1].visitante} {database[partido[1][0]].vis}</p>
+                                            <img src={process.env.PUBLIC_URL + banderas[database[partido[1][0]].visitante]} alt={database[partido[1][0]].visitante} />
+                                        </div>
+                                        <p className='puntos'>{!userPicked.prediccion[partido[1][0]].ptsTotal ? (userPicked.prediccion[partido[1][0]].ptsTotal == 0 ? "0" : "-")
+                                            : userPicked.prediccion[partido[1][0]].ptsTotal} pts</p>
+                                    </div>
 
-                        })
+                                })
 
-                        :
+                                :
 
-                        null
-                }
-                <ImCross className='cerrarModal' onClick={()=>setModalPredic(false)} />
-            </div>
+                                null
+                        }
+                        <ImCross className='cerrarModal' onClick={() => setModalPredic(false)} />
+                    </div>
+            }
         </div>
     )
 }
