@@ -1,18 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged } from "firebase/auth";
+import React, { useContext} from 'react';
 import './styles.css';
-import { auth, db } from '../../Firebase/config';
-import { addDoc, collection } from 'firebase/firestore';
-import checkUser from '../Utils/checkUser';
-import newUser from '../Utils/newUser';
-import { async } from '@firebase/util';
 import { Prode } from '../../Context/prodeData';
-import getPredictionDB from '../Utils/getPredictionDB';
-import setPuntos from '../Utils/setPuntos';
 import crearUsuario from '../Utils/crearUsuario';
 import iniciarSesion from '../Utils/iniciarSesion';
 import cerrarSesion from '../Utils/cerrarSesion';
-import Tooltip from '../Tooltip';
 import recuperarPass from '../Utils/recuperarPass';
 
 const Login = (props) => {
@@ -20,10 +11,6 @@ const Login = (props) => {
     const setUserID = props.userID;
 
     const { userLogged, setUserLogged, setPrediccionActual, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, setTooltip, setToolText, tooltip } = useContext(Prode);
-
-    useEffect(() => {
-        console.log(userInfo);
-    }, [])
 
 
     return (
@@ -45,7 +32,7 @@ const Login = (props) => {
                         <h2>Log in</h2>
                         <input id='loginEmail' type="email" placeholder='Email' />
                         <input id='loginPass' type="password" placeholder='Contraseña' />
-                        <button className="btnFiltro" onClick={() => iniciarSesion(setTooltip, tooltip)}>Ingresar</button>
+                        <button className="btnFiltro" onClick={() => iniciarSesion(setTooltip, tooltip, setToolText)}>Ingresar</button>
 
                         <h2>Recuperar Contraseña</h2>
                         <input id='recuperarEmail' type="email" placeholder='Email' />

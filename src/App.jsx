@@ -16,6 +16,7 @@ import setPuntos from "./Components/Utils/setPuntos";
 import ModalPrediccion from "./Components/ModalPrediccion";
 import FadeLoader from "react-spinners/FadeLoader";
 import Tooltip from "./Components/Tooltip";
+import Admin from "./Components/Admin";
 
 
 function App() {
@@ -133,7 +134,7 @@ function App() {
   }, [prediccionActual])
 
   const predict = () => {
-    getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "");
+    getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "", setToolText, setTooltip, tooltip);
     setTimeout(() => {
       setPuntos(userLogged, setPuntajesAct, setPuntajeTotal, setAllPuntajes);  
     }, 500);
@@ -148,13 +149,7 @@ function App() {
       guardarBtn.classList.remove('active');
     }, 1800);
     
-    if (userLogged !== "") {
-      setToolText("Se guardó tu predicción.")
-      setTooltip(tooltip+1)
-      setTimeout(() => {
-        setTooltip(tooltip+2)
-      }, 2500);
-    }else{
+    if (userLogged === "") {
       setToolText("Iniciá sesion para poder jugar.")
       setTooltip(tooltip+1)
       setTimeout(() => {
@@ -185,7 +180,10 @@ function App() {
       if (user) {
         setUserLogged(user.uid);
         setUserID(user.uid);
-        getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo)
+        getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo, setToolText, setTooltip, tooltip)
+        
+        
+        setToolText("Iniciaste sesión como "+user.email)
         setTooltip(tooltip+1);
 
         setTimeout(() => {
@@ -194,14 +192,15 @@ function App() {
 
         setTimeout(() => {
           setPuntos(user.uid, setPuntajesAct, setPuntajeTotal, setAllPuntajes);
-          // setTimeout(() => {
-          //   getAllPuntajes(setAllPuntajes);
-          // }, 500);
         }, 500);
 
-        setToolText("Iniciaste sesión como "+user.email)
 
       } else {
+        setTooltip(tooltip+1);
+
+        setTimeout(() => {
+          setTooltip(tooltip+2)
+        }, 2500);
         setToolText("Necesitás iniciar sesión para poder jugar.")
       }
     })
@@ -255,7 +254,13 @@ function App() {
                   <TablaPosiciones />
                 </>
                 :
+                pageState === "prediccion" && allPuntajes.length ?
                 <Prediccion />
+                :
+                pageState === "admin" && allPuntajes.length ?
+                <Admin />
+                :
+                null
 
 
       }

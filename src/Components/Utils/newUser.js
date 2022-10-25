@@ -36,7 +36,8 @@ const newUser = async (dni, nombre, email, user) => {
         "nombre": nombre,
         "email": email,
         "uid": user.uid,
-        authProvider: "local"
+        authProvider: "local",
+        "habilitado": false
     }
 
     allMatches();

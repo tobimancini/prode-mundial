@@ -12,23 +12,6 @@
     width: 100%;
 }
 
-
-
-/* .prediccionTitulos{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 5px;
-    width: 95%;
-    text-align: center;
-} */
-
-/* .prediccionTitulos div{
-    width: 25%;
-    font-weight: 600;
-} */
-
 .prediccionLine{
     width: 50% !important;
 }

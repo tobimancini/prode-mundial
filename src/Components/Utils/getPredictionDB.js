@@ -1,12 +1,9 @@
-import { async } from "@firebase/util";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
-import setPuntos from "./setPuntos";
 
-const getPredictionDB = async (userID, setPrediccionActual, prediccionActual, tOf, newPrediction, allMatches, setUserInfo) => {
+const getPredictionDB = async (userID, setPrediccionActual, prediccionActual, tOf, newPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip) => {
 
-    if (tOf === true) {
-        newPrediction(allMatches, userID).then(async () => {
+    if (tOf === true) {   
             const q = query(collection(db, "Usuarios"), where("uid", "==", userID));
 
             const querySnapshot = await getDocs(q);
@@ -14,8 +11,24 @@ const getPredictionDB = async (userID, setPrediccionActual, prediccionActual, tO
             querySnapshot.forEach((doc) => {
                 prediccion.push(doc.data());
             });
-            setPrediccionActual(prediccion[0].prediccion);
-        })
+            if (prediccion[0].habilitado === true) {
+                newPrediction(allMatches, userID).then(async () => {
+                    setPrediccionActual(prediccion[0].prediccion);
+                    setToolText("SE GUARDÓ TU PREDICCIÓN.")
+                    setTooltip(tooltip+1);
+                    setTimeout(() => {
+                        setTooltip(tooltip+2)
+                    }, 4000);
+                })
+            }else{
+                setToolText("PERDÓN, PERO NO ESTAS HABILITADO TODAVÍA.")
+                setTooltip(tooltip+1);
+                setTimeout(() => {
+                    setTooltip(tooltip+2)
+                }, 4000);
+
+            }
+       
     } else {
         const q = query(collection(db, "Usuarios"), where("uid", "==", userID));
 
@@ -27,7 +40,6 @@ const getPredictionDB = async (userID, setPrediccionActual, prediccionActual, tO
         setUserInfo(prediccion[0]);
         setPrediccionActual(prediccion[0].prediccion);
     }
-    
     
 }
 

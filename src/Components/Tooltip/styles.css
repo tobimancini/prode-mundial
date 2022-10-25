@@ -3,6 +3,7 @@
     bottom: 65px;
     right: 0px;
     min-width: 70px;
+    max-width: 85%;
     padding: 0px 10px;
     background-color: #C19E54;
     border-bottom-left-radius: 3px;
