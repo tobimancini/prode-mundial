@@ -13,7 +13,7 @@ const Partido = (props) => {
 
     let idPartido = props.idPartido;
 
-    const prediccionPartido = prediccionActual[idPartido];
+    const [prediccionPartido, setPrediccionPartido] = useState();
 
     let resultadoFinal = "";
 
@@ -38,6 +38,7 @@ const Partido = (props) => {
             }
         }
         setPuntajePartido(puntaje);
+        setPrediccionPartido(prediccionActual[idPartido]);
     }
 
     const [jugado, setJugado] = useState(false);
@@ -75,12 +76,11 @@ const Partido = (props) => {
 
     useEffect(() => {
         actualizarPuntaje();
-    }, [prediccionActual, puntajesAct, prediccionPartido])
+    }, [puntajesAct, prediccionActual])
 
     useEffect(() => {
         partidoJugado();
-    }, [now])
-
+    }, [now]);
 
 
     return (

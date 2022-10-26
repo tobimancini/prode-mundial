@@ -11,14 +11,18 @@
     align-items: center;
 }
 
+.bgModal.inactive{
+    visibility: hidden;
+}
+
+.bgModal.active{
+    visibility: visible;
+}
+
 .modalPrediccion {
     z-index: 1000;
     position: relative;
-    /* top: 20%;
-    bottom: 20%; */
     background-color: #edebeb;
-    /* right: 50px;
-    left: 50px; */
     min-height: 0%;
     max-height: 60%;
     width: calc(100% - 65px);
@@ -29,9 +33,16 @@
     padding-top: 5px;
     overflow-x: hidden;
     overflow-y: scroll;
-    animation-name: enterModal;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
+}
+
+.modalPrediccion.active{
+    animation-name: enterModal;
+}
+
+.modalPrediccion.inactive{
+    animation-name: exitModal;
 }
 
 .modalPrediccion h3{

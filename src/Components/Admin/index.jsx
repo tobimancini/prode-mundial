@@ -10,17 +10,56 @@ const Admin = () => {
 
     const { allPuntajes, setAllPuntajes } = useContext(Prode);
     const [habilitar, setHabilitar] = useState(0);
+    
+    const changeColor = (userId, status) =>{
+        let btn = document.getElementById(`${userId}btn`);
+        let habilitado = document.getElementById(userId);
 
-    const changeStatus = (userId) =>{
+        if ((status === true && habilitado.innerHTML === "OK")) {
+            btn.classList.remove('ok');
+            btn.classList.add('no');
+
+            habilitado.classList.remove('ok');
+            habilitado.classList.add('no');
+
+            habilitado.innerHTML = "NO";
+        }else if ((status === true && habilitado.innerHTML === "NO")) {
+            btn.classList.add('ok');
+            btn.classList.remove('no');
+
+            habilitado.classList.add('ok');
+            habilitado.classList.remove('no');
+
+            habilitado.innerHTML = "OK";
+        }
+        
+        
+        if ((status === false && habilitado.innerHTML === "NO")) {
+            btn.classList.add('ok');
+            btn.classList.remove('no');
+
+            habilitado.classList.add('ok');
+            habilitado.classList.remove('no');
+
+            habilitado.innerHTML = "OK";
+        }else if ((status === false && habilitado.innerHTML === "OK")) {
+            btn.classList.remove('ok');
+            btn.classList.add('no');
+
+            habilitado.classList.remove('ok');
+            habilitado.classList.add('no');
+
+            habilitado.innerHTML = "NO";
+        }
+    }
+
+    const changeStatus = (userId, status) => {
         habilitarUser(userId);
-        setHabilitar(habilitar+1)
+        setHabilitar(habilitar + 1);
+        changeColor(userId, status);
     }
 
 
-    useEffect(() => {
-        getAllPuntajes(setAllPuntajes)
-    }, [changeStatus])
-    
 
     return (
         <div className='adminCont'>
@@ -36,12 +75,13 @@ const Admin = () => {
                             {
                                 allPuntajes.map(usuario => {
                                     if (usuario.habilitado === false || usuario.habilitado === true) {
-
                                         return <ul key={usuario.uid} className="itemHabil">
                                             <li className='subItemHabil'>{usuario.nombre.toUpperCase()}</li>
-                                            <li className={`subItemHabil status ${usuario.habilitado===true?"ok":"no"}`}>{usuario.habilitado===true?"OK":"NO"}</li>
-                                            <li className='subItemHabil btn' onClick={()=>changeStatus(usuario.uid)}>
-                                                <div className={`btnHabilitar ${usuario.habilitado===true?"ok":"no"}`}></div>
+                                            <li id={usuario.uid} className={`subItemHabil status ${usuario.habilitado === true ? "ok" : "no"}`}>
+                                                {usuario.habilitado === true ? "OK" : "NO"}
+                                            </li>
+                                            <li className='subItemHabil btn' onClick={() => changeStatus(usuario.uid, usuario.habilitado)}>
+                                                <div id={`${usuario.uid}btn`} className={`btnHabilitar ${usuario.habilitado === true ? "ok" : "no"}`}></div>
                                             </li>
                                         </ul>
                                     }

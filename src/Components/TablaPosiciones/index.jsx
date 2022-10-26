@@ -12,13 +12,9 @@ const TablaPosiciones = () => {
     const { allPuntajes, setAllPuntajes, modalPredic, setModalPredic, setUsuarioElegido } = useContext(Prode);
 
     const seleccionarUsuario = (userId) => {
-        setModalPredic(modalPredic === true ? false : true);
         setUsuarioElegido(userId);
+        setModalPredic(modalPredic+1);
     }
-
-    useEffect(() => {
-        getAllPuntajes(setAllPuntajes);
-    }, [modalPredic])
 
 
     return (

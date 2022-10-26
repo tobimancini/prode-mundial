@@ -1,37 +1,36 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
+import setPuntos from "./setPuntos";
 
-const getPredictionDB = async (userID, setPrediccionActual, prediccionActual, tOf, newPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip) => {
+const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccionActual, tOf, newPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct,
+    setPuntajeTotal, setAllPuntajes, resultadosAct, setResultadosAct) => {
 
-    if (tOf === true) {   
-            const q = query(collection(db, "Usuarios"), where("uid", "==", userID));
 
-            const querySnapshot = await getDocs(q);
-            let prediccion = [];
-            querySnapshot.forEach((doc) => {
-                prediccion.push(doc.data());
-            });
-            if (prediccion[0].habilitado === true) {
-                newPrediction(allMatches, userID).then(async () => {
-                    setPrediccionActual(prediccion[0].prediccion);
-                    setToolText("SE GUARDÓ TU PREDICCIÓN.")
-                    setTooltip(tooltip+1);
-                    setTimeout(() => {
-                        setTooltip(tooltip+2)
-                    }, 4000);
-                })
-            }else{
-                setToolText("PERDÓN, PERO NO ESTAS HABILITADO TODAVÍA.")
-                setTooltip(tooltip+1);
+    if (tOf === true) {
+        newPrediction(allMatches, userID, setToolText, setTooltip, tooltip, userInfo).then(async () => {
+            if (userInfo.habilitado === true) {
+                const q = query(collection(db, "Usuarios"), where("uid", "==", userID));
+                //VER
+                console.log("hola");
+
+                const querySnapshot = await getDocs(q);
+                let prediccion = [];
+                querySnapshot.forEach((doc) => {
+                    prediccion.push(doc.data());
+                });
+                setPrediccionActual(prediccion[0].prediccion);
+
                 setTimeout(() => {
-                    setTooltip(tooltip+2)
-                }, 4000);
-
+                    setPuntos(setPuntajesAct, setPuntajeTotal, setAllPuntajes, resultadosAct, setResultadosAct, setPrediccionActual, querySnapshot)
+                }, 500);
             }
-       
-    } else {
-        const q = query(collection(db, "Usuarios"), where("uid", "==", userID));
+        })
 
+    } else {
+
+        const q = query(collection(db, "Usuarios"), where("uid", "==", userID));
+        //VER
+        console.log("hola");
         const querySnapshot = await getDocs(q);
         let prediccion = [];
         querySnapshot.forEach((doc) => {
@@ -39,8 +38,16 @@ const getPredictionDB = async (userID, setPrediccionActual, prediccionActual, tO
         });
         setUserInfo(prediccion[0]);
         setPrediccionActual(prediccion[0].prediccion);
+
+        setTimeout(() => {
+            setPuntos(setPuntajesAct, setPuntajeTotal, setAllPuntajes, resultadosAct, setResultadosAct, setPrediccionActual, querySnapshot)
+        }, 500);
+
+
     }
-    
+
+
+
 }
 
 export default getPredictionDB;

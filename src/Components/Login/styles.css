@@ -3,8 +3,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 90%;
     height: auto;
     color: #fff;
     margin-top: 80px;
+}
+
+#loginContainer button{
+    margin-top: 10px;
+    margin-bottom: 70px;
 }

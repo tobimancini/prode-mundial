@@ -18,13 +18,14 @@ const ModalPrediccion = () => {
 
     const getUserPrediction = () => {
         let usuario = [];
+
         for (let i = 0; i < allPuntajes.length; i++) {
             const user = allPuntajes[i];
+            // console.log(user.uid);
             if (user.uid === usuarioElegido) {
                 usuario.push(user)
             }
         }
-        setUserPicked(usuario[0]);
         let partidosConPuntos = [];
         let prediccionTotalUser = Object.entries(usuario[0].prediccion);
         for (let i = 0; i < prediccionTotalUser.length; i++) {
@@ -32,18 +33,22 @@ const ModalPrediccion = () => {
             if (!partido[1].ptsTotal === false) {
                 partidosConPuntos.push(partido);
             }
-
+            
         }
         setPrediccionUser(partidosConPuntos)
+        setUserPicked(usuario[0]);
     }
 
     useEffect(() => {
-        getUserPrediction()
+        if (usuarioElegido !== ""){ 
+            getUserPrediction()
+        }
+
     }, [usuarioElegido])
 
     useEffect(() => {
         sortPrediccion(prediccionUser, setOrdenarPredic, true);
-    }, [prediccionActual, allPuntajes])
+    }, [prediccionActual, allPuntajes, userPicked])
 
 
     //getuserPrediction
@@ -51,7 +56,7 @@ const ModalPrediccion = () => {
     // el prediccionUser es la prediccion de ese usuario . un array con [0] el id, y con [1] la prediccion
 
     return (
-        <div className='bgModal'>
+        <div className={`bgModal ${modalPredic % 2 === 0 ? "inactive" : "active"}`}>
             {
                 !ordenarPredic.length ?
                     <div className='loaderContain'>
@@ -59,7 +64,7 @@ const ModalPrediccion = () => {
                     </div>
                     :
 
-                    <div className='modalPrediccion'>
+                    <div className={`modalPrediccion ${modalPredic % 2 === 0 ? "inactive" : "active"}`}>
                         {
                             userPicked != {} ?
                                 <h3>{userPicked.nombre ? userPicked.nombre.toUpperCase() : userPicked.nombre}: </h3>
@@ -68,8 +73,7 @@ const ModalPrediccion = () => {
 
                         }
                         {
-                            ordenarPredic.length !== 0 && allPuntajes.length > 0 && prediccionUser ?
-
+                            ordenarPredic.length ?
                                 ordenarPredic.map(partido => {
                                     return <div className='predPartido' key={partido[1][0]}>
                                         <div className='prediccionMiddle'>
@@ -85,9 +89,9 @@ const ModalPrediccion = () => {
 
                                 :
 
-                                null
+                                <p>No</p>
                         }
-                        <ImCross className='cerrarModal' onClick={() => setModalPredic(false)} />
+                        <ImCross className='cerrarModal' onClick={() => setModalPredic(modalPredic % 2 === 1 ? 2 : 1)} />
                     </div>
             }
         </div>

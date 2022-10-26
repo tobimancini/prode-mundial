@@ -3,6 +3,8 @@ import { db } from "../../Firebase/config";
 
 const getAllPuntajes = async(setAllPuntajes) => {
     const querySnapshot = await getDocs(collection(db, "Usuarios"));
+    //VER
+    console.log("hola");
     let usuarios = [];
     querySnapshot.forEach((doc) => {
         let usuario = doc.data();

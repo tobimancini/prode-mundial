@@ -3,6 +3,8 @@ import { db } from "../../Firebase/config";
 
 const habilitarUser = async (userId) => {
     const q = query(collection(db, "Usuarios"), where("uid", "==", userId));
+    //VER
+    console.log("hola");
     let usuarioRef = [];
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {

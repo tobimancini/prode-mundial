@@ -121,12 +121,15 @@ function App() {
     let resultados;
 
     const querySnapshot = await getDocs(collection(db, "Resultados"));
+    //VER
+    console.log("hola");
     querySnapshot.forEach((doc) => {
       resultados = doc.data();
     });
 
     let resArray = Object.entries(resultados)
     setResultadosAct(resArray);
+    console.log(resArray);
   }
 
   useEffect(() => {
@@ -134,10 +137,8 @@ function App() {
   }, [prediccionActual])
 
   const predict = () => {
-    getPredictionDB(userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "", setToolText, setTooltip, tooltip);
-    setTimeout(() => {
-      setPuntos(userLogged, setPuntajesAct, setPuntajeTotal, setAllPuntajes);  
-    }, 500);
+    getPredictionDB(userInfo, userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "", setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
+      setAllPuntajes, resultadosAct, setResultadosAct);
 
     let guardarBtn = document.getElementById('saveBtnSpan');
 
@@ -148,12 +149,12 @@ function App() {
       guardarBtn.classList.add('inactive');
       guardarBtn.classList.remove('active');
     }, 1800);
-    
+
     if (userLogged === "") {
       setToolText("Iniciá sesion para poder jugar.")
-      setTooltip(tooltip+1)
+      setTooltip(tooltip + 1)
       setTimeout(() => {
-        setTooltip(tooltip+2)
+        setTooltip(tooltip + 2)
       }, 2500);
     }
   }
@@ -180,26 +181,22 @@ function App() {
       if (user) {
         setUserLogged(user.uid);
         setUserID(user.uid);
-        getPredictionDB(user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo, setToolText, setTooltip, tooltip)
-        
-        
-        setToolText("Iniciaste sesión como "+user.email)
-        setTooltip(tooltip+1);
+        getPredictionDB(userInfo, user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
+          setAllPuntajes, resultadosAct, setResultadosAct)
+
+
+        setToolText("Iniciaste sesión como " + user.email)
+        setTooltip(tooltip + 1);
 
         setTimeout(() => {
-          setTooltip(tooltip+2)
+          setTooltip(tooltip + 2)
         }, 2500);
 
-        setTimeout(() => {
-          setPuntos(user.uid, setPuntajesAct, setPuntajeTotal, setAllPuntajes);
-        }, 500);
-
-
       } else {
-        setTooltip(tooltip+1);
+        setTooltip(tooltip + 1);
 
         setTimeout(() => {
-          setTooltip(tooltip+2)
+          setTooltip(tooltip + 2)
         }, 2500);
         setToolText("Necesitás iniciar sesión para poder jugar.")
       }
@@ -255,21 +252,21 @@ function App() {
                 </>
                 :
                 pageState === "prediccion" && allPuntajes.length ?
-                <Prediccion />
-                :
-                pageState === "admin" && allPuntajes.length ?
-                <Admin />
-                :
-                null
+                  <Prediccion />
+                  :
+                  pageState === "admin" && allPuntajes.length ?
+                    <Admin />
+                    :
 
+                    <div className="loaderContain">
+                      <FadeLoader className='loader' color={'#edebeb'} loading={true} size={5} aria-label="Loading Spinner" data-testid="loader" />
+                    </div>
 
       }
-      {
-        modalPredic === false ?
-          null :
-          <ModalPrediccion />
-      }
-      <Tooltip/>
+
+      <ModalPrediccion />
+
+      <Tooltip />
 
     </div>
   );
