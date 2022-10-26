@@ -10,6 +10,10 @@ const sortPrediccion = (prediccionActual, setSortedPredic, modal) => {
         }
     }
 
+    if (modal === "equipos") {
+        prediccionActual.sort((a, b) => a.puntajeActual > b.puntajeActual ? 1 : b.puntajeActual > a.puntajeActual ? -1 : 0);
+        setSortedPredic(prediccionArray);
+    }
     if (modal === true) {
         prediccionArray.sort((a, b) => (parseInt(a[1][1].partido) > parseInt(b[1][1].partido)) ? 1 : ((parseInt(b[1][1].partido) > parseInt(a[1][1].partido)) ? -1 : 0));
         setSortedPredic(prediccionArray);

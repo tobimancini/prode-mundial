@@ -52,9 +52,8 @@ const Prediccion = () => {
                     </div>
 
                     :
-                    <div className='loaderContain'>
-                        <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
-                    </div>
+
+                    null
             }
         </>
     )
