@@ -22,76 +22,72 @@ const setPuntos = async (setPuntajesAct, setPuntajeTotal, setAllPuntajes, result
         }
     }
 
-    let resultados = {};
-    let resArray;
+    let resultados = [];
+    let resArray = [];
 
-    if (resultadosAct.length === 0 ) {
+
+    if (resultadosAct.length === 0) {
         const querySnapshot = await getDocs(collection(db, "Resultados"));
-        //VER
-        console.log("hola 1");
         querySnapshot.forEach((doc) => {
-            resultados = doc.data();
+            resultados.push(doc.data());
         });
-        resArray = Object.entries(resultados);
+
+        for (let i = 0; i < resultados.length; i++) {
+            const partido = Object.entries(resultados[i]);
+            resArray.push(partido[0]);
+        }
         setResultadosAct(resArray);
     } else {
         resArray = resultadosAct;
-        // console.log("hola 2");
-        // console.log(resultadosAct);
     }
 
 
+    if (resArray.length !== 0) {
+        let prediccion;
+        let documentoId;
+
+        queryUser.forEach((doc) => {
+            prediccion = doc.data();
+            documentoId = doc.id;
+        });
+
+        const userRef = doc(db, 'Usuarios', documentoId);
+
+        let puntajesActualizados = [];
+        let puntajeActualTotal = 0;
 
 
+        for (let i = 0; i < resArray.length; i++) {
+            const idResultado = resArray[i][0];
+            const resultado = resArray[i][1];
+            const resUser = prediccion.prediccion[idResultado];
 
-    let prediccion;
-    let documentoId;
-    // const q = query(collection(db, "Usuarios"), where("uid", "==", uid));
-    // //VER
-    // console.log("hola");
+            let ptsPorGoles = goles(resultado.local, resUser.local) + goles(resultado.visitante, resUser.visitante);
+            let ptsPorGanador = ganador(resUser.ganador, resultado.ganador);
+            let ptsExacto = ptsPorGoles + ptsPorGanador === 5 ? 3 : 0;
 
-    // const queryUser = await getDocs(q);
-    queryUser.forEach((doc) => {
-        prediccion = doc.data();
-        documentoId = doc.id;
-    });
+            let puntajeFinal = ptsPorGanador + ptsPorGoles + ptsExacto;
 
-    const userRef = doc(db, 'Usuarios', documentoId);
+            puntajeActualTotal += puntajeFinal;
 
-    let puntajesActualizados = [];
-    let puntajeActualTotal = 0;
 
-    for (let i = 0; i < resArray.length; i++) {
-        const idResultado = resArray[i][0];
-        const resultado = resArray[i][1];
-        const resUser = prediccion.prediccion[idResultado];
+            await updateDoc(userRef, {
+                [`prediccion.${idResultado}.ptsGoles`]: ptsPorGoles,
+                [`prediccion.${idResultado}.ptsGanador`]: ptsPorGanador,
+                [`prediccion.${idResultado}.ptsExacto`]: ptsExacto,
+                [`prediccion.${idResultado}.ptsTotal`]: puntajeFinal,
+                "puntajeActual": puntajeActualTotal
 
-        let ptsPorGoles = goles(resultado.local, resUser.local) + goles(resultado.visitante, resUser.visitante);
-        let ptsPorGanador = ganador(resUser.ganador, resultado.ganador);
-        let ptsExacto = ptsPorGoles + ptsPorGanador === 5 ? 3 : 0;
+            })
 
-        let puntajeFinal = ptsPorGanador + ptsPorGoles + ptsExacto;
+            puntajesActualizados.push({
+                [idResultado]: puntajeFinal
+            })
+        }
+        setPuntajesAct(puntajesActualizados);
+        setPuntajeTotal(puntajeActualTotal);
 
-        puntajeActualTotal += puntajeFinal;
-
-        
-        await updateDoc(userRef, {
-            [`prediccion.${idResultado}.ptsGoles`]: ptsPorGoles,
-            [`prediccion.${idResultado}.ptsGanador`]: ptsPorGanador,
-            [`prediccion.${idResultado}.ptsExacto`]: ptsExacto,
-            [`prediccion.${idResultado}.ptsTotal`]: puntajeFinal,
-            "puntajeActual": puntajeActualTotal
-            
-        })
-        
-        puntajesActualizados.push({
-            [idResultado]: puntajeFinal
-        })
     }
-    
-    setPuntajesAct(puntajesActualizados);
-    setPuntajeTotal(puntajeActualTotal);
-
     await getAllPuntajes(setAllPuntajes)
 }
 

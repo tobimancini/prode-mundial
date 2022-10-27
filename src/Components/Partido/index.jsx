@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Prode } from '../../Context/prodeData';
 import './styles.css';
+import { BsQuestionCircleFill } from 'react-icons/bs';
+
+
 
 const Partido = (props) => {
 
@@ -76,7 +79,7 @@ const Partido = (props) => {
 
     useEffect(() => {
         actualizarPuntaje();
-    }, [puntajesAct, prediccionActual])
+    }, [puntajesAct, prediccionActual, resultadosAct])
 
     useEffect(() => {
         partidoJugado();
@@ -96,7 +99,12 @@ const Partido = (props) => {
             </div>
             <div className='match'>
                 <div className='teamContain'>
-                    <img src={process.env.PUBLIC_URL + banderas[local]} alt={local} className="flag" />
+                    {
+                        banderas[local] === undefined ?
+                            <BsQuestionCircleFill className='flag'/>
+                            :
+                            <img src={process.env.PUBLIC_URL + banderas[local]} alt={local} className="flag" />
+                    }
                     <div className='matchTeam'>{local}</div>
                 </div>
                 {
@@ -124,7 +132,12 @@ const Partido = (props) => {
                         <p className='resultadoGoles'>{!resultadoFinal.visitante ? "-" : resultadoFinal.visitante}</p>
                 }
                 <div className='teamContain'>
-                    <img src={process.env.PUBLIC_URL + banderas[visitante]} alt={visitante} className="flag" />
+                {
+                        banderas[local] === undefined ?
+                            <BsQuestionCircleFill className='flag'/>
+                            :
+                            <img src={process.env.PUBLIC_URL + banderas[visitante]} alt={visitante} className="flag" />
+                    }
                     <div className='matchTeam'>{visitante}</div>
                 </div>
             </div>
@@ -134,21 +147,19 @@ const Partido = (props) => {
                         <p className='prediccionPartido'>No hiciste una predicción todavía.</p>
                         :
                         prediccionPartido.local != "" ?
-                            // <div className='prediccionPartido'>
                             <p className='prediccionPartido'>Predicción: {local} {prediccionPartido.local} vs {prediccionPartido.visitante} {visitante} </p>
                             // </div> 
                             :
                             <p className='prediccionPartido'>No hiciste una predicción todavía.</p>
                 }
-                {/* <div className='puntosCont'> */}
-                    
-                    {
-                        resultadoFinal !== "" && prediccionPartido && puntajePartido !== "" ?
-                            <p className='puntaje'>{puntajePartido === 1 || puntajePartido === 3 || puntajePartido === 4 || puntajePartido === 8 ? puntajePartido : "-"}</p>
-                            :
-                            <p className='puntaje'>-</p>
-                    }
-                
+
+                {
+                    resultadoFinal !== "" && prediccionPartido && puntajePartido !== "" ?
+                        <p className='puntaje'>{puntajePartido === 1 || puntajePartido === 3 || puntajePartido === 4 || puntajePartido === 8 ? puntajePartido : "0"} pts</p>
+                        :
+                        <p className='puntaje'></p>
+                }
+
 
             </div>
 

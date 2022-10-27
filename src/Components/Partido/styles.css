@@ -58,6 +58,7 @@
 
 .flag {
     height: 50px;
+    font-size: 45px;
     margin: 0px 30px;
 }
 
@@ -121,18 +122,23 @@
 }
 
 .puntaje {
-    background-color: #000;
+    /* background-color: #000; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 7px;
     height: 15px;
-    width: 15px;
-    border-radius: 100%;
-    font-size: 15px;
-    font-weight: 600;
+    width: 50px;
+    /* border-radius: 3px; */
+    font-size: 20px;
+    font-weight: 800;
     display: flex;
-    color: #C19E54;
+    color: #000;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: solid 1px #C19E54;
+    /* border: solid 2px #C19E54; */
     margin-right: 15px;
+    -webkit-text-stroke: 1px #C19E54;
+
 }

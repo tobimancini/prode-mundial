@@ -8,7 +8,12 @@
 }
 
 .adminCont h2{
-    margin: 40px 0px;
+    margin: 40px 0px 0px 0px;
+    color: #fff;
+}
+
+.adminCont h3{
+    margin: 40px 0 20px 0;
     color: #fff;
 }
 
@@ -22,6 +27,7 @@
     align-items: center;
     margin: 0px !important;
     padding: 0px!important;
+    margin-top: 15px !important;
 }
 
 .itemHabil{
@@ -98,4 +104,96 @@
 
 .btnHabilitar.no{
     background-color: rgb(199, 15, 15);
+}
+
+.inputProde{
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+    width: calc(85% - 10px);
+    padding-left: 15px;
+    color: black !important;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    appearance: none;
+    border: none;
+    border-radius: 3px;
+}
+
+#locales, #visitantes{
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+    width: calc(85% - 10px);
+    padding-left: 15px;
+    color: black;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    appearance: none;
+    border: none;
+    border-radius: 3px;
+}
+
+.golesLocal, .golesVisitante{
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 3px;
+    width: 16px;
+    padding: 5px 10px;
+    /* padding-left: 15px; */
+    color: black;
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 3px;
+}
+
+.listaResultados{
+    /* color: #fff; */
+    width: 100%;
+}
+
+
+.textoResultado{
+    padding: 0px 15px !important;
+    font-size: 12px;
+    width: 37.5%;
+    display: flex;
+    font-weight: 600;
+    flex-direction: row;
+}
+
+.l{
+    justify-content: flex-start;
+
+}
+
+.v{
+    justify-content: flex-end;
+}
+
+.selectsResul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.selectsResul p{
+    margin: 0 5px;
+}
+
+.invisible{
+    visibility: hidden;
+    width: 0px;
 }

@@ -1,10 +1,9 @@
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
+import getAllPuntajes from "./getAllPuntajes";
 
-const habilitarUser = async (userId) => {
+const habilitarUser = async (userId, setAllPuntajes) => {
     const q = query(collection(db, "Usuarios"), where("uid", "==", userId));
-    //VER
-    console.log("hola");
     let usuarioRef = [];
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -24,6 +23,8 @@ const habilitarUser = async (userId) => {
             "habilitado": true
         })
     }
+
+    getAllPuntajes(setAllPuntajes);
 }
 
 export default habilitarUser;

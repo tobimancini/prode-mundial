@@ -5,13 +5,13 @@ import setPuntos from "./setPuntos";
 const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccionActual, tOf, newPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct,
     setPuntajeTotal, setAllPuntajes, resultadosAct, setResultadosAct) => {
 
-
+if (userID !== "") {
     if (tOf === true) {
         newPrediction(allMatches, userID, setToolText, setTooltip, tooltip, userInfo).then(async () => {
             if (userInfo.habilitado === true) {
                 const q = query(collection(db, "Usuarios"), where("uid", "==", userID));
                 //VER
-                console.log("hola");
+                console.log("knkknkn");
 
                 const querySnapshot = await getDocs(q);
                 let prediccion = [];
@@ -29,8 +29,6 @@ const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccion
     } else {
 
         const q = query(collection(db, "Usuarios"), where("uid", "==", userID));
-        //VER
-        console.log("hola");
         const querySnapshot = await getDocs(q);
         let prediccion = [];
         querySnapshot.forEach((doc) => {
@@ -39,12 +37,14 @@ const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccion
         setUserInfo(prediccion[0]);
         setPrediccionActual(prediccion[0].prediccion);
 
+
         setTimeout(() => {
             setPuntos(setPuntajesAct, setPuntajeTotal, setAllPuntajes, resultadosAct, setResultadosAct, setPrediccionActual, querySnapshot)
         }, 500);
 
 
     }
+}
 
 
 

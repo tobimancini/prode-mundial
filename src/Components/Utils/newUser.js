@@ -39,8 +39,9 @@ const newUser = async (dni, nombre, email, user, apellido, sexo, equipo) => {
         authProvider: "local",
         "habilitado": false,
         "apellido": apellido,
-        "sexo": sexo, 
-        "equipo": equipo
+        "sexo": sexo,
+        "equipo": equipo,
+        "puntajeActual": 0
     }
 
     allMatches();

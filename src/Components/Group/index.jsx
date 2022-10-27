@@ -9,7 +9,7 @@ const Group = (props) => {
     const partidosPorGrupo = props.partidos;
     const fases = props.fases;
 
-    const { defaultFase, setDefaultFase } = useContext(Prode);
+    const { defaultFase, setDefaultFase, userInfo, donePredictions, setDonePredictions, now, setFaseElegida } = useContext(Prode);
 
 
     const createGroup = () => {
@@ -23,19 +23,47 @@ const Group = (props) => {
         setDefaultFase(variableDef);
     }
 
+    const prediccionesHechas = () => {
+        if (defaultFase.length && userInfo.nombre !== undefined) {
+            let cantidad = 0;
+            // let cantidadJugados = 0;
+            for (let i = 0; i < defaultFase.length; i++) {
+                const partido = defaultFase[i];
+                if (userInfo.prediccion[partido[0]].local !== "") {
+                    cantidad = cantidad + 1;
+                }
 
-    
+                //vver tema cambiar de fase cuando se jugaron los aprtidos 
+                // let fecha = partido[1].fecha;
+
+                // if (now.getMonth() + 1 > fecha.mes || (now.getMonth() + 1 == fecha.mes && now.getDate() > fecha.dia) ||
+                //     (now.getMonth() + 1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() > fecha.hora) ||
+                //     (now.getMonth() + 1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() == fecha.hora && now.getMinutes() >= fecha.minutos)) {
+                //         cantidadJugados += 1;
+                // }
+
+                // if (cantidadJugados/defaultFase.length === 1) {
+                //     setFaseElegida()
+                // }
+            }
+            setDonePredictions(`Predicciones hechas en ${group.toUpperCase()} : ${cantidad}/${defaultFase.length}`)
+
+        }
+    }
+
+
     useEffect(() => {
-      createGroup();
-    }, [group])
-    
+        createGroup();
+        prediccionesHechas();
+    }, [group, defaultFase, userInfo])
+
 
 
 
     return (
         <div className='zonaContainer'>
             {/* <h2 className='groupName'>{group}</h2> */}
-            
+
             {
                 defaultFase.map(match => {
                     return <Partido key={match[0]} partido={match[1]} idPartido={match[0]} />

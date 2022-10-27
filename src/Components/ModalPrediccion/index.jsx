@@ -77,10 +77,6 @@ const ModalPrediccion = () => {
         }
     }, [prediccionActual, allPuntajes, userPicked, teamUsers])
 
-    useEffect(()=>{
-        console.log(ordenarUsers);
-        console.log(teamUsers);
-    }, [ordenarUsers, teamUsers])
 
 
     //getuserPrediction
@@ -101,7 +97,7 @@ const ModalPrediccion = () => {
                         <div className={`modalPrediccion ${modalPredic % 2 === 0 ? "inactive" : "active"}`}>
                             {
                                 userPicked != {} ?
-                                    <h3>{userPicked.nombre ? userPicked.nombre.toUpperCase() : userPicked.nombre}: </h3>
+                                    <h3>PREDICCIÓN DE {userPicked.nombre ? userPicked.nombre.toUpperCase() : userPicked.nombre}: </h3>
                                     :
                                     null
 
@@ -137,7 +133,7 @@ const ModalPrediccion = () => {
                         <div className={`modalPrediccion ${modalPredic % 2 === 0 ? "inactive" : "active"}`}>
                             {
                                 teamUsers.length > 0 ?
-                                    <h3>{equipoElegido.toUpperCase()}: </h3>
+                                    <h3>USUARIOS DE {equipoElegido.toUpperCase()}: </h3>
                                     :
                                     null
 

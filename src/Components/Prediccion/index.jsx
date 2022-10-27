@@ -52,8 +52,9 @@ const Prediccion = () => {
                     </div>
 
                     :
-
-                    null
+                    <div className='prediccionCont'>
+                        <h3>No hiciste una predicción todavía.</h3>
+                    </div>
             }
         </>
     )

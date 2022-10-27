@@ -12,6 +12,11 @@
     width: 100%;
 }
 
+.prediccionCont h3{
+    color: #fff;
+    margin: 100px 0px;
+}
+
 .prediccionLine{
     width: 50% !important;
 }

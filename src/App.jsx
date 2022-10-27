@@ -22,7 +22,8 @@ import Admin from "./Components/Admin";
 function App() {
 
   const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida, setToolText,
-    setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip } = useContext(Prode);
+    setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip,
+    allMatches, setAllMatches, donePredictions } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -36,7 +37,6 @@ function App() {
   const [terycuarFinal, setTerycuarFinal] = useState([]);
   const [finalisima, setFinalisima] = useState([]);
 
-  const [allMatches, setAllMatches] = useState([]);
 
   const getData = async () => {
     const response = await fetch(process.env.PUBLIC_URL + "/fixture/partidos.json");
@@ -118,18 +118,21 @@ function App() {
   }, []);
 
   const obtenerResultados = async () => {
-    let resultados;
+    let resultados = [];
 
     const querySnapshot = await getDocs(collection(db, "Resultados"));
-    //VER
-    console.log("hola");
-    querySnapshot.forEach((doc) => {
-      resultados = doc.data();
-    });
 
-    let resArray = Object.entries(resultados)
+    querySnapshot.forEach((doc) => {
+      resultados.push(doc.data());
+    });
+    let resArray = [];
+
+    for (let i = 0; i < resultados.length; i++) {
+      const partido = Object.entries(resultados[i]);
+      resArray.push(partido[0]);
+    }
     setResultadosAct(resArray);
-    console.log(resArray);
+    // console.log(resArray);
   }
 
   useEffect(() => {
@@ -184,7 +187,6 @@ function App() {
         getPredictionDB(userInfo, user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
           setAllPuntajes, resultadosAct, setResultadosAct)
 
-
         setToolText("Iniciaste sesión como " + user.email)
         setTooltip(tooltip + 1);
 
@@ -204,6 +206,7 @@ function App() {
   }, []);
 
 
+
   return (
     <div className="App" >
       <Navbar />
@@ -221,6 +224,7 @@ function App() {
             pageState === "partidos" ?
               <>
                 <h2 className="partidosTitulo">PARTIDOS</h2>
+                <p className="donePredictions">{donePredictions}</p>
                 <div className="selYBtn">
                   <select name="fase" id="faseElegida" onChange={() => filtrarFase()}>
                     {

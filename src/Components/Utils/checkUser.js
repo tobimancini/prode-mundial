@@ -3,8 +3,6 @@ import { db } from "../../Firebase/config";
 
 const checkUser = async (email, nombre, contrseña, createFunction) => {
     const q = query(collection(db, "Usuarios"), where("email", "==", email));
-    //VER
-    console.log("hola");
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.docs.length > 0) {

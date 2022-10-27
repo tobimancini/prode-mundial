@@ -19,6 +19,14 @@
   margin: 40px 0px;
 }
 
+.donePredictions{
+  color: #fff;
+  font-size: 12px;
+  align-self: flex-start;
+  margin-left: 5%;
+  font-weight: 600;
+}
+
 .selYBtn{
   align-self: flex-end;
   display: flex;
