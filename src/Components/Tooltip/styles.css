@@ -5,12 +5,12 @@
     min-width: 70px;
     max-width: 85%;
     padding: 0px 10px;
-    background-color: #C19E54;
+    background-color: #ffffff;
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px;
-    border-top: solid 1px rgb(119, 119, 119);
-    border-bottom: solid 1px rgb(119, 119, 119);
-    border-left: solid 1px rgb(119, 119, 119);
+    border-top: solid 2px rgb(0, 0, 0);
+    border-bottom: solid 2px rgb(0, 0, 0);
+    border-left: solid 2px rgb(0, 0, 0);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -22,9 +22,9 @@
 }
 
 .tooltip p{
-    color: #fff;
+    color: #000;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .tooltip.active{

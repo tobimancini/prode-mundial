@@ -107,7 +107,7 @@
 }
 
 .inputProde{
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-size: 14px;
     padding: 7px 10px;
     margin-bottom: 7px;
@@ -125,7 +125,7 @@
 }
 
 #locales, #visitantes{
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-size: 14px;
     padding: 7px 10px;
     margin-bottom: 7px;

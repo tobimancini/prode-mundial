@@ -1,5 +1,5 @@
 .matchContainer {
-    align-self: flex-end;
+    align-self: center;
     width: 95%;
     display: flex;
     flex-direction: column;
@@ -7,8 +7,6 @@
     align-items: center;
     background-color: rgb(237, 235, 235);
     margin-bottom: 7px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
     font-weight: 600;
     animation-name: enterBox;
     animation-duration: 0.4s;
@@ -31,6 +29,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    color: rgb(107, 107, 107);
 }
 
 .matchNum p {
@@ -117,7 +116,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: 12px;
     padding-left: 15px;
 }
 
@@ -126,9 +125,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 7px;
+    padding: 5px;
     height: 15px;
-    width: 50px;
+    width: 55px;
     /* border-radius: 3px; */
     font-size: 20px;
     font-weight: 800;
@@ -137,8 +136,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* border: solid 2px #C19E54; */
+    /* border: solid 2px #ae946d; */
     margin-right: 15px;
-    -webkit-text-stroke: 1px #C19E54;
+    /* -webkit-text-stroke: 1px #ae946d; */
 
 }

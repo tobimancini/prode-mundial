@@ -22,12 +22,12 @@
 .modalPrediccion {
     z-index: 1000;
     position: relative;
-    background-color: #edebeb;
+    background-color: #ae946d;
     min-height: 0%;
     max-height: 60%;
-    width: calc(100% - 65px);
+    width: calc(100%);
     border-radius: 3px;
-    border: solid 2px #c19e54;
+    border: solid 2px #fff;
     padding: 10px;
     padding-bottom: 35px;
     padding-top: 5px;
@@ -47,6 +47,7 @@
 
 .modalPrediccion h3{
     font-size: 22px;
+    color: #fff;
 }
 
 .modalPrediccion .predPartido {
@@ -57,7 +58,7 @@
     align-items: center;
     width: 100%;
     font-size: 14px;
-    background-color: #000000;
+    background-color: #fff;
     /* border-top-left-radius: 3px; */
     /* border-bottom-left-radius: 3px; */
     border-radius: 3px;
@@ -68,13 +69,14 @@
     animation-duration: 0.4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    color: #fff;
+    color: #000;
 }
 
 .cerrarModal{
     position: absolute;
     top: 2px;
     right: 2px;
+    color: #fff;
 }
 
 

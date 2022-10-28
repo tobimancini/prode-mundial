@@ -64,11 +64,11 @@
 }
 
 .navItem.active{
-    color: #C19E54;
+    color: #ae946d;
 }
 
 .navItem.active path{
-    stroke: #C19E54 !important; 
+    stroke: #ae946d !important; 
 }
 
 @keyframes enterTitle {

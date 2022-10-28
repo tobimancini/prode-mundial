@@ -10,7 +10,7 @@ import FadeLoader from "react-spinners/FadeLoader";
 const ModalPrediccion = () => {
 
     const { allPuntajes, setModalPredic, modalPredic, usuarioElegido, userLogged, prediccionActual, banderas, database, setUsuarioElegido, setEquipoElegido,
-        equipoElegido, tipoIdElegido, equiposUser } = useContext(Prode);
+        equipoElegido, tipoIdElegido, equiposUser, pageState } = useContext(Prode);
 
     const [prediccionUser, setPrediccionUser] = useState([]);
     const [ordenarPredic, setOrdenarPredic] = useState([]);
@@ -29,7 +29,6 @@ const ModalPrediccion = () => {
 
         for (let i = 0; i < allPuntajes.length; i++) {
             const user = allPuntajes[i];
-            // console.log(user.uid);
             if (user.uid === usuarioElegido) {
                 usuario.push(user)
             }
@@ -75,7 +74,8 @@ const ModalPrediccion = () => {
         if (equipoElegido !== "" && tipoIdElegido === "equipo") {
             sortPrediccion(teamUsers, setOrdenarUsers, "equipo");
         }
-    }, [prediccionActual, allPuntajes, userPicked, teamUsers])
+        console.log(prediccionUser);
+    }, [prediccionActual, allPuntajes, userPicked, teamUsers, usuarioElegido, tipoIdElegido, pageState])
 
 
 
@@ -97,7 +97,7 @@ const ModalPrediccion = () => {
                         <div className={`modalPrediccion ${modalPredic % 2 === 0 ? "inactive" : "active"}`}>
                             {
                                 userPicked != {} ?
-                                    <h3>PREDICCIÓN DE {userPicked.nombre ? userPicked.nombre.toUpperCase() : userPicked.nombre}: </h3>
+                                    <h3>PREDICCIÓN DE {userPicked.nombre ? `${userPicked.nombre.toUpperCase()} ${userPicked.apellido.toUpperCase()}` : null } </h3>
                                     :
                                     null
 
@@ -143,8 +143,8 @@ const ModalPrediccion = () => {
                                     teamUsers.map(user => {
                                         return <div className='predPartido' key={user.uid}>
                                             <div className='prediccionMiddle'>
-                                                {/* <img src={process.env.PUBLIC_URL + banderas[database[partido[1][0]].local]} alt={database[partido[1][0]].local} /> */}
-                                                <p className='predicData'>{user.nombre.toUpperCase()}</p>
+                                                <img src={process.env.PUBLIC_URL + banderas[user.equipo]}  />
+                                                <p className='predicData'>{user.nombre.toUpperCase()} {user.apellido.toUpperCase()} </p>
                                                 {/* <img src={process.env.PUBLIC_URL + banderas[database[partido[1][0]].visitante]} alt={database[partido[1][0]].visitante} /> */}
                                             </div>
                                             <p className='puntos'>{user.puntajeActual} pts</p>

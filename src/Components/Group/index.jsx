@@ -46,7 +46,7 @@ const Group = (props) => {
                 //     setFaseElegida()
                 // }
             }
-            setDonePredictions(`Predicciones hechas en ${group.toUpperCase()} : ${cantidad}/${defaultFase.length}`)
+            setDonePredictions(`Predicciones realizadas en ${group.toUpperCase()} : ${cantidad}/${defaultFase.length}`)
 
         }
     }
@@ -62,7 +62,6 @@ const Group = (props) => {
 
     return (
         <div className='zonaContainer'>
-            {/* <h2 className='groupName'>{group}</h2> */}
 
             {
                 defaultFase.map(match => {

@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase/config";
 
-const iniciarSesion = async (setTooltip, tooltip, setToolText) => {
+const iniciarSesion = async (setTooltip, tooltip, setToolText, tof) => {
     const userCreate = document.querySelector('#loginContainer');
     userCreate.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -12,16 +12,19 @@ const iniciarSesion = async (setTooltip, tooltip, setToolText) => {
                 const res = await signInWithEmailAndPassword(auth, email, contraseña);
                 const user = res.user;
                 userCreate.reset();
+                setToolText('INICIASTE SESIÓN COMO '+email)
                 setTooltip(tooltip + 1)
                 setTimeout(() => {
                     setTooltip(tooltip + 2)
                 }, 2500);
             } catch (err) {
-                setToolText('LOS DATOS DEL USUARIO Y/O LA CONTRASEÑA INGRESADA SON INCORRECTOS.')
-                setTooltip(tooltip+1);
-                setTimeout(() => {
-                    setTooltip(tooltip+2)
-                }, 4000);
+                if (tof === false) {
+                    // setToolText('LOS DATOS DEL USUARIO Y/O LA CONTRASEÑA INGRESADA SON INCORRECTOS.')
+                    // setTooltip(tooltip+1);
+                    // setTimeout(() => {
+                    //     setTooltip(tooltip+2)
+                    // }, 4000);
+                }
             }
         };
 

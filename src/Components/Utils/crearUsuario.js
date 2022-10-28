@@ -3,7 +3,7 @@ import { auth } from "../../Firebase/config";
 import checkUser from "./checkUser";
 import newUser from "./newUser";
 
-const crearUsuario = async () => {
+const crearUsuario = async (setToolText, setTooltip, tooltip) => {
     const userCreate = document.querySelector('#loginContainer');
     userCreate.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -27,7 +27,7 @@ const crearUsuario = async () => {
             }
         };
 
-        checkUser(email, nombre, contraseña, registerWithEmailAndPassword, apellido, sexo, equipo);
+        checkUser(email, nombre, contraseña, registerWithEmailAndPassword, setToolText, setTooltip, tooltip );
 
     })
 }

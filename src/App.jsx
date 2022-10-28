@@ -187,7 +187,7 @@ function App() {
         getPredictionDB(userInfo, user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
           setAllPuntajes, resultadosAct, setResultadosAct)
 
-        setToolText("Iniciaste sesión como " + user.email)
+        setToolText("INICIASTE SESIÓN COMO " + user.email)
         setTooltip(tooltip + 1);
 
         setTimeout(() => {
@@ -200,7 +200,7 @@ function App() {
         setTimeout(() => {
           setTooltip(tooltip + 2)
         }, 2500);
-        setToolText("Necesitás iniciar sesión para poder jugar.")
+        setToolText("INICIÁ SESIÓN ANTES DE JUGAR.")
       }
     })
   }, []);
@@ -243,7 +243,7 @@ function App() {
                 }
 
                 <div className="guardarCambios" onClick={() => predict()}>
-                  <p>GUARDAR PREDICCIÓN</p>
+                  <p>Guardar predicción</p>
                   <div>
                     <span id="saveBtnSpan"></span>
                   </div>

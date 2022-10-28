@@ -15,28 +15,18 @@
 .tablaPosicionesCont{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     color: #000;
     /* border: solid 2px #fff; */
     width: 100%;
     border-radius: 3px;
-    height: 200px auto;
+    height: 500px;
+    overflow-y: scroll;
+    padding: 15px 0px;
 }
 
-/* .tablaTitulos{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-    border-bottom: solid 1px;
-    padding: 10px 0px; 
-    font-weight: 600;
-} */
 
-/* .tablaTitulos div{
-    width: 100%;
-} */
 
 .tablaUser{
     display: flex;
@@ -78,7 +68,7 @@
 }
 
 .tablaPuntos{
-    color: #C19E54;
+    color: #ae946d;
 }
 
 .puntosTabla{
@@ -86,7 +76,7 @@
 }
 
 .primero{
-    color: #C19E54;
+    color: #ae946d;
     font-weight: 600;
 }
 
@@ -136,4 +126,48 @@
     font-size: 18px;
     left: 7px;
     /* transform: rotate(-20deg); */
+}
+
+.plus{
+    font-size: 20px;
+    font-weight: 600 !important;
+}
+
+.tablaOpciones{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 15px;
+    width: 91%;
+}
+
+.tablaOpciones h3{
+    width: 100%;
+    background-color: #ae946d;
+    height: auto;
+    border: solid 1px #fff;
+    padding: 5px;
+    margin: 3px !important;
+}
+
+.tablaOpciones h3.active{
+    background-color: #000;
+}
+
+.tablaOpciones.buscador{
+    width: 90%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tablaOpciones .inputProde{
+    width: 80%;
+    margin: 0px 10px 0px 0;
+}
+
+.lupita{
+    color: #fff;
+    font-size: 22px;
 }

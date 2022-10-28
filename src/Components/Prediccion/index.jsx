@@ -14,7 +14,10 @@ const Prediccion = () => {
     useEffect(() => {
         sortPrediccion(prediccionActual, setSortedPredic, false)
         getMatchScore(allPuntajes, userLogged, setPrediccionUsuario);
+        // console.log(userInfo);
     }, [prediccionActual, allPuntajes])
+
+    const [puntajeTotal, setPuntajeTotal] = useState(0);
 
 
     return (
@@ -27,7 +30,7 @@ const Prediccion = () => {
                         <h2 className='prediccionTitulo'>MI PREDICCIÓN</h2>
 
                         {sortedPredic.map(partido => {
-
+                            // console.log(partido);
                             return <div className='predPartido' key={partido[1].partido}>
 
                                 <div className='prediccionMiddle'>
@@ -49,11 +52,13 @@ const Prediccion = () => {
                             </div>
                         })
                         }
+
+                        <p className="puntajeTotal" >TOTAL : {userInfo.puntajeActual} pts</p>
                     </div>
 
                     :
                     <div className='prediccionCont'>
-                        <h3>No hiciste una predicción todavía.</h3>
+                        <h3>NO HAY UNA PREDICCIÓN REALIZADA.</h3>
                     </div>
             }
         </>
