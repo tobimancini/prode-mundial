@@ -81,6 +81,7 @@ option {
 }
 
 .selYBtn {
+  position: relative;
   align-self: center;
   display: flex;
   flex-direction: row;
@@ -105,6 +106,16 @@ option {
   color: rgb(255, 255, 255) !important;
 }
 
+.flecha{
+  position: absolute;
+  top: 30%;
+  right: 25px;
+  height: 8px;
+  width: 8px;
+  border-left: solid 3px #fff;
+  transform: rotate(-45deg);
+  border-bottom: solid 3px #fff;
+}
 
 /*AGREGAR ANIMACION*/
 .guardarCambios {

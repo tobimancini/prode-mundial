@@ -175,7 +175,7 @@ function App() {
     setNow(new Date());
     setInterval(() => {
       setNow(new Date());
-    }, 30000);
+    }, 5000);
   }, []);
 
 
@@ -186,13 +186,6 @@ function App() {
         setUserID(user.uid);
         getPredictionDB(userInfo, user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
           setAllPuntajes, resultadosAct, setResultadosAct)
-
-        setToolText("INICIASTE SESIÓN COMO " + user.email)
-        setTooltip(tooltip + 1);
-
-        setTimeout(() => {
-          setTooltip(tooltip + 2)
-        }, 2500);
 
       } else {
         setTooltip(tooltip + 1);
@@ -233,7 +226,7 @@ function App() {
                       })
                     }
                   </select>
-
+                  <div className="flecha"></div>
                 </div>
                 {
                   database.partido1 != undefined ?

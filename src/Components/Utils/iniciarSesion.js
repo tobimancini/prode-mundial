@@ -12,7 +12,7 @@ const iniciarSesion = async (setTooltip, tooltip, setToolText, tof) => {
                 const res = await signInWithEmailAndPassword(auth, email, contraseña);
                 const user = res.user;
                 userCreate.reset();
-                setToolText('INICIASTE SESIÓN COMO '+email)
+                setToolText('INICIASTE SESIÓN COMO '+email);
                 setTooltip(tooltip + 1)
                 setTimeout(() => {
                     setTooltip(tooltip + 2)

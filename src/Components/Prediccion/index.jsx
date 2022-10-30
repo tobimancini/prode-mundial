@@ -17,7 +17,6 @@ const Prediccion = () => {
         // console.log(userInfo);
     }, [prediccionActual, allPuntajes])
 
-    const [puntajeTotal, setPuntajeTotal] = useState(0);
 
 
     return (
@@ -28,7 +27,7 @@ const Prediccion = () => {
 
                     <div className='prediccionCont'>
                         <h2 className='prediccionTitulo'>MI PREDICCIÓN</h2>
-
+                        <div className='tablaCont'>
                         {sortedPredic.map(partido => {
                             // console.log(partido);
                             return <div className='predPartido' key={partido[1].partido}>
@@ -52,6 +51,7 @@ const Prediccion = () => {
                             </div>
                         })
                         }
+                        </div>
 
                         <p className="puntajeTotal" >TOTAL : {userInfo.puntajeActual} pts</p>
                     </div>

@@ -88,7 +88,7 @@ const Admin = () => {
         let ordenados = allPuntajes.sort(ordenarUsuarios)
         setUsuariosOrd(ordenados);
     }, [allPuntajes])
-    
+
 
 
     return (
@@ -103,37 +103,39 @@ const Admin = () => {
                         <h2>ADMINISTRACIÓN</h2>
                         <h3>HABILITAR USUARIOS</h3>
                         <input type="text" id="buscador" placeholder='Buscar' className='inputProde' onChange={() => buscadorHandle()} />
-                        <ul className='listaHabil'>
-                            {
-                                allPuntajes.map(usuario => {
-                                    if (nombreBuscado === "") {
-                                        if (usuario.habilitado === false || usuario.habilitado === true) {
-                                            return <ul key={usuario.uid} className="itemHabil">
-                                                <li className='subItemHabil'>{usuario.nombre.toUpperCase()}</li>
-                                                <li id={usuario.uid} className={`subItemHabil status ${usuario.habilitado === true ? "ok" : "no"}`}>
-                                                    {usuario.habilitado === true ? "OK" : "NO"}
-                                                </li>
-                                                <li className='subItemHabil btn' onClick={() => changeStatus(usuario.uid, usuario.habilitado)}>
-                                                    <div id={`${usuario.uid}btn`} className={`btnHabilitar ${usuario.habilitado === true ? "ok" : "no"}`}></div>
-                                                </li>
-                                            </ul>
+                        <div className='tablaCont'>
+                            <ul className='listaHabil'>
+                                {
+                                    allPuntajes.map(usuario => {
+                                        if (nombreBuscado === "") {
+                                            if (usuario.habilitado === false || usuario.habilitado === true) {
+                                                return <ul key={usuario.uid} className="itemHabil">
+                                                    <li className='subItemHabil'>{usuario.nombre.toUpperCase()}</li>
+                                                    <li id={usuario.uid} className={`subItemHabil status ${usuario.habilitado === true ? "ok" : "no"}`}>
+                                                        {usuario.habilitado === true ? "OK" : "NO"}
+                                                    </li>
+                                                    <li className='subItemHabil btn' onClick={() => changeStatus(usuario.uid, usuario.habilitado)}>
+                                                        <div id={`${usuario.uid}btn`} className={`btnHabilitar ${usuario.habilitado === true ? "ok" : "no"}`}></div>
+                                                    </li>
+                                                </ul>
+                                            }
+                                        } else if (usuario.nombre.toUpperCase().includes(nombreBuscado, 0)) {
+                                            if (usuario.habilitado === false || usuario.habilitado === true) {
+                                                return <ul key={usuario.uid} className="itemHabil">
+                                                    <li className='subItemHabil'>{usuario.nombre.toUpperCase()}</li>
+                                                    <li id={usuario.uid} className={`subItemHabil status ${usuario.habilitado === true ? "ok" : "no"}`}>
+                                                        {usuario.habilitado === true ? "OK" : "NO"}
+                                                    </li>
+                                                    <li className='subItemHabil btn' onClick={() => changeStatus(usuario.uid, usuario.habilitado)}>
+                                                        <div id={`${usuario.uid}btn`} className={`btnHabilitar ${usuario.habilitado === true ? "ok" : "no"}`}></div>
+                                                    </li>
+                                                </ul>
+                                            }
                                         }
-                                    } else if (usuario.nombre.toUpperCase().includes(nombreBuscado, 0)) {
-                                        if (usuario.habilitado === false || usuario.habilitado === true) {
-                                            return <ul key={usuario.uid} className="itemHabil">
-                                                <li className='subItemHabil'>{usuario.nombre.toUpperCase()}</li>
-                                                <li id={usuario.uid} className={`subItemHabil status ${usuario.habilitado === true ? "ok" : "no"}`}>
-                                                    {usuario.habilitado === true ? "OK" : "NO"}
-                                                </li>
-                                                <li className='subItemHabil btn' onClick={() => changeStatus(usuario.uid, usuario.habilitado)}>
-                                                    <div id={`${usuario.uid}btn`} className={`btnHabilitar ${usuario.habilitado === true ? "ok" : "no"}`}></div>
-                                                </li>
-                                            </ul>
-                                        }
-                                    }
-                                })
-                            }
-                        </ul>
+                                    })
+                                }
+                            </ul>
+                        </div>
                     </>
             }
             {
@@ -142,30 +144,32 @@ const Admin = () => {
                         <h3>EDITAR RESULTADOS</h3>
                         <input type="text" id="locales" placeholder='Equipo local' onChange={() => buscadorPartido()} />
                         <input type="text" id="visitantes" placeholder='Equipo visitante' onChange={() => buscadorPartido()} />
-                        <ul className='listaResultados'>
-                            {
-                                equipoLocal !== "" || equipoVisitante !== "" ?
-                                    allMatches.map(partido => {
-                                        if (partido[1].local.toUpperCase().includes(equipoLocal, 0) && partido[1].visitante.toUpperCase().includes(equipoVisitante, 0)) {
-                                            return <li key={partido[0]} className="predPartido">
-                                                <p className='invisible'>{partido[1].partido}</p>
-                                                <p className='textoResultado l'>{partido[1].local.toUpperCase()}</p>
-                                                <div className='selectsResul'>
-                                                    <input name="golesL" type="number" className="golesLocal" />
-                                                    <p>vs</p>
-                                                    <input name="golesV" type="number" className="golesVisitante"/>
-                                                </div>
-                                                <p className='textoResultado v'>{partido[1].visitante.toUpperCase()}</p>
-                                            </li>
-                                        }
-                                    })
-                                    :
-                                    null
-                            }
-                        </ul>
+                        <div className='tablaCont'>
+                            <ul className='listaResultados'>
+                                {
+                                    equipoLocal !== "" || equipoVisitante !== "" ?
+                                        allMatches.map(partido => {
+                                            if (partido[1].local.toUpperCase().includes(equipoLocal, 0) && partido[1].visitante.toUpperCase().includes(equipoVisitante, 0)) {
+                                                return <li key={partido[0]} className="predPartido">
+                                                    <p className='invisible'>{partido[1].partido}</p>
+                                                    <p className='textoResultado l'>{partido[1].local.toUpperCase()}</p>
+                                                    <div className='selectsResul'>
+                                                        <input name="golesL" type="number" className="golesLocal" />
+                                                        <p>vs</p>
+                                                        <input name="golesV" type="number" className="golesVisitante" />
+                                                    </div>
+                                                    <p className='textoResultado v'>{partido[1].visitante.toUpperCase()}</p>
+                                                </li>
+                                            }
+                                        })
+                                        :
+                                        null
+                                }
+                            </ul>
+                        </div>
                         {
                             equipoLocal !== "" || equipoVisitante !== "" ?
-                                <div className='btnFiltro' onClick={()=>enviarResultados()}>ENVIAR</div>
+                                <div className='btnFiltro' onClick={() => enviarResultados()}>ENVIAR</div>
                                 :
                                 null
                         }

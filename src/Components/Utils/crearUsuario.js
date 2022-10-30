@@ -12,22 +12,24 @@ const crearUsuario = async (setToolText, setTooltip, tooltip) => {
         const nombre = userCreate['userName'].value;
         const apellido = userCreate['userLastName'].value;
         const dni = userCreate['userDNI'].value;
+        const jaula = userCreate['userJaula'].value;
+
         const sexo = userCreate['userGender'].value;
         const equipo = userCreate['userTeam'].value;
-
 
         const registerWithEmailAndPassword = async (nombre, email, contraseña) => {
             try {
                 const res = await createUserWithEmailAndPassword(auth, email, contraseña);
                 const user = res.user;
-                newUser(dni, nombre, email, user, apellido, sexo, equipo);
+                console.log(user);
+                newUser(dni, nombre, email, user, apellido, sexo, equipo, jaula);
                 userCreate.reset();
             } catch (err) {
                 console.error(err);
             }
         };
 
-        checkUser(email, nombre, contraseña, registerWithEmailAndPassword, setToolText, setTooltip, tooltip );
+        checkUser(email, nombre, contraseña, registerWithEmailAndPassword, setToolText, setTooltip, tooltip);
 
     })
 }

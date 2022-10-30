@@ -42,7 +42,7 @@ const ModalPrediccion = () => {
             }
 
         }
-        setPrediccionUser(partidosConPuntos)
+        setPrediccionUser(partidosConPuntos.length ? partidosConPuntos : ["Todavía no ha obtenido puntos con su predicción"])
         setUserPicked(usuario[0]);
     }
 
@@ -64,8 +64,7 @@ const ModalPrediccion = () => {
         if (equipoElegido !== "" && tipoIdElegido === "equipo") {
             getTeamUsers();
         }
-
-    }, [usuarioElegido, equipoElegido])
+    }, [usuarioElegido, equipoElegido, modalPredic])
 
     useEffect(() => {
         if (usuarioElegido !== "" && tipoIdElegido === "usuario") {
@@ -74,8 +73,8 @@ const ModalPrediccion = () => {
         if (equipoElegido !== "" && tipoIdElegido === "equipo") {
             sortPrediccion(teamUsers, setOrdenarUsers, "equipo");
         }
-        console.log(prediccionUser);
-    }, [prediccionActual, allPuntajes, userPicked, teamUsers, usuarioElegido, tipoIdElegido, pageState])
+    }, [prediccionActual, allPuntajes, userPicked, teamUsers, usuarioElegido, tipoIdElegido, pageState, prediccionUser, modalPredic])
+    
 
 
 
@@ -103,7 +102,12 @@ const ModalPrediccion = () => {
 
                             }
                             {
-                                ordenarPredic.length ?
+                                ordenarPredic.length?
+                                    ordenarPredic[0] === "Todavía no ha obtenido puntos con su predicción"?
+                                    <div className='predPartido'>
+                                        <p className='predicData'>{ordenarPredic[0]}</p>
+                                    </div>
+                                    :
                                     ordenarPredic.map(partido => {
                                         return <div className='predPartido' key={partido[1][0]}>
                                             <div className='prediccionMiddle'>

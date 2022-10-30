@@ -19,8 +19,8 @@ const TablaPosiciones = () => {
     const seleccionarUsuario = (id, tipo) => {
         if (tipo === "usuario") {
             setEquipoElegido("")
-            setUsuarioElegido(id);
             setTipoIdElegido("usuario");
+            setUsuarioElegido(id);
             setModalPredic(modalPredic + 1);
         }
         if (tipo === "equipo") {
@@ -56,22 +56,25 @@ const TablaPosiciones = () => {
                     :
                     <>
                         <h2>TABLA POSICIONES</h2>
-                        <div className='tablaOpciones'>
-                            <h3 onClick={() => setTablaState("individual")} className={tablaState === "individual" ? "active" : null}>INDIVIDUAL</h3>
-                            <h3 onClick={() => setTablaState("equipos")} className={tablaState === "equipos" ? "active" : null}>EQUIPOS</h3>
-                        </div>
+                        {
+                            userInfo.jaula === true ?
+                                <div className='tablaOpciones'>
+                                    <h3 onClick={() => setTablaState("individual")} className={tablaState === "individual" ? "active" : null}>INDIVIDUAL</h3>
+                                    <h3 onClick={() => setTablaState("equipos")} className={tablaState === "equipos" ? "active" : null}>EQUIPOS</h3>
+                                </div>
+                                :
+                                null
+                        }
                         <div className='tablaOpciones buscador'>
-                            <input id='buscadorUsuario' type="text" className='inputProde' placeholder='Buscá a tus amigos o enemigos' onChange={()=>buscadorJugador()} />
+                            <input id='buscadorUsuario' type="text" className='inputProde' placeholder='Buscá a tus amigos o enemigos' onChange={() => buscadorJugador()} />
                             <FaSearch className='lupita' />
                         </div>
-                        <div className='tablaPosicionesCont'>
+                        <div className='tablaCont'>
                             {
                                 tablaState === "individual" ?
 
                                     allPuntajes.map(user => {
-                                        if (user.puntajeActual === 0) {
-                                            return null
-                                        } else if(user.nombre.toUpperCase().includes(usuarioBuscado, 0) || user.apellido.toUpperCase().includes(usuarioBuscado, 0) ){
+                                        if (user.nombre.toUpperCase().includes(usuarioBuscado, 0) || user.apellido.toUpperCase().includes(usuarioBuscado, 0)) {
                                             return <div key={user.uid} className={`tablaUser ${allPuntajes[0].uid === user.uid ? "primero" : "otros"}`}>
                                                 <p className='nombre' key={`nombre${user.uid}`}>{allPuntajes.indexOf(user) + 1}. {user.nombre.toUpperCase()} {user.apellido.toUpperCase()}</p>
                                                 <div className='puntajeTabla'>
@@ -92,9 +95,7 @@ const TablaPosiciones = () => {
                                     equiposUser.length > 0 ?
 
                                         equiposUser.map(equipo => {
-                                            if (equipo[0] === 0) {
-                                                return null
-                                            } else if(equipo[1].toUpperCase().includes(usuarioBuscado, 0)){
+                                            if (equipo[1].toUpperCase().includes(usuarioBuscado, 0)) {
                                                 return <div key={equipo[1]} className={`tablaUser ${equiposUser[0][1] === equipo[1] ? "primero" : "otros"}`}>
                                                     <p className='nombre' key={`nombre${equipo[1]}`}>{equiposUser.indexOf(equipo) + 1}. {equipo[1].toUpperCase()} </p>
                                                     <div className='puntajeTabla'>

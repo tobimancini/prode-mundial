@@ -14,6 +14,8 @@ const Navbar = () => {
   const changeState = (section) => {
     setPageState(section);
     setFaseElegida("Fase 1");
+    window.scroll(0, 0);
+
   }
 
   useEffect(() => {
@@ -71,7 +73,7 @@ const Navbar = () => {
       titPartidos.classList.add('inactive');
       titClasificacion.classList.remove('inactive');
       titPrediccion.classList.add('inactive');
-    } else if (pageState === "prediccion"){
+    } else if (pageState === "prediccion") {
       perfil.classList.remove('active');
       partidos.classList.remove('active');
       clasificacion.classList.remove('active');
@@ -86,7 +88,7 @@ const Navbar = () => {
       titPartidos.classList.add('inactive');
       titClasificacion.classList.add('inactive');
       titPrediccion.classList.remove('inactive');
-    } else{
+    } else {
       perfil.classList.remove('active');
       partidos.classList.remove('active');
       clasificacion.classList.remove('active');
@@ -125,12 +127,12 @@ const Navbar = () => {
 
         titAdmin.classList.remove('active');
         titAdmin.classList.add('inactive');
-      } else if (pageState === "prediccion"){
+      } else if (pageState === "prediccion") {
         admin.classList.remove('active');
 
         titAdmin.classList.remove('active');
         titAdmin.classList.add('inactive');
-      }else{
+      } else {
         admin.classList.add('active');
 
         titAdmin.classList.add('active');

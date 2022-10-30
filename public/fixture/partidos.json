@@ -37,7 +37,7 @@
     },
     "partido3": {
         "local": "Senegal",
-        "visitante": "Países Bajos",
+        "visitante": "Holanda",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -324,7 +324,7 @@
         "fase": "2"
     },
     "partido19": {
-        "local": "Países Bajos",
+        "local": "Holanda",
         "visitante": "Ecuador",
         "golesLocal": "",
         "golesVisitante": "",
@@ -576,7 +576,7 @@
         "fase": "2"
     },
     "partido33": {
-        "local": "Países Bajos",
+        "local": "Holanda",
         "visitante": "Qatar",
         "golesLocal": "",
         "golesVisitante": "",

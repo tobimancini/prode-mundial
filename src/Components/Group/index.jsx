@@ -1,3 +1,4 @@
+// import http from 'k6/http';
 import React, { useContext, useEffect, useState } from 'react'
 import { Prode } from '../../Context/prodeData';
 import Partido from '../Partido'
