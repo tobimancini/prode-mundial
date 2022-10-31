@@ -27,25 +27,11 @@ const Group = (props) => {
     const prediccionesHechas = () => {
         if (defaultFase.length && userInfo.nombre !== undefined) {
             let cantidad = 0;
-            // let cantidadJugados = 0;
             for (let i = 0; i < defaultFase.length; i++) {
                 const partido = defaultFase[i];
                 if (userInfo.prediccion[partido[0]].local !== "") {
                     cantidad = cantidad + 1;
                 }
-
-                //vver tema cambiar de fase cuando se jugaron los aprtidos 
-                // let fecha = partido[1].fecha;
-
-                // if (now.getMonth() + 1 > fecha.mes || (now.getMonth() + 1 == fecha.mes && now.getDate() > fecha.dia) ||
-                //     (now.getMonth() + 1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() > fecha.hora) ||
-                //     (now.getMonth() + 1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() == fecha.hora && now.getMinutes() >= fecha.minutos)) {
-                //         cantidadJugados += 1;
-                // }
-
-                // if (cantidadJugados/defaultFase.length === 1) {
-                //     setFaseElegida()
-                // }
             }
             setDonePredictions(`Predicciones realizadas en ${group.toUpperCase()} : ${cantidad}/${defaultFase.length}`)
 
@@ -62,7 +48,7 @@ const Group = (props) => {
 
 
     return (
-        <div className='zonaContainer'>
+        <div className='tablaCont'>
 
             {
                 defaultFase.map(match => {

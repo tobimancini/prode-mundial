@@ -17,13 +17,14 @@ import ModalPrediccion from "./Components/ModalPrediccion";
 import FadeLoader from "react-spinners/FadeLoader";
 import Tooltip from "./Components/Tooltip";
 import Admin from "./Components/Admin";
+import Home from "./Components/Home";
 
 
 function App() {
 
   const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida, setToolText,
     setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip,
-    allMatches, setAllMatches, donePredictions } = useContext(Prode);
+    allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -140,7 +141,7 @@ function App() {
   }, [prediccionActual])
 
   const predict = () => {
-    getPredictionDB(userInfo, userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, "", setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
+    getPredictionDB(userInfo, userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
       setAllPuntajes, resultadosAct, setResultadosAct);
 
     let guardarBtn = document.getElementById('saveBtnSpan');
@@ -186,6 +187,11 @@ function App() {
         setUserID(user.uid);
         getPredictionDB(userInfo, user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
           setAllPuntajes, resultadosAct, setResultadosAct)
+        setToolText('INICIASTE SESIÓN COMO ' + user.email);
+        setTooltip(tooltip + 1)
+        setTimeout(() => {
+          setTooltip(tooltip + 2)
+        }, 2500);
 
       } else {
         setTooltip(tooltip + 1);
@@ -211,53 +217,57 @@ function App() {
 
           :
 
-          pageState === "perfil" ?
-            <Login userID={setUserID} />
+          pageState === "inicio" ?
+            <Home />
             :
-            pageState === "partidos" ?
-              <>
-                <h2 className="partidosTitulo">PARTIDOS</h2>
-                <p className="donePredictions">{donePredictions}</p>
-                <div className="selYBtn">
-                  <select name="fase" id="faseElegida" onChange={() => filtrarFase()}>
-                    {
-                      fases.map(fase => {
-                        return <option key={fase} value={fase}>{fase}</option>
-                      })
-                    }
-                  </select>
-                  <div className="flecha"></div>
-                </div>
-                {
-                  database.partido1 != undefined ?
-                    <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
-                    :
-                    null
-                }
 
-                <div className="guardarCambios" onClick={() => predict()}>
-                  <p>Guardar predicción</p>
-                  <div>
-                    <span id="saveBtnSpan"></span>
-                  </div>
-                </div>
-              </>
+            pageState === "perfil" ?
+              <Login userID={setUserID} />
               :
-              pageState === "clasificacion" && allPuntajes.length ?
+              pageState === "partidos" ?
                 <>
-                  <TablaPosiciones />
+                  <h2 className="partidosTitulo">PARTIDOS</h2>
+                  <p className="donePredictions">{donePredictions}</p>
+                  <div className="selYBtn">
+                    <select name="fase" id="faseElegida" onChange={() => filtrarFase()}>
+                      {
+                        fases.map(fase => {
+                          return <option key={fase} value={fase}>{fase}</option>
+                        })
+                      }
+                    </select>
+                    <div className="flecha"></div>
+                  </div>
+                  {
+                    database.partido1 != undefined ?
+                      <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
+                      :
+                      null
+                  }
+
+                  <div className="guardarCambios" onClick={() => predict()}>
+                    <p>Guardar predicción</p>
+                    <div>
+                      <span id="saveBtnSpan"></span>
+                    </div>
+                  </div>
                 </>
                 :
-                pageState === "prediccion" && allPuntajes.length ?
-                  <Prediccion />
+                pageState === "clasificacion" && allPuntajes.length ?
+                  <>
+                    <TablaPosiciones />
+                  </>
                   :
-                  pageState === "admin" && allPuntajes.length ?
-                    <Admin />
+                  pageState === "prediccion" && allPuntajes.length ?
+                    <Prediccion />
                     :
+                    pageState === "admin" && allPuntajes.length ?
+                      <Admin />
+                      :
 
-                    <div className="loaderContain">
-                      <FadeLoader className='loader' color={'#edebeb'} loading={true} size={5} aria-label="Loading Spinner" data-testid="loader" />
-                    </div>
+                      <div className="loaderContain">
+                        <FadeLoader className='loader' color={'#edebeb'} loading={true} size={5} aria-label="Loading Spinner" data-testid="loader" />
+                      </div>
 
       }
 

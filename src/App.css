@@ -25,6 +25,7 @@ h2 {
   font-size: 35px;
   margin: 40px 0 20px 0 !important;
   font-weight: 400;
+  color:  #fff;
 }
 
 h3{
@@ -62,7 +63,7 @@ select {
 }
 
 option {
-  font-weight: 600;
+  font-weight: 400;
   font-size: 14px;
 }
 
@@ -98,12 +99,13 @@ option {
   border-radius: 3px;
   width: 100%;
   padding: 5px 10px;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 400;
   text-align: center;
   border: solid 1px #fff;
   background-color: #ae946d;
   color: rgb(255, 255, 255) !important;
+  font-family: 'Bebas Neue', cursive !important;
 }
 
 .flecha{
@@ -125,14 +127,15 @@ option {
   left: 0px;
   background-color: #ae946d;
   border-radius: 3px;
-  font-weight: 600;
-  font-size: 22px;
+  font-weight: 400;
+  font-size: 30px;
   border-top: solid 2px #fff;
   padding: 10px;
   cursor: pointer;
   color: #fff;
   /* -webkit-text-stroke: 1px #fff; */
   overflow: hidden;
+  font-family: 'Bebas Neue', cursive !important;
 }
 
 .guardarCambios p {
@@ -187,12 +190,14 @@ option {
   border: solid 1px #fff;
   /* margin: 10px; */
   padding: 7px 10px;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 400;
   min-width: 15%;
   /* margin-left: 20px; */
   margin: 15px 0 25px 0 !important;
   width: 90%;
+  font-family: 'Bebas Neue', cursive !important;
+
 
 }
 

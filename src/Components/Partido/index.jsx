@@ -10,6 +10,8 @@ const Partido = (props) => {
     const { prediccionActual, resultadosAct, puntajesAct, now, setNow, banderas } = useContext(Prode);
     const partido = props.partido;
     const local = partido.local;
+    const loc = partido.loc;
+    const vis = partido.vis;
     const visitante = partido.visitante;
     const numPartido = partido.partido;
     const fecha = partido.fecha;
@@ -105,7 +107,7 @@ const Partido = (props) => {
                             :
                             <img src={process.env.PUBLIC_URL + banderas[local]} alt={local} className="flag" />
                     }
-                    <div className='matchTeam'>{local}</div>
+                    <div className='matchTeam'>{loc}</div>
                 </div>
                 {
                     jugado === false ?
@@ -138,7 +140,7 @@ const Partido = (props) => {
                             :
                             <img src={process.env.PUBLIC_URL + banderas[visitante]} alt={visitante} className="flag" />
                     }
-                    <div className='matchTeam'>{visitante}</div>
+                    <div className='matchTeam'>{vis}</div>
                 </div>
             </div>
             <div className="partidoBottom">

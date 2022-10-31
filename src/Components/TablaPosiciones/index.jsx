@@ -74,9 +74,10 @@ const TablaPosiciones = () => {
                                 tablaState === "individual" ?
 
                                     allPuntajes.map(user => {
-                                        if (user.nombre.toUpperCase().includes(usuarioBuscado, 0) || user.apellido.toUpperCase().includes(usuarioBuscado, 0)) {
+                                        if (user.nombre.toUpperCase().includes(usuarioBuscado, 0) || user.apellido.toUpperCase().includes(usuarioBuscado, 0) ||
+                                         (user.nombre+" "+user.apellido).toUpperCase().includes(usuarioBuscado, 0)) {
                                             return <div key={user.uid} className={`tablaUser ${allPuntajes[0].uid === user.uid ? "primero" : "otros"}`}>
-                                                <p className='nombre' key={`nombre${user.uid}`}>{allPuntajes.indexOf(user) + 1}. {user.nombre.toUpperCase()} {user.apellido.toUpperCase()}</p>
+                                                <p className='nombre' key={`nombre${user.uid}`}>{allPuntajes.indexOf(user) + 1}. {user.apellido.toUpperCase()} {user.nombre.slice(0,1).toUpperCase()}.</p>
                                                 <div className='puntajeTabla'>
                                                     <p key={`puntos${user.uid}`} className='puntosTabla'>{!user.puntajeActual ? 0 : user.puntajeActual} pts</p>
                                                     <p className='plus' onClick={() => seleccionarUsuario(user.uid, "usuario")}>+</p>

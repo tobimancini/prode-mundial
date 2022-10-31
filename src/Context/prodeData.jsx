@@ -63,6 +63,8 @@ const ProdeData = ({ children }) => {
     const [gender, setGender] = useState("");
     const [jaulero, setJaulero] = useState(false);
 
+    const [loaderOn, setLoaderOn] = useState(false);
+
 
 
     return (
@@ -71,7 +73,7 @@ const ProdeData = ({ children }) => {
             defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes, now, setNow, pageState, setPageState,
             userInfo, setUserInfo, banderas, setBanderas, modalPredic, setModalPredic, usuarioElegido, setUsuarioElegido, sortedPredic, setSortedPredic, faseElegida, setFaseElegida
             , tooltip, setTooltip, toolText, setToolText, userHabilitado, setUserHabilitado, equiposFem, equiposMasc, equipoElegido, setEquipoElegido, tipoIdElegido, setTipoIdElegido,
-            equiposUser, setEquiposUser, allMatches, setAllMatches, donePredictions, setDonePredictions, gender, setGender, jaulero, setJaulero
+            equiposUser, setEquiposUser, allMatches, setAllMatches, donePredictions, setDonePredictions, gender, setGender, jaulero, setJaulero, loaderOn, setLoaderOn
         }}>
             {children}
         </Prode.Provider>

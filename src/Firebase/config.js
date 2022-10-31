@@ -6,6 +6,8 @@ import {  getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEm
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyA2RLe_FMmiX3eCXbNIKGG7niV8anPxASk",
   authDomain: "prode-la-jaula.firebaseapp.com",

@@ -8,13 +8,14 @@ import recuperarPass from '../Utils/recuperarPass';
 import equiposPorSexo from '../Utils/equiposPorSexo';
 import { async } from '@firebase/util';
 import getAllPuntajes from '../Utils/getAllPuntajes';
+import { FadeLoader } from 'react-spinners';
 
 const Login = (props) => {
 
     const setUserID = props.userID;
 
     const { userLogged, setUserLogged, setPrediccionActual, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, setTooltip, setToolText, tooltip, equiposFem,
-        equiposMasc, jaulero, setJaulero, gender, setGender, allPuntajes, setAllPuntajes, equiposUser, setEquiposUser } = useContext(Prode);
+        equiposMasc, jaulero, setJaulero, gender, setGender, allPuntajes, setAllPuntajes, equiposUser, setEquiposUser, setLoaderOn, loaderOn } = useContext(Prode);
 
 
     const [loginStage, setLoginStage] = useState("login");
@@ -60,12 +61,17 @@ const Login = (props) => {
         setPosicionIndividual(posicion + 1 + " º");
         // getTeamPosition();
         equiposPorSexo(userInfo.sexo, allPuntajes, setEquiposUser)
+
+        if (userInfo.nombre) {
+            setLoaderOn(false);
+        }
         // console.log(allPuntajes);
     }, [userInfo, allPuntajes]);
 
     useEffect(() => {
         getTeamPosition();
-    }, [equiposUser])
+    }, [equiposUser]);
+
 
 
     return (
@@ -93,7 +99,7 @@ const Login = (props) => {
                             <p className='info'>{userInfo.puntajeActual} pts</p>
                         </div>
                         <div className='predPartido data'>
-                            <p className='title'>Posición: </p>
+                            <p className='title'>Tu posición:</p>
                             <p className='info' style={userInfo.puntajeActual === 0 || posicionIndividual === "0 º" ? { "fontSize": "10px" } : null}>
                                 {userInfo.puntajeActual > 0 ? posicionIndividual !== "0 º" ?
                                     posicionIndividual : "No sumaste puntos todavía" : "No sumaste puntos todavía"}
@@ -102,7 +108,7 @@ const Login = (props) => {
                         {
                             userInfo.equipo !== "" ?
                                 <div className='predPartido data'>
-                                    <p className='title'>Posición {userInfo.equipo}: </p>
+                                    <p className='title'>{userInfo.equipo}:</p>
                                     <p className='info' style={equiposUser[0] === 0 || posicionGrupal === 0 ? { "fontSize": "10px" } : null}>
                                         {posicionGrupal !== 0 ? posicionGrupal : "No sumaste puntos todavía"}
                                     </p>
@@ -124,7 +130,7 @@ const Login = (props) => {
                                     <input id='loginEmail' type="email" placeholder='Email' className='inputProde' />
                                     <label>Contraseña</label>
                                     <input id='loginPass' type="password" placeholder='Contraseña' className='inputProde' />
-                                    <button className="btnFiltro" onClick={() => iniciarSesion(setTooltip, tooltip, setToolText, false)}>Ingresar</button>
+                                    <button className="btnFiltro" onClick={() => iniciarSesion(setTooltip, tooltip, setToolText, false, setLoaderOn)}>Ingresar</button>
                                     <div className='preguntas'>
                                         <h4 className='pregunta'>TODAVÍA NO TE HICISTE UN USUARIO?</h4>
                                         <div className='btnFiltro' onClick={() => setLoginStage("crear")}>Crear usuario</div>
@@ -210,6 +216,15 @@ const Login = (props) => {
 
 
 
+            }
+
+            {
+                loaderOn === true ?
+                    <div className='loaderContain'>
+                        <FadeLoader className='loader' color={'#fff'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
+                    </div>
+                    :
+                    null
             }
 
         </form>

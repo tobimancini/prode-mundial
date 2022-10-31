@@ -23,6 +23,14 @@
     /* margin: 10px; */
 }
 
+.teamContain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+}
+
 .matchNum {
     width: 100%;
     display: flex;
@@ -40,6 +48,7 @@
 
 .matchTeam {
     margin: 5px;
+    font-size: 12px;
 }
 
 .puntosCont {
@@ -56,9 +65,9 @@
 
 
 .flag {
-    height: 50px;
+    height: 45px;
     font-size: 45px;
-    margin: 0px 30px;
+    margin: 0px 20px;
 }
 
 .localCounter {
@@ -116,7 +125,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 11px;
     padding-left: 15px;
 }
 
@@ -129,7 +138,7 @@
     height: 15px;
     width: 55px;
     /* border-radius: 3px; */
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 800;
     display: flex;
     color: #000;

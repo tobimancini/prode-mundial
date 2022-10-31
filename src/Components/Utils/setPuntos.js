@@ -1,7 +1,6 @@
 import { db } from "../../Firebase/config";
 import { collection, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import getAllPuntajes from "./getAllPuntajes";
-import getPredictionDB from "./getPredictionDB";
 
 
 const setPuntos = async (setPuntajesAct, setPuntajeTotal, setAllPuntajes, resultadosAct, setResultadosAct, setPrediccionActual, queryUser) => {

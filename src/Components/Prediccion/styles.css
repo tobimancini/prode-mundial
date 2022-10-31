@@ -78,10 +78,31 @@
     position: relative !important;
 }
 
-.puntajeTotal{
-    color: #ae946d;
-    font-weight: 600;
-    font-size: 16px;
+.prediccionCont .btnFiltro{
+    width: auto;
     align-self: flex-end;
-    margin: 30px 30px;
+    margin-right: 10px !important;
+    margin-top: 20px!important;
+}
+
+.prediccionCont .selYBtn{
+    width: 100%;
+    justify-content: center;
+}
+
+.faseElegida{
+    appearance: none;
+    width: 90%;
+    padding: 5px 10px;
+    font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+    border: solid 1px #fff;
+    background-color: #ae946d;
+    color: rgb(255, 255, 255) !important;
+    font-family: 'Bebas Neue', cursive !important;
+}
+
+.unkFlag{
+    font-size: 33px;
 }
