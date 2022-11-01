@@ -103,6 +103,10 @@
     font-family: 'Bebas Neue', cursive !important;
 }
 
+.prediccionCont .flecha{
+    right: 12%;
+}
+
 .unkFlag{
     font-size: 33px;
 }

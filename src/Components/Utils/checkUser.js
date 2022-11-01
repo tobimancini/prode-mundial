@@ -1,9 +1,12 @@
 import { collection, getDoc, getDocs, query, where } from "firebase/firestore";
+import { ImCoinDollar } from "react-icons/im";
 import { db } from "../../Firebase/config";
 
 const checkUser = async (email, nombre, contrseña, createFunction, setToolText, setTooltip, tooltip) => {
     const q = query(collection(db, "Usuarios"), where("email", "==", email));
     const querySnapshot = await getDocs(q);
+
+    console.log(querySnapshot)
 
     const inputsCrear = document.querySelectorAll('.crearUsuario');
     // console.log(inputsCrear);

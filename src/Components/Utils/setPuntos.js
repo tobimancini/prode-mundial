@@ -44,7 +44,6 @@ const setPuntos = async (setPuntajesAct, setPuntajeTotal, setAllPuntajes, result
     if (resArray.length !== 0) {
         let prediccion;
         let documentoId;
-
         queryUser.forEach((doc) => {
             prediccion = doc.data();
             documentoId = doc.id;
@@ -86,6 +85,20 @@ const setPuntos = async (setPuntajesAct, setPuntajeTotal, setAllPuntajes, result
         setPuntajesAct(puntajesActualizados);
         setPuntajeTotal(puntajeActualTotal);
 
+
+    }
+    if (resArray.length === 0) {
+        let prediccion;
+        let documentoId;
+        queryUser.forEach((doc) => {
+            prediccion = doc.data();
+            documentoId = doc.id;
+        });
+
+        const userRef = doc(db, 'Usuarios', documentoId);
+
+        let puntajesActualizados = [];
+        let puntajeActualTotal = 0;
     }
     await getAllPuntajes(setAllPuntajes)
 }

@@ -66,7 +66,7 @@ const TablaPosiciones = () => {
                                 null
                         }
                         <div className='tablaOpciones buscador'>
-                            <input id='buscadorUsuario' type="text" className='inputProde' placeholder='Buscá a tus amigos o enemigos' onChange={() => buscadorJugador()} />
+                            <input id='buscadorUsuario' type="text" className='inputProde' placeholder='Buscá a tus amigos/enemigos' onChange={() => buscadorJugador()} />
                             <FaSearch className='lupita' />
                         </div>
                         <div className='tablaCont'>

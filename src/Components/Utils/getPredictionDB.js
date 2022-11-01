@@ -10,8 +10,6 @@ const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccion
             newPrediction(allMatches, userID, setToolText, setTooltip, tooltip, userInfo).then(async () => {
                 if (userInfo.habilitado === true) {
                     const q = query(collection(db, "Usuarios"), where("uid", "==", userID));
-                    //VER
-                    console.log("knkknkn");
 
                     const querySnapshot = await getDocs(q);
                     let prediccion = [];
@@ -24,7 +22,7 @@ const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccion
 
                     setTimeout(() => {
                         setPuntos(setPuntajesAct, setPuntajeTotal, setAllPuntajes, resultadosAct, setResultadosAct, setPrediccionActual, querySnapshot)
-                    }, 500);
+                    }, 300);
                 }
             })
 
@@ -42,7 +40,7 @@ const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccion
 
             setTimeout(() => {
                 setPuntos(setPuntajesAct, setPuntajeTotal, setAllPuntajes, resultadosAct, setResultadosAct, setPrediccionActual, querySnapshot)
-            }, 500);
+            }, 300);
 
 
         }
