@@ -1,7 +1,9 @@
 import { addDoc, collection, doc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
 
-const enviarResultados = async () => {
+const enviarResultados = async (setCargando) => {
+    setCargando(true);
+
     let golesLocal = document.querySelectorAll('.golesLocal');
     let golesVisitante = document.querySelectorAll('.golesVisitante');
     let partido = document.querySelectorAll('.invisible');
@@ -51,6 +53,8 @@ const enviarResultados = async () => {
 
         }
     }
+
+    setCargando(false);
 
 }
 

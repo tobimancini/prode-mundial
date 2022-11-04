@@ -16,6 +16,7 @@ const Admin = () => {
     const [usuariosOrd, setUsuariosOrd] = useState([]);
     const [equipoLocal, setEquipoLocal] = useState("");
     const [equipoVisitante, setEquipoVisitante] = useState("");
+    const [cargando, setCargando] = useState(false);
 
     // const changeColor = (userId, status) => {
     //     let btn = document.getElementById(`${userId}btn`);
@@ -140,7 +141,7 @@ const Admin = () => {
                     </>
             } */}
             {
-                allMatches.length && userInfo?
+                allMatches.length && userInfo ?
                     <>
                         <h2>EDITAR RESULTADOS</h2>
                         <input type="text" id="locales" placeholder='Equipo local' onChange={() => buscadorPartido()} />
@@ -170,14 +171,21 @@ const Admin = () => {
                         </div>
                         {
                             equipoLocal !== "" || equipoVisitante !== "" ?
-                                <div className='btnFiltro' onClick={() => enviarResultados()}>ENVIAR</div>
+                                <div className='btnFiltro' onClick={() => enviarResultados(setCargando)}>ENVIAR</div>
                                 :
                                 null
                         }
                         <h2>Actualizar Puntajes</h2>
-                        <div className='btnFiltro act' onClick={() => compararResultados()}>Actualizar</div>
+                        <div className='btnFiltro act' onClick={() => compararResultados(setCargando)}>Actualizar</div>
                     </>
                     : null
+            }
+            {
+                cargando === false ?
+                    null :
+                    <div className="loaderContain">
+                        <FadeLoader className='loader' color={'#edebeb'} loading={true} size={5} aria-label="Loading Spinner" data-testid="loader" />
+                    </div>
             }
         </div>
     )

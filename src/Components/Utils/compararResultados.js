@@ -3,7 +3,8 @@ import { db } from "../../Firebase/config";
 import { addDoc, query, where, updateDoc } from "firebase/firestore";
 
 
-const compararResultados = async () => {
+const compararResultados = async (setCargando) => {
+    setCargando(true);
     const allResults = [];
     const allPredicts = [];
 
@@ -228,6 +229,8 @@ const compararResultados = async () => {
 
 
     }
+
+    setCargando(false);
 
 }
 
