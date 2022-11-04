@@ -5,69 +5,70 @@ import FadeLoader from "react-spinners/FadeLoader";
 import habilitarUser from '../Utils/habilitarUser';
 import getAllPuntajes from '../Utils/getAllPuntajes';
 import enviarResultados from '../Utils/enviarResultados';
+import compararResultados from '../Utils/compararResultados';
 
 
 const Admin = () => {
 
-    const { allPuntajes, setAllPuntajes, allMatches } = useContext(Prode);
+    const { allPuntajes, setAllPuntajes, allMatches, userInfo } = useContext(Prode);
     const [habilitar, setHabilitar] = useState(0);
     const [nombreBuscado, setNombreBuscado] = useState("");
     const [usuariosOrd, setUsuariosOrd] = useState([]);
     const [equipoLocal, setEquipoLocal] = useState("");
     const [equipoVisitante, setEquipoVisitante] = useState("");
 
-    const changeColor = (userId, status) => {
-        let btn = document.getElementById(`${userId}btn`);
-        let habilitado = document.getElementById(userId);
+    // const changeColor = (userId, status) => {
+    //     let btn = document.getElementById(`${userId}btn`);
+    //     let habilitado = document.getElementById(userId);
 
-        if ((status === true && habilitado.innerHTML === "OK")) {
-            btn.classList.remove('ok');
-            btn.classList.add('no');
+    //     if ((status === true && habilitado.innerHTML === "OK")) {
+    //         btn.classList.remove('ok');
+    //         btn.classList.add('no');
 
-            habilitado.classList.remove('ok');
-            habilitado.classList.add('no');
+    //         habilitado.classList.remove('ok');
+    //         habilitado.classList.add('no');
 
-            habilitado.innerHTML = "NO";
-        } else if ((status === true && habilitado.innerHTML === "NO")) {
-            btn.classList.add('ok');
-            btn.classList.remove('no');
+    //         habilitado.innerHTML = "NO";
+    //     } else if ((status === true && habilitado.innerHTML === "NO")) {
+    //         btn.classList.add('ok');
+    //         btn.classList.remove('no');
 
-            habilitado.classList.add('ok');
-            habilitado.classList.remove('no');
+    //         habilitado.classList.add('ok');
+    //         habilitado.classList.remove('no');
 
-            habilitado.innerHTML = "OK";
-        }
+    //         habilitado.innerHTML = "OK";
+    //     }
 
 
-        if ((status === false && habilitado.innerHTML === "NO")) {
-            btn.classList.add('ok');
-            btn.classList.remove('no');
+    //     if ((status === false && habilitado.innerHTML === "NO")) {
+    //         btn.classList.add('ok');
+    //         btn.classList.remove('no');
 
-            habilitado.classList.add('ok');
-            habilitado.classList.remove('no');
+    //         habilitado.classList.add('ok');
+    //         habilitado.classList.remove('no');
 
-            habilitado.innerHTML = "OK";
-        } else if ((status === false && habilitado.innerHTML === "OK")) {
-            btn.classList.remove('ok');
-            btn.classList.add('no');
+    //         habilitado.innerHTML = "OK";
+    //     } else if ((status === false && habilitado.innerHTML === "OK")) {
+    //         btn.classList.remove('ok');
+    //         btn.classList.add('no');
 
-            habilitado.classList.remove('ok');
-            habilitado.classList.add('no');
+    //         habilitado.classList.remove('ok');
+    //         habilitado.classList.add('no');
 
-            habilitado.innerHTML = "NO";
-        }
-    }
+    //         habilitado.innerHTML = "NO";
+    //     }
+    // }
 
-    const changeStatus = (userId, status) => {
-        habilitarUser(userId, setAllPuntajes);
-        setHabilitar(habilitar + 1);
-        changeColor(userId, status);
-    }
+    // const changeStatus = (userId, status) => {
+    //     habilitarUser(userId, setAllPuntajes);
+    //     setHabilitar(habilitar + 1);
+    //     changeColor(userId, status);
+    // }
 
-    const buscadorHandle = () => {
-        let buscador = document.getElementById("buscador").value
-        setNombreBuscado(buscador.toUpperCase());
-    }
+    // const buscadorHandle = () => {
+    //     let buscador = document.getElementById("buscador").value
+    //     setNombreBuscado(buscador.toUpperCase());
+    // }
 
     const buscadorPartido = () => {
         let local = document.getElementById('locales').value;
@@ -77,24 +78,24 @@ const Admin = () => {
 
     }
 
-    const ordenarUsuarios = (a, b) => {
+    // const ordenarUsuarios = (a, b) => {
 
-        if (a.habilitado > b.habilitado) return 1;
-        if (a.habilitado < b.habilitado) return -1;
+    //     if (a.habilitado > b.habilitado) return 1;
+    //     if (a.habilitado < b.habilitado) return -1;
 
-    }
+    // }
 
-    useEffect(() => {
-        let ordenados = allPuntajes.sort(ordenarUsuarios)
-        setUsuariosOrd(ordenados);
-    }, [allPuntajes])
+    // useEffect(() => {
+    //     let ordenados = allPuntajes.sort(ordenarUsuarios)
+    //     setUsuariosOrd(ordenados);
+    // }, [allPuntajes])
 
 
 
     return (
         <div className='adminCont'>
-            {
-                !allPuntajes.length ?
+            {/* {
+                !userInfo.administrador?
                     <div className='loaderContain'>
                         <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
                     </div>
@@ -137,11 +138,11 @@ const Admin = () => {
                             </ul>
                         </div>
                     </>
-            }
+            } */}
             {
-                allMatches.length ?
+                allMatches.length && userInfo?
                     <>
-                        <h3>EDITAR RESULTADOS</h3>
+                        <h2>EDITAR RESULTADOS</h2>
                         <input type="text" id="locales" placeholder='Equipo local' onChange={() => buscadorPartido()} />
                         <input type="text" id="visitantes" placeholder='Equipo visitante' onChange={() => buscadorPartido()} />
                         <div className='tablaCont'>
@@ -173,6 +174,8 @@ const Admin = () => {
                                 :
                                 null
                         }
+                        <h2>Actualizar Puntajes</h2>
+                        <div className='btnFiltro act' onClick={() => compararResultados()}>Actualizar</div>
                     </>
                     : null
             }

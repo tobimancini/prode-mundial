@@ -1,25 +1,16 @@
 const equiposPorSexo = (sexo, allPuntajes, setEquiposUser) => {
-    let teamsH = [];
-    let teamsM = [];
+    let teams= [];
 
     for (let i = 0; i < allPuntajes.length; i++) {
         const usuario = allPuntajes[i];
-        if (usuario.sexo !== "M") {
-            teamsM.push([usuario.puntajeActual, usuario.equipo])
-        } else {
-            teamsH.push([usuario.puntajeActual, usuario.equipo])
-        }
+        teams.push([usuario.puntajeActual, usuario.equipo])
 
 
     }
 
     let nuevoArray = [];
-    let equiposArray;
-    if (sexo === "M") {
-        equiposArray = teamsH;
-    } else {
-        equiposArray = teamsM;
-    }
+    let equiposArray=teams;
+    
     for (let i = 0; i < equiposArray.length; i++) {
         const element = equiposArray[i];
         let equipo = equiposArray.filter(el => el[1] === element[1])

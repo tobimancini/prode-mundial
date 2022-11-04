@@ -65,6 +65,10 @@ const ProdeData = ({ children }) => {
 
     const [loaderOn, setLoaderOn] = useState(false);
 
+    const [posicionesInd, setPosicionesInd] = useState([]);
+    const [posicionesGrup, setPosicionesGrup] = useState([]);
+    const [miPrediccion, setMiPrediccion] = useState([]);
+
 
 
     return (
@@ -73,7 +77,8 @@ const ProdeData = ({ children }) => {
             defaultFase, setDefaultFase, puntajesAct, setPuntajesAct, puntajeTotal, setPuntajeTotal, allPuntajes, setAllPuntajes, now, setNow, pageState, setPageState,
             userInfo, setUserInfo, banderas, setBanderas, modalPredic, setModalPredic, usuarioElegido, setUsuarioElegido, sortedPredic, setSortedPredic, faseElegida, setFaseElegida
             , tooltip, setTooltip, toolText, setToolText, userHabilitado, setUserHabilitado, equiposFem, equiposMasc, equipoElegido, setEquipoElegido, tipoIdElegido, setTipoIdElegido,
-            equiposUser, setEquiposUser, allMatches, setAllMatches, donePredictions, setDonePredictions, gender, setGender, jaulero, setJaulero, loaderOn, setLoaderOn
+            equiposUser, setEquiposUser, allMatches, setAllMatches, donePredictions, setDonePredictions, gender, setGender, jaulero, setJaulero, loaderOn, setLoaderOn,
+            setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesInd, posicionesGrup, miPrediccion
         }}>
             {children}
         </Prode.Provider>

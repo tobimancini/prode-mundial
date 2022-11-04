@@ -7,7 +7,7 @@ import { BsQuestionCircleFill } from 'react-icons/bs';
 
 const Partido = (props) => {
 
-    const { prediccionActual, resultadosAct, puntajesAct, now, setNow, banderas } = useContext(Prode);
+    const { prediccionActual, resultadosAct, puntajesAct, now, setNow, banderas, miPrediccion, userInfo } = useContext(Prode);
     const partido = props.partido;
     const local = partido.local;
     const loc = partido.loc;
@@ -35,16 +35,6 @@ const Partido = (props) => {
 
     const [puntajePartido, setPuntajePartido] = useState(0);
     let puntaje;
-    const actualizarPuntaje = () => {
-        for (let i = 0; i < puntajesAct.length; i++) {
-            const puntajes = puntajesAct[i];
-            if (puntajes[idPartido]) {
-                puntaje = puntajes[idPartido];
-            }
-        }
-        setPuntajePartido(puntaje);
-        setPrediccionPartido(prediccionActual[idPartido]);
-    }
 
     const [jugado, setJugado] = useState(false);
 
@@ -80,7 +70,6 @@ const Partido = (props) => {
     }
 
     useEffect(() => {
-        actualizarPuntaje();
     }, [puntajesAct, prediccionActual, resultadosAct])
 
     useEffect(() => {
@@ -103,7 +92,7 @@ const Partido = (props) => {
                 <div className='teamContain'>
                     {
                         banderas[local] === undefined ?
-                            <BsQuestionCircleFill className='flag'/>
+                            <BsQuestionCircleFill className='flag' />
                             :
                             <img src={process.env.PUBLIC_URL + banderas[local]} alt={local} className="flag" />
                     }
@@ -134,9 +123,9 @@ const Partido = (props) => {
                         <p className='resultadoGoles'>{!resultadoFinal.visitante ? "-" : resultadoFinal.visitante}</p>
                 }
                 <div className='teamContain'>
-                {
+                    {
                         banderas[local] === undefined ?
-                            <BsQuestionCircleFill className='flag'/>
+                            <BsQuestionCircleFill className='flag' />
                             :
                             <img src={process.env.PUBLIC_URL + banderas[visitante]} alt={visitante} className="flag" />
                     }
@@ -145,19 +134,19 @@ const Partido = (props) => {
             </div>
             <div className="partidoBottom">
                 {
-                    !prediccionPartido ?
-                        <p className='prediccionPartido'>No hiciste una predicción todavía.</p>
-                        :
-                        prediccionPartido.local != "" ?
-                            <p className='prediccionPartido'>Predicción: {local} {prediccionPartido.local} vs {prediccionPartido.visitante} {visitante} </p>
-                            // </div> 
+                    miPrediccion[0] ?
+                        miPrediccion[0]["partido" + numPartido] ?
+
+                            <p className='prediccionPartido'>Predicción: {local} {miPrediccion[0]["partido" + numPartido].local} vs {miPrediccion[0]["partido" + numPartido].visitante} {visitante}</p>
                             :
                             <p className='prediccionPartido'>No hiciste una predicción todavía.</p>
+                        :
+                        <p className='prediccionPartido'>No hiciste una predicción todavía.</p>
                 }
 
                 {
-                    resultadoFinal !== "" && prediccionPartido && puntajePartido !== "" ?
-                        <p className='puntaje'>{puntajePartido === 1 || puntajePartido === 3 || puntajePartido === 4 || puntajePartido === 8 ? puntajePartido : "0"} pts</p>
+                    userInfo["partido" + numPartido] ?
+                        <p className='puntaje'>{userInfo["partido" + numPartido].puntaje} pts</p>
                         :
                         <p className='puntaje'></p>
                 }

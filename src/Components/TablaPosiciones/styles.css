@@ -24,7 +24,7 @@
     max-height: 320px;
     overflow-y: auto;
     overflow-x: hidden !important;
-    padding: 15px 0px;
+    padding: 0px;
 }
 
 
@@ -127,6 +127,7 @@
     /* top: ; */
     font-size: 18px;
     left: 7px;
+    color: #ae946d;
     /* transform: rotate(-20deg); */
 }
 

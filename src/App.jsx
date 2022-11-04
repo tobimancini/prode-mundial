@@ -18,13 +18,14 @@ import FadeLoader from "react-spinners/FadeLoader";
 import Tooltip from "./Components/Tooltip";
 import Admin from "./Components/Admin";
 import Home from "./Components/Home";
+import getInfo from "./Components/Utils/getInfo";
 
 
 function App() {
 
   const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida, setToolText,
     setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip,
-    allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn } = useContext(Prode);
+    allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn, setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesGrup, posicionesInd, miPrediccion } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -118,48 +119,48 @@ function App() {
     getData();
   }, []);
 
-  const obtenerResultados = async () => {
-    let resultados = [];
+  // const obtenerResultados = async () => {
+  //   let resultados = [];
 
-    const querySnapshot = await getDocs(collection(db, "Resultados"));
+  //   const querySnapshot = await getDocs(collection(db, "Resultados"));
 
-    querySnapshot.forEach((doc) => {
-      resultados.push(doc.data());
-    });
-    let resArray = [];
+  //   querySnapshot.forEach((doc) => {
+  //     resultados.push(doc.data());
+  //   });
+  //   let resArray = [];
 
-    for (let i = 0; i < resultados.length; i++) {
-      const partido = Object.entries(resultados[i]);
-      resArray.push(partido[0]);
-    }
-    setResultadosAct(resArray);
-    // console.log(resArray);
-  }
+  //   for (let i = 0; i < resultados.length; i++) {
+  //     const partido = Object.entries(resultados[i]);
+  //     resArray.push(partido[0]);
+  //   }
+  //   setResultadosAct(resArray);
+  // }
 
-  useEffect(() => {
-    obtenerResultados();
-  }, [prediccionActual])
+  // useEffect(() => {
+  //   obtenerResultados();
+  // }, [prediccionActual])
 
   const predict = () => {
-    getPredictionDB(userInfo, userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
-      setAllPuntajes, resultadosAct, setResultadosAct);
-
+    
     let guardarBtn = document.getElementById('saveBtnSpan');
-
+    
     guardarBtn.classList.remove('inactive');
     guardarBtn.classList.add('active');
-
+    
     setTimeout(() => {
       guardarBtn.classList.add('inactive');
       guardarBtn.classList.remove('active');
     }, 1800);
-
-    if (userLogged === "") {
+    
+    if (!userInfo.nombre) {
       setToolText("Iniciá sesion para poder jugar.")
       setTooltip(tooltip + 1)
       setTimeout(() => {
         setTooltip(tooltip + 2)
       }, 2500);
+    }else{
+      getPredictionDB(userInfo, userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
+        setAllPuntajes, resultadosAct, setResultadosAct, setMiPrediccion)
     }
   }
 
@@ -183,15 +184,14 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUserLogged(user.uid);
-        setUserID(user.uid);
-        getPredictionDB(userInfo, user.uid, setPrediccionActual, prediccionActual, false, "", "", setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
-          setAllPuntajes, resultadosAct, setResultadosAct)
+        // setUserLogged(user.uid);
+        // setUserID(user.uid);
         setToolText('INICIASTE SESIÓN COMO ' + user.email);
         setTooltip(tooltip + 1)
         setTimeout(() => {
           setTooltip(tooltip + 2)
         }, 2500);
+        getInfo(user.uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo)
 
       } else {
         setTooltip(tooltip + 1);
@@ -203,7 +203,6 @@ function App() {
       }
     })
   }, []);
-
 
 
   return (
@@ -253,15 +252,15 @@ function App() {
                   </div>
                 </>
                 :
-                pageState === "clasificacion" && allPuntajes.length ?
+                pageState === "clasificacion" ?
                   <>
                     <TablaPosiciones />
                   </>
                   :
-                  pageState === "prediccion" && allPuntajes.length ?
+                  pageState === "prediccion" ?
                     <Prediccion />
                     :
-                    pageState === "admin" && allPuntajes.length ?
+                    pageState === "admin" && userInfo ?
                       <Admin />
                       :
 

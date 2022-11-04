@@ -53,12 +53,16 @@ const newUser = async (dni, nombre, email, user, apellido, sexo, equipo, jaula) 
             "email": email,
             "uid": user.uid,
             authProvider: "local",
-            "habilitado": false,
+            "habilitado": true,
             "apellido": apellido,
             "sexo": sexo,
             "equipo": equipo,
             "puntajeActual": 0,
-            "jaula": true
+            "jaula": true,
+            "posicion": "",
+            "posicionEquipo": "",
+            "puntajeEquipo": 0,
+            "administrador" : false
         }
     }
 

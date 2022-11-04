@@ -1,7 +1,9 @@
 import { collection, doc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
+import { addDoc } from "firebase/firestore";
 
-const setPrediction = async (matches, userId, setToolText, setTooltip, tooltip, userInfo) => {
+
+const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo) => {
 
   if (userInfo.habilitado === true) {
     setToolText("SE GUARDÓ TU PREDICCIÓN.")
@@ -11,7 +13,7 @@ const setPrediction = async (matches, userId, setToolText, setTooltip, tooltip, 
     }, 4000);
 
 
-    if (userId != "") {
+    if (userInfo.uid) {
 
       let prediccion = [];
       let ganador = (local, visitante) => {
@@ -49,31 +51,60 @@ const setPrediction = async (matches, userId, setToolText, setTooltip, tooltip, 
         }
       }
 
-      const q = query(collection(db, "Usuarios"), where("uid", "==", userId));
+      const q = query(collection(db, "Predicciones"), where("uid", "==", userInfo.uid));
 
       let usuarioRef = [];
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         usuarioRef.push(doc)
       });
-      let idUsuario = usuarioRef[0].id;
 
-      for (let i = 0; i < prediccion.length; i++) {
-        let partido = prediccion[i];
 
-        const partidoX = Object.entries(partido)[0][1];
-
-        const userRef = doc(db, 'Usuarios', idUsuario);
-
-        await updateDoc(userRef, {
-          [`prediccion.partido${partidoX.partido}`]: {
-            "local": partidoX.local,
-            "visitante": partidoX.visitante,
-            "ganador": partidoX.ganador,
-            "partido": partidoX.partido
-          }
+      if (!usuarioRef.length) {
+        const docRef = await addDoc(collection(db, "Predicciones"), {
+          uid: userInfo.uid,
+          nombre: userInfo.nombre,
+          apellido: userInfo.apellido,
+          equipo: userInfo.equipo
         });
+        let idUsuario = docRef.id;
+        for (let i = 0; i < prediccion.length; i++) {
+          let partido = prediccion[i];
+
+          const partidoX = Object.entries(partido)[0][1];
+
+          const userRef = doc(db, 'Predicciones', idUsuario);
+
+          await updateDoc(userRef, {
+            [`partido${partidoX.partido}`]: {
+              "local": partidoX.local,
+              "visitante": partidoX.visitante,
+              "ganador": partidoX.ganador,
+              "partido": partidoX.partido
+            }
+          });
+        }
+
+      } else {
+        let idUsuario = usuarioRef[0].id;
+        for (let i = 0; i < prediccion.length; i++) {
+          let partido = prediccion[i];
+
+          const partidoX = Object.entries(partido)[0][1];
+
+          const userRef = doc(db, 'Predicciones', idUsuario);
+
+          await updateDoc(userRef, {
+            [`partido${partidoX.partido}`]: {
+              "local": partidoX.local,
+              "visitante": partidoX.visitante,
+              "ganador": partidoX.ganador,
+              "partido": partidoX.partido
+            }
+          });
+        }
       }
+
     } else {
       console.log("primero debes iniciar sesion");
     }
@@ -84,7 +115,7 @@ const setPrediction = async (matches, userId, setToolText, setTooltip, tooltip, 
     setTimeout(() => {
       for (let i = 0; i < selectAllLocal.length; i++) {
         let localVal = selectAllLocal[i];
-        let visitVal =selectAllVisit[i];
+        let visitVal = selectAllVisit[i];
 
         if (localVal.innerHTML !== "-" || visitVal.innerHTML !== "-") {
           localVal.innerHTML = "-"

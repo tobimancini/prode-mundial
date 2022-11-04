@@ -15,7 +15,7 @@
   align-items: center;
   width: 100% !important;
   background-color: #000;
-  min-height: 100vh;
+  min-height: 50vh;
   overflow: hidden;
   font-family: 'Montserrat', sans-serif !important; 
 }

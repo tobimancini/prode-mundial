@@ -8,7 +8,7 @@ import FadeLoader from "react-spinners/FadeLoader";
 
 const Prediccion = () => {
 
-    const { prediccionActual, database, banderas, allPuntajes, userLogged, userInfo, sortedPredic, setSortedPredic, allMatches } = useContext(Prode);
+    const { prediccionActual, database, banderas, allPuntajes, userLogged, userInfo, sortedPredic, setSortedPredic, allMatches, miPrediccion } = useContext(Prode);
 
     const [prediccionUsuario, setPrediccionUsuario] = useState([]);
     const [faseSel, setFaseSel] = useState("1");
@@ -85,7 +85,7 @@ const Prediccion = () => {
         <>
 
             {
-                sortedPredic.length !== 0 && allPuntajes.length > 0 && prediccionUsuario ?
+                miPrediccion.length && allMatches.length ?
 
                     <div className='prediccionCont'>
                         <h2 className='prediccionTitulo'>MI PREDICCIÓN</h2>
@@ -100,36 +100,30 @@ const Prediccion = () => {
                             <div className="flecha"></div>
                         </div>
                         <div className='tablaCont'>
-                            {newPrediction.map(partido => {
+                            {allMatches.map(partido => {
+                                if (miPrediccion[0][partido[0]] && (faseSel === partido[1].fase || faseSel === partido[1].grupo)) {
+                                    return <div className='predPartido' key={partido[1].partido}>
 
-                                return <div className='predPartido' key={partido[1].partido}>
+                                        <div className='prediccionMiddle'>
+                                            {
+                                                banderas[database[partido[0]].local] === undefined ?
+                                                    <BsQuestionCircleFill className='unkFlag' /> :
+                                                    <img src={process.env.PUBLIC_URL + banderas[database[partido[0]].local]} alt={database[partido[0]].local} />
+                                            }
 
-                                    <div className='prediccionMiddle'>
-                                        {
-                                            banderas[database[partido[0]].local] === undefined ?
-                                                <BsQuestionCircleFill className='unkFlag' /> :
-                                                <img src={process.env.PUBLIC_URL + banderas[database[partido[0]].local]} alt={database[partido[0]].local} />
-                                        }
+                                            <p className='predicData'> {partido[1].loc} {miPrediccion[0][partido[0]].local} vs {miPrediccion[0][partido[0]].visitante} {partido[1].vis}</p>
+                                            {
+                                                banderas[database[partido[0]].local] === undefined ?
+                                                    <BsQuestionCircleFill className='unkFlag' /> :
+                                                    <img src={process.env.PUBLIC_URL + banderas[database[partido[0]].visitante]} alt={database[partido[0]].visitante} />
+                                            }
 
-                                        <p className='predicData'> {database[partido[0]].loc} {partido[1].local} vs {partido[1].visitante} {database[partido[0]].vis}</p>
-                                        {
-                                            banderas[database[partido[0]].local] === undefined ?
-                                                <BsQuestionCircleFill className='unkFlag' /> :
-                                                <img src={process.env.PUBLIC_URL + banderas[database[partido[0]].visitante]} alt={database[partido[0]].visitante} />
-                                        }
+                                            <p className='puntos'>{userInfo[partido[0]] ? userInfo[partido[0]].puntaje+" pts" : ""}</p>
+                                        </div>
+                                        
                                     </div>
-                                    {
+                                }
 
-                                        prediccionUsuario.prediccion === undefined ?
-                                            null
-                                            :
-                                            !prediccionUsuario.prediccion[partido[0]].ptsTotal ?
-                                                <p className='puntos'>0 pts</p>
-                                                :
-                                                <p className='puntos'>{prediccionUsuario.prediccion[partido[0]].ptsTotal ? prediccionUsuario.prediccion[partido[0]].ptsTotal + " pts" : "0 pts"} </p>
-
-                                    }
-                                </div>
                             })
                             }
                         </div>
@@ -139,7 +133,7 @@ const Prediccion = () => {
 
                     :
                     <div className='prediccionCont'>
-                        <h3>NO HAY UNA PREDICCIÓN REALIZADA.</h3>
+                        <h3>NO REALIZASTE UNA PREDICCIÓN</h3>
                     </div>
             }
         </>

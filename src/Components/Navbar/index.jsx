@@ -141,7 +141,7 @@ const Navbar = () => {
     }
 
 
-    if (!userInfo.administrador === false) {
+    if (userInfo.administrador === true) {
 
       const admin = document.getElementById('admin');
       const titAdmin = document.querySelector('.tituloAdmin');
@@ -206,7 +206,7 @@ const Navbar = () => {
           <p className='tituloPer'>Perfil</p>
         </li>
         {
-          !userInfo.administrador ?
+          userInfo.administrador === false ?
             null
             :
             <li id='admin' className='navItem' onClick={() => changeState("admin")}>

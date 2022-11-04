@@ -6,9 +6,8 @@ import iniciarSesion from '../Utils/iniciarSesion';
 import cerrarSesion from '../Utils/cerrarSesion';
 import recuperarPass from '../Utils/recuperarPass';
 import equiposPorSexo from '../Utils/equiposPorSexo';
-import { async } from '@firebase/util';
-import getAllPuntajes from '../Utils/getAllPuntajes';
 import { FadeLoader } from 'react-spinners';
+import compararResultados from '../Utils/compararResultados';
 
 const Login = (props) => {
 
@@ -77,9 +76,9 @@ const Login = (props) => {
     return (
         <form id='loginContainer'>
             {
-                userLogged !== "" && userInfo.nombre ?
+                userInfo.nombre ?
                     <>
-                        <h2>MI PERFIL</h2>
+                        <h2 onClick={()=>compararResultados()}>MI PERFIL</h2>
 
                         <div className='predPartido data'>
                             <p className='title'>Nombre: </p>
@@ -100,17 +99,16 @@ const Login = (props) => {
                         </div>
                         <div className='predPartido data'>
                             <p className='title'>Tu posición:</p>
-                            <p className='info' style={userInfo.puntajeActual === 0 || posicionIndividual === "0 º" ? { "fontSize": "10px" } : null}>
-                                {userInfo.puntajeActual > 0 ? posicionIndividual !== "0 º" ?
-                                    posicionIndividual : "No sumaste puntos todavía" : "No sumaste puntos todavía"}
+                            <p className='info'>
+                                {userInfo.posicion === "" ? "" : userInfo.posicion+" º"}
                             </p>
                         </div>
                         {
                             userInfo.equipo !== "" ?
                                 <div className='predPartido data'>
                                     <p className='title'>{userInfo.equipo}:</p>
-                                    <p className='info' style={equiposUser[0] === 0 || posicionGrupal === 0 ? { "fontSize": "10px" } : null}>
-                                        {posicionGrupal !== 0 ? posicionGrupal : "No sumaste puntos todavía"}
+                                    <p className='info' >
+                                        {userInfo.posicionEquipo === "" ? "" : userInfo.posicionEquipo+" º"}
                                     </p>
                                 </div>
                                 :
@@ -124,7 +122,6 @@ const Login = (props) => {
                         {
                             loginStage === "login" ?
                                 <>
-                                    {/* <h4>YA TENÉS USUARIO?</h4> */}
                                     <h2>INICIÁ SESIÓN</h2>
                                     <label>Email</label>
                                     <input id='loginEmail' type="email" placeholder='Email' className='inputProde' />
@@ -141,7 +138,7 @@ const Login = (props) => {
 
                                 </>
                                 :
-                                loginStage === "crear" ?
+                                loginStage === "crear"?
                                     <>
                                         <h2>CREÁ UN USUARIO</h2>
                                         <label>Nombre</label>

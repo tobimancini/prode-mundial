@@ -10,7 +10,7 @@ const Group = (props) => {
     const partidosPorGrupo = props.partidos;
     const fases = props.fases;
 
-    const { defaultFase, setDefaultFase, userInfo, donePredictions, setDonePredictions, now, setFaseElegida } = useContext(Prode);
+    const { defaultFase, setDefaultFase, userInfo, miPrediccion ,donePredictions, setDonePredictions, now, setFaseElegida } = useContext(Prode);
 
 
     const createGroup = () => {
@@ -24,24 +24,10 @@ const Group = (props) => {
         setDefaultFase(variableDef);
     }
 
-    const prediccionesHechas = () => {
-        if (defaultFase.length && userInfo.nombre !== undefined) {
-            let cantidad = 0;
-            for (let i = 0; i < defaultFase.length; i++) {
-                const partido = defaultFase[i];
-                if (userInfo.prediccion[partido[0]].local !== "") {
-                    cantidad = cantidad + 1;
-                }
-            }
-            setDonePredictions(`Predicciones realizadas en ${group.toUpperCase()} : ${cantidad}/${defaultFase.length}`)
-
-        }
-    }
 
 
     useEffect(() => {
         createGroup();
-        prediccionesHechas();
     }, [group, defaultFase, userInfo])
 
 

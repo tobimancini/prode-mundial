@@ -196,3 +196,7 @@
     visibility: hidden;
     width: 0px;
 }
+
+.btnFiltro.act{
+    width: 85%;
+}
