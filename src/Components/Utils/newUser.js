@@ -62,7 +62,9 @@ const newUser = async (dni, nombre, email, user, apellido, sexo, equipo, jaula) 
             "posicion": "",
             "posicionEquipo": "",
             "puntajeEquipo": 0,
-            "administrador" : false
+            "administrador" : false,
+            "campeon": "",
+            "goleador": ""
         }
     }
 

@@ -14,7 +14,7 @@ const Login = (props) => {
     const setUserID = props.userID;
 
     const { userLogged, setUserLogged, setPrediccionActual, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, setTooltip, setToolText, tooltip, equiposFem,
-        equiposMasc, jaulero, setJaulero, gender, setGender, allPuntajes, setAllPuntajes, equiposUser, setEquiposUser, setLoaderOn, loaderOn } = useContext(Prode);
+        equiposMasc, jaulero, setJaulero, gender, setGender, allPuntajes, setAllPuntajes, equiposUser, setEquiposUser, setLoaderOn, loaderOn, campeon, goleador } = useContext(Prode);
 
 
     const [loginStage, setLoginStage] = useState("login");
@@ -78,7 +78,7 @@ const Login = (props) => {
             {
                 userInfo.nombre ?
                     <>
-                        <h2 onClick={()=>compararResultados()}>MI PERFIL</h2>
+                        <h2 onClick={() => compararResultados()}>MI PERFIL</h2>
 
                         <div className='predPartido data'>
                             <p className='title'>Nombre: </p>
@@ -100,7 +100,7 @@ const Login = (props) => {
                         <div className='predPartido data'>
                             <p className='title'>Tu posición:</p>
                             <p className='info'>
-                                {userInfo.posicion === "" ? "" : userInfo.posicion+" º"}
+                                {userInfo.posicion === "" ? "" : userInfo.posicion + " º"}
                             </p>
                         </div>
                         {
@@ -108,12 +108,24 @@ const Login = (props) => {
                                 <div className='predPartido data'>
                                     <p className='title'>{userInfo.equipo}:</p>
                                     <p className='info' >
-                                        {userInfo.posicionEquipo === "" ? "" : userInfo.posicionEquipo+" º"}
+                                        {userInfo.posicionEquipo === "" ? "" : userInfo.posicionEquipo + " º"}
                                     </p>
                                 </div>
                                 :
                                 null
                         }
+                        <div className='predPartido data'>
+                            <p className='title'>Campeón elegido:</p>
+                            <p className='info' >
+                                {campeon.toUpperCase()}
+                            </p>
+                        </div>
+                        <div className='predPartido data'>
+                            <p className='title'>Goleador elegido:</p>
+                            <p className='info' >
+                                {goleador.toUpperCase()}
+                            </p>
+                        </div>
                         <div className="btnFiltro" onClick={() => cerrarSesion(setUserLogged, setUserID,
                             setPrediccionActual, setPuntajesAct, setPuntajeTotal, setUserInfo)}>Log Out</div>
                     </>
@@ -138,7 +150,7 @@ const Login = (props) => {
 
                                 </>
                                 :
-                                loginStage === "crear"?
+                                loginStage === "crear" ?
                                     <>
                                         <h2>CREÁ UN USUARIO</h2>
                                         <label>Nombre</label>

@@ -19,13 +19,20 @@ import Tooltip from "./Components/Tooltip";
 import Admin from "./Components/Admin";
 import Home from "./Components/Home";
 import getInfo from "./Components/Utils/getInfo";
+import { ImTrophy } from "react-icons/im";
+import { BiFootball } from "react-icons/bi";
+import { IoFootball, IoMdFootball } from "react-icons/io";
+import setCampeonElegido from "./Components/Utils/setCampeonElegido";
+import setGoleadorElegido from "./Components/Utils/setGoleadorElegido";
+
 
 
 function App() {
 
   const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida, setToolText,
     setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip,
-    allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn, setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesGrup, posicionesInd, miPrediccion } = useContext(Prode);
+    allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn, setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesGrup, posicionesInd, miPrediccion, 
+  setCampeon, setGoleador, campeon, goleador } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -119,48 +126,35 @@ function App() {
     getData();
   }, []);
 
-  // const obtenerResultados = async () => {
-  //   let resultados = [];
 
-  //   const querySnapshot = await getDocs(collection(db, "Resultados"));
+  const predict = (partidosState) => {
 
-  //   querySnapshot.forEach((doc) => {
-  //     resultados.push(doc.data());
-  //   });
-  //   let resArray = [];
-
-  //   for (let i = 0; i < resultados.length; i++) {
-  //     const partido = Object.entries(resultados[i]);
-  //     resArray.push(partido[0]);
-  //   }
-  //   setResultadosAct(resArray);
-  // }
-
-  // useEffect(() => {
-  //   obtenerResultados();
-  // }, [prediccionActual])
-
-  const predict = () => {
-    
     let guardarBtn = document.getElementById('saveBtnSpan');
-    
+
     guardarBtn.classList.remove('inactive');
     guardarBtn.classList.add('active');
-    
+
     setTimeout(() => {
       guardarBtn.classList.add('inactive');
       guardarBtn.classList.remove('active');
     }, 1800);
-    
+
     if (!userInfo.nombre) {
       setToolText("Iniciá sesion para poder jugar.")
       setTooltip(tooltip + 1)
       setTimeout(() => {
         setTooltip(tooltip + 2)
       }, 2500);
-    }else{
-      getPredictionDB(userInfo, userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
-        setAllPuntajes, resultadosAct, setResultadosAct, setMiPrediccion)
+    } else {
+      if (partidosState === "partidos") {
+        getPredictionDB(userInfo, userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
+          setAllPuntajes, resultadosAct, setResultadosAct, setMiPrediccion)
+      }else if (partidosState === "campeon") {
+        setCampeonElegido(userInfo, chosenEquipo,setToolText, setTooltip, tooltip, setCampeon)
+      }else{
+        setGoleadorElegido(userInfo, chosenJugador,setToolText, setTooltip, tooltip, setGoleador)
+      }
+
     }
   }
 
@@ -191,7 +185,7 @@ function App() {
         setTimeout(() => {
           setTooltip(tooltip + 2)
         }, 2500);
-        getInfo(user.uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo)
+        getInfo(user.uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo, setCampeon, setGoleador)
 
       } else {
         setTooltip(tooltip + 1);
@@ -204,6 +198,25 @@ function App() {
     })
   }, []);
 
+  const [partidosState, setPartidosState] = useState("partidos");
+  const [chosenEquipo, setChosenEquipo] = useState("");
+  const [chosenJugador, setChosenJugador] = useState("");
+
+  const equipos = ["Qatar", "Ecuador", "Senegal", "Holanda", "Inglaterra", "Irán", "Estados Unidos", "Gales", "Argentina", "Arabia Saudita", "México", "Polonia", "Francia",
+    "Australia", "Dinamarca", "Túnez", "España", "Costa Rica", "Alemania", "Japón", "Bélgica", "Canadá", "Marruecos", "Croacia", "Brasil", "Serbia", "Suiza",
+    "Camerún", "Portugal", "Ghana", "Uruguay", "Corea del Sur"];
+  equipos.sort((a, b) => a < b ? -1 : b < a ? 1 : 0);
+  const jugadores = ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "Kylian Mbappe", "Harry Kane", "Karim Benzema", "Robert Lewandowski", "Romelu Lukaku", "Luiz Suarez", 
+                    "Gabriel Jesús", "Richarlison", "Vinicius Júnior", "Ángel Di María", "Paulo Dybala", "Bruno Fernandes", "Memphis Depay", "Pedri", "Morata", "Hakimi", 
+                  "Marcus Rashford", "Heung-Min Son", "Al Dawsari", "Kai Havertz", "Thomas Muller", "Joao Félix", "Diogo Jota", "Hirving Lozano", "Timo Werner", 
+                "Serge Gnabry", "Sané", "Sadio Mané", "Christian Pulisic", "Christian Eriksen", "Lautaro Martinez", "Gareth Bale", "Luka Modric", "Coutinho", "Dusan Tadic"];
+  
+  useEffect(() => {
+    setChosenEquipo("");
+    setChosenJugador("");
+  }, [partidosState])
+  
+    
 
   return (
     <div className="App" >
@@ -225,31 +238,100 @@ function App() {
               :
               pageState === "partidos" ?
                 <>
-                  <h2 className="partidosTitulo">PARTIDOS</h2>
-                  <p className="donePredictions">{donePredictions}</p>
-                  <div className="selYBtn">
-                    <select name="fase" id="faseElegida" onChange={() => filtrarFase()}>
-                      {
-                        fases.map(fase => {
-                          return <option key={fase} value={fase}>{fase}</option>
-                        })
-                      }
-                    </select>
-                    <div className="flecha"></div>
+                  <h2 className="partidosTitulo">HAcé TU PREDICCIÓN</h2>
+                  <p className="notaAdj">*Tenés hasta el 20/11 para predecir al campeón y al goleador.</p>
+                  <div className="tablaOpciones partidos">
+                    <h3 onClick={() => setPartidosState("partidos")} className={partidosState === "partidos" ? "active" : null}>Partidos</h3>
+                    <h3 onClick={() => setPartidosState("campeon")} className={partidosState === "campeon" ? "active" : null}>Campeón</h3>
+                    <h3 onClick={() => setPartidosState("goleador")} className={partidosState === "goleador" ? "active" : null}>goleador</h3>
                   </div>
-                  {
-                    database.partido1 != undefined ?
-                      <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
-                      :
-                      null
-                  }
 
-                  <div className="guardarCambios" onClick={() => predict()}>
-                    <p>Guardar predicción</p>
-                    <div>
-                      <span id="saveBtnSpan"></span>
-                    </div>
-                  </div>
+                  {/* <p className="donePredictions">{donePredictions}</p> */}
+                  {
+                    partidosState === "partidos" ?
+                      <>
+                        <div className="selYBtn">
+                          <select name="fase" id="faseElegida" onChange={() => filtrarFase()}>
+                            {
+                              fases.map(fase => {
+                                return <option key={fase} value={fase}>{fase}</option>
+                              })
+                            }
+                          </select>
+                          <div className="flecha"></div>
+                        </div>
+                        {
+                          database.partido1 != undefined ?
+                            <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
+                            :
+                            null
+                        }
+
+                        <div className="guardarCambios" onClick={() => predict(partidosState)}>
+                          <p>Guardar predicción</p>
+                          <div>
+                            <span id="saveBtnSpan"></span>
+                          </div>
+                        </div>
+                      </>
+                      :
+                      partidosState === "campeon" ?
+                        <>
+                          <ul className="tablaCont">
+                            {
+                              equipos.map(equipo => {
+                                return <li key={equipo} className={campeon === equipo ? "tablaUser partidos elegido": "tablaUser partidos"} onClick={() => setChosenEquipo(equipo)}>
+                                  <img src={process.env.PUBLIC_URL + banderas[equipo]} alt={equipo} className="chosenBandera"/>
+                                  <p className="nombre">{equipo}</p>
+                                  <div className="selectEquipo">
+                                    {
+                                      chosenEquipo === equipo ?
+                                        <ImTrophy className="teamChosen" />
+                                        :
+                                        <ImTrophy className="teamChosen black" />
+                                    }
+                                  </div>
+                                </li>
+                              })
+                            }
+                          </ul>
+                          <div className="guardarCambios" onClick={() => predict(partidosState)}>
+                            <p>Guardar predicción</p>
+                            <div>
+                              <span id="saveBtnSpan"></span>
+                            </div>
+                          </div>
+                        </>
+                        :
+                        partidosState === "goleador"?
+                        <>
+                          <ul className="tablaCont">
+                            {
+                              jugadores.map(jugador => {
+                                return <li key={jugador} className={goleador === jugador ? "tablaUser partidos elegido": "tablaUser partidos"} onClick={() => setChosenJugador(jugador)}>
+                                  <p className="nombre">{jugador}</p>
+                                  <div className="selectEquipo">
+                                    {
+                                      chosenJugador === jugador ?
+                                        <IoMdFootball className="teamChosen" />
+                                        :
+                                        <IoMdFootball className="teamChosen black" />
+                                    }
+                                  </div>
+                                </li>
+                              })
+                            }
+                          </ul>
+                          <div className="guardarCambios" onClick={() => predict(partidosState)}>
+                            <p>Guardar predicción</p>
+                            <div>
+                              <span id="saveBtnSpan"></span>
+                            </div>
+                          </div>
+                        </>
+                        :
+                        null
+                  }
                 </>
                 :
                 pageState === "clasificacion" ?
@@ -274,7 +356,7 @@ function App() {
 
       <Tooltip />
 
-    </div>
+    </div >
   );
 }
 

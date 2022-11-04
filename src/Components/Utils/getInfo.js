@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
 
-const getInfo = async(uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo) =>{
+const getInfo = async(uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo, setCampeon, setGoleador) =>{
     const q = query(collection(db, "Usuarios"), where("uid", "==", uid));
     const querySnapshot = await getDocs(q);
     
@@ -42,6 +42,8 @@ const getInfo = async(uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion,
     setMiPrediccion(prediccion)
     setPosicionesInd(tablaJugadores)
     setPosicionesGrup(tablaEquipos)
+    setCampeon(user.campeon)
+    setGoleador(user.goleador)
 
     console.log("user :",user);
     console.log("predic :",prediccion);

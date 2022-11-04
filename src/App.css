@@ -67,10 +67,54 @@ option {
   font-size: 14px;
 }
 
-
-.partidosTitulo {
+.notaAdj{
   color: #fff;
-  margin: 40px 0px;
+  font-size: 9px;
+  width: 95%;
+  margin: 0;
+  align-self: center;
+}
+
+
+.tablaOpciones.partidos {
+  margin: 0px 0px 15px 0;
+  width: 96%;
+}
+
+.tablaUser.partidos{
+  justify-content: space-between;
+}
+.tablaUser.partidos.elegido{
+  background-color: #ae946d;
+  border: solid 1px #fff;
+  color: #fff;
+  border-right: none;
+}
+
+.selectEquipo{
+  width: 35px;
+  height: 35px;
+  margin: 0 10px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #ae946d;
+  border-radius: 100% !important;
+  background-color: #fff;
+}
+.teamChosen{
+  color: #ae946d;
+  font-size: 25px;
+  padding: 5px;
+}
+
+.teamChosen.black{
+  color: rgb(187, 187, 187);
+}
+
+.chosenBandera{
+  height: 30px;
+  margin-left: 15px;
 }
 
 .donePredictions {
