@@ -7,6 +7,7 @@ import { FaSearch } from 'react-icons/fa';
 import FadeLoader from "react-spinners/FadeLoader";
 import equiposPorSexo from '../Utils/equiposPorSexo';
 import getTabla from '../Utils/getTabla';
+import { BsArrowDownSquareFill, BsArrowUpSquareFill } from 'react-icons/bs';
 
 
 
@@ -19,24 +20,41 @@ const TablaPosiciones = () => {
     const [indiMore, setIndiMore] = useState(11);
     const [teamMore, setTeamMore] = useState(11);
 
-    const getMore = (state) =>{
+    const getMore = (state) => {
         if (state === "individual") {
-            getTabla(state, indiMore+10, setPosicionesGrup, setPosicionesInd);
-            setIndiMore(indiMore+10)
-        }else if (state === "equipos") {
-            getTabla(state, teamMore+10, setPosicionesGrup, setPosicionesInd);
-            setTeamMore(teamMore+10)
+            getTabla(state, indiMore + 10, setPosicionesGrup, setPosicionesInd, scrollTrue);
+            setIndiMore(indiMore + 10)
+        } else if (state === "equipos") {
+            getTabla(state, teamMore + 10, setPosicionesGrup, setPosicionesInd, scrollTrue);
+            setTeamMore(teamMore + 10)
         }
     }
 
-    
-    
+    const [scrollPosition, setScrollPosition] = useState("start");
+
+    const scrollTrue = () => {
+        let element = document.querySelector('.tablaCont');
+        if (element.scrollTop > 30) {
+            setScrollPosition("middleS")
+        } else {
+            setScrollPosition("start")
+        }
+        if (element.scrollTop + 340 < element.scrollHeight) {
+            setScrollPosition("middleB")
+        } else {
+            setScrollPosition("end")
+        }
+        if (element.scrollTop + 340 < element.scrollHeight && element.scrollTop > 30) {
+            setScrollPosition("middle")
+        }
+    }
 
 
     return (
         <div className='clasificacionCont'>
             {
                 !posicionesGrup.length || !posicionesInd.length ?
+
                     <div className='prediccionCont'>
                         <h3>No se computaron PUNTAJES</h3>
                     </div>
@@ -52,8 +70,7 @@ const TablaPosiciones = () => {
                                 :
                                 null
                         }
-
-                        <div className='tablaCont'>
+                        <div className='tablaCont' onScroll={() => scrollTrue()}>
                             {
                                 tablaState === "individual" ?
 
@@ -90,7 +107,23 @@ const TablaPosiciones = () => {
 
                             }
                         </div>
-                        <div className='btnFiltro act' onClick={()=>getMore(tablaState)}>ver más</div>
+                        {
+                            document.querySelector('.tablaCont') ?
+                                document.querySelector('.tablaCont').scrollHeight >= 320 ?
+                                    <div className='arrowCont'>
+                                        {
+                                            scrollPosition  != "end"?
+                                                <BsArrowDownSquareFill className='arrow' />
+                                                :
+                                                null
+                                        }
+                                    </div>
+                                    :
+                                    null
+                                :
+                                null
+                        }
+                        <div className='btnFiltro act' onClick={() => getMore(tablaState)}>ver más</div>
 
 
                     </>

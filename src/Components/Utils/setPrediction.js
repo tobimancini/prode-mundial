@@ -6,12 +6,6 @@ import { addDoc } from "firebase/firestore";
 const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo) => {
 
   if (userInfo.habilitado === true) {
-    setToolText("SE GUARDÓ TU PREDICCIÓN.")
-    setTooltip(tooltip + 1);
-    setTimeout(() => {
-      setTooltip(tooltip + 2)
-    }, 4000);
-
 
     if (userInfo.uid) {
 
@@ -104,6 +98,12 @@ const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo
           });
         }
       }
+
+      setToolText("SE GUARDÓ TU PREDICCIÓN.")
+      setTooltip(tooltip + 1);
+      setTimeout(() => {
+        setTooltip(tooltip + 2)
+      }, 4000);
 
     } else {
       console.log("primero debes iniciar sesion");

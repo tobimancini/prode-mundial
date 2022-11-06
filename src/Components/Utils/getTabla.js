@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
 
-const getTabla = async (tipo, num, setPosicionesGrup, setPosicionesInd) => {
+const getTabla = async (tipo, num, setPosicionesGrup, setPosicionesInd, scrollTrue) => {
     if (tipo === "individual") {
         const w = query(collection(db, "Posiciones"), where("posicion", "<", num));
         const tablaSnap = await getDocs(w);
@@ -27,6 +27,9 @@ const getTabla = async (tipo, num, setPosicionesGrup, setPosicionesInd) => {
         console.log(tablaEquipos)
         setPosicionesGrup(tablaEquipos);
     }
+    setTimeout(() => {
+        scrollTrue();  
+    }, 300);
 }
 
 export default getTabla;

@@ -28,44 +28,26 @@ const newUser = async (dni, nombre, email, user, apellido, sexo, equipo, jaula) 
         }
     }
 
-    let usuario;
 
-    if (jaula === false) {
-        usuario = {
-            "prediccion": finalPrediction,
-            "dni": dni,
-            "nombre": nombre,
-            "email": email,
-            "uid": user.uid,
-            authProvider: "local",
-            "habilitado": false,
-            "apellido": apellido,
-            "sexo": "",
-            "equipo": "",
-            "puntajeActual": 0,
-            "jaula": false
-        }
-    }else{
-        usuario = {
-            "prediccion": finalPrediction,
-            "dni": dni,
-            "nombre": nombre,
-            "email": email,
-            "uid": user.uid,
-            authProvider: "local",
-            "habilitado": true,
-            "apellido": apellido,
-            "sexo": sexo,
-            "equipo": equipo,
-            "puntajeActual": 0,
-            "jaula": true,
-            "posicion": "",
-            "posicionEquipo": "",
-            "puntajeEquipo": 0,
-            "administrador" : false,
-            "campeon": "",
-            "goleador": ""
-        }
+    let usuario = {
+        "prediccion": finalPrediction,
+        "dni": dni,
+        "nombre": nombre,
+        "email": email,
+        "uid": user.uid,
+        authProvider: "local",
+        "habilitado": true,
+        "apellido": apellido,
+        "sexo": sexo,
+        "equipo": equipo,
+        "puntajeActual": 0,
+        "jaula": true,
+        "posicion": "",
+        "posicionEquipo": "",
+        "puntajeEquipo": 0,
+        "administrador": false,
+        "campeon": "",
+        "goleador": ""
     }
 
     allMatches();
