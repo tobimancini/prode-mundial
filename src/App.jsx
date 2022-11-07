@@ -31,8 +31,8 @@ function App() {
 
   const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida, setToolText,
     setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip,
-    allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn, setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesGrup, posicionesInd, miPrediccion, 
-  setCampeon, setGoleador, campeon, goleador } = useContext(Prode);
+    allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn, setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesGrup, posicionesInd, miPrediccion,
+    setCampeon, setGoleador, campeon, goleador, now } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -129,16 +129,6 @@ function App() {
 
   const predict = (partidosState) => {
 
-    let guardarBtn = document.getElementById('saveBtnSpan');
-
-    guardarBtn.classList.remove('inactive');
-    guardarBtn.classList.add('active');
-
-    setTimeout(() => {
-      guardarBtn.classList.add('inactive');
-      guardarBtn.classList.remove('active');
-    }, 1800);
-
     if (!userInfo.nombre) {
       setToolText("Iniciá sesion para poder jugar.")
       setTooltip(tooltip + 1)
@@ -149,10 +139,10 @@ function App() {
       if (partidosState === "partidos") {
         getPredictionDB(userInfo, userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
           setAllPuntajes, resultadosAct, setResultadosAct, setMiPrediccion)
-      }else if (partidosState === "campeon") {
-        setCampeonElegido(userInfo, chosenEquipo,setToolText, setTooltip, tooltip, setCampeon)
-      }else{
-        setGoleadorElegido(userInfo, chosenJugador,setToolText, setTooltip, tooltip, setGoleador)
+      } else if (partidosState === "campeon") {
+        setCampeonElegido(userInfo, chosenEquipo, setToolText, setTooltip, tooltip, setCampeon)
+      } else {
+        setGoleadorElegido(userInfo, chosenJugador, setToolText, setTooltip, tooltip, setGoleador)
       }
 
     }
@@ -206,17 +196,36 @@ function App() {
     "Australia", "Dinamarca", "Túnez", "España", "Costa Rica", "Alemania", "Japón", "Bélgica", "Canadá", "Marruecos", "Croacia", "Brasil", "Serbia", "Suiza",
     "Camerún", "Portugal", "Ghana", "Uruguay", "Corea del Sur"];
   equipos.sort((a, b) => a < b ? -1 : b < a ? 1 : 0);
-  const jugadores = ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "Kylian Mbappe", "Harry Kane", "Karim Benzema", "Robert Lewandowski", "Romelu Lukaku", "Luiz Suarez", 
-                    "Gabriel Jesús", "Richarlison", "Vinicius Júnior", "Ángel Di María", "Paulo Dybala", "Bruno Fernandes", "Memphis Depay", "Pedri", "Morata", "Hakimi", 
-                  "Marcus Rashford", "Heung-Min Son", "Al Dawsari", "Kai Havertz", "Thomas Muller", "Joao Félix", "Diogo Jota", "Hirving Lozano", "Timo Werner", 
-                "Serge Gnabry", "Sané", "Sadio Mané", "Christian Pulisic", "Christian Eriksen", "Lautaro Martinez", "Gareth Bale", "Luka Modric", "Coutinho", "Dusan Tadic"];
-  
+  const jugadores = ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "Kylian Mbappe", "Harry Kane", "Karim Benzema", "Robert Lewandowski", "Romelu Lukaku", "Luiz Suarez",
+    "Gabriel Jesús", "Richarlison", "Vinicius Júnior", "Ángel Di María", "Paulo Dybala", "Bruno Fernandes", "Memphis Depay", "Pedri", "Morata", "Hakimi",
+    "Marcus Rashford", "Heung-Min Son", "Al Dawsari", "Kai Havertz", "Thomas Muller", "Joao Félix", "Diogo Jota", "Hirving Lozano", "Timo Werner",
+    "Serge Gnabry", "Sané", "Sadio Mané", "Christian Pulisic", "Christian Eriksen", "Lautaro Martinez", "Gareth Bale", "Luka Modric", "Coutinho", "Dusan Tadic"];
+
   useEffect(() => {
     setChosenEquipo("");
     setChosenJugador("");
   }, [partidosState])
-  
-    
+
+
+  const [campeonesOff, setCampeonesOff] = useState(false);
+
+  const fechaCampeones = {
+    mes: 11,
+    dia: 20,
+    hora: 13,
+    minutos: 0
+  }
+
+  const fechaLimiteCampeones = () => {
+    if (now.getMonth() + 1 > fechaCampeones.mes || (now.getMonth() + 1 == fechaCampeones.mes && now.getDate() > fechaCampeones.dia) ||
+      (now.getMonth() + 1 == fechaCampeones.mes && now.getDate() == fechaCampeones.dia && now.getHours() > fechaCampeones.hora) ||
+      (now.getMonth() + 1 == fechaCampeones.mes && now.getDate() == fechaCampeones.dia && now.getHours() == fechaCampeones.hora && now.getMinutes() >= fechaCampeones.minutos)) {
+      setCampeonesOff(true)
+    }
+  }
+  useEffect(() => {
+    fechaLimiteCampeones();
+  }, [now]);
 
   return (
     <div className="App" >
@@ -246,7 +255,6 @@ function App() {
                     <h3 onClick={() => setPartidosState("goleador")} className={partidosState === "goleador" ? "active" : null}>goleador</h3>
                   </div>
 
-                  {/* <p className="donePredictions">{donePredictions}</p> */}
                   {
                     partidosState === "partidos" ?
                       <>
@@ -276,61 +284,101 @@ function App() {
                       </>
                       :
                       partidosState === "campeon" ?
-                        <>
-                          <ul className="tablaCont">
-                            {
-                              equipos.map(equipo => {
-                                return <li key={equipo} className={campeon === equipo ? "tablaUser partidos elegido": "tablaUser partidos"} onClick={() => setChosenEquipo(equipo)}>
-                                  <img src={process.env.PUBLIC_URL + banderas[equipo]} alt={equipo} className="chosenBandera"/>
-                                  <p className="nombre">{equipo}</p>
-                                  <div className="selectEquipo">
-                                    {
-                                      chosenEquipo === equipo ?
-                                        <ImTrophy className="teamChosen" />
-                                        :
-                                        <ImTrophy className="teamChosen black" />
-                                    }
-                                  </div>
-                                </li>
-                              })
-                            }
-                          </ul>
-                          <div className="guardarCambios" onClick={() => predict(partidosState)}>
-                            <p>Guardar predicción</p>
-                            <div>
-                              <span id="saveBtnSpan"></span>
+
+                        campeonesOff === false ?
+                          <>
+                            <ul className="tablaCont">
+                              {
+                                equipos.map(equipo => {
+                                  return <li key={equipo} className={campeon === equipo ? "tablaUser partidos elegido" : "tablaUser partidos"} onClick={() => setChosenEquipo(equipo)}>
+                                    <img src={process.env.PUBLIC_URL + banderas[equipo]} alt={equipo} className="chosenBandera" />
+                                    <p className="nombre">{equipo}</p>
+                                    <div className="selectEquipo">
+                                      {
+                                        chosenEquipo === equipo ?
+                                          <ImTrophy className="teamChosen" />
+                                          :
+                                          <ImTrophy className="teamChosen black" />
+                                      }
+                                    </div>
+                                  </li>
+                                })
+                              }
+                            </ul>
+                            <div className="guardarCambios" onClick={() => predict(partidosState)}>
+                              <p>Guardar predicción</p>
+                              <div>
+                                <span id="saveBtnSpan"></span>
+                              </div>
                             </div>
-                          </div>
-                        </>
-                        :
-                        partidosState === "goleador"?
-                        <>
-                          <ul className="tablaCont">
-                            {
-                              jugadores.map(jugador => {
-                                return <li key={jugador} className={goleador === jugador ? "tablaUser partidos elegido": "tablaUser partidos"} onClick={() => setChosenJugador(jugador)}>
-                                  <p className="nombre">{jugador}</p>
-                                  <div className="selectEquipo">
-                                    {
-                                      chosenJugador === jugador ?
-                                        <IoMdFootball className="teamChosen" />
-                                        :
-                                        <IoMdFootball className="teamChosen black" />
-                                    }
-                                  </div>
-                                </li>
-                              })
-                            }
-                          </ul>
-                          <div className="guardarCambios" onClick={() => predict(partidosState)}>
-                            <p>Guardar predicción</p>
-                            <div>
-                              <span id="saveBtnSpan"></span>
+                          </>
+                          :
+                          userInfo.nombre ?
+                            <div className="matchContainer gold">
+                              <p style={{ "fontSize": "12px" }}>Campeón elegido:</p>
+                              <div className="campeonElegido">
+                                {
+                                  userInfo.campeon === "" ?
+                                    <p className="elegido">No elegiste un campeón</p> :
+                                    <>
+                                      <p className="elegido">{userInfo.campeon.toUpperCase()}</p>
+                                      <img src={process.env.PUBLIC_URL + banderas[userInfo.campeon]} alt={userInfo.campeon} />
+                                    </>
+                                }
+                              </div>
                             </div>
-                          </div>
-                        </>
+                            :
+                            null
+
+
                         :
-                        null
+                        partidosState === "goleador" ?
+                          campeonesOff === false ?
+                            <>
+                              <ul className="tablaCont">
+                                {
+                                  jugadores.map(jugador => {
+                                    return <li key={jugador} className={goleador === jugador ? "tablaUser partidos elegido" : "tablaUser partidos"} onClick={() => setChosenJugador(jugador)}>
+                                      <p className="nombre">{jugador}</p>
+                                      <div className="selectEquipo">
+                                        {
+                                          chosenJugador === jugador ?
+                                            <IoMdFootball className="teamChosen" />
+                                            :
+                                            <IoMdFootball className="teamChosen black" />
+                                        }
+                                      </div>
+                                    </li>
+                                  })
+                                }
+                              </ul>
+                              <div className="guardarCambios" onClick={() => predict(partidosState)}>
+                                <p>Guardar predicción</p>
+                                <div>
+                                  <span id="saveBtnSpan"></span>
+                                </div>
+                              </div>
+                            </>
+                            :
+                            userInfo.nombre ?
+
+                              <div className="matchContainer gold">
+                                <p style={{ "fontSize": "12px" }}>Goleador elegido:</p>
+                                <div className="campeonElegido">
+                                  {
+                                    userInfo.goleador === "" ?
+                                      <p className="elegido">No elegiste un goleador</p> :
+                                      <>
+                                        <p className="elegido">{userInfo.goleador.toUpperCase()}</p>
+                                        <IoMdFootball className="teamChosen" style={{ "fontSize": "35px" }} />
+                                      </>
+                                  }
+                                </div>
+                              </div>
+                              :
+                              null
+                          :
+                          null
                   }
                 </>
                 :

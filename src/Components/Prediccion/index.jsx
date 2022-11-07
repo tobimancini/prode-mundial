@@ -3,7 +3,7 @@ import { Prode } from '../../Context/prodeData'
 import getMatchScore from '../Utils/getMatchScore';
 import sortPrediccion from '../Utils/sortPrediccion';
 import './styles.css';
-import { BsQuestionCircleFill } from 'react-icons/bs';
+import { BsArrowDownSquareFill, BsQuestionCircleFill } from 'react-icons/bs';
 import FadeLoader from "react-spinners/FadeLoader";
 
 const Prediccion = () => {
@@ -70,6 +70,27 @@ const Prediccion = () => {
         setFaseSel(fase);
     }
 
+
+    const [scrollPosition, setScrollPosition] = useState("start");
+
+    const scrollTrue = () => {
+        let element = document.querySelector('.tablaCont');
+        if (element.scrollTop > 30) {
+            setScrollPosition("middleS")
+        } else {
+            setScrollPosition("start")
+        }
+        if (element.scrollTop + 340 < element.scrollHeight) {
+            setScrollPosition("middleB")
+        } else {
+            setScrollPosition("end")
+        }
+        if (element.scrollTop + 340 < element.scrollHeight && element.scrollTop > 30) {
+            setScrollPosition("middle")
+        }
+    }
+
+
     useEffect(() => {
         sortPrediccion(prediccionActual, setSortedPredic, false)
         getMatchScore(allPuntajes, userLogged, setPrediccionUsuario);
@@ -78,6 +99,11 @@ const Prediccion = () => {
     useEffect(() => {
         getPartidosFase();
     }, [faseSel, sortedPredic])
+
+    useEffect(() => {
+      console.log(scrollPosition);
+    }, [scrollPosition])
+    
 
 
 
@@ -99,7 +125,7 @@ const Prediccion = () => {
                             </select>
                             <div className="flecha"></div>
                         </div>
-                        <div className='tablaCont'>
+                        <div className='tablaCont' onScroll={()=>scrollTrue()}>
                             {allMatches.map(partido => {
                                 if (miPrediccion[0][partido[0]] && (faseSel === partido[1].fase || faseSel === partido[1].grupo)) {
                                     return <div className='predPartido' key={partido[1].partido}>
@@ -118,15 +144,31 @@ const Prediccion = () => {
                                                     <img src={process.env.PUBLIC_URL + banderas[database[partido[0]].visitante]} alt={database[partido[0]].visitante} />
                                             }
 
-                                            <p className='puntos'>{userInfo[partido[0]] ? userInfo[partido[0]].puntaje+" pts" : ""}</p>
+                                            <p className='puntos'>{userInfo[partido[0]] ? userInfo[partido[0]].puntaje + " pts" : ""}</p>
                                         </div>
-                                        
+
                                     </div>
                                 }
 
                             })
                             }
                         </div>
+                        {
+                            document.querySelector('.tablaCont') ?
+                                document.querySelector('.tablaCont').scrollHeight >= 320 ?
+                                    <div className='arrowCont'>
+                                        {
+                                            scrollPosition != "end" ?
+                                                <BsArrowDownSquareFill className='arrow' />
+                                                :
+                                                null
+                                        }
+                                    </div>
+                                    :
+                                    null
+                                :
+                                null
+                        }
 
                         <p className="btnFiltro" >TOTAL : {userInfo.puntajeActual} pts</p>
                     </div>

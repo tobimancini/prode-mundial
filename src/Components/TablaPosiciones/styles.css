@@ -39,11 +39,14 @@
 
 .arrow{
     border: solid 1px #fff;
+    color: #ae946d;
+    background-color: #fff;
 }
 
 .arrow path{
     color: #ae946d;
     border: solid 1px #fff;
+    background-color: #fff;
 }
 
 
@@ -172,6 +175,7 @@
     border: solid 1px #fff;
     padding: 5px;
     margin: 3px !important;
+    cursor: pointer;
 }
 
 .tablaOpciones h3.active{

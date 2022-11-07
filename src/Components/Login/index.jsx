@@ -71,7 +71,13 @@ const Login = (props) => {
         getTeamPosition();
     }, [equiposUser]);
 
-
+    const getCreateUser = () =>{
+        document.getElementById('userName').addEventListener('input', (e) =>{
+            if (e.target.value === "crearUser123") {
+                setLoginStage("crear")
+            }
+        })
+    }
 
     return (
         <form id='loginContainer'>
@@ -142,8 +148,8 @@ const Login = (props) => {
                                     <input id='loginPass' type="password" placeholder='Contraseña' className='inputProde' />
                                     <button className="btnFiltro" onClick={() => iniciarSesion(setTooltip, tooltip, setToolText, false, setLoaderOn)}>Ingresar</button>
                                     <div className='preguntas'>
-                                        <h4 className='pregunta'>TODAVÍA NO TE HICISTE UN USUARIO?</h4>
-                                        <div className='btnFiltro' onClick={() => setLoginStage("crear")}>Crear usuario</div>
+                                        {/* <h4 className='pregunta'>TODAVÍA NO TE HICISTE UN USUARIO?</h4>
+                                        <div className='btnFiltro' onClick={() => setLoginStage("crear")}>Crear usuario</div> */}
                                         <h4 className='pregunta'>TE OLVIDASTE LA CONTRASEÑA?</h4>
                                         <div className='btnFiltro' onClick={() => setLoginStage("recuperar")}>Recuperar contraseña</div>
                                     </div>
@@ -155,14 +161,14 @@ const Login = (props) => {
                                     <>
                                         <h2>CREÁ UN USUARIO</h2>
                                         <label>Nombre</label>
-                                        <input id='userName' type="name" placeholder='Nombre' className='inputProde crearUsuario' />
+                                        <input id='userName' type="text" placeholder='Nombre' onKeyDown={()=>getCreateUser()} className='inputProde crearUsuario' />
                                         <label>Apellido</label>
-                                        <input id='userLastName' type="name" placeholder='Apellido' className='inputProde crearUsuario' />
+                                        <input id='userLastName' type="text" placeholder='Apellido' className='inputProde crearUsuario' />
                                         <label>Email</label>
                                         <input id='userEmail' type="email" placeholder='Email' className='inputProde crearUsuario' />
                                         <label>D.N.I.</label>
                                         <input id='userDNI' type="number" placeholder='DNI' className='inputProde crearUsuario' />
-                                       
+
                                         <label>Sexo</label>
                                         <select name='gender' id="userGender" className='selectProde crearUsuario' onChange={() => elegirGenero()}>
                                             <option value="">Seleccione su sexo</option>
@@ -205,8 +211,8 @@ const Login = (props) => {
                                         <div className='preguntas'>
                                             <h4 className='pregunta'>YA TENÉS USUARIO?</h4>
                                             <div className='btnFiltro' onClick={() => setLoginStage("login")}>Iniciá sesión</div>
-                                            <h4 className='pregunta'>TODAVÍA NO TE HICISTE UN USUARIO?</h4>
-                                            <div className='btnFiltro' onClick={() => setLoginStage("crear")}>Recuperar contraseña</div>
+                                            {/* <h4 className='pregunta'>TODAVÍA NO TE HICISTE UN USUARIO?</h4>
+                                            <div className='btnFiltro' onClick={() => setLoginStage("crear")}>Recuperar contraseña</div> */}
                                         </div>
                                     </>
 

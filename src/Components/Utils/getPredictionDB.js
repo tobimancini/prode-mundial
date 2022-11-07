@@ -7,6 +7,11 @@ const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccion
 
     if (userInfo.uid) {
         if (tOf === true) {
+            let guardarBtn = document.getElementById('saveBtnSpan');
+    
+            guardarBtn.classList.remove('inactive');
+            guardarBtn.classList.add('active');
+ 
             newPrediction(allMatches, setToolText, setTooltip, tooltip, userInfo).then(async () => {
                 if (userInfo.habilitado === true) {
                     const q = query(collection(db, "Usuarios"), where("uid", "==", userInfo.uid));
@@ -27,7 +32,10 @@ const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccion
                         miPredic.push(doc.data())
                     })
                     setMiPrediccion(miPredic)
-
+                    setTimeout(() => {
+                        guardarBtn.classList.add('inactive');
+                        guardarBtn.classList.remove('active');
+                    }, 600);
                 }
             })
 

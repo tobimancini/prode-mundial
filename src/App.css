@@ -13,11 +13,12 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 100% !important;
+  /* width: 100% !important; */
   background-color: #000;
   min-height: 50vh;
   overflow: hidden;
   font-family: 'Montserrat', sans-serif !important; 
+  max-width: 520px !important;
 }
 
 h2 {
@@ -30,7 +31,7 @@ h2 {
 
 h3{
   font-family: 'Bebas Neue', cursive !important;
-  font-size: 28px !important;
+  font-size: 22px !important;
   font-weight: 400;
   margin: 15px !important;
 }
@@ -143,7 +144,7 @@ option {
   border-radius: 3px;
   width: 100%;
   padding: 5px 10px;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 400;
   text-align: center;
   border: solid 1px #fff;
@@ -180,6 +181,7 @@ option {
   /* -webkit-text-stroke: 1px #fff; */
   overflow: hidden;
   font-family: 'Bebas Neue', cursive !important;
+  max-width: 520px !important;
 }
 
 .guardarCambios p {
@@ -234,7 +236,7 @@ option {
   border: solid 1px #fff;
   /* margin: 10px; */
   padding: 7px 10px;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 400;
   min-width: 15%;
   /* margin-left: 20px; */
@@ -244,6 +246,32 @@ option {
 
 
 }
+
+.gold{
+  border: solid 2px #ae946d;
+  padding-bottom: 5px;
+  height: 80px;
+}
+
+.campeonElegido{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.campeonElegido img{
+  height: 30px;
+  margin: 3px;
+}
+
+.gold .elegido{
+  font-weight: 400;
+  font-family: 'Bebas Neue', cursive !important;
+  font-size: 30px;
+  margin: 3px !important;
+}
+
 
 @keyframes saveAnimation {
   from {
