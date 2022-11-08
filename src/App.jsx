@@ -32,7 +32,7 @@ function App() {
   const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida, setToolText,
     setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip,
     allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn, setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesGrup, posicionesInd, miPrediccion,
-    setCampeon, setGoleador, campeon, goleador, now } = useContext(Prode);
+    setCampeon, setGoleador, campeon, goleador, now, setResultados, setJauleño } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -175,7 +175,7 @@ function App() {
         setTimeout(() => {
           setTooltip(tooltip + 2)
         }, 2500);
-        getInfo(user.uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo, setCampeon, setGoleador)
+        getInfo(user.uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo, setCampeon, setGoleador, setResultados, setJauleño)
 
       } else {
         setTooltip(tooltip + 1);
@@ -242,10 +242,10 @@ function App() {
             <Home />
             :
 
-            pageState === "perfil" ?
+            pageState === "perfil" && userInfo !== {}?
               <Login userID={setUserID} />
               :
-              pageState === "partidos" ?
+              pageState === "partidos" && userInfo !== {} ?
                 <>
                   <h2 className="partidosTitulo">HAcé TU PREDICCIÓN</h2>
                   <p className="notaAdj">*Tenés hasta el 20/11 para predecir al campeón y al goleador.</p>
@@ -332,7 +332,7 @@ function App() {
 
 
                         :
-                        partidosState === "goleador" ?
+                        partidosState === "goleador" && userInfo !== {}?
                           campeonesOff === false ?
                             <>
                               <ul className="tablaCont">
@@ -382,15 +382,15 @@ function App() {
                   }
                 </>
                 :
-                pageState === "clasificacion" ?
+                pageState === "clasificacion" && userInfo !== {}?
                   <>
                     <TablaPosiciones />
                   </>
                   :
-                  pageState === "prediccion" ?
+                  pageState === "prediccion" && userInfo !== {}?
                     <Prediccion />
                     :
-                    pageState === "admin" && userInfo ?
+                    pageState === "admin" && userInfo !== {} ?
                       <Admin />
                       :
 

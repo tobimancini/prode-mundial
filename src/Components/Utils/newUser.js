@@ -27,28 +27,53 @@ const newUser = async (dni, nombre, email, user, apellido, sexo, equipo, jaula) 
             finalPrediction = Object.assign(finalPrediction, match)
         }
     }
-
-
-    let usuario = {
-        "prediccion": finalPrediction,
-        "dni": dni,
-        "nombre": nombre,
-        "email": email,
-        "uid": user.uid,
-        authProvider: "local",
-        "habilitado": true,
-        "apellido": apellido,
-        "sexo": sexo,
-        "equipo": equipo,
-        "puntajeActual": 0,
-        "jaula": true,
-        "posicion": "",
-        "posicionEquipo": "",
-        "puntajeEquipo": 0,
-        "administrador": false,
-        "campeon": "",
-        "goleador": ""
+    let usuario;
+    if (jaula === true) {
+        usuario = {
+            "prediccion": finalPrediction,
+            "dni": dni,
+            "nombre": nombre,
+            "email": email,
+            "uid": user.uid,
+            authProvider: "local",
+            "habilitado": true,
+            "apellido": apellido,
+            "sexo": sexo,
+            "equipo": equipo,
+            "puntajeActual": 0,
+            "jaula": true,
+            "posicion": "",
+            "posicionEquipo": "",
+            "puntajeEquipo": 0,
+            "administrador": false,
+            "campeon": "",
+            "goleador": ""
+        }
+    } else {
+        usuario = {
+            "prediccion": finalPrediction,
+            "dni": dni,
+            "nombre": nombre,
+            "email": email,
+            "uid": user.uid,
+            authProvider: "local",
+            "habilitado": true,
+            "apellido": apellido,
+            "sexo": "",
+            "equipo": "",
+            "puntajeActual": 0,
+            "jaula": false,
+            "posicion": "",
+            "posicionEquipo": "",
+            "puntajeEquipo": 0,
+            "administrador": false,
+            "campeon": "",
+            "goleador": ""
+        }
     }
+
+
+
 
     allMatches();
 

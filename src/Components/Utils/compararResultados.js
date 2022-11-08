@@ -37,78 +37,88 @@ const compararResultados = async (setCargando) => {
         const q = query(collection(db, "Usuarios"), where("uid", "==", userId[0][1]));
         let querySnap = await getDocs(q);
 
+        let administrador;
+        querySnap.forEach((doc) => {
+            administrador = doc.data()
+        })
 
-        let partidos = [];
-        for (let i = 0; i < prediccion.length; i++) {
-            const el = prediccion[i];
-            if (el[0] !== "apellido" && el[0] !== "nombre" && el[0] !== "uid", el[0] !== "equipo") {
-                partidos.push(el);
-            }
-        }
-        for (let i = 0; i < allResults.length; i++) {
-            let puntaje = 0;
-            const result = allResults[i];
-            for (let i = 0; i < partidos.length; i++) {
-                let partido = partidos[i];
 
-                if (result[partido[0]] !== undefined) {
-                    if (result[partido[0]].visitante === partido[1].visitante) {
-                        puntaje += 1;
-                    }
-                    if (result[partido[0]].local === partido[1].local) {
-                        puntaje += 1;
-                    }
-                    if (result[partido[0]].ganador === partido[1].ganador) {
-                        puntaje += 3;
-                    }
-                    if (puntaje === 5) {
-                        puntaje += 3
-                    }
-                    let queryRef = querySnap.docs[0].ref;
-                    await updateDoc(queryRef, {
-                        [partido[0]] : {
-                            puntaje: puntaje
-                        }
-                    });
+        if (administrador.administrador === false) {
+            let partidos = [];
+            for (let i = 0; i < prediccion.length; i++) {
+                const el = prediccion[i];
+                if (el[0] !== "apellido" && el[0] !== "nombre" && el[0] !== "uid", el[0] !== "equipo") {
+                    partidos.push(el);
                 }
             }
-            puntajes += puntaje;
-        }
-        let userData = [];
+            for (let i = 0; i < allResults.length; i++) {
+                let puntaje = 0;
+                const result = allResults[i];
+                for (let i = 0; i < partidos.length; i++) {
+                    let partido = partidos[i];
 
-        for (let i = 0; i < prediccion.length; i++) {
-            const el = prediccion[i];
-            if (el[0] === "nombre" || el[0] === "apellido" || el[0] === "uid" || el[0] === "equipo") {
-                userData.push(el);
+                    if (result[partido[0]] !== undefined) {
+                        if (result[partido[0]].visitante === partido[1].visitante) {
+                            puntaje += 1;
+                        }
+                        if (result[partido[0]].local === partido[1].local) {
+                            puntaje += 1;
+                        }
+                        if (result[partido[0]].ganador === partido[1].ganador) {
+                            puntaje += 3;
+                        }
+                        if (puntaje === 5) {
+                            puntaje += 3
+                        }
+                        let queryRef = querySnap.docs[0].ref;
+                        await updateDoc(queryRef, {
+                            [partido[0]]: {
+                                puntaje: puntaje
+                            }
+                        });
+                    }
+                }
+                puntajes += puntaje;
+            }
+            let userData = [];
+
+            for (let i = 0; i < prediccion.length; i++) {
+                const el = prediccion[i];
+                if (el[0] === "nombre" || el[0] === "apellido" || el[0] === "uid" || el[0] === "equipo") {
+                    userData.push(el);
+                }
+
             }
 
-        }
-
-        let newUD = {};
-        for (let i = 0; i < userData.length; i++) {
-            const el = userData[i];
-            let hola = {
-                [el[0]]: el[1]
+            let newUD = {};
+            for (let i = 0; i < userData.length; i++) {
+                const el = userData[i];
+                let hola = {
+                    [el[0]]: el[1]
+                }
+                Object.assign(newUD, hola)
             }
-            Object.assign(newUD, hola)
+
+            let puntajeUsuario = { puntaje: puntajes }
+
+            Object.assign(newUD, puntajeUsuario)
+
+
+            puntajesTotales.push(newUD);
+
         }
 
-        let puntajeUsuario = { puntaje: puntajes }
 
-        Object.assign(newUD, puntajeUsuario)
-
-
-        puntajesTotales.push(newUD);
 
 
     }
     puntajesTotales.sort((a, b) => a.puntaje < b.puntaje ? 1 : b.puntaje < a.puntaje ? -1 : 0)
-
     for (let i = 0; i < puntajesTotales.length; i++) {
         const el = puntajesTotales[i];
         let posicion = { posicion: i + 1 }
         Object.assign(el, posicion)
     }
+
 
 
     const tablaPosi = await getDocs(collection(db, "Posiciones"));
@@ -141,39 +151,67 @@ const compararResultados = async (setCargando) => {
 
     for (let i = 0; i < puntajesTotales.length; i++) {
         const el = puntajesTotales[i];
-        if (equipos.length === 0) {
-            equipos.push({ equipo: el.equipo })
-        } else {
-            let aparece = false;
-            for (let i = 0; i < equipos.length; i++) {
-                const element = equipos[i];
-                if (element.equipo === el.equipo) {
-                    aparece = true;
+        if (el.equipo !== "") {
+            if (equipos.length === 0) {
+                equipos.push({ equipo: el.equipo })
+            } else {
+                let aparece = false;
+                for (let i = 0; i < equipos.length; i++) {
+                    const element = equipos[i];
+                    if (element.equipo === el.equipo) {
+                        aparece = true;
+                    }
+                }
+                if (aparece === false) {
+                    equipos.push({ equipo: el.equipo })
                 }
             }
-            if (aparece === false) {
-                equipos.push({ equipo: el.equipo })
-            }
         }
+        
     }
+
     for (let i = 0; i < puntajesTotales.length; i++) {
         const el = puntajesTotales[i];
         for (let i = 0; i < equipos.length; i++) {
             const equipo = equipos[i];
             if (equipo.puntaje === undefined) {
                 if (el.equipo === equipo.equipo) {
-                    let puntos = { puntaje: el.puntaje }
+                    // console.log(el);
+                    let puntos = { [el.uid]: el.puntaje }
                     Object.assign(equipo, puntos)
                 }
-            } else {
-                if (el.equipo === equipo.equipo) {
-                    equipo.puntaje = equipo.puntaje + el.puntaje;
-                }
             }
+            // } else {
+            //     if (el.equipo === equipo.equipo) {
+            //         equipo.puntaje = equipo.puntaje + el.puntaje;
+            //     }
+            // }
         }
     }
 
+
+
+    // console.log(equipos);
+
+    for (let i = 0; i < equipos.length; i++) {
+        const el = equipos[i];
+        let equipoPuntos = 0;
+        let equipo = Object.entries(el);
+        equipo.splice(0, 1)
+        equipo.sort((a, b) => a[1] < b[1] ? 1 : b[1] < a[1] ? -1 : 0)
+        const nuevo = equipo.slice(0, 5)
+
+        for (let i = 0; i < nuevo.length; i++) {
+            const el = nuevo[i];
+            equipoPuntos += el[1]
+        }
+        equipos[i].puntaje=equipoPuntos;
+
+    }
+    
     equipos.sort((a, b) => a.puntaje < b.puntaje ? 1 : b.puntaje < a.puntaje ? -1 : 0);
+    console.log(equipos);
+
 
     for (let i = 0; i < equipos.length; i++) {
         const equipo = equipos[i];

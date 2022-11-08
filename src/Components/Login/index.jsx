@@ -71,13 +71,16 @@ const Login = (props) => {
         getTeamPosition();
     }, [equiposUser]);
 
-    const getCreateUser = () =>{
-        document.getElementById('userName').addEventListener('input', (e) =>{
+    const getCreateUser = () => {
+        document.getElementById('loginEmail').addEventListener('input', (e) => {
             if (e.target.value === "crearUser123") {
                 setLoginStage("crear")
             }
+            console.log(e.target.value);
         })
     }
+
+    const [jaula, setJaula] = useState(true);
 
     return (
         <form id='loginContainer'>
@@ -143,7 +146,7 @@ const Login = (props) => {
                                 <>
                                     <h2>INICIÁ SESIÓN</h2>
                                     <label>Email</label>
-                                    <input id='loginEmail' type="email" placeholder='Email' className='inputProde' />
+                                    <input id='loginEmail' type="email" placeholder='Email' className='inputProde' onKeyDown={() => getCreateUser()} />
                                     <label>Contraseña</label>
                                     <input id='loginPass' type="password" placeholder='Contraseña' className='inputProde' />
                                     <button className="btnFiltro" onClick={() => iniciarSesion(setTooltip, tooltip, setToolText, false, setLoaderOn)}>Ingresar</button>
@@ -161,36 +164,47 @@ const Login = (props) => {
                                     <>
                                         <h2>CREÁ UN USUARIO</h2>
                                         <label>Nombre</label>
-                                        <input id='userName' type="text" placeholder='Nombre' onKeyDown={()=>getCreateUser()} className='inputProde crearUsuario' />
+                                        <input id='userName' type="text" placeholder='Nombre' className='inputProde crearUsuario' />
                                         <label>Apellido</label>
                                         <input id='userLastName' type="text" placeholder='Apellido' className='inputProde crearUsuario' />
                                         <label>Email</label>
                                         <input id='userEmail' type="email" placeholder='Email' className='inputProde crearUsuario' />
                                         <label>D.N.I.</label>
                                         <input id='userDNI' type="number" placeholder='DNI' className='inputProde crearUsuario' />
-
+                                        <label>Jaula</label>
+                                        <select name='jaula' id="jaulaPlayer" className='selectProde crearUsuario' onChange={() => setJaula(!jaula)}>
+                                            <option value={true}>Si</option>
+                                            <option value={false}>No</option>
+                                        </select>
                                         <label>Sexo</label>
-                                        <select name='gender' id="userGender" className='selectProde crearUsuario' onChange={() => elegirGenero()}>
-                                            <option value="">Seleccione su sexo</option>
-                                            <option value="M">Masculino</option>
-                                            <option value="F">Femenino</option>
-                                        </select>
-                                        <label>Equipo</label>
-                                        <select name="team" id="userTeam" className='selectProde crearUsuario'>
-                                            {
-                                                gender === "M" ?
-                                                    equiposMasc.map(equipo => {
-                                                        return <option key={equipo} value={equipo}>{equipo}</option>
-                                                    })
-                                                    :
-                                                    gender === "F" ?
-                                                        equiposFem.map(equipo => {
-                                                            return <option key={equipo} value={equipo}>{equipo}</option>
-                                                        })
-                                                        :
-                                                        <option value="">Primero seleccione su sexo</option>
-                                            }
-                                        </select>
+                                        {
+                                            jaula === true ?
+                                                <>
+                                                    <select name='gender' id="userGender" className='selectProde crearUsuario' onChange={() => elegirGenero()}>
+                                                        <option value="">Seleccione su sexo</option>
+                                                        <option value="M">Masculino</option>
+                                                        <option value="F">Femenino</option>
+                                                    </select>
+                                                    <label>Equipo</label>
+                                                    <select name="team" id="userTeam" className='selectProde crearUsuario'>
+                                                        {
+                                                            gender === "M" ?
+                                                                equiposMasc.map(equipo => {
+                                                                    return <option key={equipo} value={equipo}>{equipo}</option>
+                                                                })
+                                                                :
+                                                                gender === "F" ?
+                                                                    equiposFem.map(equipo => {
+                                                                        return <option key={equipo} value={equipo}>{equipo}</option>
+                                                                    })
+                                                                    :
+                                                                    <option value="">Primero seleccione su sexo</option>
+                                                        }
+                                                    </select>
+                                                </>
+                                                :
+                                                null
+                                        }
 
                                         <label>Contraseña</label>
                                         <input id='userPass' type="password" placeholder='Contraseña' className='inputProde crearUsuario' />

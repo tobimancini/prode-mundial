@@ -45,7 +45,7 @@
 .preguntas .btnFiltro{
     width: 70px;
     height: 45px;
-    font-size: 12px;
+    font-size: 12px !important;
     padding: 0 5px;
     margin: 5px 0 !important;
     display: flex;

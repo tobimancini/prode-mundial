@@ -206,7 +206,7 @@ const Navbar = () => {
           <p className='tituloPer'>Perfil</p>
         </li>
         {
-          userInfo.administrador === false ?
+          userInfo === {} ?
             null
             :
             <li id='admin' className='navItem' onClick={() => changeState("admin")}>

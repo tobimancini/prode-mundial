@@ -7,7 +7,7 @@ import { BsQuestionCircleFill } from 'react-icons/bs';
 
 const Partido = (props) => {
 
-    const { prediccionActual, resultadosAct, puntajesAct, now, setNow, banderas, miPrediccion, userInfo } = useContext(Prode);
+    const { prediccionActual, resultadosAct, puntajesAct, now, setNow, banderas, miPrediccion, userInfo, resultados } = useContext(Prode);
     const partido = props.partido;
     const local = partido.local;
     const loc = partido.loc;
@@ -76,6 +76,24 @@ const Partido = (props) => {
         partidoJugado();
     }, [now]);
 
+    const [resultadoMatch, setResultadoMatch] = useState("");
+
+    const findMatch = () =>{
+        if (resultados.length) {
+            for (let i = 0; i < resultados.length; i++) {
+                const partido = resultados[i][0];
+                if (partido[0] === "partido"+numPartido) {
+                    setResultadoMatch(partido[1])
+                }
+            }
+        }
+    }
+
+    useEffect(() => {
+      findMatch()
+    }, [resultados])
+    
+
 
     return (
         <div className='matchContainer'>
@@ -106,7 +124,10 @@ const Partido = (props) => {
                             <div onClick={() => lessHandler("L")} className='addLess'>-</div>
                         </div>
                         :
-                        <p className='resultadoGoles'>{!resultadoFinal.local ? "-" : resultadoFinal.local}</p>
+                        resultadoMatch !== "" ?
+                            <p className='resultadoGoles'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
+                            :
+                            null
 
 
                 }
@@ -120,7 +141,10 @@ const Partido = (props) => {
                             <div onClick={() => lessHandler("V")} className='addLess'>-</div>
                         </div>
                         :
-                        <p className='resultadoGoles'>{!resultadoFinal.visitante ? "-" : resultadoFinal.visitante}</p>
+                        resultadoMatch !== "" ?
+                            <p className='resultadoGoles'>{!resultadoMatch.visitante ? "-" : resultadoMatch.visitante}</p>
+                            :
+                            null
                 }
                 <div className='teamContain'>
                     {

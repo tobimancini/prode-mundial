@@ -1,5 +1,6 @@
 {
     "Argentina":"/images/ARGENTINA.png",
+    "Arabia Saudita":"/images/Arabia.png",
     "Alemania":"/images/ALEMANIA.png",
     "Australia":"/images/AUSTRALIA.png",
     "Bélgica":"/images/BELGICA.png",
@@ -24,13 +25,12 @@
     "Suiza":"/images/SUIZA.png",
     "Uruguay":"/images/URUGUAY.png",
     "Estados Unidos":"/images/USA.png",
-    "Arabia Saudita":"/images/USA.png",
-    "Túnez":"/images/USA.png",
-    "Irán":"/images/USA.png",
-    "Qatar":"/images/USA.png",
-    "Senegal":"/images/USA.png",
-    "Costa Rica":"/images/USA.png",
-    "Canadá":"/images/USA.png"
+    "Túnez":"/images/TUNEZ.png",
+    "Irán":"/images/Iran.png",
+    "Qatar":"/images/Qatar.png",
+    "Senegal":"/images/Senegal.png",
+    "Costa Rica":"/images/CostaRica.png",
+    "Canadá":"/images/Canadá.png"
     
     
     

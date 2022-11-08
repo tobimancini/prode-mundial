@@ -21,6 +21,19 @@
   max-width: 520px !important;
 }
 
+h1 {
+  font-family: 'Bebas Neue', cursive !important;
+  font-size: 45px;
+  font-weight: 400;
+  color:  #ae946d;
+  margin: 0px !important;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+}
+
 h2 {
   font-family: 'Bebas Neue', cursive !important;
   font-size: 35px;
@@ -31,7 +44,7 @@ h2 {
 
 h3{
   font-family: 'Bebas Neue', cursive !important;
-  font-size: 22px !important;
+  font-size: 20px !important;
   font-weight: 400;
   margin: 15px !important;
 }
@@ -140,11 +153,10 @@ option {
 #faseElegida {
   padding: 5px;
   appearance: none;
-  font-size: 14px;
   border-radius: 3px;
   width: 100%;
   padding: 5px 10px;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   text-align: center;
   border: solid 1px #fff;
@@ -167,15 +179,15 @@ option {
 /*AGREGAR ANIMACION*/
 .guardarCambios {
   position: fixed;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
+  bottom: 1%;
+  right: 2%;
+  left: 2%;
   background-color: #ae946d;
   border-radius: 3px;
   font-weight: 400;
-  font-size: 30px;
-  border-top: solid 2px #fff;
-  padding: 10px;
+  font-size: 20px;
+  border: solid 1px #fff;
+  padding: 7px;
   cursor: pointer;
   color: #fff;
   /* -webkit-text-stroke: 1px #fff; */
@@ -234,12 +246,10 @@ option {
   border-radius: 0px;
   color: #fff;
   border: solid 1px #fff;
-  /* margin: 10px; */
   padding: 7px 10px;
-  font-size: 22px;
+  font-size: 20px !important;
   font-weight: 400;
   min-width: 15%;
-  /* margin-left: 20px; */
   margin: 15px 0 25px 0 !important;
   width: 90%;
   font-family: 'Bebas Neue', cursive !important;

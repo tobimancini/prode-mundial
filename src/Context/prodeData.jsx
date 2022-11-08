@@ -69,6 +69,8 @@ const ProdeData = ({ children }) => {
     const [miPrediccion, setMiPrediccion] = useState([]);
     const [campeon, setCampeon] = useState("");
     const [goleador, setGoleador] = useState("");
+    const [resultados, setResultados] = useState([]);
+    const [jauleño, setJauleño] = useState(false);
 
 
 
@@ -79,7 +81,8 @@ const ProdeData = ({ children }) => {
             userInfo, setUserInfo, banderas, setBanderas, modalPredic, setModalPredic, usuarioElegido, setUsuarioElegido, sortedPredic, setSortedPredic, faseElegida, setFaseElegida
             , tooltip, setTooltip, toolText, setToolText, userHabilitado, setUserHabilitado, equiposFem, equiposMasc, equipoElegido, setEquipoElegido, tipoIdElegido, setTipoIdElegido,
             equiposUser, setEquiposUser, allMatches, setAllMatches, donePredictions, setDonePredictions, gender, setGender, loaderOn, setLoaderOn,
-            setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesInd, posicionesGrup, miPrediccion, campeon, setCampeon, goleador, setGoleador
+            setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesInd, posicionesGrup, miPrediccion, campeon, setCampeon, goleador, setGoleador, resultados, setResultados,
+            jauleño, setJauleño
         }}>
             {children}
         </Prode.Provider>

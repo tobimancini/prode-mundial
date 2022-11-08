@@ -1,0 +1,42 @@
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: calc(100vh - 100px);
+    width: 100%;
+}
+
+
+.logoTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    z-index: 3;
+}
+
+.logoJaula {
+    height: 65px;
+    width: 65px;
+}
+
+.maradona {
+    position: absolute;
+    object-fit: cover;
+    height: calc(100vh - 50px);
+    width: 100%;
+    z-index: 1;
+}
+
+.coverImg {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 62%, rgba(0, 0, 0, 1) 100%);
+    position: absolute;
+    z-index: 2;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
