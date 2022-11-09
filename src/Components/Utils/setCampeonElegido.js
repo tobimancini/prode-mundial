@@ -8,28 +8,42 @@ const setCampeonElegido = async (userInfo, campeon, setToolText, setTooltip, too
     guardarBtn.classList.remove('inactive');
     guardarBtn.classList.add('active');
 
-    const q = query(collection(db, "Usuarios"), where("uid", "==", userInfo.uid));
-    let usuarioRef = [];
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        usuarioRef.push(doc.ref)
-    });
+    if (campeon === "") {
+        setTimeout(() => {
+            setToolText("ELIJA UNA OPCIÓN ANTES DE GUARDAR.")
+            setTooltip(tooltip + 1);
+            setTimeout(() => {
+                setTooltip(tooltip + 2)
+            }, 4000);
+            guardarBtn.classList.add('inactive');
+            guardarBtn.classList.remove('active');
+        }, 600);
+    } else {
+        const q = query(collection(db, "Usuarios"), where("uid", "==", userInfo.uid));
+        let usuarioRef = [];
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            usuarioRef.push(doc.ref)
+        });
 
-    await updateDoc(usuarioRef[0], {
-        "campeon": campeon
-    });
-    setCampeon(campeon)
+        await updateDoc(usuarioRef[0], {
+            "campeon": campeon
+        });
+        setCampeon(campeon)
 
-    setToolText("SE GUARDÓ TU PREDICCIÓN.")
-    setTooltip(tooltip + 1);
-    setTimeout(() => {
-        setTooltip(tooltip + 2)
-    }, 4000);
+        setToolText("SE GUARDÓ TU PREDICCIÓN.")
+        setTooltip(tooltip + 1);
+        setTimeout(() => {
+            setTooltip(tooltip + 2)
+        }, 4000);
 
-    setTimeout(() => {
-        guardarBtn.classList.add('inactive');
-        guardarBtn.classList.remove('active');
-    }, 600);
+        setTimeout(() => {
+            guardarBtn.classList.add('inactive');
+            guardarBtn.classList.remove('active');
+        }, 600);
+    }
+
+
 }
 
 export default setCampeonElegido;

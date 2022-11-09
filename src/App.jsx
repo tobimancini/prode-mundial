@@ -166,8 +166,6 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // setUserLogged(user.uid);
-        // setUserID(user.uid);
         setToolText('INICIASTE SESIÓN COMO ' + user.email);
         setTooltip(tooltip + 1)
         setTimeout(() => {
@@ -178,9 +176,6 @@ function App() {
       } else {
         setTooltip(tooltip + 1);
 
-        // setTimeout(() => {
-        //   setTooltip(tooltip + 2)
-        // }, 15);
         setToolText("INICIÁ SESIÓN ANTES DE JUGAR.")
       }
     })

@@ -10,66 +10,10 @@ import compararResultados from '../Utils/compararResultados';
 
 const Admin = () => {
 
-    const { allPuntajes, setAllPuntajes, allMatches, userInfo } = useContext(Prode);
-    const [habilitar, setHabilitar] = useState(0);
-    const [nombreBuscado, setNombreBuscado] = useState("");
-    const [usuariosOrd, setUsuariosOrd] = useState([]);
+    const { allPuntajes, setAllPuntajes, allMatches, userInfo, setToolText, setTooltip, tooltip } = useContext(Prode);
     const [equipoLocal, setEquipoLocal] = useState("");
     const [equipoVisitante, setEquipoVisitante] = useState("");
     const [cargando, setCargando] = useState(false);
-
-    // const changeColor = (userId, status) => {
-    //     let btn = document.getElementById(`${userId}btn`);
-    //     let habilitado = document.getElementById(userId);
-
-    //     if ((status === true && habilitado.innerHTML === "OK")) {
-    //         btn.classList.remove('ok');
-    //         btn.classList.add('no');
-
-    //         habilitado.classList.remove('ok');
-    //         habilitado.classList.add('no');
-
-    //         habilitado.innerHTML = "NO";
-    //     } else if ((status === true && habilitado.innerHTML === "NO")) {
-    //         btn.classList.add('ok');
-    //         btn.classList.remove('no');
-
-    //         habilitado.classList.add('ok');
-    //         habilitado.classList.remove('no');
-
-    //         habilitado.innerHTML = "OK";
-    //     }
-
-
-    //     if ((status === false && habilitado.innerHTML === "NO")) {
-    //         btn.classList.add('ok');
-    //         btn.classList.remove('no');
-
-    //         habilitado.classList.add('ok');
-    //         habilitado.classList.remove('no');
-
-    //         habilitado.innerHTML = "OK";
-    //     } else if ((status === false && habilitado.innerHTML === "OK")) {
-    //         btn.classList.remove('ok');
-    //         btn.classList.add('no');
-
-    //         habilitado.classList.remove('ok');
-    //         habilitado.classList.add('no');
-
-    //         habilitado.innerHTML = "NO";
-    //     }
-    // }
-
-    // const changeStatus = (userId, status) => {
-    //     habilitarUser(userId, setAllPuntajes);
-    //     setHabilitar(habilitar + 1);
-    //     changeColor(userId, status);
-    // }
-
-    // const buscadorHandle = () => {
-    //     let buscador = document.getElementById("buscador").value
-    //     setNombreBuscado(buscador.toUpperCase());
-    // }
 
     const buscadorPartido = () => {
         let local = document.getElementById('locales').value;
@@ -79,67 +23,10 @@ const Admin = () => {
 
     }
 
-    // const ordenarUsuarios = (a, b) => {
-
-    //     if (a.habilitado > b.habilitado) return 1;
-    //     if (a.habilitado < b.habilitado) return -1;
-
-    // }
-
-    // useEffect(() => {
-    //     let ordenados = allPuntajes.sort(ordenarUsuarios)
-    //     setUsuariosOrd(ordenados);
-    // }, [allPuntajes])
-
-
 
     return (
         <div className='adminCont'>
-            {/* {
-                !userInfo.administrador?
-                    <div className='loaderContain'>
-                        <FadeLoader className='loader' color={'#edebeb'} loading={true} size={10} aria-label="Loading Spinner" data-testid="loader" />
-                    </div>
-                    :
-                    <>
-                        <h2>ADMINISTRACIÓN</h2>
-                        <h3>HABILITAR USUARIOS</h3>
-                        <input type="text" id="buscador" placeholder='Buscar' className='inputProde' onChange={() => buscadorHandle()} />
-                        <div className='tablaCont'>
-                            <ul className='listaHabil'>
-                                {
-                                    allPuntajes.map(usuario => {
-                                        if (nombreBuscado === "") {
-                                            if (usuario.habilitado === false || usuario.habilitado === true) {
-                                                return <ul key={usuario.uid} className="itemHabil">
-                                                    <li className='subItemHabil'>{usuario.nombre.toUpperCase()}</li>
-                                                    <li id={usuario.uid} className={`subItemHabil status ${usuario.habilitado === true ? "ok" : "no"}`}>
-                                                        {usuario.habilitado === true ? "OK" : "NO"}
-                                                    </li>
-                                                    <li className='subItemHabil btn' onClick={() => changeStatus(usuario.uid, usuario.habilitado)}>
-                                                        <div id={`${usuario.uid}btn`} className={`btnHabilitar ${usuario.habilitado === true ? "ok" : "no"}`}></div>
-                                                    </li>
-                                                </ul>
-                                            }
-                                        } else if (usuario.nombre.toUpperCase().includes(nombreBuscado, 0)) {
-                                            if (usuario.habilitado === false || usuario.habilitado === true) {
-                                                return <ul key={usuario.uid} className="itemHabil">
-                                                    <li className='subItemHabil'>{usuario.nombre.toUpperCase()}</li>
-                                                    <li id={usuario.uid} className={`subItemHabil status ${usuario.habilitado === true ? "ok" : "no"}`}>
-                                                        {usuario.habilitado === true ? "OK" : "NO"}
-                                                    </li>
-                                                    <li className='subItemHabil btn' onClick={() => changeStatus(usuario.uid, usuario.habilitado)}>
-                                                        <div id={`${usuario.uid}btn`} className={`btnHabilitar ${usuario.habilitado === true ? "ok" : "no"}`}></div>
-                                                    </li>
-                                                </ul>
-                                            }
-                                        }
-                                    })
-                                }
-                            </ul>
-                        </div>
-                    </>
-            } */}
+           
             {
                 allMatches.length && userInfo ?
                     <>
@@ -171,12 +58,12 @@ const Admin = () => {
                         </div>
                         {
                             equipoLocal !== "" || equipoVisitante !== "" ?
-                                <div className='btnFiltro' onClick={() => enviarResultados(setCargando)}>ENVIAR</div>
+                                <div className='btnFiltro' onClick={() => enviarResultados(setCargando, setToolText, setTooltip, tooltip)}>ENVIAR</div>
                                 :
                                 null
                         }
                         <h2>Actualizar Puntajes</h2>
-                        <div className='btnFiltro act' onClick={() => compararResultados(setCargando)}>Actualizar</div>
+                        <div className='btnFiltro act' onClick={() => compararResultados(setCargando, setToolText, setTooltip, tooltip)}>Actualizar</div>
                     </>
                     : null
             }

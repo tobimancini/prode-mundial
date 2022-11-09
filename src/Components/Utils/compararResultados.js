@@ -3,7 +3,7 @@ import { db } from "../../Firebase/config";
 import { addDoc, query, where, updateDoc } from "firebase/firestore";
 
 
-const compararResultados = async (setCargando) => {
+const compararResultados = async (setCargando, setToolText, setTooltip, tooltip) => {
     setCargando(true);
     const allResults = [];
     const allPredicts = [];
@@ -168,7 +168,7 @@ const compararResultados = async (setCargando) => {
                 }
             }
         }
-        
+
     }
     console.log(equipos);
 
@@ -183,11 +183,6 @@ const compararResultados = async (setCargando) => {
                     Object.assign(equipo, puntos)
                 }
             }
-            // } else {
-            //     if (el.equipo === equipo.equipo) {
-            //         equipo.puntaje = equipo.puntaje + el.puntaje;
-            //     }
-            // }
         }
     }
 
@@ -206,10 +201,10 @@ const compararResultados = async (setCargando) => {
             const el = nuevo[i];
             equipoPuntos += el[1]
         }
-        equipos[i].puntaje=equipoPuntos;
+        equipos[i].puntaje = equipoPuntos;
 
     }
-    
+
     equipos.sort((a, b) => a.puntaje < b.puntaje ? 1 : b.puntaje < a.puntaje ? -1 : 0);
     console.log(equipos);
 
@@ -221,7 +216,6 @@ const compararResultados = async (setCargando) => {
 
     const tablaEquipos = await getDocs(collection(db, "PosicionesEquipos"));
 
-    // console.log(tablaEquipos);
 
     if (!tablaEquipos.docs.length) {
         for (let i = 0; i < equipos.length; i++) {
@@ -272,6 +266,11 @@ const compararResultados = async (setCargando) => {
     }
 
     setCargando(false);
+    setToolText("SE GUARDÓ LA ACTUALIZACIÓN.")
+    setTooltip(tooltip + 1);
+    setTimeout(() => {
+        setTooltip(tooltip + 2)
+    }, 4000);
 
 }
 

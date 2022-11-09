@@ -1,7 +1,7 @@
 import { addDoc, collection, doc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
 
-const enviarResultados = async (setCargando) => {
+const enviarResultados = async (setCargando, setToolText, setTooltip, tooltip) => {
     setCargando(true);
 
     let golesLocal = document.querySelectorAll('.golesLocal');
@@ -55,6 +55,11 @@ const enviarResultados = async (setCargando) => {
     }
 
     setCargando(false);
+    setToolText("SE ENVIARON LOS RESULTADOS.")
+    setTooltip(tooltip + 1);
+    setTimeout(() => {
+        setTooltip(tooltip + 2)
+    }, 4000);
 
 }
 
