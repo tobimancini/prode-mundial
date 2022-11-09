@@ -29,6 +29,7 @@ const compararResultados = async (setCargando) => {
         predictOrd.push(predictArr);
     }
 
+
     for (let i = 0; i < predictOrd.length; i++) {
         let puntajes = 0;
         const prediccion = predictOrd[i];
@@ -169,6 +170,7 @@ const compararResultados = async (setCargando) => {
         }
         
     }
+    console.log(equipos);
 
     for (let i = 0; i < puntajesTotales.length; i++) {
         const el = puntajesTotales[i];
@@ -191,7 +193,6 @@ const compararResultados = async (setCargando) => {
 
 
 
-    // console.log(equipos);
 
     for (let i = 0; i < equipos.length; i++) {
         const el = equipos[i];
@@ -219,6 +220,8 @@ const compararResultados = async (setCargando) => {
     }
 
     const tablaEquipos = await getDocs(collection(db, "PosicionesEquipos"));
+
+    // console.log(tablaEquipos);
 
     if (!tablaEquipos.docs.length) {
         for (let i = 0; i < equipos.length; i++) {

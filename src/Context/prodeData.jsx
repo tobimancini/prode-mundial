@@ -25,7 +25,7 @@ const ProdeData = ({ children }) => {
 
     const [now, setNow] = useState(new Date());
 
-    const [pageState, setPageState] = useState("partidos");
+    const [pageState, setPageState] = useState("inicio");
 
     const [userInfo, setUserInfo] = useState({});
 
@@ -71,6 +71,7 @@ const ProdeData = ({ children }) => {
     const [goleador, setGoleador] = useState("");
     const [resultados, setResultados] = useState([]);
     const [jauleño, setJauleño] = useState(false);
+    const [loggedOut, setLoggedOut] = useState(true);
 
 
 
@@ -82,7 +83,7 @@ const ProdeData = ({ children }) => {
             , tooltip, setTooltip, toolText, setToolText, userHabilitado, setUserHabilitado, equiposFem, equiposMasc, equipoElegido, setEquipoElegido, tipoIdElegido, setTipoIdElegido,
             equiposUser, setEquiposUser, allMatches, setAllMatches, donePredictions, setDonePredictions, gender, setGender, loaderOn, setLoaderOn,
             setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesInd, posicionesGrup, miPrediccion, campeon, setCampeon, goleador, setGoleador, resultados, setResultados,
-            jauleño, setJauleño
+            jauleño, setJauleño, setLoggedOut, loggedOut
         }}>
             {children}
         </Prode.Provider>

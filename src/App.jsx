@@ -32,7 +32,7 @@ function App() {
   const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida, setToolText,
     setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip,
     allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn, setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesGrup, posicionesInd, miPrediccion,
-    setCampeon, setGoleador, campeon, goleador, now, setResultados, setJauleño } = useContext(Prode);
+    setCampeon, setGoleador, campeon, goleador, now, setResultados, setJauleño, loggedOut, setLoggedOut } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -130,11 +130,9 @@ function App() {
   const predict = (partidosState) => {
 
     if (!userInfo.nombre) {
+      setLoggedOut(true)
       setToolText("Iniciá sesion para poder jugar.")
       setTooltip(tooltip + 1)
-      setTimeout(() => {
-        setTooltip(tooltip + 2)
-      }, 2500);
     } else {
       if (partidosState === "partidos") {
         getPredictionDB(userInfo, userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
@@ -180,9 +178,9 @@ function App() {
       } else {
         setTooltip(tooltip + 1);
 
-        setTimeout(() => {
-          setTooltip(tooltip + 2)
-        }, 2500);
+        // setTimeout(() => {
+        //   setTooltip(tooltip + 2)
+        // }, 15);
         setToolText("INICIÁ SESIÓN ANTES DE JUGAR.")
       }
     })

@@ -18,12 +18,11 @@
   min-height: 50vh;
   overflow: hidden;
   font-family: 'Montserrat', sans-serif !important; 
-  max-width: 520px !important;
 }
 
 h1 {
   font-family: 'Bebas Neue', cursive !important;
-  font-size: 45px;
+  font-size: 55px;
   font-weight: 400;
   color:  #ae946d;
   margin: 0px !important;
@@ -193,7 +192,7 @@ option {
   /* -webkit-text-stroke: 1px #fff; */
   overflow: hidden;
   font-family: 'Bebas Neue', cursive !important;
-  max-width: 520px !important;
+  /* max-width: 520px !important; */
 }
 
 .guardarCambios p {

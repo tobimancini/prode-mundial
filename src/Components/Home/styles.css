@@ -18,8 +18,14 @@
 }
 
 .logoJaula {
-    height: 65px;
-    width: 65px;
+    position: absolute;
+    /* bottom: 15px;
+    right: 15px; */
+    top: 38%;
+    height: 250px;
+    width: 250px;
+    z-index: 3;
+    opacity: .95;
 }
 
 .maradona {

@@ -172,7 +172,7 @@ const Login = (props) => {
                                         <label>D.N.I.</label>
                                         <input id='userDNI' type="number" placeholder='DNI' className='inputProde crearUsuario' />
                                         <label>Jaula</label>
-                                        <select name='jaula' id="jaulaPlayer" className='selectProde crearUsuario' onChange={() => setJaula(!jaula)}>
+                                        <select name='jaula' id="jaulaPlayer" className='selectProde crearUsuario' onChange={() => setJaula(jaula===true?false:true)}>
                                             <option value={true}>Si</option>
                                             <option value={false}>No</option>
                                         </select>

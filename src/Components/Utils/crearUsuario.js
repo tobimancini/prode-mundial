@@ -17,7 +17,7 @@ const crearUsuario = async (setToolText, setTooltip, tooltip) => {
         let sexo ;
         let equipo ;
 
-        if (jaula === true) {
+        if (jaula === "true") {
             sexo = userCreate['userGender'].value;
             equipo = userCreate['userTeam'].value;
         }
