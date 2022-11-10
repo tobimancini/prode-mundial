@@ -19,68 +19,12 @@ const Login = (props) => {
 
     const [loginStage, setLoginStage] = useState("login");
 
-    // const juegaJaula = () => {
-    //     let jaula = document.getElementById('userJaula').value;
-    //     setJaulero(jaula);
-    // }
-
-
     const elegirGenero = () => {
         let genero = document.getElementById('userGender').value;
         setGender(genero);
     }
 
-    const [posicionIndividual, setPosicionIndividual] = useState(0);
-    const [posicionGrupal, setPosicionGrupal] = useState(0);
-
-    const getTeamPosition = async () => {
-        let posicion = 0;
-        if (userInfo.equipo) {
-            for (let i = 0; i < equiposUser.length; i++) {
-                const equipo = equiposUser[i];
-                if (equipo[1] === userInfo.equipo) {
-
-                    posicion = i + 1 + " º";
-
-                }
-            }
-            setPosicionGrupal(posicion);
-        }
-
-    }
-
-    useEffect(() => {
-        let posicion = -1;
-        for (let i = 0; i < allPuntajes.length; i++) {
-            const user = allPuntajes[i];
-            if (user.uid === userInfo.uid) {
-                posicion = i;
-            }
-        }
-        setPosicionIndividual(posicion + 1 + " º");
-        // getTeamPosition();
-        equiposPorSexo(userInfo.sexo, allPuntajes, setEquiposUser)
-
-        if (userInfo.nombre) {
-            setLoaderOn(false);
-        }
-        // console.log(allPuntajes);
-    }, [userInfo, allPuntajes]);
-
-    useEffect(() => {
-        getTeamPosition();
-    }, [equiposUser]);
-
-    const getCreateUser = () => {
-        document.getElementById('loginEmail').addEventListener('input', (e) => {
-            if (e.target.value === "crearUser123") {
-                setLoginStage("crear")
-            }
-            console.log(e.target.value);
-        })
-    }
-
-    const [jaula, setJaula] = useState(true);
+    const [jaula, setJaula] = useState(false);
 
     return (
         <form id='loginContainer'>
@@ -135,6 +79,14 @@ const Login = (props) => {
                                 {goleador.toUpperCase()}
                             </p>
                         </div>
+                        <div className='predPartido data'>
+                            <p className='title'>Habilitación:</p>
+                            <p className='info' >
+                                {
+                                    userInfo.habilitado === false ? "INHABILITADO/A" : "HABILITADO/A"
+                                }
+                            </p>
+                        </div>
                         <div className="btnFiltro" onClick={() => cerrarSesion(setUserLogged, setUserID,
                             setPrediccionActual, setPuntajesAct, setPuntajeTotal, setUserInfo)}>Log Out</div>
 
@@ -146,15 +98,15 @@ const Login = (props) => {
                                 <>
                                     <h2>INICIÁ SESIÓN</h2>
                                     <label>Email</label>
-                                    <input id='loginEmail' type="email" placeholder='Email' className='inputProde' onKeyDown={() => getCreateUser()} />
+                                    <input id='loginEmail' type="email" placeholder='Email' className='inputProde' />
                                     <label>Contraseña</label>
                                     <input id='loginPass' type="password" placeholder='Contraseña' className='inputProde' />
                                     <button className="btnFiltro" onClick={() => iniciarSesion(setTooltip, tooltip, setToolText, false, setLoaderOn)}>Ingresar</button>
                                     <div className='preguntas'>
-                                        {/* <h4 className='pregunta'>TODAVÍA NO TE HICISTE UN USUARIO?</h4>
-                                        <div className='btnFiltro' onClick={() => setLoginStage("crear")}>Crear usuario</div> */}
                                         <h4 className='pregunta'>TE OLVIDASTE LA CONTRASEÑA?</h4>
                                         <div className='btnFiltro' onClick={() => setLoginStage("recuperar")}>Recuperar contraseña</div>
+                                        <h4 className='pregunta'>NO TENES USUARIO?</h4>
+                                        <div className='btnFiltro' onClick={() => setLoginStage("crear")}>Crear usuario</div>
                                     </div>
 
 
@@ -171,15 +123,15 @@ const Login = (props) => {
                                         <input id='userEmail' type="email" placeholder='Email' className='inputProde crearUsuario' />
                                         <label>D.N.I.</label>
                                         <input id='userDNI' type="number" placeholder='DNI' className='inputProde crearUsuario' />
-                                        <label>Jaula</label>
-                                        <select name='jaula' id="jaulaPlayer" className='selectProde crearUsuario' onChange={() => setJaula(jaula===true?false:true)}>
-                                            <option value={true}>Si</option>
+                                        <label>Sos jugador/a de la Jaula?</label>
+                                        <select name='jaula' id="jaulaPlayer" className='selectProde crearUsuario' onChange={() => setJaula(jaula === true ? false : true)}>
                                             <option value={false}>No</option>
+                                            <option value={true}>Si</option>
                                         </select>
-                                        <label>Sexo</label>
                                         {
                                             jaula === true ?
                                                 <>
+                                                    <label>Sexo</label>
                                                     <select name='gender' id="userGender" className='selectProde crearUsuario' onChange={() => elegirGenero()}>
                                                         <option value="">Seleccione su sexo</option>
                                                         <option value="M">Masculino</option>
@@ -208,6 +160,8 @@ const Login = (props) => {
 
                                         <label>Contraseña</label>
                                         <input id='userPass' type="password" placeholder='Contraseña' className='inputProde crearUsuario' />
+                                        <label>Ingrese nuevamente su contraseña</label>
+                                        <input id='userPass2' type="password" placeholder='Contraseña' className='inputProde crearUsuario' />
                                         <button className="btnFiltro" onClick={() => crearUsuario(setToolText, setTooltip, tooltip)}>Crear</button>
                                         <div className='preguntas'>
                                             <h4 className='pregunta'>YA TENÉS USUARIO?</h4>
@@ -225,8 +179,8 @@ const Login = (props) => {
                                         <div className='preguntas'>
                                             <h4 className='pregunta'>YA TENÉS USUARIO?</h4>
                                             <div className='btnFiltro' onClick={() => setLoginStage("login")}>Iniciá sesión</div>
-                                            {/* <h4 className='pregunta'>TODAVÍA NO TE HICISTE UN USUARIO?</h4>
-                                            <div className='btnFiltro' onClick={() => setLoginStage("crear")}>Recuperar contraseña</div> */}
+                                            <h4 className='pregunta'>NO TENES USUARIO?</h4>
+                                            <div className='btnFiltro' onClick={() => setLoginStage("crear")}>Crear usuario</div>
                                         </div>
                                     </>
 

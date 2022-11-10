@@ -48,6 +48,17 @@ const Partido = (props) => {
     }
 
 
+    const matchChanges = (id, lOrV) =>{
+        let localia;
+        if (lOrV === "L") {
+            localia = "V"
+        }else{
+            localia = "L"
+        }
+        if (document.getElementById(`${id}${localia}`).value === "-") {
+            document.getElementById(`${id}${localia}`).value = 0;
+        }
+    }
 
     const addHandler = (lv) => {
         let gol = document.getElementById(`${idPartido}${lv}`);
@@ -57,6 +68,7 @@ const Partido = (props) => {
         } else if (parseInt(golValue) < 20) {
             gol.value = parseInt(golValue) + 1
         }
+        matchChanges(idPartido, lv)
     }
 
     const lessHandler = (lv) => {
@@ -67,7 +79,9 @@ const Partido = (props) => {
         } else if (parseInt(golValue) > 0) {
             gol.value = parseInt(golValue) - 1
         }
+        matchChanges(idPartido, lv)
     }
+
 
     useEffect(() => {
     }, [puntajesAct, prediccionActual, resultadosAct])

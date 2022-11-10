@@ -86,3 +86,7 @@
     font-size: 14px;
     text-align: end;
 }
+
+#userPass2.wrong{
+    border: solid 3px rgb(235, 91, 91);
+}

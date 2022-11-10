@@ -127,7 +127,7 @@ const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo
 
   }
   else {
-    setToolText("PERDÓN, PERO NO ESTAS HABILITADO TODAVÍA.")
+    setToolText("LO SENTIMOS, PERO NO ESTAS HABILITADO TODAVÍA.")
     setTooltip(tooltip + 1);
     setTimeout(() => {
       setTooltip(tooltip + 2)

@@ -9,6 +9,7 @@ const crearUsuario = async (setToolText, setTooltip, tooltip) => {
         e.preventDefault();
         const email = userCreate['userEmail'].value;
         const contraseña = userCreate['userPass'].value;
+        const contraseña2 = userCreate['userPass2'];
         const nombre = userCreate['userName'].value;
         const apellido = userCreate['userLastName'].value;
         const dni = userCreate['userDNI'].value;
@@ -22,20 +23,29 @@ const crearUsuario = async (setToolText, setTooltip, tooltip) => {
             equipo = userCreate['userTeam'].value;
         }
 
-
-        const registerWithEmailAndPassword = async (nombre, email, contraseña) => {
-            try {
-                const res = await createUserWithEmailAndPassword(auth, email, contraseña);
-                const user = res.user;
-                console.log(user);
-                newUser(dni, nombre, email, user, apellido, sexo, equipo, jaula);
-                userCreate.reset();
-            } catch (err) {
-                console.error(err);
-            }
-        };
-
-        checkUser(email, nombre, contraseña, registerWithEmailAndPassword, setToolText, setTooltip, tooltip);
+        if (contraseña === contraseña2.value) {
+            document.getElementById('userPass2').classList.remove('wrong');
+            const registerWithEmailAndPassword = async (nombre, email, contraseña) => {
+                try {
+                    const res = await createUserWithEmailAndPassword(auth, email, contraseña);
+                    const user = res.user;
+                    console.log(user);
+                    newUser(dni, nombre, email, user, apellido, sexo, equipo, jaula);
+                    userCreate.reset();
+                } catch (err) {
+                    console.error(err);
+                }
+            };
+    
+            checkUser(email, nombre, contraseña, registerWithEmailAndPassword, setToolText, setTooltip, tooltip);
+        }else{
+            setToolText('LAS CONRTASEÑAS NO COINCIDEN')
+            setTooltip(tooltip+1)
+            setTimeout(() => {
+                setTooltip(tooltip+2)
+            }, 3000);
+            document.getElementById('userPass2').classList.add('wrong');
+        }        
 
     })
 }

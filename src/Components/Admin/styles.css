@@ -200,3 +200,8 @@
 .btnFiltro.act{
     width: 85%;
 }
+
+.btnFiltro.small{
+    font-size: 12px !important;
+    margin: 5px!important;
+}

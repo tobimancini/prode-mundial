@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Prode } from '../../Context/prodeData';
 import './styles.css';
 import FadeLoader from "react-spinners/FadeLoader";
-import habilitarUser from '../Utils/habilitarUser';
+import habilitarUser from '../Utils/usuariosInhab';
 import getAllPuntajes from '../Utils/getAllPuntajes';
 import enviarResultados from '../Utils/enviarResultados';
 import compararResultados from '../Utils/compararResultados';
+import usuariosInhab from '../Utils/usuariosInhab';
+import habilitar from '../Utils/habilitar';
 
 
 const Admin = () => {
@@ -23,10 +25,12 @@ const Admin = () => {
 
     }
 
+    const [inhabilitados, setInhabilitados] = useState([]);
+
 
     return (
         <div className='adminCont'>
-           
+
             {
                 allMatches.length && userInfo ?
                     <>
@@ -64,6 +68,18 @@ const Admin = () => {
                         }
                         <h2>Actualizar Puntajes</h2>
                         <div className='btnFiltro act' onClick={() => compararResultados(setCargando, setToolText, setTooltip, tooltip)}>Actualizar</div>
+                        <h2>HABILITAR USUARIOS</h2>
+                        <div className='btnFiltro act' onClick={() => usuariosInhab(setInhabilitados)} >Buscar</div>
+                        {
+                            inhabilitados.length ?
+                                inhabilitados.map((usuario) => {
+                                    return <div key={usuario.id + usuario.data.apellido} className='btnFiltro small' onClick={() => habilitar(usuario.ref)}>
+                                        HABILITAR {usuario.data.nombre.toUpperCase() + " " + usuario.data.apellido.toUpperCase()}
+                                    </div>
+                                })
+                                :
+                                null
+                        }
                     </>
                     : null
             }
