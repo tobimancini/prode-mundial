@@ -9,7 +9,7 @@ import {  getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEm
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA2RLe_FMmiX3eCXbNIKGG7niV8anPxASk",
+  apiKey: process.env.API_URL,
   authDomain: "prode-la-jaula.firebaseapp.com",
   projectId: "prode-la-jaula",
   storageBucket: "prode-la-jaula.appspot.com",
