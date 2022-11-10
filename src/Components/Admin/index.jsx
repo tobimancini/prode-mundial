@@ -73,7 +73,7 @@ const Admin = () => {
                         {
                             inhabilitados.length ?
                                 inhabilitados.map((usuario) => {
-                                    return <div key={usuario.id + usuario.data.apellido} className='btnFiltro small' onClick={() => habilitar(usuario.ref)}>
+                                    return <div key={usuario.id + usuario.data.apellido} className='btnFiltro act small' onClick={() => habilitar(usuario.ref)}>
                                         HABILITAR {usuario.data.nombre.toUpperCase() + " " + usuario.data.apellido.toUpperCase()}
                                     </div>
                                 })
