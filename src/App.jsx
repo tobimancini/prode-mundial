@@ -189,7 +189,7 @@ function App() {
     "Australia", "Dinamarca", "Túnez", "España", "Costa Rica", "Alemania", "Japón", "Bélgica", "Canadá", "Marruecos", "Croacia", "Brasil", "Serbia", "Suiza",
     "Camerún", "Portugal", "Ghana", "Uruguay", "Corea del Sur"];
   equipos.sort((a, b) => a < b ? -1 : b < a ? 1 : 0);
-  const jugadores = ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "Kylian Mbappe", "Harry Kane", "Karim Benzema", "Robert Lewandowski", "Romelu Lukaku", "Luiz Suarez",
+  const jugadores = ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "Kylian Mbappe", "Harry Kane", "Karim Benzema", "Robert Lewandowski", "Julián Álvarez", "Romelu Lukaku", "Luis Suarez",
     "Gabriel Jesús", "Richarlison", "Vinicius Júnior", "Ángel Di María", "Paulo Dybala", "Bruno Fernandes", "Memphis Depay", "Pedri", "Morata", "Hakimi",
     "Marcus Rashford", "Heung-Min Son", "Al Dawsari", "Kai Havertz", "Thomas Muller", "Joao Félix", "Diogo Jota", "Hirving Lozano", "Timo Werner",
     "Serge Gnabry", "Sané", "Sadio Mané", "Christian Pulisic", "Christian Eriksen", "Lautaro Martinez", "Gareth Bale", "Luka Modric", "Coutinho", "Dusan Tadic"];

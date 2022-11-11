@@ -11,6 +11,7 @@ import habilitar from '../Utils/habilitar';
 import traerJugador from '../Utils/traerJugador';
 import borrarJugador from '../Utils/borrarJugador';
 import modificarUser from '../Utils/modificarUser';
+import prediccionUser from '../Utils/prediccionUser';
 
 
 const Admin = () => {
@@ -92,6 +93,7 @@ const Admin = () => {
                                                     null
                                             }
                                             <div onClick={() => setEdicion(edicion === usuario.id ? "":usuario.id)}>Editar</div>
+                                            <div onClick={() => prediccionUser(usuario.data.uid)}>Prediccion</div>
                                         </div>
                                         {
                                             edicion === usuario.id ?

@@ -209,10 +209,13 @@ const Navbar = () => {
           userInfo === {} ?
             null
             :
+            userInfo.administrador === true?
             <li id='admin' className='navItem' onClick={() => changeState("admin")}>
               <MdAdminPanelSettings />
               <p className='tituloAdmin'>Admin</p>
             </li>
+            :
+            null
         }
       </ul>
 

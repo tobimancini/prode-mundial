@@ -90,3 +90,7 @@
 #userPass2.wrong{
     border: solid 3px rgb(235, 91, 91);
 }
+
+#loginContainer .notaAdj{
+    margin-bottom: 15px;
+}

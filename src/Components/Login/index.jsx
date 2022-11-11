@@ -176,6 +176,7 @@ const Login = (props) => {
                                         <label>Email</label>
                                         <input id='recuperarEmail' type="email" placeholder='Email' className='inputProde' />
                                         <button className="btnFiltro" onClick={() => recuperarPass(setToolText, setTooltip, tooltip)}>Recuperar</button>
+                                        <p className='notaAdj'>(Revisar en correo no deseado)</p>
                                         <div className='preguntas'>
                                             <h4 className='pregunta'>YA TENÉS USUARIO?</h4>
                                             <div className='btnFiltro' onClick={() => setLoginStage("login")}>Iniciá sesión</div>
