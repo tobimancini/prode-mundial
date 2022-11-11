@@ -202,6 +202,57 @@
 }
 
 .btnFiltro.small{
-    font-size: 12px !important;
-    margin: 5px!important;
+    font-size: 20px !important;
+    margin: 3px!important;
+    background-color: black;
+    cursor:auto;
+}
+
+.btnFiltro.small p{
+    margin: 5px;
+}
+
+.inputBuscar{
+    font-size: 14px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+    width: calc(85% - 10px);
+    padding-left: 15px;
+    color: black;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    appearance: none;
+    border: none;
+}
+
+.tools{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.tools div{
+    font-size: 18px;
+    margin: 3px;
+    border: solid 1px #fff;
+    padding: 0 10px;
+    width: 100%;
+    background-color: #ae946d;
+}
+
+.btnFiltro.small label{
+    font-size: 16px;
+}
+
+.btnFiltro.small input{
+    width: 90%;
+}
+
+.btnFiltro.small select{
+    width: 98.5%;
+    margin: 0px;
 }

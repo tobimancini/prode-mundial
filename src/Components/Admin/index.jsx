@@ -8,11 +8,14 @@ import enviarResultados from '../Utils/enviarResultados';
 import compararResultados from '../Utils/compararResultados';
 import usuariosInhab from '../Utils/usuariosInhab';
 import habilitar from '../Utils/habilitar';
+import traerJugador from '../Utils/traerJugador';
+import borrarJugador from '../Utils/borrarJugador';
+import modificarUser from '../Utils/modificarUser';
 
 
 const Admin = () => {
 
-    const { allPuntajes, setAllPuntajes, allMatches, userInfo, setToolText, setTooltip, tooltip } = useContext(Prode);
+    const { allPuntajes, setAllPuntajes, allMatches, userInfo, setToolText, setTooltip, tooltip, equiposMasc, equiposFem } = useContext(Prode);
     const [equipoLocal, setEquipoLocal] = useState("");
     const [equipoVisitante, setEquipoVisitante] = useState("");
     const [cargando, setCargando] = useState(false);
@@ -26,7 +29,10 @@ const Admin = () => {
     }
 
     const [inhabilitados, setInhabilitados] = useState([]);
+    const [jugadoresDelete, setJugadoresDelete] = useState([]);
+    const [edicion, setEdicion] = useState("");
 
+    let equipos = [...equiposMasc, ...equiposFem];
 
     return (
         <div className='adminCont'>
@@ -68,13 +74,55 @@ const Admin = () => {
                         }
                         <h2>Actualizar Puntajes</h2>
                         <div className='btnFiltro act' onClick={() => compararResultados(setCargando, setToolText, setTooltip, tooltip)}>Actualizar</div>
-                        <h2>HABILITAR USUARIOS</h2>
-                        <div className='btnFiltro act' onClick={() => usuariosInhab(setInhabilitados)} >Buscar</div>
+
+                        <h2>USUARIOS</h2>
+                        <input type="text" id='usuariosGet' placeholder='Buscar jugador' className='inputBuscar' />
+                        <div className='btnFiltro act' onClick={() => traerJugador(setJugadoresDelete)} >Buscar</div>
                         {
-                            inhabilitados.length ?
-                                inhabilitados.map((usuario) => {
-                                    return <div key={usuario.id + usuario.data.apellido} className='btnFiltro act small' onClick={() => habilitar(usuario.ref)}>
-                                        HABILITAR {usuario.data.nombre.toUpperCase() + " " + usuario.data.apellido.toUpperCase()}
+                            jugadoresDelete.length ?
+                                jugadoresDelete.map((usuario) => {
+                                    return <div key={usuario.id + usuario.data.apellido} className='btnFiltro act small'>
+                                        <p>{usuario.data.nombre.toUpperCase() + " " + usuario.data.apellido.toUpperCase()+ " "+ usuario.data.dni} </p>
+                                        <div className='tools'>
+                                            <div onClick={() => borrarJugador(usuario.id)}>Borrar</div>
+                                            {
+                                                usuario.data.habilitado === false ?
+                                                    <div onClick={() => habilitar(usuario.ref)}>Habilitar</div>
+                                                    :
+                                                    null
+                                            }
+                                            <div onClick={() => setEdicion(edicion === usuario.id ? "":usuario.id)}>Editar</div>
+                                        </div>
+                                        {
+                                            edicion === usuario.id ?
+                                                <form id="edicionUsuario" >
+                                                    <label>Nombre</label>
+                                                    <input id='edicionNombre' type="text" placeholder='Nombre' className='inputProde' />
+                                                    <label>Apellido</label>
+                                                    <input id='edicionApellido' type="text" placeholder='Apellido' className='inputProde' />
+                                                    <label>Jaula</label>
+                                                    <select name="jaula" id="edicionJaula" className='inputProde'>
+                                                        <option value="">Elegir</option>
+                                                        <option value="true">Si</option>
+                                                        <option value="false">No</option>
+                                                    </select>
+                                                    <label>Equipo</label>
+                                                    <select name="equipos" id="edicionEquipo" className='inputProde'>
+                                                        <option value="">Equipo</option>
+                                                        {equipos.length?
+                                                            equipos.map((equipo)=>{
+                                                                return <option key={equipo} value={equipo} >{equipo}</option>
+                                                            })
+                                                            :
+                                                            null
+                                                        }
+                                                    </select>
+                                                    
+                                                    <div className='btnFiltro' onClick={()=>modificarUser(usuario.ref, usuario.data.uid)}>Guardar cambios</div>
+                                                </form>
+                                                :
+                                                null
+                                        }
                                     </div>
                                 })
                                 :

@@ -6,12 +6,12 @@ const newUser = async (dni, nombre, email, user, apellido, sexo, equipo, jaula) 
         if (jaula === "true") {
             let usuario = {
                 "dni": dni,
-                "nombre": nombre,
+                "nombre": nombre.toUpperCase(),
                 "email": email,
                 "uid": user.uid,
                 authProvider: "local",
                 "habilitado": false,
-                "apellido": apellido,
+                "apellido": apellido.toUpperCase(),
                 "sexo": sexo,
                 "equipo": equipo,
                 "puntajeActual": 0,
@@ -28,12 +28,12 @@ const newUser = async (dni, nombre, email, user, apellido, sexo, equipo, jaula) 
         } else if (jaula === "false") {
             let usuario = {
                 "dni": dni,
-                "nombre": nombre,
+                "nombre": nombre.toUpperCase(),
                 "email": email,
                 "uid": user.uid,
                 authProvider: "local",
                 "habilitado": false,
-                "apellido": apellido,
+                "apellido": apellido.toUpperCase(),
                 "sexo": "",
                 "equipo": "",
                 "puntajeActual": 0,
