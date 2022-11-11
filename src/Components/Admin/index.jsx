@@ -85,7 +85,7 @@ const Admin = () => {
                                     return <div key={usuario.id + usuario.data.apellido} className='btnFiltro act small'>
                                         <p>{usuario.data.nombre.toUpperCase() + " " + usuario.data.apellido.toUpperCase()+ " "+ usuario.data.dni} </p>
                                         <div className='tools'>
-                                            <div onClick={() => borrarJugador(usuario.id)}>Borrar</div>
+                                            <div onClick={() => borrarJugador(usuario.id, usuario.data.uid)}>Borrar</div>
                                             {
                                                 usuario.data.habilitado === false ?
                                                     <div onClick={() => habilitar(usuario.ref)}>Habilitar</div>
