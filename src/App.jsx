@@ -24,6 +24,7 @@ import { BiFootball } from "react-icons/bi";
 import { IoFootball, IoMdFootball } from "react-icons/io";
 import setCampeonElegido from "./Components/Utils/setCampeonElegido";
 import setGoleadorElegido from "./Components/Utils/setGoleadorElegido";
+import Reglas from "./Components/Reglas";
 
 
 
@@ -235,7 +236,7 @@ function App() {
             <Home />
             :
 
-            pageState === "perfil" && userInfo !== {}?
+            pageState === "perfil" && userInfo !== {} ?
               <Login userID={setUserID} />
               :
               pageState === "partidos" && userInfo !== {} ?
@@ -325,7 +326,7 @@ function App() {
 
 
                         :
-                        partidosState === "goleador" && userInfo !== {}?
+                        partidosState === "goleador" && userInfo !== {} ?
                           campeonesOff === false ?
                             <>
                               <ul className="tablaCont">
@@ -375,21 +376,24 @@ function App() {
                   }
                 </>
                 :
-                pageState === "clasificacion" && userInfo !== {}?
+                pageState === "clasificacion" && userInfo !== {} ?
                   <>
                     <TablaPosiciones />
                   </>
                   :
-                  pageState === "prediccion" && userInfo !== {}?
+                  pageState === "prediccion" && userInfo !== {} ?
                     <Prediccion />
                     :
                     pageState === "admin" && userInfo !== {} ?
                       <Admin />
                       :
+                      pageState === "reglas" ?
+                        <Reglas />
+                        :
 
-                      <div className="loaderContain">
-                        <FadeLoader className='loader' color={'#edebeb'} loading={true} size={5} aria-label="Loading Spinner" data-testid="loader" />
-                      </div>
+                        <div className="loaderContain">
+                          <FadeLoader className='loader' color={'#edebeb'} loading={true} size={5} aria-label="Loading Spinner" data-testid="loader" />
+                        </div>
 
       }
 

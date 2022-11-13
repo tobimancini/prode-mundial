@@ -3,7 +3,7 @@ import './styles.css';
 import { MdOutlineSportsSoccer, MdAdminPanelSettings } from 'react-icons/md';
 import { GrTask } from 'react-icons/gr';
 import { BiTrophy } from 'react-icons/bi';
-import { HiOutlineUser } from 'react-icons/hi';
+import { HiOutlineDocumentText, HiOutlineUser } from 'react-icons/hi';
 import { AiFillHome } from 'react-icons/ai';
 import { Prode } from '../../Context/prodeData';
 
@@ -24,11 +24,15 @@ const Navbar = () => {
     const partidos = document.getElementById('partidos');
     const clasificacion = document.getElementById('clasificacion');
     const prediccion = document.getElementById('prediccion');
+    const reglas = document.getElementById('reglas');
+
     const titInicio = document.querySelector('.tituloIni');
     const titPerfil = document.querySelector('.tituloPer');
     const titPrediccion = document.querySelector('.tituloPred');
     const titClasificacion = document.querySelector('.tituloClas');
     const titPartidos = document.querySelector('.tituloPar');
+    const titReglas = document.querySelector('.tituloReg');
+
 
     if (pageState == "inicio") {
       inicio.classList.add('active');
@@ -36,108 +40,155 @@ const Navbar = () => {
       partidos.classList.remove('active');
       clasificacion.classList.remove('active');
       prediccion.classList.remove('active');
+      reglas.classList.remove('active');
+
 
       titInicio.classList.add('active');
       titPerfil.classList.remove('active');
       titPartidos.classList.remove('active');
       titClasificacion.classList.remove('active');
       titPrediccion.classList.remove('active');
+      titReglas.classList.remove('active');
+
 
       titInicio.classList.remove('inactive');
       titPerfil.classList.add('inactive');
       titPartidos.classList.add('inactive');
       titClasificacion.classList.add('inactive');
       titPrediccion.classList.add('inactive');
+      titReglas.classList.add('inactive');
+
     } else if (pageState === "perfil") {
       perfil.classList.add('active');
       partidos.classList.remove('active');
       clasificacion.classList.remove('active');
       prediccion.classList.remove('active');
       inicio.classList.remove('active');
+      reglas.classList.remove('active');
+
 
       titPerfil.classList.add('active');
       titPartidos.classList.remove('active');
       titClasificacion.classList.remove('active');
       titPrediccion.classList.remove('active');
       titInicio.classList.remove('active');
+      titReglas.classList.remove('active');
+
 
       titPerfil.classList.remove('inactive');
       titPartidos.classList.add('inactive');
       titClasificacion.classList.add('inactive');
       titPrediccion.classList.add('inactive');
       titInicio.classList.add('inactive');
+      titReglas.classList.add('inactive');
+
     } else if (pageState === "partidos") {
       titPerfil.classList.remove('active');
       titPartidos.classList.add('active');
       titClasificacion.classList.remove('active');
       titPrediccion.classList.remove('active');
       titInicio.classList.remove('active');
+      titReglas.classList.remove('active');
 
       titPerfil.classList.add('inactive');
       titPartidos.classList.remove('inactive');
       titClasificacion.classList.add('inactive');
       titPrediccion.classList.add('inactive');
       titInicio.classList.add('inactive');
+      titReglas.classList.add('inactive');
+
 
       perfil.classList.remove('active');
       partidos.classList.add('active');
       clasificacion.classList.remove('active');
       prediccion.classList.remove('active');
       inicio.classList.remove('active');
+      reglas.classList.remove('active');
+
     } else if (pageState === "clasificacion") {
       perfil.classList.remove('active');
       partidos.classList.remove('active');
       clasificacion.classList.add('active');
       prediccion.classList.remove('active');
       inicio.classList.remove('active');
+      reglas.classList.remove('active');
 
       titPerfil.classList.remove('active');
       titPartidos.classList.remove('active');
       titClasificacion.classList.add('active');
       titPrediccion.classList.remove('active');
       titInicio.classList.remove('active');
+      titReglas.classList.remove('active');
 
       titPerfil.classList.add('inactive');
       titPartidos.classList.add('inactive');
       titClasificacion.classList.remove('inactive');
       titPrediccion.classList.add('inactive');
       titInicio.classList.add('inactive');
+      titReglas.classList.add('inactive');
     } else if (pageState === "prediccion") {
       perfil.classList.remove('active');
       partidos.classList.remove('active');
       clasificacion.classList.remove('active');
       prediccion.classList.add('active');
       inicio.classList.remove('active');
+      reglas.classList.remove('active');
 
       titPerfil.classList.remove('active');
       titPartidos.classList.remove('active');
       titClasificacion.classList.remove('active');
       titPrediccion.classList.add('active');
       titInicio.classList.remove('active');
+      titReglas.classList.remove('active');
 
       titPerfil.classList.add('inactive');
       titPartidos.classList.add('inactive');
       titClasificacion.classList.add('inactive');
       titPrediccion.classList.remove('inactive');
       titInicio.classList.add('inactive');
-    } else {
+      titReglas.classList.add('inactive');
+    } else if(pageState === 'reglas'){
       perfil.classList.remove('active');
       partidos.classList.remove('active');
       clasificacion.classList.remove('active');
       prediccion.classList.remove('active');
       inicio.classList.remove('active');
+      reglas.classList.add('active');
 
       titPerfil.classList.remove('active');
       titPartidos.classList.remove('active');
       titClasificacion.classList.remove('active');
       titPrediccion.classList.remove('active');
       titInicio.classList.remove('active');
+      titReglas.classList.add('active');
 
       titPerfil.classList.add('inactive');
       titPartidos.classList.add('inactive');
       titClasificacion.classList.add('inactive');
       titPrediccion.classList.add('inactive');
       titInicio.classList.add('inactive');
+      titReglas.classList.remove('inactive');
+    }else {
+      perfil.classList.remove('active');
+      partidos.classList.remove('active');
+      clasificacion.classList.remove('active');
+      prediccion.classList.remove('active');
+      inicio.classList.remove('active');
+      reglas.classList.remove('active');
+
+      titPerfil.classList.remove('active');
+      titPartidos.classList.remove('active');
+      titClasificacion.classList.remove('active');
+      titPrediccion.classList.remove('active');
+      titInicio.classList.remove('active');
+      titReglas.classList.remove('active');
+
+      titPerfil.classList.add('inactive');
+      titPartidos.classList.add('inactive');
+      titClasificacion.classList.add('inactive');
+      titPrediccion.classList.add('inactive');
+      titInicio.classList.add('inactive');
+      titReglas.classList.add('inactive');
     }
 
 
@@ -173,6 +224,11 @@ const Navbar = () => {
 
         titAdmin.classList.remove('active');
         titAdmin.classList.add('inactive');
+      } else if (pageState === "reglas"){
+        admin.classList.remove('active');
+
+        titAdmin.classList.remove('active');
+        titAdmin.classList.add('inactive');
       } else {
         admin.classList.add('active');
 
@@ -201,6 +257,10 @@ const Navbar = () => {
           <BiTrophy />
           <p className='tituloClas'>Posiciones</p>
         </li>
+        <li id='reglas' className='navItem' onClick={() => changeState("reglas")}>
+          <HiOutlineDocumentText />
+          <p className='tituloReg'>Reglas</p>
+        </li>
         <li id='perfil' className='navItem' onClick={() => changeState("perfil")}>
           <HiOutlineUser />
           <p className='tituloPer'>Perfil</p>
@@ -209,13 +269,13 @@ const Navbar = () => {
           userInfo === {} ?
             null
             :
-            userInfo.administrador === true?
-            <li id='admin' className='navItem' onClick={() => changeState("admin")}>
-              <MdAdminPanelSettings />
-              <p className='tituloAdmin'>Admin</p>
-            </li>
-            :
-            null
+            userInfo.administrador === true ?
+              <li id='admin' className='navItem' onClick={() => changeState("admin")}>
+                <MdAdminPanelSettings />
+                <p className='tituloAdmin'>Admin</p>
+              </li>
+              :
+              null
         }
       </ul>
 

@@ -85,15 +85,15 @@ const Admin = () => {
                                     return <div key={usuario.id + usuario.data.apellido} className='btnFiltro act small'>
                                         <p>{usuario.data.nombre.toUpperCase() + " " + usuario.data.apellido.toUpperCase()+ " "+ usuario.data.dni} </p>
                                         <div className='tools'>
-                                            <div onClick={() => borrarJugador(usuario.id, usuario.data.uid)}>Borrar</div>
                                             {
                                                 usuario.data.habilitado === false ?
-                                                    <div onClick={() => habilitar(usuario.ref)}>Habilitar</div>
-                                                    :
-                                                    null
+                                                <div onClick={() => habilitar(usuario.ref)}>Habilitar</div>
+                                                :
+                                                null
                                             }
                                             <div onClick={() => setEdicion(edicion === usuario.id ? "":usuario.id)}>Editar</div>
                                             <div onClick={() => prediccionUser(usuario.data.uid)}>Prediccion</div>
+                                            <div className='borrar' onClick={() => borrarJugador(usuario.id, usuario.data.uid)}>Borrar</div>
                                         </div>
                                         {
                                             edicion === usuario.id ?

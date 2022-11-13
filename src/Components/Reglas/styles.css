@@ -1,0 +1,19 @@
+.btnFiltro.reglas{
+    width: auto;
+    cursor: pointer;
+}
+
+.reglasTit{
+    color: #fff;
+}
+.reglasP{
+    margin: 5px;
+}
+
+.reglasDesc{
+    font-size: 25px;
+}
+
+a{
+    text-decoration: none;
+}
