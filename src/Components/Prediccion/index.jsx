@@ -100,9 +100,6 @@ const Prediccion = () => {
         getPartidosFase();
     }, [faseSel, sortedPredic])
 
-    useEffect(() => {
-      console.log(scrollPosition);
-    }, [scrollPosition])
     
 
 

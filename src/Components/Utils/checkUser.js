@@ -6,10 +6,8 @@ const checkUser = async (email, nombre, contrseña, createFunction, setToolText,
     const q = query(collection(db, "Usuarios"), where("email", "==", email));
     const querySnapshot = await getDocs(q);
 
-    console.log(querySnapshot)
 
     const inputsCrear = document.querySelectorAll('.crearUsuario');
-    // console.log(inputsCrear);
 
     let arrayVacio = [];
 

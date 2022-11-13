@@ -14,21 +14,7 @@ const usuariosInhab = async (setInhabilitados) => {
         })
     });
 
-    console.log(usuarioRef);
     setInhabilitados(usuarioRef)
-    // usersRef = [];
-
-    // for (let i = 0; i < usuarioRef.length; i++) {
-    //     const user = usuarioRef[i];
-        
-    // }
-
-    // let idUsuario = usuarioRef[0].id;
-    // let status = usuarioRef[0]._document.data.value.mapValue.fields.habilitado.booleanValue;
-
-    // const userRef = doc(db, 'Usuarios', idUsuario);
-    // await updateDoc(userRef, {
-    //     "habilitado": false
-    // })
+    
 }
 export default usuariosInhab;

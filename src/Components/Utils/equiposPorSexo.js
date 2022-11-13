@@ -71,7 +71,6 @@ const equiposPorSexo = (sexo, allPuntajes, setEquiposUser) => {
 
 
     }
-    // console.log(nuevoArray);
     
     let arrayOrdenado = nuevoArray.sort((a, b) => a[0] > b[0] ? -1 : b[0] > a[0] ? 1 : 0);
     setEquiposUser(arrayOrdenado);

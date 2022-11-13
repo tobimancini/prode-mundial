@@ -105,9 +105,7 @@ const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo
         setTooltip(tooltip + 2)
       }, 4000);
 
-    } else {
-      console.log("primero debes iniciar sesion");
-    }
+    } 
 
     let selectAllLocal = document.querySelectorAll('.selectLocal');
     let selectAllVisit = document.querySelectorAll('.selectVisit');

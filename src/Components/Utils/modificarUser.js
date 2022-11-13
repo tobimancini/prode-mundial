@@ -63,7 +63,6 @@ const modificarUser = async (ref, uid) => {
         }
     }
     
-    console.log("modificado");
 }
 
 export default modificarUser;

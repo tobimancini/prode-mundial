@@ -29,7 +29,6 @@ const crearUsuario = async (setToolText, setTooltip, tooltip) => {
                 try {
                     const res = await createUserWithEmailAndPassword(auth, email, contraseña);
                     const user = res.user;
-                    console.log(user);
                     newUser(dni, nombre, email, user, apellido, sexo, equipo, jaula);
                     userCreate.reset();
                 } catch (err) {

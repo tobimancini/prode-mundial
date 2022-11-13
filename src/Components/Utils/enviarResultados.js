@@ -8,7 +8,6 @@ const enviarResultados = async (setCargando, setToolText, setTooltip, tooltip) =
     let golesVisitante = document.querySelectorAll('.golesVisitante');
     let partido = document.querySelectorAll('.invisible');
 
-    // console.log(partido);
 
     let resultado = [];
 
@@ -42,10 +41,8 @@ const enviarResultados = async (setCargando, setToolText, setTooltip, tooltip) =
                 if (prediccion.length > 0) {
                     const resultadosRef = doc(db, "Resultados", prediccion[0]);
                     await updateDoc(resultadosRef, resultado[i][0]);
-                    console.log("actualizado");
                 } else {
                     await addDoc(collection(db, "Resultados"), resultado[i][0]);
-                    console.log("enviado");
                 }
 
 

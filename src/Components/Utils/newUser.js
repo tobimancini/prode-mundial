@@ -24,7 +24,6 @@ const newUser = async (dni, nombre, email, user, apellido, sexo, equipo, jaula) 
                 "goleador": ""
             }
             const docRef = await addDoc(collection(db, "Usuarios"), usuario);
-            console.log("se creo un usuario jaulero");
         } else if (jaula === "false") {
             let usuario = {
                 "dni": dni,
@@ -46,7 +45,6 @@ const newUser = async (dni, nombre, email, user, apellido, sexo, equipo, jaula) 
                 "goleador": ""
             }
             const docRef = await addDoc(collection(db, "Usuarios"), usuario);
-            console.log("se creo un usuario no jaulero");
         }
 
 }

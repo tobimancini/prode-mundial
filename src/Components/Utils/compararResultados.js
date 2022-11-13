@@ -129,7 +129,6 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
             const el = puntajesTotales[i];
             const tablaPosi = await addDoc(collection(db, "Posiciones"), el);
         }
-        console.log("created");
     } else {
         for (let i = 0; i < puntajesTotales.length; i++) {
             const el = puntajesTotales[i];
@@ -144,7 +143,6 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
                 const tablaPosi = await addDoc(collection(db, "Posiciones"), el);
             }
         }
-        console.log("updated");
 
     }
 
@@ -170,7 +168,6 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
         }
 
     }
-    console.log(equipos);
 
     for (let i = 0; i < puntajesTotales.length; i++) {
         const el = puntajesTotales[i];
@@ -178,7 +175,6 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
             const equipo = equipos[i];
             if (equipo.puntaje === undefined) {
                 if (el.equipo === equipo.equipo) {
-                    // console.log(el);
                     let puntos = { [el.uid]: el.puntaje }
                     Object.assign(equipo, puntos)
                 }
@@ -206,7 +202,6 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
     }
 
     equipos.sort((a, b) => a.puntaje < b.puntaje ? 1 : b.puntaje < a.puntaje ? -1 : 0);
-    console.log(equipos);
 
 
     for (let i = 0; i < equipos.length; i++) {
@@ -222,7 +217,6 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
             const el = equipos[i];
             const tablaEquipos = await addDoc(collection(db, "PosicionesEquipos"), el);
         }
-        console.log("created equipos");
     } else {
         for (let i = 0; i < equipos.length; i++) {
             const el = equipos[i];
@@ -237,7 +231,6 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
                 const tablaEquipos = await addDoc(collection(db, "PosicionesEquipos"), el);
             }
         }
-        console.log("updated equipos");
 
     }
 
@@ -256,7 +249,6 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
                     puntajeActual: usuario.puntaje,
                     puntajeEquipo: equipo.puntaje
                 })
-                console.log("veces posiciones actualizadas");
 
             }
 

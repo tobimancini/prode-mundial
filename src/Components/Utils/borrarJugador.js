@@ -11,11 +11,9 @@ const borrarJugador = async(id, uid) =>{
     let predId ; 
     querySnapshot.forEach((doc) => {
         predId = doc.id;
-        console.log(doc.id); 
     })
     
     await deleteDoc(doc(db, "Predicciones", predId));
-    console.log("borrarPRedi");
 
 
 

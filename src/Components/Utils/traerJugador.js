@@ -8,7 +8,6 @@ const traerJugador = async(setJugadoresDelete) => {
     const querySnapshot = await getDocs(q);
     let jugadores = [];
     querySnapshot.forEach((doc) => {
-        // console.log(doc.id, " => ", doc.data());
         jugadores.push({
             id: doc.id,
             ref: doc.ref,

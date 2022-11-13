@@ -11,8 +11,6 @@ const getTabla = async (tipo, num, setPosicionesGrup, setPosicionesInd, scrollTr
         tablaSnap.forEach((doc) => {
             tablaJugadores.push(doc.data());
         })
-        console.log(num);
-        console.log(tablaJugadores);
         setPosicionesInd(tablaJugadores)
     } else {
         const x = query(collection(db, "PosicionesEquipos"), where("posicion", "<", num));
@@ -23,8 +21,6 @@ const getTabla = async (tipo, num, setPosicionesGrup, setPosicionesInd, scrollTr
         tablaEquiposSnap.forEach((doc) => {
             tablaEquipos.push(doc.data());
         })
-        console.log(num);
-        console.log(tablaEquipos)
         setPosicionesGrup(tablaEquipos);
     }
     setTimeout(() => {
