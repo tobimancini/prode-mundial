@@ -76,7 +76,7 @@ const Admin = () => {
                         <h2>Actualizar Puntajes</h2>
                         <div className='btnFiltro act' onClick={() => compararResultados(setCargando, setToolText, setTooltip, tooltip)}>Actualizar</div>
 
-                        <h2>USUARIOS</h2>
+                        <h2>BUSCAR USUARIO POR APELLIDO</h2>
                         <input type="text" id='usuariosGet' placeholder='Buscar jugador' className='inputBuscar' />
                         <div className='btnFiltro act' onClick={() => traerJugador(setJugadoresDelete)} >Buscar</div>
                         {
