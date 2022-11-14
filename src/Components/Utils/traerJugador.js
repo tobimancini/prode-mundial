@@ -14,6 +14,17 @@ const traerJugador = async(setJugadoresDelete) => {
             data: doc.data()
         })
     });
+    if (jugadores.length === 0) {
+        const q = query(collection(db, "Usuarios"), where("habilitado", "==", false));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            jugadores.push({
+                id: doc.id,
+                ref: doc.ref,
+                data: doc.data()
+            })
+        });
+    }
     setJugadoresDelete(jugadores)
 }
 
