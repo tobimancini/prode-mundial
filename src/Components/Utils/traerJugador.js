@@ -13,7 +13,8 @@ const traerJugador = async(setJugadoresDelete) => {
             ref: doc.ref,
             data: doc.data()
         })
-    });
+    })
+
     if (jugadores.length === 0) {
         const q = query(collection(db, "Usuarios"), where("habilitado", "==", false));
         const querySnapshot = await getDocs(q);
@@ -24,8 +25,10 @@ const traerJugador = async(setJugadoresDelete) => {
                 data: doc.data()
             })
         });
+        setJugadoresDelete(jugadores)
+    }else{
+        setJugadoresDelete(jugadores)
     }
-    setJugadoresDelete(jugadores)
 }
 
 export default traerJugador;
