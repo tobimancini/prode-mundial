@@ -40,42 +40,53 @@ const Admin = () => {
 
             {
                 allMatches.length && userInfo ?
-                    <>
-                        <h2>EDITAR RESULTADOS</h2>
-                        <input type="text" id="locales" placeholder='Equipo local' onChange={() => buscadorPartido()} />
-                        <input type="text" id="visitantes" placeholder='Equipo visitante' onChange={() => buscadorPartido()} />
-                        <div className='tablaCont'>
-                            <ul className='listaResultados'>
-                                {
-                                    equipoLocal !== "" || equipoVisitante !== "" ?
-                                        allMatches.map(partido => {
-                                            if (partido[1].local.toUpperCase().includes(equipoLocal, 0) && partido[1].visitante.toUpperCase().includes(equipoVisitante, 0)) {
-                                                return <li key={partido[0]} className="predPartido">
-                                                    <p className='invisible'>{partido[1].partido}</p>
-                                                    <p className='textoResultado l'>{partido[1].local.toUpperCase()}</p>
-                                                    <div className='selectsResul'>
-                                                        <input name="golesL" type="number" className="golesLocal" />
-                                                        <p>vs</p>
-                                                        <input name="golesV" type="number" className="golesVisitante" />
-                                                    </div>
-                                                    <p className='textoResultado v'>{partido[1].visitante.toUpperCase()}</p>
-                                                </li>
-                                            }
-                                        })
-                                        :
-                                        null
-                                }
-                            </ul>
-                        </div>
-                        {
-                            equipoLocal !== "" || equipoVisitante !== "" ?
-                                <div className='btnFiltro' onClick={() => enviarResultados(setCargando, setToolText, setTooltip, tooltip)}>ENVIAR</div>
-                                :
-                                null
-                        }
-                        <h2>Actualizar Puntajes</h2>
-                        <div className='btnFiltro act' onClick={() => compararResultados(setCargando, setToolText, setTooltip, tooltip)}>Actualizar</div>
+                    userInfo.apellido != "JAULA" ?
+                        <>
+                            <h2>EDITAR RESULTADOS</h2>
+                            <input type="text" id="locales" placeholder='Equipo local' onChange={() => buscadorPartido()} />
+                            <input type="text" id="visitantes" placeholder='Equipo visitante' onChange={() => buscadorPartido()} />
+                            <div className='tablaCont'>
+                                <ul className='listaResultados'>
+                                    {
+                                        equipoLocal !== "" || equipoVisitante !== "" ?
+                                            allMatches.map(partido => {
+                                                if (partido[1].local.toUpperCase().includes(equipoLocal, 0) && partido[1].visitante.toUpperCase().includes(equipoVisitante, 0)) {
+                                                    return <li key={partido[0]} className="predPartido">
+                                                        <p className='invisible'>{partido[1].partido}</p>
+                                                        <p className='textoResultado l'>{partido[1].local.toUpperCase()}</p>
+                                                        <div className='selectsResul'>
+                                                            <input name="golesL" type="number" className="golesLocal" />
+                                                            <p>vs</p>
+                                                            <input name="golesV" type="number" className="golesVisitante" />
+                                                        </div>
+                                                        <p className='textoResultado v'>{partido[1].visitante.toUpperCase()}</p>
+                                                    </li>
+                                                }
+                                            })
+                                            :
+                                            null
+                                    }
+                                </ul>
+                            </div>
+                            {
+                                equipoLocal !== "" || equipoVisitante !== "" ?
+                                    <div className='btnFiltro' onClick={() => enviarResultados(setCargando, setToolText, setTooltip, tooltip)}>ENVIAR</div>
+                                    :
+                                    null
+                            }
+                            <h2>Actualizar Puntajes</h2>
+                            <div className='btnFiltro act' onClick={() => compararResultados(setCargando, setToolText, setTooltip, tooltip)}>Actualizar</div>
+                        </>
+                        :
 
+                        null
+                    :
+                    null
+            }
+
+            {
+                allMatches.length && userInfo ?
+                    <>
                         <h2>BUSCAR USUARIO POR APELLIDO</h2>
                         <input type="text" id='usuariosGet' placeholder='Buscar jugador' className='inputBuscar' />
                         <div className='btnFiltro act' onClick={() => traerJugador(setJugadoresDelete)} >Buscar</div>
@@ -83,17 +94,22 @@ const Admin = () => {
                             jugadoresDelete.length ?
                                 jugadoresDelete.map((usuario) => {
                                     return <div key={usuario.id + usuario.data.apellido} className='btnFiltro act small'>
-                                        <p>{usuario.data.nombre.toUpperCase() + " " + usuario.data.apellido.toUpperCase()+ " "+ usuario.data.dni} </p>
+                                        <p>{usuario.data.nombre.toUpperCase() + " " + usuario.data.apellido.toUpperCase() + " " + usuario.data.dni} </p>
                                         <div className='tools'>
                                             {
                                                 usuario.data.habilitado === false ?
-                                                <div onClick={() => habilitar(usuario.ref)}>Habilitar</div>
+                                                    <div onClick={() => habilitar(usuario.ref)}>Habilitar</div>
+                                                    :
+                                                    null
+                                            }
+                                            <div onClick={() => setEdicion(edicion === usuario.id ? "" : usuario.id)}>Editar</div>
+                                            <div onClick={() => prediccionUser(usuario.data.uid)}>Prediccion</div>
+                                            {
+                                                userInfo.apellido !== "JAULA"?
+                                                <div className='borrar' onClick={() => borrarJugador(usuario.id, usuario.data.uid)}>Borrar</div>
                                                 :
                                                 null
                                             }
-                                            <div onClick={() => setEdicion(edicion === usuario.id ? "":usuario.id)}>Editar</div>
-                                            <div onClick={() => prediccionUser(usuario.data.uid)}>Prediccion</div>
-                                            <div className='borrar' onClick={() => borrarJugador(usuario.id, usuario.data.uid)}>Borrar</div>
                                         </div>
                                         {
                                             edicion === usuario.id ?
@@ -111,16 +127,16 @@ const Admin = () => {
                                                     <label>Equipo</label>
                                                     <select name="equipos" id="edicionEquipo" className='inputProde'>
                                                         <option value="">Equipo</option>
-                                                        {equipos.length?
-                                                            equipos.map((equipo)=>{
+                                                        {equipos.length ?
+                                                            equipos.map((equipo) => {
                                                                 return <option key={equipo} value={equipo} >{equipo}</option>
                                                             })
                                                             :
                                                             null
                                                         }
                                                     </select>
-                                                    
-                                                    <div className='btnFiltro' onClick={()=>modificarUser(usuario.ref, usuario.data.uid)}>Guardar cambios</div>
+
+                                                    <div className='btnFiltro' onClick={() => modificarUser(usuario.ref, usuario.data.uid)}>Guardar cambios</div>
                                                 </form>
                                                 :
                                                 null
@@ -140,7 +156,7 @@ const Admin = () => {
                         <FadeLoader className='loader' color={'#edebeb'} loading={true} size={5} aria-label="Loading Spinner" data-testid="loader" />
                     </div>
             }
-        </div>
+        </div >
     )
 }
 
