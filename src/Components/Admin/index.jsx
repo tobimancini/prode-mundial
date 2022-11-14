@@ -87,7 +87,7 @@ const Admin = () => {
             {
                 allMatches.length && userInfo ?
                     <>
-                        <h2>BUSCAR USUARIO POR APELLIDO</h2>
+                        <h2>BUSCAR POR DNI O APELLIDO</h2>
                         <input type="text" id='usuariosGet' placeholder='Buscar jugador' className='inputBuscar' />
                         <div className='btnFiltro act' onClick={() => traerJugador(setJugadoresDelete)} >Buscar</div>
                         {
