@@ -48,11 +48,11 @@ const Partido = (props) => {
     }
 
 
-    const matchChanges = (id, lOrV) =>{
+    const matchChanges = (id, lOrV) => {
         let localia;
         if (lOrV === "L") {
             localia = "V"
-        }else{
+        } else {
             localia = "L"
         }
         if (document.getElementById(`${id}${localia}`).value === "-") {
@@ -92,11 +92,11 @@ const Partido = (props) => {
 
     const [resultadoMatch, setResultadoMatch] = useState("");
 
-    const findMatch = () =>{
+    const findMatch = () => {
         if (resultados.length) {
             for (let i = 0; i < resultados.length; i++) {
                 const partido = resultados[i][0];
-                if (partido[0] === "partido"+numPartido) {
+                if (partido[0] === "partido" + numPartido) {
                     setResultadoMatch(partido[1])
                 }
             }
@@ -104,9 +104,9 @@ const Partido = (props) => {
     }
 
     useEffect(() => {
-      findMatch()
+        findMatch()
     }, [resultados])
-    
+
 
 
     return (
@@ -139,7 +139,10 @@ const Partido = (props) => {
                         </div>
                         :
                         resultadoMatch !== "" ?
-                            <p className='resultadoGoles'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
+                            <>
+                                <p></p>
+                                <p className='resultadoGoles'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
+                            </>
                             :
                             null
 

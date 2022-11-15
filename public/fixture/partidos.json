@@ -739,7 +739,7 @@
     },
     "partido42": {
         "local": "Canadá",
-        "visitante": "México",
+        "visitante": "Marruecos",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -752,7 +752,7 @@
             "minutos":  0
         },
         "loc":"CAN",
-        "vis":"MEX",
+        "vis":"MAR",
         "fase": "3"
     },
     "partido43": {
@@ -811,7 +811,7 @@
     },
     "partido46": {
         "local": "Ghana",
-        "visitante": "Portugal",
+        "visitante": "Uruguay",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -824,7 +824,7 @@
             "minutos":  0
         },
         "loc":"GHA",
-        "vis":"POR",
+        "vis":"URU",
         "fase": "3"
     },
     "partido47": {
