@@ -121,6 +121,8 @@ const Login = (props) => {
                                         <input id='userLastName' type="text" placeholder='Apellido' className='inputProde crearUsuario' />
                                         <label>Email</label>
                                         <input id='userEmail' type="email" placeholder='Email' className='inputProde crearUsuario' />
+                                        <label>Ingrese nuevamente su email</label>
+                                        <input id='userEmail2' type="email" placeholder='Email' className='inputProde crearUsuario' />
                                         <label>D.N.I.</label>
                                         <input id='userDNI' type="number" placeholder='DNI' className='inputProde crearUsuario' />
                                         <label>Sos jugador/a de la Jaula?</label>
