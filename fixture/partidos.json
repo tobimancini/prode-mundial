@@ -46,7 +46,7 @@
         "fecha":{
             "mes": 11,
             "dia": 21,
-            "hora": 7,
+            "hora": 13,
             "minutos": 0
         },
         "loc":"SEN",
@@ -999,23 +999,6 @@
         "loc":"1H",
         "vis":"2G"
     },
-    "partido57": {
-        "local": "G49",
-        "visitante": "G50",
-        "golesLocal": "",
-        "golesVisitante": "",
-        "resultado": "",
-        "partido": "57",
-        "grupo": "Cuartos de Final",
-        "fecha":{
-            "mes": 12,
-            "dia": 9,
-            "hora": 16,
-            "minutos":  0
-        },
-        "loc":"G49",
-        "vis":"G50"
-    },
     "partido58": {
         "local": "G53",
         "visitante": "G54",
@@ -1033,22 +1016,22 @@
         "loc":"G53",
         "vis":"G54"
     },
-    "partido59": {
-        "local": "G51",
-        "visitante": "G52",
+    "partido57": {
+        "local": "G49",
+        "visitante": "G50",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
-        "partido": "59",
+        "partido": "57",
         "grupo": "Cuartos de Final",
         "fecha":{
             "mes": 12,
-            "dia": 10,
+            "dia": 9,
             "hora": 16,
             "minutos":  0
         },
-        "loc":"G51",
-        "vis":"G52"
+        "loc":"G49",
+        "vis":"G50"
     },
     "partido60": {
         "local": "G55",
@@ -1067,6 +1050,24 @@
         "loc":"G55",
         "vis":"G56"
     },
+    "partido59": {
+        "local": "G51",
+        "visitante": "G52",
+        "golesLocal": "",
+        "golesVisitante": "",
+        "resultado": "",
+        "partido": "59",
+        "grupo": "Cuartos de Final",
+        "fecha":{
+            "mes": 12,
+            "dia": 10,
+            "hora": 16,
+            "minutos":  0
+        },
+        "loc":"G51",
+        "vis":"G52"
+    },
+    
     "partido61": {
         "local": "G57",
         "visitante": "G58",
