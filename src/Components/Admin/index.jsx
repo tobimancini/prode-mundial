@@ -161,7 +161,7 @@ const Admin = () => {
                             equiposDelete.length ?
                                 equiposDelete.map((usuario) => {
                                     return <div key={usuario.id + usuario.data.apellido} className='btnFiltro act small'>
-                                        <p>{usuario.data.nombre.toUpperCase() + " " + usuario.data.apellido.toUpperCase() + " " + usuario.data.dni} </p>
+                                        <p>{usuario.data.nombre.toUpperCase() + " " + usuario.data.apellido.toUpperCase() + " " + usuario.data.equipo} </p>
                                         <div className='tools'>
                                             {
                                                 usuario.data.habilitado === false ?
