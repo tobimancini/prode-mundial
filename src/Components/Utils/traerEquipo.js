@@ -4,7 +4,13 @@ import { db } from "../../Firebase/config";
 
 const traerEquipo = async (setUsersDelete) => {
     const input = document.getElementById('equiposGet').value;
-    const q = query(collection(db, "Usuarios"), where("equipo", "!=", input));
+    let q ;
+    if (input === "") {
+        q = query(collection(db, "Usuarios"), where("equipo", "!=", input));
+    }else{
+        q = query(collection(db, "Usuarios"), where("equipo", "==", input));
+
+    }
 
     const querySnapshot = await getDocs(q);
     let users = [];
