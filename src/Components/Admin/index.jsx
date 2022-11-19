@@ -17,7 +17,7 @@ import traerEquipo from '../Utils/traerEquipo';
 
 const Admin = () => {
 
-    const { allPuntajes, setAllPuntajes, allMatches, userInfo, setToolText, setTooltip, tooltip, equiposMasc, equiposFem } = useContext(Prode);
+    const { allPuntajes, setAllPuntajes, allMatches, userInfo, setToolText, setTooltip, tooltip, equiposMasc, equiposFem, partidosJugados } = useContext(Prode);
     const [equipoLocal, setEquipoLocal] = useState("");
     const [equipoVisitante, setEquipoVisitante] = useState("");
     const [cargando, setCargando] = useState(false);
@@ -44,6 +44,8 @@ const Admin = () => {
                 allMatches.length && userInfo ?
                     userInfo.apellido != "JAULA" ?
                         <>
+                            <h2>VER PARTIDOS JUGADOS</h2>
+                            <div className='btnFiltro act' onClick={()=>console.log(partidosJugados)}>VER PARTIDOS JUGADOS</div>
                             <h2>EDITAR RESULTADOS</h2>
                             <input type="text" id="locales" placeholder='Equipo local' onChange={() => buscadorPartido()} />
                             <input type="text" id="visitantes" placeholder='Equipo visitante' onChange={() => buscadorPartido()} />

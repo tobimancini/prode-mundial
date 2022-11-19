@@ -150,3 +150,7 @@
     /* -webkit-text-stroke: 1px #ae946d; */
 
 }
+
+.partidoJugado{
+    border: solid 4px rgb(255, 45, 45);
+}

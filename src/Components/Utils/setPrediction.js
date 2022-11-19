@@ -3,8 +3,9 @@ import { db } from "../../Firebase/config";
 import { addDoc } from "firebase/firestore";
 
 
-const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo) => {
+const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo, now) => {
 
+  let date = { mes: now.getMonth() + 1, dia: now.getDate() }
   if (userInfo.habilitado === true) {
 
     if (userInfo.uid) {
@@ -29,18 +30,40 @@ const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo
         for (let i = 0; i < selectAllLocal.length; i++) {
           let local = selectAllLocal[i];
           let localName = local.name;
+
           let visit = selectAllVisit[i];
 
           if (localName == match[1].partido && (local.value != "-" && visit.value != "-")) {
-            prediccion.push({
-              [`partido${match[1].partido}`]: {
-                "partido": match[1].partido,
-                "local": local.value,
-                "visitante": visit.value,
-                "ganador": ganador(local.value, visit.value)
-
+            let jugado = false;
+            if (date.mes === match[1].fecha.mes) {
+              if (date.dia === match[1].fecha.dia || date.dia + 1 === match[1].fecha.dia || date.dia - 1 === match[1].fecha.dia) {
+                const q = query(collection(db, "Jugados"), where("jugado", "==", `partido${match[1].partido}`));
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach((doc) => {
+                  jugado = true;
+                });
+                if (jugado === true) {
+                  document.getElementById(`container${match[1].partido}`).classList.add('partidoJugado');
+                  let counters = document.querySelectorAll(`.counter${match[1].partido}`);
+                  for (let i = 0; i < counters.length; i++) {
+                    const counter = counters[i];
+                    counter.remove();
+                  }
+                }
               }
-            })
+              if (jugado === false) {
+                prediccion.push({
+                  [`partido${match[1].partido}`]: {
+                    "partido": match[1].partido,
+                    "local": local.value,
+                    "visitante": visit.value,
+                    "ganador": ganador(local.value, visit.value)
+
+                  }
+                })
+              }
+            }
+
           }
         }
       }
@@ -105,7 +128,7 @@ const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo
         setTooltip(tooltip + 2)
       }, 4000);
 
-    } 
+    }
 
     let selectAllLocal = document.querySelectorAll('.selectLocal');
     let selectAllVisit = document.querySelectorAll('.selectVisit');

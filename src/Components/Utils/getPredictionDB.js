@@ -3,7 +3,7 @@ import { db } from "../../Firebase/config";
 import setPuntos from "./setPuntos";
 
 const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccionActual, tOf, newPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct,
-    setPuntajeTotal, setAllPuntajes, resultadosAct, setResultadosAct, setMiPrediccion) => {
+    setPuntajeTotal, setAllPuntajes, resultadosAct, setResultadosAct, setMiPrediccion, now) => {
 
     if (userInfo.uid) {
         if (tOf === true) {
@@ -12,7 +12,7 @@ const getPredictionDB = async (userInfo, userID, setPrediccionActual, prediccion
             guardarBtn.classList.remove('inactive');
             guardarBtn.classList.add('active');
  
-            newPrediction(allMatches, setToolText, setTooltip, tooltip, userInfo).then(async () => {
+            newPrediction(allMatches, setToolText, setTooltip, tooltip, userInfo, now).then(async () => {
                 if (userInfo.habilitado === true) {
                     const q = query(collection(db, "Usuarios"), where("uid", "==", userInfo.uid));
 

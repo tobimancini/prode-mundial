@@ -33,7 +33,7 @@ function App() {
   const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida, setToolText,
     setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip,
     allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn, setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesGrup, posicionesInd, miPrediccion,
-    setCampeon, setGoleador, campeon, goleador, now, setResultados, setJauleño, loggedOut, setLoggedOut } = useContext(Prode);
+    setCampeon, setGoleador, campeon, goleador, now, setResultados, setJauleño, loggedOut, setLoggedOut, setPartidosJugados } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -137,7 +137,7 @@ function App() {
     } else {
       if (partidosState === "partidos") {
         getPredictionDB(userInfo, userLogged, setPrediccionActual, prediccionActual, true, setPrediction, allMatches, setUserInfo, setToolText, setTooltip, tooltip, setPuntajesAct, setPuntajeTotal,
-          setAllPuntajes, resultadosAct, setResultadosAct, setMiPrediccion)
+          setAllPuntajes, resultadosAct, setResultadosAct, setMiPrediccion, now)
       } else if (partidosState === "campeon") {
         setCampeonElegido(userInfo, chosenEquipo, setToolText, setTooltip, tooltip, setCampeon)
       } else {
@@ -172,7 +172,7 @@ function App() {
         setTimeout(() => {
           setTooltip(tooltip + 2)
         }, 2500);
-        getInfo(user.uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo, setCampeon, setGoleador, setResultados, setJauleño)
+        getInfo(user.uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo, setCampeon, setGoleador, setResultados, setJauleño, setPartidosJugados)
 
       } else {
         setTooltip(tooltip + 1);

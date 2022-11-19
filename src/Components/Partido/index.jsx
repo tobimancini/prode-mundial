@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Prode } from '../../Context/prodeData';
 import './styles.css';
 import { BsQuestionCircleFill } from 'react-icons/bs';
+import partidoJugadoTrue from '../Utils/partidoJugado';
 
 
 
 const Partido = (props) => {
 
-    const { prediccionActual, resultadosAct, puntajesAct, now, setNow, banderas, miPrediccion, userInfo, resultados } = useContext(Prode);
+    const { prediccionActual, resultadosAct, puntajesAct, now, setNow, banderas, miPrediccion, userInfo, resultados, setPartidosJugados, partidosJugados} = useContext(Prode);
     const partido = props.partido;
     const local = partido.local;
     const loc = partido.loc;
@@ -39,13 +40,24 @@ const Partido = (props) => {
     const [jugado, setJugado] = useState(false);
 
 
-    const partidoJugado = () => {
-        if (now.getMonth() + 1 > fecha.mes || (now.getMonth() + 1 == fecha.mes && now.getDate() > fecha.dia) ||
-            (now.getMonth() + 1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() > fecha.hora) ||
-            (now.getMonth() + 1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() == fecha.hora && now.getMinutes() >= fecha.minutos)) {
-            setJugado(true)
+    // const partidoJugado = () => {
+    //     if (now.getMonth() + 1 > fecha.mes || (now.getMonth() + 1 == fecha.mes && now.getDate() > fecha.dia) ||
+    //         (now.getMonth() + 1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() > fecha.hora) ||
+    //         (now.getMonth() + 1 == fecha.mes && now.getDate() == fecha.dia && now.getHours() == fecha.hora && now.getMinutes() >= fecha.minutos)) {
+    //         setJugado(true)
+    //     }
+    // }
+    useEffect(() => {
+        if (partidosJugados.length) {
+            for (let i = 0; i < partidosJugados.length; i++) {
+                const partido = partidosJugados[i];
+                if(partido === `partido${numPartido}`){
+                    setJugado(true);
+                }
+            }
         }
-    }
+    }, [partidosJugados])
+    
 
 
     const matchChanges = (id, lOrV) => {
@@ -86,9 +98,9 @@ const Partido = (props) => {
     useEffect(() => {
     }, [puntajesAct, prediccionActual, resultadosAct])
 
-    useEffect(() => {
-        partidoJugado();
-    }, [now]);
+    // useEffect(() => {
+    //     partidoJugado();
+    // }, [now]);
 
     const [resultadoMatch, setResultadoMatch] = useState("");
 
@@ -110,7 +122,7 @@ const Partido = (props) => {
 
 
     return (
-        <div className='matchContainer'>
+        <div className='matchContainer' id={`container${numPartido}`}>
             {
                 resultadosAct.length !== 0 ?
                     resultadoPartido() :
@@ -118,6 +130,15 @@ const Partido = (props) => {
             }
             <div className='matchNum'>
                 <p>{`${fecha.dia}/${fecha.mes}/22`}</p>
+                {
+                    userInfo.administrador ?
+                        userInfo.administrador === true && userInfo.dni === "39244200"?
+                        <p className='btnFiltro' onClick={()=>partidoJugadoTrue(`partido${numPartido}`)}>JUGADO?</p>
+                        :
+                            null
+                        :
+                        null
+                }
                 <p>{`${fecha.hora}:00`}</p>
             </div>
             <div className='match'>
@@ -133,18 +154,19 @@ const Partido = (props) => {
                 {
                     jugado === false ?
                         <div name={numPartido} className="localCounter">
-                            <div onClick={() => addHandler("L")} className='addLess'>+</div>
+                            <div onClick={() => addHandler("L")} className={`addLess counter${numPartido}`}>+</div>
                             <output name={numPartido} className="selectLocal" id={`${idPartido}L`}>-</output>
-                            <div onClick={() => lessHandler("L")} className='addLess'>-</div>
+                            <div onClick={() => lessHandler("L")} className={`addLess counter${numPartido}`}>-</div>
                         </div>
                         :
                         resultadoMatch !== "" ?
                             <>
-                                <p></p>
                                 <p className='resultadoGoles'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
                             </>
                             :
-                            null
+                            <>
+                                <p className='resultadoGoles'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
+                            </>
 
 
                 }
@@ -153,15 +175,17 @@ const Partido = (props) => {
                     jugado === false ?
 
                         <div name={numPartido} className="localCounter">
-                            <div onClick={() => addHandler("V")} className='addLess'>+</div>
+                            <div onClick={() => addHandler("V")} className={`addLess counter${numPartido}`}>+</div>
                             <output name={numPartido} className="selectVisit" id={`${idPartido}V`}>-</output>
-                            <div onClick={() => lessHandler("V")} className='addLess'>-</div>
+                            <div onClick={() => lessHandler("V")} className={`addLess counter${numPartido}`}>-</div>
                         </div>
                         :
                         resultadoMatch !== "" ?
                             <p className='resultadoGoles'>{!resultadoMatch.visitante ? "-" : resultadoMatch.visitante}</p>
                             :
-                            null
+                            <>
+                                <p className='resultadoGoles'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
+                            </>
                 }
                 <div className='teamContain'>
                     {
