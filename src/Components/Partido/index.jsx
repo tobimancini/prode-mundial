@@ -8,7 +8,8 @@ import partidoJugadoTrue from '../Utils/partidoJugado';
 
 const Partido = (props) => {
 
-    const { prediccionActual, resultadosAct, puntajesAct, now, setNow, banderas, miPrediccion, userInfo, resultados, setPartidosJugados, partidosJugados} = useContext(Prode);
+    const { prediccionActual, resultadosAct, puntajesAct, now, setNow, banderas, miPrediccion, userInfo, resultados, setPartidosJugados, partidosJugados,
+        tooltip, setToolText, setTooltip } = useContext(Prode);
     const partido = props.partido;
     const local = partido.local;
     const loc = partido.loc;
@@ -51,13 +52,13 @@ const Partido = (props) => {
         if (partidosJugados.length) {
             for (let i = 0; i < partidosJugados.length; i++) {
                 const partido = partidosJugados[i];
-                if(partido === `partido${numPartido}`){
+                if (partido === `partido${numPartido}`) {
                     setJugado(true);
                 }
             }
         }
     }, [partidosJugados])
-    
+
 
 
     const matchChanges = (id, lOrV) => {
@@ -73,25 +74,41 @@ const Partido = (props) => {
     }
 
     const addHandler = (lv) => {
-        let gol = document.getElementById(`${idPartido}${lv}`);
-        let golValue = gol.value;
-        if (golValue === "-") {
-            gol.value = 0;
-        } else if (parseInt(golValue) < 20) {
-            gol.value = parseInt(golValue) + 1
+        if (userInfo.habilitado === true) {
+            let gol = document.getElementById(`${idPartido}${lv}`);
+            let golValue = gol.value;
+            if (golValue === "-") {
+                gol.value = 0;
+            } else if (parseInt(golValue) < 20) {
+                gol.value = parseInt(golValue) + 1
+            }
+            matchChanges(idPartido, lv)
+        } else {
+            setToolText("LO SENTIMOS, PERO NO ESTÁS HABILITADO TODAVÍA")
+            setTooltip(tooltip + 1)
+            setTimeout(() => {
+                setTooltip(tooltip + 2)
+            }, 4000);
         }
-        matchChanges(idPartido, lv)
     }
 
     const lessHandler = (lv) => {
-        let gol = document.getElementById(`${idPartido}${lv}`);
-        let golValue = gol.value;
-        if (golValue === "-") {
-            gol.value = 0;
-        } else if (parseInt(golValue) > 0) {
-            gol.value = parseInt(golValue) - 1
+        if (userInfo.habilitado === true) {
+            let gol = document.getElementById(`${idPartido}${lv}`);
+            let golValue = gol.value;
+            if (golValue === "-") {
+                gol.value = 0;
+            } else if (parseInt(golValue) > 0) {
+                gol.value = parseInt(golValue) - 1
+            }
+            matchChanges(idPartido, lv)
+        } else {
+            setToolText("LO SENTIMOS, PERO NO ESTÁS HABILITADO TODAVÍA")
+            setTooltip(tooltip + 1)
+            setTimeout(() => {
+                setTooltip(tooltip + 2)
+            }, 4000);
         }
-        matchChanges(idPartido, lv)
     }
 
 
@@ -132,9 +149,9 @@ const Partido = (props) => {
                 <p>{`${fecha.dia}/${fecha.mes}/22`}</p>
                 {
                     userInfo.administrador ?
-                        userInfo.administrador === true && userInfo.dni === "39244200"?
-                        <p className='btnFiltro' onClick={()=>partidoJugadoTrue(`partido${numPartido}`)}>JUGADO?</p>
-                        :
+                        userInfo.administrador === true && userInfo.dni === "39244200" ?
+                            <p className='btnFiltro' onClick={() => partidoJugadoTrue(`partido${numPartido}`)}>JUGADO?</p>
+                            :
                             null
                         :
                         null
