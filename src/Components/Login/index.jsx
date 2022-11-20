@@ -26,6 +26,11 @@ const Login = (props) => {
 
     const [jaula, setJaula] = useState(false);
 
+    useEffect(() => {
+      console.log(userInfo);
+    }, [userInfo])
+    
+
     return (
         <form id='loginContainer'>
             {
