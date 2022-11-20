@@ -13,6 +13,7 @@ import borrarJugador from '../Utils/borrarJugador';
 import modificarUser from '../Utils/modificarUser';
 import prediccionUser from '../Utils/prediccionUser';
 import traerEquipo from '../Utils/traerEquipo';
+import sinPredic from '../Utils/sinPredic';
 
 
 const Admin = () => {
@@ -46,6 +47,8 @@ const Admin = () => {
                         <>
                             <h2>VER PARTIDOS JUGADOS</h2>
                             <div className='btnFiltro act' onClick={()=>console.log(partidosJugados)}>VER PARTIDOS JUGADOS</div>
+                            <h2>USUARIOS SIN PREDICCION</h2>
+                            <div className='btnFiltro act' onClick={()=>sinPredic()}>VER USUARIOS SIN PREDICCION</div>
                             <h2>EDITAR RESULTADOS</h2>
                             <input type="text" id="locales" placeholder='Equipo local' onChange={() => buscadorPartido()} />
                             <input type="text" id="visitantes" placeholder='Equipo visitante' onChange={() => buscadorPartido()} />
