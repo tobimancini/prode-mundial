@@ -34,6 +34,13 @@ const sinPredic = async () => {
     }
 
     console.log(sinPrediccion);
+    // const querySnapshot = await getDocs(collection(db, "Usuarios"));
+    // let emailList = [];
+    // querySnapshot.forEach((doc) => {
+    //     emailList.push(doc.data().email)
+    // });
+
+    // console.log(emailList);
 }
 
 export default sinPredic
