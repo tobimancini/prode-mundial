@@ -204,7 +204,7 @@ function App() {
   const [campeonesOff, setCampeonesOff] = useState(false);
 
   const fechaCampeones = {
-    mes: 10,
+    mes: 12,
     dia: 20,
     hora: 13,
     minutos: 0
