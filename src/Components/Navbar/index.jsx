@@ -240,6 +240,7 @@ const Navbar = () => {
 
   return (
     <header className='navbarContainer'>
+      <p className='design'>Diseñado por Tobías Mancini</p>
       <ul className='navbarList'>
         <li id='inicio' className='navItem' onClick={() => changeState("inicio")}>
           <AiFillHome />

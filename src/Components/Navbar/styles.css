@@ -12,6 +12,14 @@
     max-width: 520px;
 }
 
+.design{
+    margin: 3px 10px;
+    align-self: flex-end;
+    color: #fff;
+    font-size: 8px;
+    font-style: italic;
+}
+
 .navbarList {
     height: 100%;
     width: 100%;
