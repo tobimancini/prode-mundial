@@ -36,6 +36,16 @@ const Admin = () => {
     const [equiposDelete, setEquiposDelete] = useState([]);
     const [edicion, setEdicion] = useState("");
 
+    const equiposMundial = ["Qatar", "Ecuador", "Senegal", "Holanda", "Inglaterra", "Irán", "Estados Unidos", "Gales", "Argentina", "Arabia Saudita", "México", "Polonia", "Francia",
+        "Australia", "Dinamarca", "Túnez", "España", "Costa Rica", "Alemania", "Japón", "Bélgica", "Canadá", "Marruecos", "Croacia", "Brasil", "Serbia", "Suiza",
+        "Camerún", "Portugal", "Ghana", "Uruguay", "Corea del Sur"];
+    equiposMundial.sort((a, b) => a < b ? -1 : b < a ? 1 : 0);
+
+    const jugadores = ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "Kylian Mbappe", "Harry Kane", "Karim Benzema", "Robert Lewandowski", "Julián Álvarez", "Romelu Lukaku", "Luis Suarez",
+    "Gabriel Jesús", "Richarlison", "Vinicius Júnior", "Ángel Di María", "Paulo Dybala", "Bruno Fernandes", "Memphis Depay", "Pedri", "Morata", "Hakimi",
+    "Marcus Rashford", "Heung-Min Son", "Al Dawsari", "Kai Havertz", "Thomas Muller", "Joao Félix", "Diogo Jota", "Hirving Lozano", "Timo Werner",
+    "Serge Gnabry", "Sané", "Sadio Mané", "Christian Pulisic", "Christian Eriksen", "Lautaro Martinez", "Gareth Bale", "Luka Modric", "Coutinho", "Dusan Tadic"];
+
     let equipos = [...equiposMasc, ...equiposFem];
 
     return (
@@ -46,9 +56,9 @@ const Admin = () => {
                     userInfo.apellido != "JAULA" ?
                         <>
                             <h2>VER PARTIDOS JUGADOS</h2>
-                            <div className='btnFiltro act' onClick={()=>console.log(partidosJugados)}>VER PARTIDOS JUGADOS</div>
+                            <div className='btnFiltro act' onClick={() => console.log(partidosJugados)}>VER PARTIDOS JUGADOS</div>
                             <h2>USUARIOS SIN PREDICCION</h2>
-                            <div className='btnFiltro act' onClick={()=>sinPredic()}>VER USUARIOS SIN PREDICCION</div>
+                            <div className='btnFiltro act' onClick={() => sinPredic()}>VER USUARIOS SIN PREDICCION</div>
                             <h2>EDITAR RESULTADOS</h2>
                             <input type="text" id="locales" placeholder='Equipo local' onChange={() => buscadorPartido()} />
                             <input type="text" id="visitantes" placeholder='Equipo visitante' onChange={() => buscadorPartido()} />
@@ -112,10 +122,10 @@ const Admin = () => {
                                             <div onClick={() => setEdicion(edicion === usuario.id ? "" : usuario.id)}>Editar</div>
                                             <div onClick={() => prediccionUser(usuario.data.uid)}>Prediccion</div>
                                             {
-                                                userInfo.apellido !== "JAULA"?
-                                                <div className='borrar' onClick={() => borrarJugador(usuario.id, usuario.data.uid)}>Borrar</div>
-                                                :
-                                                null
+                                                userInfo.apellido !== "JAULA" ?
+                                                    <div className='borrar' onClick={() => borrarJugador(usuario.id, usuario.data.uid)}>Borrar</div>
+                                                    :
+                                                    null
                                             }
                                         </div>
                                         {
@@ -137,6 +147,28 @@ const Admin = () => {
                                                         {equipos.length ?
                                                             equipos.map((equipo) => {
                                                                 return <option key={equipo} value={equipo} >{equipo}</option>
+                                                            })
+                                                            :
+                                                            null
+                                                        }
+                                                    </select>
+                                                    <label>Campeón</label>
+                                                    <select name="equiposC" id="edicionCampeon" className='inputProde'>
+                                                        <option value="">Campeón</option>
+                                                        {equiposMundial.length ?
+                                                            equiposMundial.map((equipo) => {
+                                                                return <option key={equipo} value={equipo} >{equipo}</option>
+                                                            })
+                                                            :
+                                                            null
+                                                        }
+                                                    </select>
+                                                    <label>Goleador</label>
+                                                    <select name="goleador" id="edicionGoleador" className='inputProde'>
+                                                        <option value="">Goleador</option>
+                                                        {jugadores.length ?
+                                                            jugadores.map((jugador) => {
+                                                                return <option key={jugador} value={jugador} >{jugador}</option>
                                                             })
                                                             :
                                                             null
@@ -177,10 +209,10 @@ const Admin = () => {
                                             <div onClick={() => setEdicion(edicion === usuario.id ? "" : usuario.id)}>Editar</div>
                                             <div onClick={() => prediccionUser(usuario.data.uid)}>Prediccion</div>
                                             {
-                                                userInfo.apellido !== "JAULA"?
-                                                <div className='borrar' onClick={() => borrarJugador(usuario.id, usuario.data.uid)}>Borrar</div>
-                                                :
-                                                null
+                                                userInfo.apellido !== "JAULA" ?
+                                                    <div className='borrar' onClick={() => borrarJugador(usuario.id, usuario.data.uid)}>Borrar</div>
+                                                    :
+                                                    null
                                             }
                                         </div>
                                         {
@@ -202,6 +234,28 @@ const Admin = () => {
                                                         {equipos.length ?
                                                             equipos.map((equipo) => {
                                                                 return <option key={equipo} value={equipo} >{equipo}</option>
+                                                            })
+                                                            :
+                                                            null
+                                                        }
+                                                    </select>
+                                                    <label>Campeón</label>
+                                                    <select name="equiposC" id="edicionCampeon" className='inputProde'>
+                                                        <option value="">Campeón</option>
+                                                        {equiposMundial.length ?
+                                                            equiposMundial.map((equipo) => {
+                                                                return <option key={equipo} value={equipo} >{equipo}</option>
+                                                            })
+                                                            :
+                                                            null
+                                                        }
+                                                    </select>
+                                                    <label>Goleador</label>
+                                                    <select name="goleador" id="edicionGoleador" className='inputProde'>
+                                                        <option value="">Goleador</option>
+                                                        {jugadores.length ?
+                                                            jugadores.map((jugador) => {
+                                                                return <option key={jugador} value={jugador} >{jugador}</option>
                                                             })
                                                             :
                                                             null

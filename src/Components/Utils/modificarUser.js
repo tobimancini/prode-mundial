@@ -8,6 +8,9 @@ const modificarUser = async (ref, uid) => {
     const apellido = userModify['edicionApellido'].value;
     const equipo = userModify['edicionEquipo'].value;
     const jaula = userModify['edicionJaula'].value;
+    const campeon = userModify['edicionCampeon'].value;
+    const goleador = userModify['edicionGoleador'].value;
+
 
     if (nombre !== "") {
         await updateDoc(ref, {
@@ -61,6 +64,22 @@ const modificarUser = async (ref, uid) => {
                 "jaula": false
             })
         }
+    }
+
+    if (campeon !== "") {
+        if (campeon != "") {
+            await updateDoc(ref, {
+                "campeon": campeon
+            })
+        } 
+    }
+
+    if (goleador !== "") {
+        if (goleador != "") {
+            await updateDoc(ref, {
+                "goleador": goleador
+            })
+        } 
     }
     
 }
