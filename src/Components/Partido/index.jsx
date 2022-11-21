@@ -139,7 +139,7 @@ const Partido = (props) => {
 
 
     return (
-        <div className='matchContainer' id={`container${numPartido}`}>
+        <div className={jugado=== true?"matchContainer played":"matchContainer"} id={`container${numPartido}`}>
             {
                 resultadosAct.length !== 0 ?
                     resultadoPartido() :
@@ -150,7 +150,7 @@ const Partido = (props) => {
                 {
                     userInfo.administrador ?
                         userInfo.administrador === true && userInfo.dni === "39244200" ?
-                            <p className='btnFiltro' onClick={() => partidoJugadoTrue(`partido${numPartido}`)}>JUGADO?</p>
+                            <p className='btnFiltro white' onClick={() => partidoJugadoTrue(`partido${numPartido}`)}>JUGADO?</p>
                             :
                             null
                         :
@@ -178,11 +178,11 @@ const Partido = (props) => {
                         :
                         resultadoMatch !== "" ?
                             <>
-                                <p className='resultadoGoles'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
+                                <p className='resultadoGoles white'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
                             </>
                             :
                             <>
-                                <p className='resultadoGoles'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
+                                <p className='resultadoGoles white'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
                             </>
 
 
@@ -198,10 +198,10 @@ const Partido = (props) => {
                         </div>
                         :
                         resultadoMatch !== "" ?
-                            <p className='resultadoGoles'>{!resultadoMatch.visitante ? "-" : resultadoMatch.visitante}</p>
+                            <p className='resultadoGoles white'>{!resultadoMatch.visitante ? "-" : resultadoMatch.visitante}</p>
                             :
                             <>
-                                <p className='resultadoGoles'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
+                                <p className='resultadoGoles white'>{!resultadoMatch.local ? "-" : resultadoMatch.local}</p>
                             </>
                 }
                 <div className='teamContain'>

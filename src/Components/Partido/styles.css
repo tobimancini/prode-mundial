@@ -154,3 +154,17 @@
 .partidoJugado{
     border: solid 4px rgb(255, 45, 45);
 }
+
+.played{
+    color: #fff !important;
+    background-color: #000;
+    border: solid 1px #fff;
+}
+
+.played p{
+    color: #ae946d;
+}
+
+.white{
+    color: #fff !important;
+}
