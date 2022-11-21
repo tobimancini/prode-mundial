@@ -147,7 +147,7 @@ const Navbar = () => {
       titPrediccion.classList.remove('inactive');
       titInicio.classList.add('inactive');
       titReglas.classList.add('inactive');
-    } else if(pageState === 'reglas'){
+    } else if (pageState === 'reglas') {
       perfil.classList.remove('active');
       partidos.classList.remove('active');
       clasificacion.classList.remove('active');
@@ -168,7 +168,7 @@ const Navbar = () => {
       titPrediccion.classList.add('inactive');
       titInicio.classList.add('inactive');
       titReglas.classList.remove('inactive');
-    }else {
+    } else {
       perfil.classList.remove('active');
       partidos.classList.remove('active');
       clasificacion.classList.remove('active');
@@ -224,7 +224,7 @@ const Navbar = () => {
 
         titAdmin.classList.remove('active');
         titAdmin.classList.add('inactive');
-      } else if (pageState === "reglas"){
+      } else if (pageState === "reglas") {
         admin.classList.remove('active');
 
         titAdmin.classList.remove('active');
@@ -240,7 +240,11 @@ const Navbar = () => {
 
   return (
     <header className='navbarContainer'>
-      <p className='design'>Diseñado por Tobías Mancini</p>
+      <div className='topNav'>
+        <p className='design'>Diseñado por Tobías Mancini</p>
+        <p>&</p>
+        <img src={process.env.PUBLIC_URL + "images/lajaulaW.png"} alt="logoBlanco" />
+      </div>
       <ul className='navbarList'>
         <li id='inicio' className='navItem' onClick={() => changeState("inicio")}>
           <AiFillHome />
