@@ -5,9 +5,13 @@ const traerJugador = async(setJugadoresDelete) => {
     const input = document.getElementById('usuariosGet').value;
     const q = query(collection(db, "Usuarios"), where("apellido", "==", input.toUpperCase()));
     const u = query(collection(db, "Usuarios"), where("dni", "==", input));
+    const w = query(collection(db, "Usuarios"), where("email", "==", input));
+
 
     const querySnapshot = await getDocs(q);
     const queryDni = await getDocs(u);
+    const queryEmail = await getDocs(w);
+
     let jugadores = [];
     querySnapshot.forEach((doc) => {
         jugadores.push({
@@ -17,6 +21,13 @@ const traerJugador = async(setJugadoresDelete) => {
         })
     })
     queryDni.forEach((doc) => {
+        jugadores.push({
+            id: doc.id,
+            ref: doc.ref,
+            data: doc.data()
+        })
+    })
+    queryEmail.forEach((doc) => {
         jugadores.push({
             id: doc.id,
             ref: doc.ref,
