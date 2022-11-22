@@ -1,10 +1,13 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, getDocs } from "firebase/firestore";
 import { db } from "../../Firebase/config";
 import { addDoc, query, where, updateDoc } from "firebase/firestore";
 
 
 const compararResultados = async (setCargando, setToolText, setTooltip, tooltip) => {
     setCargando(true);
+
+    const calculandoRef = await addDoc(collection(db, "Calculando"), {calculando: true});
+
     const allResults = [];
     const allPredicts = [];
 
@@ -264,6 +267,8 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
 
 
     }
+
+    await deleteDoc(calculandoRef);
 
     setCargando(false);
     setToolText("SE GUARDÓ LA ACTUALIZACIÓN.")

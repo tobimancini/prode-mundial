@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
 
-const getInfo = async (uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo, setCampeon, setGoleador, setResultados, setJauleño, setPartidosJugados) => {
+const getInfo = async (uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo, setCampeon, setGoleador, setResultados, setJauleño, setPartidosJugados, setCalculando) => {
     const q = query(collection(db, "Usuarios"), where("uid", "==", uid));
     const querySnapshot = await getDocs(q);
 
@@ -50,8 +50,14 @@ const getInfo = async (uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion
     queryJugados.forEach((doc) => {
         jugados.push(doc.data().jugado)
     });
-    
 
+    const queryCalculando = await getDocs(collection(db, "Calculando"));
+    let calculos = false;
+    queryCalculando.forEach((doc) => {
+        calculos = true;
+    });
+    
+    setCalculando(calculos)
     setResultados(resultados)
     setUserInfo(user)
     setMiPrediccion(prediccion)

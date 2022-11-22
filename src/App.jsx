@@ -33,7 +33,7 @@ function App() {
   const { database, setDatabase, resultadosAct, setResultadosAct, userLogged, setPrediccionActual, prediccionActual, allPuntajes, faseElegida, setFaseElegida, setToolText,
     setAllPuntajes, setNow, pageState, setUserLogged, setPuntajesAct, setPuntajeTotal, userInfo, setUserInfo, banderas, setBanderas, modalPredic, tooltip, setTooltip,
     allMatches, setAllMatches, donePredictions, loaderOn, setLoaderOn, setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesGrup, posicionesInd, miPrediccion,
-    setCampeon, setGoleador, campeon, goleador, now, setResultados, setJauleño, loggedOut, setLoggedOut, setPartidosJugados } = useContext(Prode);
+    setCampeon, setGoleador, campeon, goleador, now, setResultados, setJauleño, loggedOut, setLoggedOut, setPartidosJugados, setCalculando } = useContext(Prode);
 
   const [userID, setUserID] = useState("");
 
@@ -172,7 +172,7 @@ function App() {
         setTimeout(() => {
           setTooltip(tooltip + 2)
         }, 2500);
-        getInfo(user.uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo, setCampeon, setGoleador, setResultados, setJauleño, setPartidosJugados)
+        getInfo(user.uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion, setUserInfo, setCampeon, setGoleador, setResultados, setJauleño, setPartidosJugados, setCalculando)
 
       } else {
         setTooltip(tooltip + 1);
