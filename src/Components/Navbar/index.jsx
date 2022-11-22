@@ -244,7 +244,8 @@ const Navbar = () => {
         <p className='design'>Diseñado por</p>
         <p>Tobías Mancini</p>
         <p className='design'>&</p>
-        <img src={process.env.PUBLIC_URL + "images/lajaulaW.png"} alt="logoBlanco" />
+        <p>LA JAULA</p>
+        {/* <img src={process.env.PUBLIC_URL + "images/lajaulaW.png"} alt="logoBlanco" /> */}
       </div>
       <ul className='navbarList'>
         <li id='inicio' className='navItem' onClick={() => changeState("inicio")}>

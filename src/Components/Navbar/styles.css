@@ -1,4 +1,4 @@
-.navbarContainer{
+.navbarContainer {
     height: 70px;
     background-color: #000;
     position: fixed;
@@ -12,7 +12,7 @@
     max-width: 520px;
 }
 
-.topNav{
+.topNav {
     display: flex;
     width: 100%;
     background-color: #ae946d;
@@ -21,15 +21,16 @@
     align-items: center;
 }
 
-.topNav img{
+.topNav img {
     height: 22px;
 }
 
-.topNav p{
+.topNav p {
     color: #fff;
     margin: 0 3px;
-    font-size: 9px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 100;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .design {
@@ -38,10 +39,10 @@
     color: #fff;
     font-size: 9px !important;
     font-style: italic;
-    font-weight: 400 !important;
+    font-weight: 600 !important;
     margin: 0px 3px;
     padding: 0px 3px;
-
+    font-family: 'Montserrat', sans-serif !important;
     /* border-bottom: solid 1px #fff; */
 }
 
@@ -56,7 +57,7 @@
     margin: 0;
 }
 
-.navItem{
+.navItem {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,7 +68,7 @@
     width: 100%;
 }
 
-.navItem p{
+.navItem p {
     font-size: 0px;
     margin: 3px;
     opacity: 0;
@@ -75,53 +76,55 @@
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     font-weight: 600;
-    
+
 }
 
-.navItem p.active{
+.navItem p.active {
     /* font-size: 12px; */
     opacity: 1;
     animation-name: enterTitle;
 }
 
-.navItem p.inactive{
+.navItem p.inactive {
     opacity: 0;
     animation-name: exitTitle;
 }
 
-.navItem svg{
+.navItem svg {
     font-size: 25px;
 }
 
-.navItem path{
+.navItem path {
     stroke: rgb(181, 181, 181) !important;
 }
 
-.navItem.active{
+.navItem.active {
     color: #ae946d;
 }
 
-.navItem.active path{
-    stroke: #ae946d !important; 
+.navItem.active path {
+    stroke: #ae946d !important;
 }
 
 @keyframes enterTitle {
-    from{
+    from {
         opacity: 0;
         font-size: 0px;
     }
-    to{
+
+    to {
         opacity: 1;
         font-size: 12px;
     }
 }
 
 @keyframes exitTitle {
-    from{
+    from {
         opacity: 1;
         font-size: 12px;
     }
-    to{
+
+    to {
         opacity: 0;
         font-size: 0px;
     }
