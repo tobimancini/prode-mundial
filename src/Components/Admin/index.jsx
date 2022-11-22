@@ -14,6 +14,7 @@ import modificarUser from '../Utils/modificarUser';
 import prediccionUser from '../Utils/prediccionUser';
 import traerEquipo from '../Utils/traerEquipo';
 import sinPredic from '../Utils/sinPredic';
+import actualizarDatosUser from '../Utils/actualizarDatosUser';
 
 
 const Admin = () => {
@@ -93,6 +94,9 @@ const Admin = () => {
                             }
                             <h2>Actualizar Puntajes</h2>
                             <div className='btnFiltro act' onClick={() => compararResultados(setCargando, setToolText, setTooltip, tooltip)}>Actualizar</div>
+                            <h2>Actualizar Datos Usuario</h2>
+                            <div className='btnFiltro act' onClick={() => actualizarDatosUser()}>Actualizar</div>
+                            
                         </>
                         :
 

@@ -236,36 +236,36 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
 
     }
 
-    for (let i = 0; i < puntajesTotales.length; i++) {
-        const usuario = puntajesTotales[i];
-        const q = query(collection(db, "Usuarios"), where("uid", "==", usuario.uid));
-        const queryUser = await getDocs(q);
-        const userRef = queryUser.docs[0].ref;
+    // for (let i = 0; i < puntajesTotales.length; i++) {
+    //     const usuario = puntajesTotales[i];
+    //     const q = query(collection(db, "Usuarios"), where("uid", "==", usuario.uid));
+    //     const queryUser = await getDocs(q);
+    //     const userRef = queryUser.docs[0].ref;
 
-        if (usuario.jaula === true) {
-            for (let i = 0; i < equipos.length; i++) {
-                const equipo = equipos[i];
+    //     if (usuario.jaula === true) {
+    //         for (let i = 0; i < equipos.length; i++) {
+    //             const equipo = equipos[i];
                 
-                if (usuario.equipo === equipo.equipo) {
-                    await updateDoc(userRef, {
-                        posicion: usuario.posicion,
-                        posicionEquipo: equipo.posicion,
-                        puntajeActual: usuario.puntaje,
-                        puntajeEquipo: equipo.puntaje
-                    })
+    //             if (usuario.equipo === equipo.equipo) {
+    //                 await updateDoc(userRef, {
+    //                     posicion: usuario.posicion,
+    //                     posicionEquipo: equipo.posicion,
+    //                     puntajeActual: usuario.puntaje,
+    //                     puntajeEquipo: equipo.puntaje
+    //                 })
     
-                }
+    //             }
     
-            }   
-        }else{
-            await updateDoc(userRef, {
-                posicion: usuario.posicion,
-                puntajeActual: usuario.puntaje
-            })
-        }
+    //         }   
+    //     }else{
+    //         await updateDoc(userRef, {
+    //             posicion: usuario.posicion,
+    //             puntajeActual: usuario.puntaje
+    //         })
+    //     }
 
 
-    }
+    // }
 
     setCargando(false);
     setToolText("SE GUARDÓ LA ACTUALIZACIÓN.")
