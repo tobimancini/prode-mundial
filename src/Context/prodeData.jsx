@@ -73,7 +73,7 @@ const ProdeData = ({ children }) => {
     const [jauleño, setJauleño] = useState(false);
     const [loggedOut, setLoggedOut] = useState(true);
     const [partidosJugados, setPartidosJugados] = useState([]);
-    const [calculando, setCalculando] = useState(false)
+    
 
 
 
@@ -85,7 +85,7 @@ const ProdeData = ({ children }) => {
             , tooltip, setTooltip, toolText, setToolText, userHabilitado, setUserHabilitado, equiposFem, equiposMasc, equipoElegido, setEquipoElegido, tipoIdElegido, setTipoIdElegido,
             equiposUser, setEquiposUser, allMatches, setAllMatches, donePredictions, setDonePredictions, gender, setGender, loaderOn, setLoaderOn,
             setPosicionesInd, setPosicionesGrup, setMiPrediccion, posicionesInd, posicionesGrup, miPrediccion, campeon, setCampeon, goleador, setGoleador, resultados, setResultados,
-            jauleño, setJauleño, setLoggedOut, loggedOut, partidosJugados, setPartidosJugados, calculando, setCalculando
+            jauleño, setJauleño, setLoggedOut, loggedOut, partidosJugados, setPartidosJugados
         }}>
             {children}
         </Prode.Provider>

@@ -149,7 +149,7 @@ const Partido = (props) => {
                 <p>{`${fecha.dia}/${fecha.mes}/22`}</p>
                 {
                     userInfo.administrador ?
-                        userInfo.administrador === true && userInfo.dni === "39244200" ?
+                        userInfo.administrador === true && userInfo.dni === "39244200" && jugado === false?
                             <p className='btnFiltro white' onClick={() => partidoJugadoTrue(`partido${numPartido}`)}>JUGADO?</p>
                             :
                             null
