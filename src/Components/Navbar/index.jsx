@@ -241,8 +241,9 @@ const Navbar = () => {
   return (
     <header className='navbarContainer'>
       <div className='topNav'>
-        <p className='design'>Diseñado por Tobías Mancini</p>
-        <p>&</p>
+        <p className='design'>Diseñado por</p>
+        <p>Tobías Mancini</p>
+        <p className='design'>&</p>
         <img src={process.env.PUBLIC_URL + "images/lajaulaW.png"} alt="logoBlanco" />
       </div>
       <ul className='navbarList'>
