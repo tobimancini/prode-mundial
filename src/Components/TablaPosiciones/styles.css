@@ -197,3 +197,22 @@
     color: #fff;
     font-size: 22px;
 }
+
+.black{
+    background-color: #000;
+    border: solid 1px #ae946d;
+    color: #ae946d !important;
+    height: 30px;
+    width: 91%;
+}
+
+.right{
+    padding: 0 5px 0 0 !important;
+    color: #fff;
+}
+
+.left{
+    width: 40% !important;
+    font-size: 12px !important;
+    color: #ae946d;
+}

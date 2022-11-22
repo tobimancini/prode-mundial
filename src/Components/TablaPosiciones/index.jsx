@@ -8,6 +8,7 @@ import FadeLoader from "react-spinners/FadeLoader";
 import equiposPorSexo from '../Utils/equiposPorSexo';
 import getTabla from '../Utils/getTabla';
 import { BsArrowDownSquareFill, BsArrowUpSquareFill } from 'react-icons/bs';
+import getUserMore from '../Utils/getUserMore';
 
 
 
@@ -49,6 +50,10 @@ const TablaPosiciones = () => {
         }
     }
 
+    const [more, setMore] = useState("")
+    const [champ, setChamp] = useState("")
+    const [goal, setGoal] = useState("")
+
 
     return (
         <div className='clasificacionCont'>
@@ -75,16 +80,35 @@ const TablaPosiciones = () => {
                                 tablaState === "individual" ?
 
                                     posicionesInd.map(user => {
-                                        return <div key={user.uid} className={`tablaUser ${userInfo.posicion === 1 ? "primero" : "otros"}`}>
-                                            <p className='nombre' key={`nombre${user.uid}`}>{user.posicion}. {user.apellido.toUpperCase()} {user.nombre.slice(0, 1).toUpperCase()}.</p>
-                                            <div className='puntajeTabla'>
-                                                <p key={`puntos${user.uid}`} className='puntosTabla'>{user.puntaje === "" ? 0 : user.puntaje} pts</p>
+                                        
+                                        return <>
+                                            <div key={user.uid} className={`tablaUser ${userInfo.posicion === 1 ? "primero" : "otros"}`}>
+                                                <p className='nombre' key={`nombre${user.uid}`}>{user.posicion}. {user.apellido.toUpperCase()} {user.nombre.slice(0, 1).toUpperCase()}.</p>
+                                                <div className='puntajeTabla'>
+                                                    <p key={`puntos${user.uid}`} className='puntosTabla'>{user.puntaje === "" ? 0 : user.puntaje} pts</p>
+                                                    <p className='puntosTabla' onClick={() => more !== user.uid ? getUserMore(user.uid, setChamp, setGoal, setMore): setMore("")}>+</p>
+                                                </div>
+                                                {
+                                                    user.posicion === 1 ?
+                                                        <FaCrown className='crown' /> : null
+                                                }
                                             </div>
                                             {
-                                                user.posicion === 1 ?
-                                                    <FaCrown className='crown' /> : null
+                                                more === user.uid?
+                                                    <>
+                                                        <div className='tablaUser black'>
+                                                            <p className='nombre left'>Campeón:</p>
+                                                            <p className='nombre right'>{champ.toUpperCase()}</p>
+                                                        </div>
+                                                        <div className='tablaUser black'>
+                                                            <p className='nombre left'>Goleador:</p>
+                                                            <p className='nombre right'>{goal.toUpperCase()}</p>
+                                                        </div>
+                                                    </>
+                                                    :
+                                                    null
                                             }
-                                        </div>
+                                        </>
                                     })
 
                                     :
@@ -112,7 +136,7 @@ const TablaPosiciones = () => {
                                 document.querySelector('.tablaCont').scrollHeight >= 320 ?
                                     <div className='arrowCont'>
                                         {
-                                            scrollPosition  != "end"?
+                                            scrollPosition != "end" ?
                                                 <BsArrowDownSquareFill className='arrow' />
                                                 :
                                                 null
