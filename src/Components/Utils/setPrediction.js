@@ -6,6 +6,7 @@ import { addDoc } from "firebase/firestore";
 const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo, now) => {
 
   let date = { mes: now.getMonth() + 1, dia: now.getDate() }
+  let partidoJugado = false;
   if (userInfo.habilitado === true) {
 
     if (userInfo.uid) {
@@ -43,7 +44,8 @@ const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo
                   jugado = true;
                 });
                 if (jugado === true) {
-                  document.getElementById(`container${match[1].partido}`).classList.add('partidoJugado');
+                  document.getElementById(`container${match[1].partido}`).classList.add('played');
+                  partidoJugado = true;
                   let counters = document.querySelectorAll(`.counter${match[1].partido}`);
                   for (let i = 0; i < counters.length; i++) {
                     const counter = counters[i];
@@ -122,11 +124,19 @@ const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo
         }
       }
 
-      setToolText("SE GUARDÓ TU PREDICCIÓN.")
-      setTooltip(tooltip + 1);
-      setTimeout(() => {
-        setTooltip(tooltip + 2)
-      }, 4000);
+      if (partidoJugado === false) {
+        setToolText("SE GUARDÓ TU PREDICCIÓN.")
+        setTooltip(tooltip + 1);
+        setTimeout(() => {
+          setTooltip(tooltip + 2)
+        }, 4000);
+      }else{
+        setToolText("Parte o el total de la predicción no pudo ser guardada, debido a que un partido se encuentra en juego")
+        setTooltip(tooltip + 1);
+        setTimeout(() => {
+          setTooltip(tooltip + 2)
+        }, 6000);
+      }
 
     }
 

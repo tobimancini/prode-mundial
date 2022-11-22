@@ -167,4 +167,7 @@
 
 .white{
     color: #fff !important;
+    font-weight: 400 !important;
+    width: 120px;
+    background-color: #000;
 }

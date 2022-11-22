@@ -150,7 +150,7 @@ const Partido = (props) => {
                 {
                     userInfo.administrador ?
                         userInfo.administrador === true && userInfo.dni === "39244200" && jugado === false?
-                            <p className='btnFiltro white' onClick={() => partidoJugadoTrue(`partido${numPartido}`)}>JUGADO?</p>
+                            <p className='btnFiltro white' onClick={() => partidoJugadoTrue(`partido${numPartido}`, setToolText, setTooltip, tooltip)}>JUGADO?</p>
                             :
                             null
                         :
