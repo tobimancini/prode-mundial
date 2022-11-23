@@ -44,6 +44,7 @@ const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo
                   jugado = true;
                 });
                 if (jugado === true) {
+
                   document.getElementById(`container${match[1].partido}`).classList.add('played');
                   partidoJugado = true;
                   let counters = document.querySelectorAll(`.counter${match[1].partido}`);
@@ -64,6 +65,16 @@ const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo
                   }
                 })
               }
+            } else if (date.mes <= match[1].fecha.mes || (date.mes === match[1].fecha.mes && date.dia < match[1].fecha.dia)) {
+              prediccion.push({
+                [`partido${match[1].partido}`]: {
+                  "partido": match[1].partido,
+                  "local": local.value,
+                  "visitante": visit.value,
+                  "ganador": ganador(local.value, visit.value)
+
+                }
+              })
             }
 
           }
@@ -130,7 +141,7 @@ const setPrediction = async (matches, setToolText, setTooltip, tooltip, userInfo
         setTimeout(() => {
           setTooltip(tooltip + 2)
         }, 4000);
-      }else{
+      } else {
         setToolText("Parte o el total de la predicción no pudo ser guardada, debido a que un partido se encuentra en juego")
         setTooltip(tooltip + 1);
         setTimeout(() => {
