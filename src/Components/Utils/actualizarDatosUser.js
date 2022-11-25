@@ -26,6 +26,7 @@ const actualizarDatosUser = async () => {
 
     for (let i = 0; i < posiciones.length; i++) {
         const usuario = posiciones[i];
+        console.log(usuario);
         if (usuario.equipo !== "") {
             for (let i = 0; i < posicionesEq.length; i++) {
                 const equipo = posicionesEq[i];
@@ -40,12 +41,12 @@ const actualizarDatosUser = async () => {
                         puntajeActual: usuario.puntaje,
                         puntajeEquipo: equipo.puntaje
                     })
-                    console.log(usuario.apellido+{
-                        posicion: usuario.posicion,
-                        posicionEquipo: equipo.posicion,
-                        puntajeActual: usuario.puntaje,
-                        puntajeEquipo: equipo.puntaje
-                    });
+                    // console.log(usuario.apellido+{
+                    //     posicion: usuario.posicion,
+                    //     posicionEquipo: equipo.posicion,
+                    //     puntajeActual: usuario.puntaje,
+                    //     puntajeEquipo: equipo.puntaje
+                    // });
 
 
 

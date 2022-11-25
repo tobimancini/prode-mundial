@@ -41,7 +41,7 @@ const ProdeData = ({ children }) => {
 
     const [sortedPredic, setSortedPredic] = useState([]);
 
-    const [faseElegida, setFaseElegida] = useState("Fase 1")
+    const [faseElegida, setFaseElegida] = useState("Fase 2")
 
     const [tooltip, setTooltip] = useState(0);
 

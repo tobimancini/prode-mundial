@@ -15,6 +15,7 @@ import prediccionUser from '../Utils/prediccionUser';
 import traerEquipo from '../Utils/traerEquipo';
 import sinPredic from '../Utils/sinPredic';
 import actualizarDatosUser from '../Utils/actualizarDatosUser';
+import resultadoPuntos from '../Utils/resultadoPuntos';
 
 
 const Admin = () => {

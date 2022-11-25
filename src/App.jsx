@@ -221,6 +221,15 @@ function App() {
     fechaLimiteCampeones();
   }, [now]);
 
+  useEffect(() => {
+    if (document.getElementById('faseElegida')) {
+      document.getElementById('faseElegida').value = "Fase 2";
+      let fase = document.getElementById('faseElegida').value;
+      setFaseElegida(fase);
+    }
+
+  }, [pageState]);
+
   return (
     <div className="App" >
       <Navbar />
@@ -256,7 +265,7 @@ function App() {
                           <select name="fase" id="faseElegida" onChange={() => filtrarFase()}>
                             {
                               fases.map(fase => {
-                                return <option key={fase} value={fase}>{fase}</option>
+                                return <option className="optFase" key={fase} value={fase}>{fase}</option>
                               })
                             }
                           </select>
