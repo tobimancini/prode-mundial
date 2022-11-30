@@ -881,8 +881,8 @@
         "vis":"USA"
     },
     "partido50": {
-        "local": "1C",
-        "visitante": "2D",
+        "local": "Argentina",
+        "visitante": "Australia",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -894,8 +894,8 @@
             "hora": 16,
             "minutos":  0
         },
-        "loc":"1C",
-        "vis":"2D"
+        "loc":"ARG",
+        "vis":"AUS"
     },
     "partido51": {
         "local": "Inglaterra",
@@ -915,8 +915,8 @@
         "vis":"SEN"
     },
     "partido52": {
-        "local": "1D",
-        "visitante": "2C",
+        "local": "Francia",
+        "visitante": "Polonia",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -928,8 +928,8 @@
             "hora": 12,
             "minutos":  0
         },
-        "loc":"1D",
-        "vis":"2C"
+        "loc":"FRA",
+        "vis":"POL"
     },
     "partido53": {
         "local": "1E",
