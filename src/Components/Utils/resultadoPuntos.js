@@ -75,10 +75,10 @@ const resultadoPuntos = async (setCargando, setToolText, setTooltip, tooltip, pa
         }
     }
     let usuarios = [];
-    const q = query(collection(db, "Usuarios"), where("uid", "==", "sfZ0AtOS3UU3cX62YGX3JPwHsbn1"));
-    let querySnap = await getDocs(q);
+    // const q = query(collection(db, "Usuarios"), where("uid", "==", "sfZ0AtOS3UU3cX62YGX3JPwHsbn1"));
+    // let querySnap = await getDocs(q);
 
-    // const querySnap = await getDocs(collection(db, "Usuarios"));
+    const querySnap = await getDocs(collection(db, "Usuarios"));
     querySnap.forEach((doc) => {
         if (doc.data().habilitado === true) {
             usuarios.push([doc.data(), doc.ref])
@@ -173,7 +173,7 @@ const resultadoPuntos = async (setCargando, setToolText, setTooltip, tooltip, pa
 
     }
 
-    puntajesTotales.sort((a, b) => a.puntajeActual < b.puntajeActual ? 1 : b.puntajeActual < a.puntajeActual ? -1 : 0)
+    puntajesTotales.sort((a, b) => a.puntaje < b.puntaje ? 1 : b.puntaje < a.puntaje ? -1 : 0)
 
     const querySnapshot = await getDocs(collection(db, "Posiciones"));
     const posicionesUsers = [];
@@ -185,26 +185,137 @@ const resultadoPuntos = async (setCargando, setToolText, setTooltip, tooltip, pa
     });
 
     // console.log(posicionesUsers);
-
+    let allNew = [];
+    let repetidos = [];
     for (let i = 0; i < puntajesTotales.length; i++) {
         const el = puntajesTotales[i];
         let posicion = { posicion: i + 1 }
         Object.assign(el, posicion)
-        
+
 
         for (let i = 0; i < posicionesUsers.length; i++) {
             const user = posicionesUsers[i];
             if (user.data.uid === el.uid) {
-                console.log(el);
-            }
-        }        
+                let exist = false;
+                for (let i = 0; i < allNew.length; i++) {
+                    const el = allNew[i];
+                    if (user.data.uid === el.uid) {
+                        exist = true;
+                    }
+                }
+                if (exist === false) {
 
-        
-            
-            
-            // await updateDoc(queryRef, el);
-        
+                    allNew.push(el)
+                } else {
+                    repetidos.push(el)
+                }
+                // await updateDoc(user.ref, el);
+            }
+        }
+
+
     }
+
+    console.log(allNew);
+    console.log(repetidos);
+
+    let equipos = [];
+
+    for (let i = 0; i < puntajesTotales.length; i++) {
+        const el = puntajesTotales[i];
+        if (el.equipo !== "") {
+            if (equipos.length === 0) {
+                equipos.push({ equipo: el.equipo })
+            } else {
+                let aparece = false;
+                for (let i = 0; i < equipos.length; i++) {
+                    const element = equipos[i];
+                    if (element.equipo === el.equipo) {
+                        aparece = true;
+                    }
+                }
+                if (aparece === false) {
+                    equipos.push({ equipo: el.equipo })
+                }
+            }
+        }
+
+    }
+
+    for (let i = 0; i < puntajesTotales.length; i++) {
+        const el = puntajesTotales[i];
+        for (let i = 0; i < equipos.length; i++) {
+            const equipo = equipos[i];
+            if (equipo.puntaje === undefined) {
+                if (el.equipo === equipo.equipo) {
+                    let puntos = { [el.uid]: el.puntaje }
+                    Object.assign(equipo, puntos)
+                }
+            }
+        }
+    }
+
+
+
+
+    for (let i = 0; i < equipos.length; i++) {
+        const el = equipos[i];
+        let equipoPuntos = 0;
+        let equipo = Object.entries(el);
+        equipo.splice(0, 1)
+        equipo.sort((a, b) => a[1] < b[1] ? 1 : b[1] < a[1] ? -1 : 0)
+        const nuevo = equipo.slice(0, 5)
+
+        for (let i = 0; i < nuevo.length; i++) {
+            const el = nuevo[i];
+            equipoPuntos += el[1]
+        }
+        equipos[i].puntaje = equipoPuntos;
+
+    }
+
+    equipos.sort((a, b) => a.puntaje < b.puntaje ? 1 : b.puntaje < a.puntaje ? -1 : 0);
+
+
+    for (let i = 0; i < equipos.length; i++) {
+        const equipo = equipos[i];
+        Object.assign(equipo, { posicion: i + 1 })
+    }
+
+
+    let posicionesEquipos = [];
+
+    const queryEquipos = await getDocs(collection(db, "PosicionesEquipos"));
+    queryEquipos.forEach((doc) => {
+        posicionesEquipos.push([doc.data(), doc.ref])
+    });
+
+    // console.log(posicionesEquipos);
+
+    if (!posicionesEquipos.length) {
+        for (let i = 0; i < equipos.length; i++) {
+            const el = equipos[i];
+            // const tablaEquipos = await addDoc(collection(db, "PosicionesEquipos"), el);
+        }
+    } else {
+        for (let i = 0; i < posicionesEquipos.length; i++) {
+            const posicion = posicionesEquipos[i][0];
+            console.log(posicion);
+            for (let i = 0; i < equipos.length; i++) {
+                const el = equipos[i];
+                // const q = query(collection(db, "PosicionesEquipos"), where("equipo", "==", el.equipo));
+                // const queryS = await getDocs(q);
+
+                // let queryL = queryS.docs.length;
+                // if (queryL > 0) {
+                //     let queryRef = queryS.docs[0].ref;
+                // await updateDoc(queryRef, el);
+                // } else {
+                // const tablaEquipos = await addDoc(collection(db, "PosicionesEquipos"), el);
+            }
+        }
+    }
+
 
 
 

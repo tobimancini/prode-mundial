@@ -54,7 +54,7 @@ const TablaPosiciones = () => {
     const [champ, setChamp] = useState("")
     const [goal, setGoal] = useState("")
 
-
+    
     return (
         <div className='clasificacionCont'>
             {

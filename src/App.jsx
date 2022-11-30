@@ -223,7 +223,7 @@ function App() {
 
   useEffect(() => {
     if (document.getElementById('faseElegida')) {
-      document.getElementById('faseElegida').value = "Fase 2";
+      document.getElementById('faseElegida').value = "Fase 3";
       let fase = document.getElementById('faseElegida').value;
       setFaseElegida(fase);
     }
