@@ -950,8 +950,8 @@
         "vis":"CRO"
     },
     "partido54": {
-        "local": "1G",
-        "visitante": "2H",
+        "local": "Brasil",
+        "visitante": "Corea del Sur",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -963,8 +963,8 @@
             "hora": 16,
             "minutos":  0
         },
-        "loc":"1G",
-        "vis":"2H"
+        "loc":"BRA",
+        "vis":"CSU"
     },
     "partido55": {
         "local": "Marruecos",
@@ -984,8 +984,8 @@
         "vis":"ESP"
     },
     "partido56": {
-        "local": "1H",
-        "visitante": "2G",
+        "local": "Portugal",
+        "visitante": "Suiza",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -997,8 +997,8 @@
             "hora": 16,
             "minutos":  0
         },
-        "loc":"1H",
-        "vis":"2G"
+        "loc":"POR",
+        "vis":"SUI"
     },
     "partido58": {
         "local": "G53",
