@@ -933,8 +933,8 @@
         "vis":"SEN"
     },
     "partido53": {
-        "local": "1E",
-        "visitante": "2F",
+        "local": "Japón",
+        "visitante": "Croacia",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -946,8 +946,8 @@
             "hora": 12,
             "minutos":  0
         },
-        "loc":"1E",
-        "vis":"2F"
+        "loc":"JAP",
+        "vis":"CRO"
     },
     "partido54": {
         "local": "1G",
@@ -967,8 +967,8 @@
         "vis":"2H"
     },
     "partido55": {
-        "local": "1F",
-        "visitante": "2E",
+        "local": "Marruecos",
+        "visitante": "España",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -980,8 +980,8 @@
             "hora": 12,
             "minutos":  0
         },
-        "loc":"1F",
-        "vis":"2E"
+        "loc":"MAR",
+        "vis":"ESP"
     },
     "partido56": {
         "local": "1H",
