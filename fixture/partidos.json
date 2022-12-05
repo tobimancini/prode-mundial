@@ -1018,8 +1018,8 @@
         "vis":"G54"
     },
     "partido57": {
-        "local": "G49",
-        "visitante": "G50",
+        "local": "Holanda",
+        "visitante": "Argentina",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -1031,8 +1031,8 @@
             "hora": 16,
             "minutos":  0
         },
-        "loc":"G49",
-        "vis":"G50"
+        "loc":"HOL",
+        "vis":"ARG"
     },
     "partido60": {
         "local": "G55",
@@ -1052,8 +1052,8 @@
         "vis":"G56"
     },
     "partido59": {
-        "local": "G51",
-        "visitante": "G52",
+        "local": "Inglaterra",
+        "visitante": "Francia",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -1065,8 +1065,8 @@
             "hora": 16,
             "minutos":  0
         },
-        "loc":"G51",
-        "vis":"G52"
+        "loc":"ING",
+        "vis":"FRA"
     },
     
     "partido61": {
