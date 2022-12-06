@@ -1001,8 +1001,8 @@
         "vis":"SUI"
     },
     "partido58": {
-        "local": "G53",
-        "visitante": "G54",
+        "local": "Croacia",
+        "visitante": "Brasil",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -1014,8 +1014,8 @@
             "hora": 12,
             "minutos":  0
         },
-        "loc":"G53",
-        "vis":"G54"
+        "loc":"CRO",
+        "vis":"BRA"
     },
     "partido57": {
         "local": "Holanda",
