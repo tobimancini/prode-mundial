@@ -1035,8 +1035,8 @@
         "vis":"ARG"
     },
     "partido60": {
-        "local": "G55",
-        "visitante": "G56",
+        "local": "Marruecos",
+        "visitante": "Portugal",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -1048,8 +1048,8 @@
             "hora": 12,
             "minutos":  0
         },
-        "loc":"G55",
-        "vis":"G56"
+        "loc":"MAR",
+        "vis":"POR"
     },
     "partido59": {
         "local": "Inglaterra",

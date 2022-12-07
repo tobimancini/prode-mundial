@@ -3,19 +3,19 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../Firebase/config";
 
 const sinPredic = async () => {
-    // const q = query(collection(db, "Usuarios"), where("habilitado", "==", true));
+    // // const q = query(collection(db, "Usuarios"), where("habilitado", "==", true));
 
-    // const querySnapshot = await getDocs(q);
+    // // const querySnapshot = await getDocs(q);
     // let habilitados = [];
     // querySnapshot.forEach((doc) => {
     //     habilitados.push(doc.data())
     // });
-    const q = query(collection(db, "Predicciones"), where("apellido", "==", "ETCHEBERRY"));
+    // // // // // // // // // // const q = query(collection(db, "Predicciones"), where("apellido", "==", "ETCHEBERRY"));
 
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        console.log(doc.id);
-    });
+    // // // // // // // // // // const querySnapshot = await getDocs(q);
+    // // // // // // // // // // querySnapshot.forEach((doc) => {
+    // // // // // // // // // //     console.log(doc.id);
+    // // // // // // // // // // });
 
     // const queryPredic = await getDocs(collection(db, "Predicciones"));
     // let predicciones = [];
@@ -40,13 +40,16 @@ const sinPredic = async () => {
     // }
 
     // console.log(sinPrediccion);
-    // const querySnapshot = await getDocs(collection(db, "Usuarios"));
-    // let emailList = [];
-    // querySnapshot.forEach((doc) => {
-    //     emailList.push(doc.data().email)
-    // });
+    const q = query(collection(db, "Usuarios"), where("habilitado", "==", true));
 
-    // console.log(emailList);
+    const querySnapshot = await getDocs(q);
+    // const querySnapshot = await getDocs(collection(db, "Usuarios"));
+    let emailList = [];
+    querySnapshot.forEach((doc) => {
+        emailList.push(doc.data().nombre+" "+doc.data().apellido)
+    });
+
+    console.log(emailList);
 }
 
 export default sinPredic
