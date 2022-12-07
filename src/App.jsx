@@ -223,7 +223,7 @@ function App() {
 
   useEffect(() => {
     if (document.getElementById('faseElegida')) {
-      document.getElementById('faseElegida').value = "Octavos de final";
+      document.getElementById('faseElegida').value = "Cuartos de final";
       let fase = document.getElementById('faseElegida').value;
       setFaseElegida(fase);
     }

@@ -41,7 +41,7 @@ const ProdeData = ({ children }) => {
 
     const [sortedPredic, setSortedPredic] = useState([]);
 
-    const [faseElegida, setFaseElegida] = useState("Octavos de final")
+    const [faseElegida, setFaseElegida] = useState("Cuartos de final")
 
     const [tooltip, setTooltip] = useState(0);
 
