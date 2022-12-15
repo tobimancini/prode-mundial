@@ -1104,8 +1104,8 @@
         "vis":"MAR"
     },
     "partido63": {
-        "local": "P61",
-        "visitante": "P62",
+        "local": "Croacia",
+        "visitante": "Marruecos",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -1117,12 +1117,12 @@
             "hora": 12,
             "minutos":  0
         },
-        "loc":"P61",
-        "vis":"P62"
+        "loc":"CRO",
+        "vis":"MAR"
     },
     "partido64": {
-        "local": "G61",
-        "visitante": "G62",
+        "local": "Argentina",
+        "visitante": "Francia",
         "golesLocal": "",
         "golesVisitante": "",
         "resultado": "",
@@ -1134,7 +1134,7 @@
             "hora": 12,
             "minutos":  0
         },
-        "loc":"G61",
-        "vis":"G62"
+        "loc":"ARG",
+        "vis":"FRA"
     }
 }

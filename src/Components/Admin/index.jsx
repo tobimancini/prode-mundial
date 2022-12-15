@@ -89,7 +89,7 @@ const Admin = () => {
                             </div>
                             {
                                 equipoLocal !== "" || equipoVisitante !== "" ?
-                                    <div className='btnFiltro' onClick={() => enviarResultados(setCargando, setToolText, setTooltip, tooltip)}>ENVIAR</div>
+                                    <div className='btnFiltro' onClick={() => resultadoPuntos(setCargando, setToolText, setTooltip, tooltip)}>ENVIAR</div>
                                     :
                                     null
                             }
