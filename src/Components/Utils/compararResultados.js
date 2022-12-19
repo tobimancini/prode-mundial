@@ -45,6 +45,12 @@ const compararResultados = async (setCargando, setToolText, setTooltip, tooltip)
             administrador = doc.data()
         })
 
+        if (administrador.goleador === "Kylian Mbappe") {
+            puntajes = puntajes + 16;
+        }
+        if (administrador.campeon === "Argentina") {
+            puntajes = puntajes + 16;
+        }
 
         if (administrador.administrador === false) {
             let partidos = [];
