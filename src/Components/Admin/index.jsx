@@ -54,7 +54,7 @@ const Admin = () => {
         <div className='adminCont'>
 
             {
-                allMatches.length && userInfo ?
+                !allMatches.length === false && userInfo ?
                     userInfo.apellido != "JAULA" ?
                         <>
                             <h2>VER PARTIDOS JUGADOS</h2>
