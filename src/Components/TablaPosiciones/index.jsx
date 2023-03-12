@@ -61,7 +61,7 @@ const TablaPosiciones = () => {
                 !posicionesGrup.length || !posicionesInd.length ?
 
                     <div className='prediccionCont'>
-                        <h3>Se están calculando los puntajes...</h3>
+                        <h3>INICIA SESIÓN PARA VER LOS PUNTAJES.</h3>
                     </div>
                     :
                     <>

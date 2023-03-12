@@ -42,7 +42,9 @@ const getInfo = async (uid, setPosicionesInd, setPosicionesGrup, setMiPrediccion
     let resultados = [];
     queryResultados.forEach((doc) => {
         let result = Object.entries(doc.data())
-        resultados.push(result)
+        if (result.length) {
+            resultados.push(result)
+        }
     });
 
     const queryJugados = await getDocs(collection(db, "Jugados"));

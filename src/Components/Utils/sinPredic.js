@@ -10,7 +10,7 @@ const sinPredic = async () => {
     // querySnapshot.forEach((doc) => {
     //     habilitados.push(doc.data())
     // });
-    const q = query(collection(db, "Predicciones"), where("apellido", "==", "ETCHEBERRY"));
+    const q = query(collection(db, "Usuarios"), where("uid", "==", "AtOSRZNzoCeMnBhDVc0sprPIiO22"));
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {

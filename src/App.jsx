@@ -259,33 +259,33 @@ function App() {
                   </div>
 
                   {
-                    // partidosState === "partidos" ?
-                    //   <>
-                    //     <div className="selYBtn">
-                    //       <select name="fase" id="faseElegida" onChange={() => filtrarFase()}>
-                    //         {
-                    //           fases.map(fase => {
-                    //             return <option className="optFase" key={fase} value={fase}>{fase}</option>
-                    //           })
-                    //         }
-                    //       </select>
-                    //       <div className="flecha"></div>
-                    //     </div>
-                    //     {
-                    //       database.partido1 != undefined ?
-                    //         <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
-                    //         :
-                    //         null
-                    //     }
+                    partidosState === "partidos" ?
+                      <>
+                        <div className="selYBtn">
+                          <select name="fase" id="faseElegida" onChange={() => filtrarFase()}>
+                            {
+                              fases.map(fase => {
+                                return <option className="optFase" key={fase} value={fase}>{fase}</option>
+                              })
+                            }
+                          </select>
+                          <div className="flecha"></div>
+                        </div>
+                        {
+                          database.partido1 != undefined ?
+                            <Group grupo={faseElegida} partidos={partidosPorFase} fases={fases} />
+                            :
+                            null
+                        }
 
-                    //     <div className="guardarCambios" onClick={() => predict(partidosState)}>
-                    //       <p>Guardar predicción</p>
-                    //       <div>
-                    //         <span id="saveBtnSpan"></span>
-                    //       </div>
-                    //     </div>
-                    //   </>
-                    //   :
+                        <div className="guardarCambios" onClick={() => predict(partidosState)}>
+                          <p>Guardar predicción</p>
+                          <div>
+                            <span id="saveBtnSpan"></span>
+                          </div>
+                        </div>
+                      </>
+                      :
                       partidosState === "campeon" ?
 
                         campeonesOff === false ?

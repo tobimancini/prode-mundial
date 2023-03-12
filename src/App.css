@@ -114,6 +114,7 @@ option {
   border: solid 1px #ae946d;
   border-radius: 100% !important;
   background-color: #fff;
+  overflow: hidden;
 }
 .teamChosen{
   color: #ae946d;
